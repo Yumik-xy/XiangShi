@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff1539e4-b44b-461e-aa7a-4e86ee1e21a4" name="Default Changelist" comment="" />
+    <list default="true" id="c8dc7d28-a859-4c96-bcfc-ff4b4b830fcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xiangshi/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,8 +22,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1f29eLuFpT4WG5Xv2rRwOkoQIQ3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1f4UpvitwhddgQA2i1y3k6eJ4Ff" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -19,7 +33,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
     <configuration name="Django" type="Python.DjangoServer" factoryName="Django server">
@@ -30,16 +46,16 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="Django.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Administrator\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
+      <option name="port" value="80" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:80/" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
@@ -52,13 +68,42 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ff1539e4-b44b-461e-aa7a-4e86ee1e21a4" name="Default Changelist" comment="" />
-      <created>1595405414902</created>
+      <changelist id="c8dc7d28-a859-4c96-bcfc-ff4b4b830fcd" name="Default Changelist" comment="" />
+      <created>1595477044821</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1595405414902</updated>
-      <workItem from="1595405417663" duration="16000" />
+      <updated>1595477044821</updated>
+      <workItem from="1595477046884" duration="3989000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="404" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595477117291">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="404" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595477117291" />
+    <state width="1655" height="292" key="GridCell.Tab.0.bottom" timestamp="1595478477782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1655" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595478477782" />
+    <state width="1655" height="292" key="GridCell.Tab.0.center" timestamp="1595478477782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1655" height="292" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595478477782" />
+    <state width="1655" height="292" key="GridCell.Tab.0.left" timestamp="1595478477782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1655" height="292" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595478477782" />
+    <state width="1655" height="292" key="GridCell.Tab.0.right" timestamp="1595478477782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1655" height="292" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595478477782" />
+    <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1595508473026">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1595508473026" />
   </component>
 </project>
