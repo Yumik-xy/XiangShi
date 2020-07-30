@@ -9,12 +9,12 @@
   "window":{
     "backgroundTextStyle":"dark",
     "enablePullDownRefresh":true,
-    "navigationBarBackgroundColor": "#18b9d2",
+    "navigationBarBackgroundColor":"#4B6AC4",
     "navigationBarTextStyle":"black"
   },
   "tabBar":{
     "color": "#707070",
-    "selectedColor": "#18b9d2",
+    "selectedColor": "#4B6AC4",
     "backgroundColor": "#fbfbfb",
     "borderStyle": "white",
     "list": [
