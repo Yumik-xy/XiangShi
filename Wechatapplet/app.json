@@ -7,37 +7,38 @@
     "pages/mine/mine"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "backgroundTextStyle":"dark",
+    "enablePullDownRefresh":true,
+    "navigationBarBackgroundColor": "#18b9d2",
     "navigationBarTitleText": "湘识健康",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"black"
   },
   "tabBar":{
     "color": "#707070",
-    "selectedColor": "#3cb778",
+    "selectedColor": "#18b9d2",
     "backgroundColor": "#fbfbfb",
     "borderStyle": "white",
     "list": [
        {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "",
-        "selectedIconPath":""
+        "iconPath": "icon/_index.png",
+        "selectedIconPath":"icon/index.png"
       }, {
         "pagePath": "pages/wiki/wiki",
         "text": "健康百科",
-        "iconPath": "",
-        "selectedIconPath":""
+        "iconPath": "icon/_wiki.png",
+        "selectedIconPath":"icon/wiki.png"
       }, {
         "pagePath": "pages/inquiry/inquiry",
         "text": "问诊",
-        "iconPath": "",
-        "selectedIconPath":""
+        "iconPath": "icon/_inquiry.png",
+        "selectedIconPath":"icon/inquiry.png"
       }, {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "",
-        "selectedIconPath":""
+        "iconPath": "icon/_mine.png",
+        "selectedIconPath":"icon/mine.png"
       }
     ]
   },
