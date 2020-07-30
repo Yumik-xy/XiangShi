@@ -19,13 +19,13 @@
 		"useIsolateContext": true,
 		"nodeModules": false,
 		"enhance": false,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false,
 		"showShadowRootInWxmlPanel": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx36dcade21fde9861",
+	"appid": "wxfae7dc57bb615f10",
 	"projectname": "Wechatapplet",
 	"debugOptions": {
 		"hidedInDevtools": []
