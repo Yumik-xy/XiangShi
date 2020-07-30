@@ -1,13 +1,45 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/wiki/wiki",
+    "pages/inquiry/inquiry",
+    "pages/mine/mine"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "湘识健康",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "color": "#707070",
+    "selectedColor": "#3cb778",
+    "backgroundColor": "#fbfbfb",
+    "borderStyle": "white",
+    "list": [
+       {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "",
+        "selectedIconPath":""
+      }, {
+        "pagePath": "pages/wiki/wiki",
+        "text": "健康百科",
+        "iconPath": "",
+        "selectedIconPath":""
+      }, {
+        "pagePath": "pages/inquiry/inquiry",
+        "text": "问诊",
+        "iconPath": "",
+        "selectedIconPath":""
+      }, {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "",
+        "selectedIconPath":""
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
