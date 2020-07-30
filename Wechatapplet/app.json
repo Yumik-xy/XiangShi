@@ -10,7 +10,6 @@
     "backgroundTextStyle":"dark",
     "enablePullDownRefresh":true,
     "navigationBarBackgroundColor": "#18b9d2",
-    "navigationBarTitleText": "湘识健康",
     "navigationBarTextStyle":"black"
   },
   "tabBar":{
