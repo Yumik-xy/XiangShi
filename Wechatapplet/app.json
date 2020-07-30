@@ -1,45 +1,43 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/wiki/wiki",
     "pages/inquiry/inquiry",
     "pages/mine/mine"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#18b9d2",
     "navigationBarTitleText": "湘识健康",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
-  "tabBar":{
+  "tabBar": {
     "color": "#707070",
-    "selectedColor": "#3cb778",
+    "selectedColor": "#18b9d2",
     "backgroundColor": "#fbfbfb",
     "borderStyle": "white",
-    "list": [
-       {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "",
-        "selectedIconPath":""
-      }, {
-        "pagePath": "pages/wiki/wiki",
-        "text": "健康百科",
-        "iconPath": "",
-        "selectedIconPath":""
-      }, {
-        "pagePath": "pages/inquiry/inquiry",
-        "text": "问诊",
-        "iconPath": "",
-        "selectedIconPath":""
-      }, {
-        "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "",
-        "selectedIconPath":""
-      }
-    ]
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/_index.png",
+      "selectedIconPath": "images/index.png"
+    }, {
+      "pagePath": "pages/wiki/wiki",
+      "text": "健康百科",
+      "iconPath": "images/_wiki.png",
+      "selectedIconPath": "images/wiki.png"
+    }, {
+      "pagePath": "pages/inquiry/inquiry",
+      "text": "问诊",
+      "iconPath": "images/_inquiry.png",
+      "selectedIconPath": "images/inquiry.png"
+    }, {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "images/_mine.png",
+      "selectedIconPath": "images/mine.png"
+    }]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
