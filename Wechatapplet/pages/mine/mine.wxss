@@ -1,1 +1,28 @@
 /* pages/mine/mine.wxss */
+.container{
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  justify-content: center;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  padding-left: 60rpx;
+  padding-right: 250rpx;
+  color: #aaa;
+}
+
+
