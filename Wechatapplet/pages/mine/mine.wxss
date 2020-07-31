@@ -1,4 +1,6 @@
 /* pages/mine/mine.wxss */
+@import "../../template/template.wxss";
+
 .user{
   padding-top: 50rpx;
   padding-bottom: 50rpx;

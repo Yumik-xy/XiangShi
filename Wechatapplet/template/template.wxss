@@ -1,0 +1,56 @@
+/* pages/Template/Template.wxss */
+
+.empty
+{
+  height: 1rpx;
+  width: 100%;
+}
+
+.entirety{
+  height: 90rpx;
+  width: 100%;
+  background:white;
+  margin: 4rpx 0rpx 0rpx 0rpx;
+  padding: 10rpx 0rpx 10rpx 35rpx ; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.left{
+  flex: 12;
+}
+.left text{
+  color: #202020;
+  font-size: 33rpx;
+}
+.right{
+  flex: 1;
+}
+.right image{
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.btn {
+  width:32%;
+  height: 200rpx;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  background-color: white;
+  color: #999999;
+  border-radius: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.btnImg {
+  width: 75rpx;
+  height: 75rpx;
+}
+.btn:nth-child(3n){
+  margin-right: 1%;
+}
