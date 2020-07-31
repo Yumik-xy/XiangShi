@@ -1,0 +1,19 @@
+/* components/Tabs/Tabs.wxss */
+.tabs{
+  
+  display: flex;
+}
+
+.tabs_title{
+  display: flex;
+  flex-direction: column;
+}
+
+.title_item{
+  flex: 1;
+  display: flex;
+  padding-left: 60rpx;
+  padding-bottom: 10rpx;
+  justify-content: left;
+  align-items: center;
+}

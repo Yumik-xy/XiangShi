@@ -1,5 +1,4 @@
 <!--index.wxml-->
-<import src="../template/template.wxml" />
 <view class="user">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"          bindgetuserinfo="getUserInfo"> 获取头像昵称 
@@ -9,14 +8,9 @@
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     </block>
   </view>
-  
-  <view class="userPages">
-    <block wx:for="{{page}}"
-          wx:key="id">
-      <template is="User" data="{{...item}}"></template>
-    </block>
-  </view>
 </view>
+<Tabs>
 
+</Tabs>
 
 

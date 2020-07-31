@@ -7,24 +7,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    
-    page: [
-      {
-        turn_address: "turn_patient",
-        item_image_uri: "",//../../images/manage.png
-        item_name: "患者信息"
-      },
-      {
-        turn_address: "turn_history",
-        item_image_uri: "",
-        item_name: "病历"
-      },
-      {
-        turn_address: "turn_setup",
-        item_image_uri: "",
-        item_name: "设置"
-      },
-    ],
+  
   },
   //事件处理函数
   

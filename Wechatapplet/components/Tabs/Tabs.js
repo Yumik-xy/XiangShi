@@ -1,0 +1,42 @@
+// components/Tabs/Tabs.js
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    tabs: [
+      {
+        id:0,
+        turn_address: "turn_patient",
+        item_image_uri: "",//../../images/manage.png
+        item_name: "患者信息"
+      },
+      {
+        id:1,
+        turn_address: "turn_history",
+        item_image_uri: "",
+        item_name: "病历"
+      },
+      {
+        id:2,
+        turn_address: "turn_setup",
+        item_image_uri: "",
+        item_name: "设置"
+      },
+    ],
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+
+  }
+})

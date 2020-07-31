@@ -1,0 +1,11 @@
+<!--components/Tabs/Tabs.wxml-->
+<view class="tabs">
+  <view class="tabs_title">
+    <view wx:for="{{tabs}}"
+          wx:key="id"
+          class="title_item"
+          >
+      {{item.item_name}}
+    </view>
+  </view>
+</view>
