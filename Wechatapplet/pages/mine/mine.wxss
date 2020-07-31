@@ -1,5 +1,5 @@
 /* pages/mine/mine.wxss */
-.container{
+.user{
   padding-top: 50rpx;
   padding-bottom: 50rpx;
   justify-content: center;
@@ -20,9 +20,10 @@
 }
 
 .userinfo-nickname {
-  padding-left: 60rpx;
-  padding-right: 250rpx;
+  padding-left: 120rpx;
+  padding-right: 230rpx;
   color: #aaa;
+  font-size: 45rpx;
 }
 
 
