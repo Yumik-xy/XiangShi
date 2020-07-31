@@ -4,7 +4,9 @@
     <view wx:for="{{tabs}}"
           wx:key="id"
           class="title_item"
-          >
+          bindtap="{{item.turn_address}}">
+      <text class="{{item.item_image_uri}}"></text>
+      <text class="blank"></text>
       {{item.item_name}}
     </view>
   </view>

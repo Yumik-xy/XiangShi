@@ -1,19 +1,25 @@
 /* components/Tabs/Tabs.wxss */
+@import "../../styles/iconfont.wxss";
 .tabs{
-  
   display: flex;
 }
 
 .tabs_title{
   display: flex;
+  margin-left: 30rpx;
   flex-direction: column;
 }
 
 .title_item{
   flex: 1;
   display: flex;
-  padding-left: 60rpx;
-  padding-bottom: 10rpx;
+  padding-left: 50rpx;
+  padding-top: 30rpx;
   justify-content: left;
   align-items: center;
+}
+
+.blank{
+  padding-left: 30rpx;
+
 }

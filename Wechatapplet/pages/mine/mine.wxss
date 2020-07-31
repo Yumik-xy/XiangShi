@@ -1,5 +1,4 @@
 /* pages/mine/mine.wxss */
-
 .user{
   padding-top: 50rpx;
   padding-bottom: 50rpx;
