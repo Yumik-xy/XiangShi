@@ -1,23 +1,27 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/search/search",
     "pages/wiki/wiki",
     "pages/inquiry/inquiry",
     "pages/mine/mine",
     "pages/mine/patient/patient",
     "pages/mine/history/history",
     "pages/mine/setup/setup",
-    "pages/search/search"
+    "pages/mine/disease/disease",
+    "pages/mine/coupon/coupon",
+    "pages/mine/prescription/prescription"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true,
-    "navigationBarBackgroundColor": "#4B6AC4",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#A52233",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0F0F0"
   },
   "tabBar": {
     "color": "#707070",
-    "selectedColor": "#4B6AC4",
+    "selectedColor": "#A52233",
     "backgroundColor": "#fbfbfb",
     "borderStyle": "white",
     "list": [
