@@ -2,13 +2,20 @@
 @import "../../styles/iconfont.wxss";
 .tabs{
   display: flex;
+  background-color: #FFFFFF;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  border-radius: 15px;
+  border-style: solid;
+  box-shadow:0px 2px 4px 2px #DDDDDD;
+  border-width: 0rpx;
 }
 
 .tabs_title{
   display: flex;
   width: 100%;
-  margin-left: 80rpx;
-  margin-right: 80rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
   flex-direction: column;
 }
 
@@ -22,6 +29,10 @@
   border-bottom: 1rpx solid #bfbfbf ;
 }
 
+.title_item:nth-last-child(1){
+  border-bottom: 0;
+}
+
 .item_left{
   display: flex;
   flex-direction: row;
@@ -30,7 +41,7 @@
 
 .item_left view{
   color: var(--themeColor);
-  padding-left: 30rpx;
+  padding-left: 20rpx;
   line-height:36rpx;
   font-size: 36rpx;
 }

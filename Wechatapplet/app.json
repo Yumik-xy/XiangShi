@@ -11,13 +11,13 @@
     "pages/mine/disease/disease",
     "pages/mine/coupon/coupon",
     "pages/mine/prescription/prescription"
-
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#A52233",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0F0F0"
   },
   "tabBar": {
     "color": "#707070",
