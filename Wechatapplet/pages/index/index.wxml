@@ -3,4 +3,22 @@
   <!-- 搜索框 开始 -->
   <SearchInput></SearchInput>
   <!-- 搜索框 结束 -->
+  <!-- 轮播框 开始 -->
+  <!-- 445*300
+    499*327
+    500*306 -->
+  <swiper class="swiper" autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="blue">
+    <swiper-item>
+      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img1.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img2.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img3.jpg" />
+    </swiper-item>
+  </swiper>
+  <!-- 轮播框 结束 -->
+  <!-- 分类导航 开始 -->
+  <!-- 分类导航 结束 -->
 </view>
