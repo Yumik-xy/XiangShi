@@ -10,23 +10,7 @@ Page({
   
   },
   //事件处理函数
-  
-  turn_setup: function () {
-    wx.navigateTo({
-      url: 'setup/setup',
-    })
-  },
-  turn_patient: function () {
-    wx.navigateTo({
-      url: 'patient/patient',
-    })
-  },
-  turn_history: function () {
-    wx.navigateTo({
-      url: 'history/history',
-    })
-  },
-
+ 
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

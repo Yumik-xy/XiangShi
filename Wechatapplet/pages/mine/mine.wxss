@@ -22,7 +22,7 @@
 .userinfo-nickname {
   padding-left: 120rpx;
   padding-right: 230rpx;
-  color: #aaa;
+  color: #000000;
   font-size: 45rpx;
 }
 

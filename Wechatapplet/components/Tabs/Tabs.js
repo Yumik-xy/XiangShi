@@ -16,19 +16,22 @@ Component({
         id:0,
         turn_address: "turn_patient",
         item_image_uri: "iconfont icon-huanzhexinxi",
-        item_name: "患者信息"
+        item_name: "患者信息",
+        item_right:"查看全部"
       },
       {
         id:1,
         turn_address: "turn_history",
         item_image_uri: "iconfont icon-bingli",
-        item_name: "病历"
+        item_name: "病历",
+        item_right:"查看全部"
       },
       {
         id:2,
         turn_address: "turn_setup",
         item_image_uri: "iconfont icon-shezhi",
-        item_name: "设置"
+        item_name: "设置",
+        item_right:"查看全部"
       },
     ],
   },

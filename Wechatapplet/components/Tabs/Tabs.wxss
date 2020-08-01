@@ -6,20 +6,35 @@
 
 .tabs_title{
   display: flex;
-  margin-left: 30rpx;
+  width: 100%;
+  margin-left: 80rpx;
+  margin-right: 80rpx;
   flex-direction: column;
+  align-content: space-between;
 }
 
 .title_item{
-  flex: 1;
   display: flex;
-  padding-left: 50rpx;
+  width: 100%;
   padding-top: 30rpx;
-  justify-content: left;
+  align-items: center;
+  align-content: space-between;
+}
+
+.item_left{
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
 .blank{
   padding-left: 30rpx;
+}
 
+.item_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28rpx;
+  color: #bfbfbf;
 }
