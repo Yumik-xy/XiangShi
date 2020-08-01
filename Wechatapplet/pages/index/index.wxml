@@ -20,5 +20,19 @@
   </swiper>
   <!-- 轮播框 结束 -->
   <!-- 分类导航 开始 -->
+  <view class="classfy">
+    <navigator url="../wiki/wiki" open-type="reLaunch">
+      <image mode="widthFix" src="../../icon/classfy-Icon/Img1.png" />
+    </navigator>
+    <navigator url="../inquiry/inquiry" open-type="reLaunch">
+      <image mode="widthFix" src="../../icon/classfy-Icon/Img2.png" />
+    </navigator>
+    <navigator url="./register/register" open-type="reLaunch">
+      <image mode="widthFix" src="../../icon/classfy-Icon/Img3.png" />
+    </navigator>
+    <navigator url="./calendar/calendar" open-type="reLaunch">
+      <image mode="widthFix" src="../../icon/classfy-Icon/Img4.png" />
+    </navigator>
+  </view>
   <!-- 分类导航 结束 -->
 </view>

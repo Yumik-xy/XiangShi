@@ -10,6 +10,6 @@
   background-color: white;
 }
 .search_icon {
-  height: 2rpx;
-  weight: 2rpx;
+  width: 15px;
+  height: 15px;
 }

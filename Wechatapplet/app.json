@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/search/search",
+    "pages/index/search/search",
+    "pages/index/register/register",
+    "pages/index/calendar/calendar",
     "pages/wiki/wiki",
     "pages/inquiry/inquiry",
     "pages/mine/mine",
