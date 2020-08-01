@@ -10,25 +10,29 @@
   margin-left: 80rpx;
   margin-right: 80rpx;
   flex-direction: column;
-  align-content: space-between;
 }
 
 .title_item{
   display: flex;
   width: 100%;
-  padding-top: 30rpx;
+  padding-top: 20rpx;
   align-items: center;
-  align-content: space-between;
+  /* align-content: space-between; */
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #bfbfbfd0 ;
 }
 
 .item_left{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
 }
 
-.blank{
+.item_left text{
   padding-left: 30rpx;
+  line-height:34rpx;
+  font-size: 34rpx;
 }
 
 .item_right{
@@ -36,5 +40,6 @@
   flex-direction: row;
   align-items: center;
   font-size: 28rpx;
+  line-height:28rpx;
   color: #bfbfbf;
 }
