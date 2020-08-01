@@ -1,9 +1,12 @@
 <!--components/Tabs/Tabs.wxml-->
 <view class="tabs">
 	<view class="tabs_title">
-		<view wx:for="{{tabs}}" wx:key="id" class="title_item" bindtap="{{item.turn_address}}">
+		<view wx:for="{{tabs}}" 
+					wx:key="id" 
+					class="title_item" 
+					bindtap="{{item.turn_address}}">
 			<view class="item_left">
-				<text class="{{item.item_image_uri}}"></text>
+				<view class="{{item.item_image_uri}}"></view>
 				<text>{{item.item_name}}</text>
 			</view>
 			<view class="item_right">

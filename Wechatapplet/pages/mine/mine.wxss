@@ -9,21 +9,49 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin-top: 0;
 }
 
 .userinfo-avatar {
+
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin-right: 110rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
-  padding-left: 120rpx;
-  padding-right: 230rpx;
+
+  padding-left: 140rpx;
   color: #000000;
   font-size: 45rpx;
+}
+
+.collection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+  margin-left: 110rpx;
+  margin-right: 110rpx;
+}
+
+.title_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item_top{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.item_bottom{
+  font-size: 32rpx;
+  line-height: 32rpx;
 }
 
 

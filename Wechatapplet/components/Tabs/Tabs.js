@@ -23,7 +23,7 @@ Component({
         id:1,
         turn_address: "turn_history",
         item_image_uri: "iconfont icon-bingli",
-        item_name: "病历",
+        item_name: "我的病历",
         item_right:"查看全部"
       },
       {

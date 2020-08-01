@@ -9,8 +9,19 @@
     </block>
   </view>
 </view>
-<Tabs>
 
-</Tabs>
+<view class="collection">
+  <view wx:for="{{collection}}" 
+        wx:key="id" 
+        class="title_item" 
+        bindtap="{{item.turn_address}}">
+		<image class="item_top" src="{{item.item_image_uri}}"></image>
+    <text class="item_bottom">
+       {{item.item_name}}
+    </text>
+  </view>
+</view>
+
+<Tabs></Tabs>
 
 

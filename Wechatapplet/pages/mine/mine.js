@@ -7,10 +7,49 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-  
+    
+    collection: [
+      {
+        id:0,
+        turn_address: "turn_disease",
+        item_image_uri: "../../icon/disease.png",
+        item_name: "病症关注",
+      },
+      {
+        id:1,
+        turn_address: "turn_coupon",
+        item_image_uri: "../../icon/coupon.png",
+        item_name: "我的卡券",
+      },
+      {
+        id:2,
+        turn_address: "turn_prescription",
+        item_image_uri: "../../icon/prescription.png",
+        item_name: "处方记录",
+      },
+    ],
   },
   //事件处理函数
- 
+  
+  turn_disease: function () {
+    wx.navigateTo({
+      url: '../../pages/mine/patient/patient',
+    })
+  },
+
+  turn_coupon: function () {
+    wx.navigateTo({
+      url: '../../pages/mine/history/history',
+    })
+  },
+
+  turn_prescription: function () {
+    wx.navigateTo({
+      url: '../../pages/mine/setup/setup',
+    })
+  },
+
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
