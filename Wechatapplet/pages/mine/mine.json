@@ -2,5 +2,5 @@
   "usingComponents": {
     "Tabs":"../../components/Tabs/Tabs"
   },
-  "navigationBarTitleText": "我的"
+  "navigationBarTitleText": "我 的"
 }
