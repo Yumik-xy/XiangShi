@@ -16,11 +16,10 @@
   display: flex;
   width: 100%;
   padding-top: 20rpx;
-  align-items: center;
-  /* align-content: space-between; */
-  justify-content: space-between;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #bfbfbfd0 ;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #bfbfbf ;
 }
 
 .item_left{
