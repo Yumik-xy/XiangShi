@@ -28,4 +28,15 @@
 	</view>
 </view>
 
-<button open-type='feedback'>意见反馈</button>
+<view class="kefu">
+  <view class="kefu_item">
+		<view class="item_left">
+			<view class="iconfont icon-kefu"></view>
+      <text>联系我们</text>
+		</view>
+		<view class="item_right">
+			<view class="iconfont icon-youjian"></view>
+		</view>
+    <button class='contact' open-type='feedback'></button>
+	</view>
+</view>
