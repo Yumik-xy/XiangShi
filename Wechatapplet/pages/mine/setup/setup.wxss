@@ -99,21 +99,31 @@
   border-width: 0rpx;
 }
 
+.kefu_title{
+  display: flex;
+  width: 100%;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  flex-direction: column;
+}
+
 .kefu_item{
   display: flex;
   width: 100%;
   padding-top: 30rpx;
   padding-bottom: 30rpx;
-  margin-left: 15rpx;
-  margin-right: 15rpx;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1rpx solid #bfbfbf ;
 }
 
-.contact {
+.kefu_item:nth-last-child(1){
+  border-bottom: 0;
+}
+
+.btn {
   display: inline-block;
   position: absolute;
-  width: 100vw;
   opacity: 0;
 }

@@ -16,6 +16,32 @@
 	</view>
 </view>
 
+<view class="kefu">
+	<view class="kefu_title">
+		<view class="kefu_item">
+			<view class="item_left">
+				<view class="iconfont icon-kefu"></view>
+				<text>联系我们</text>
+			</view>
+			<view class="item_right">
+				<view class="iconfont icon-youjian"></view>
+			</view>
+			<button class='btn' open-type='contact' style="width:650rpx;height:60rpx"></button>
+		</view>
+
+		<view class="kefu_item">
+			<view class="item_left">
+				<view class="iconfont icon-yijian"></view>
+				<text>意见反馈</text>
+			</view>
+			<view class="item_right">
+				<view class="iconfont icon-youjian"></view>
+			</view>
+			<button class='btn' open-type='feedback' style="width:650rpx;height:60rpx"></button>
+		</view>
+	</view>
+</view>
+
 <view class="exit">
 	<view class="exit_item"	bindtap="{{item.turn_address}}">
 		<view class="item_left">
@@ -25,18 +51,5 @@
 		<view class="item_right">
 			<view class="iconfont icon-youjian"></view>
 		</view>
-	</view>
-</view>
-
-<view class="kefu">
-  <view class="kefu_item">
-		<view class="item_left">
-			<view class="iconfont icon-kefu"></view>
-      <text>联系我们</text>
-		</view>
-		<view class="item_right">
-			<view class="iconfont icon-youjian"></view>
-		</view>
-    <button class='contact' open-type='feedback'></button>
 	</view>
 </view>

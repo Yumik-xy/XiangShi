@@ -23,12 +23,6 @@ Page({
         item_image_uri: "iconfont icon-bangzhu",
         item_name: "帮助",
         item_height: 0
-      }, {
-        id: 3,
-        turn_address: "turn_feedback",
-        item_image_uri: "iconfont icon-yijian",
-        item_name: "意见反馈",
-        item_height: 30
       }
     ]
   },
