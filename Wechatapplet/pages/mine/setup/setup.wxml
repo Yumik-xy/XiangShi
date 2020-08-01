@@ -1,2 +1,31 @@
 <!--pages/mine/setup/setup.wxml-->
-<text>pages/mine/setup/setup.wxml</text>
+<view class="setup">
+	<view class="setup_title">
+		<view wx:for="{{setup}}" 
+					wx:key="id" 
+					class="title_item" 
+					bindtap="{{item.turn_address}}">
+			<view class="item_left">
+				<view class="{{item.item_image_uri}}"></view>
+				<text>{{item.item_name}}</text>
+			</view>
+			<view class="item_right">
+				<view class="iconfont icon-youjian"></view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="exit">
+	<view class="exit_item"	bindtap="{{item.turn_address}}">
+		<view class="item_left">
+			<view class="iconfont icon-tuichu"></view>
+			<text>退出</text>
+		</view>
+		<view class="item_right">
+			<view class="iconfont icon-youjian"></view>
+		</view>
+	</view>
+</view>
+
+<button open-type='feedback'>意见反馈</button>

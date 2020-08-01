@@ -1,11 +1,36 @@
 // pages/mine/setup/setup.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    setup: [
+      {
+        id: 0,
+        turn_address: "turn_permission_settings",
+        item_image_uri: "iconfont icon-shezhi",
+        item_name: "权限设置",
+        item_height: 0
+      }, {
+        id: 1,
+        turn_address: "turn_privacy_policy",
+        item_image_uri: "iconfont icon-yinsi",
+        item_name: "隐私政策",
+        item_height: 0
+      }, {
+        id: 2,
+        turn_address: "turn_help",
+        item_image_uri: "iconfont icon-bangzhu",
+        item_name: "帮助",
+        item_height: 0
+      }, {
+        id: 3,
+        turn_address: "turn_feedback",
+        item_image_uri: "iconfont icon-yijian",
+        item_name: "意见反馈",
+        item_height: 30
+      }
+    ]
   },
 
   /**
