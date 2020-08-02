@@ -8,30 +8,16 @@
     499*327
     500*306 -->
   <swiper class="swiper" autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="blue">
-    <swiper-item>
-      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img1.jpg" />
-    </swiper-item>
-    <swiper-item>
-      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img2.jpg" />
-    </swiper-item>
-    <swiper-item>
-      <image mode="scaleToFill" src="../../icon/swiper-Icon/swiper-img3.jpg" />
+    <swiper-item wx:for="{{swiper_imgs}}" wx:key="id">
+      <image mode="scaleToFill" src="{{item.item_img_url}}" />
     </swiper-item>
   </swiper>
   <!-- 轮播框 结束 -->
   <!-- 分类导航 开始 -->
   <view class="classfy">
-    <navigator url="../wiki/wiki" open-type="reLaunch">
-      <image mode="widthFix" src="../../icon/classfy-Icon/Img1.png" />
-    </navigator>
-    <navigator url="../inquiry/inquiry" open-type="reLaunch">
-      <image mode="widthFix" src="../../icon/classfy-Icon/Img2.png" />
-    </navigator>
-    <navigator url="./register/register" open-type="reLaunch">
-      <image mode="widthFix" src="../../icon/classfy-Icon/Img3.png" />
-    </navigator>
-    <navigator url="./calendar/calendar" open-type="reLaunch">
-      <image mode="widthFix" src="../../icon/classfy-Icon/Img4.png" />
+    <navigator wx:key="id" open-type="reLaunch" url="{{item.turn_url}}" wx:for="{{classfy}}">
+      <image mode="widthFix" src="{{item.item_img_url}}" />
+      <text>{{item.item_name}}</text>
     </navigator>
   </view>
   <!-- 分类导航 结束 -->
