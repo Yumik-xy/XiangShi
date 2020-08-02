@@ -1,2 +1,11 @@
 <!--pages/mine/patient/patient.wxml-->
-
+<view class="add">
+	<view class="add_title">
+		<view class="add_item" bindtap="turn_add">
+			<view class="item_left">
+				<text>添加患者信息</text>
+			</view>
+			<image class="add_image" src="../../../icon/add.png"></image>
+		</view>
+	</view>
+</view>

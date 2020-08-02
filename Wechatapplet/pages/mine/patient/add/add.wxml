@@ -1,0 +1,7 @@
+<!--pages/mine/patient/add/add.wxml-->
+<input placeholder="姓名" bindinput="getName"></input>
+<input placeholder="性别" bindinput="getSex"></input>
+<input placeholder="年龄" bindinput="getAge"></input>
+<input placeholder="电话号码" bindinput="getPhone"></input>
+<input placeholder="既往病史" bindinput="getHistory"></input>
+<input placeholder="过敏药物" binginput="getAllergy"></input>

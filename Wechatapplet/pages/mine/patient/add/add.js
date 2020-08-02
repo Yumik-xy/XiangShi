@@ -1,18 +1,19 @@
-// pages/mine/patient/patient.js
+// pages/mine/patient/add/add.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    patient_data: []
+
   },
 
-  turn_add: function () {
-    wx.navigateTo({
-      url: '../../../pages/mine/patient/add/add',
-    })
+  getName(res){
+    var name=res.detail.value;
+    console.log(name);
+    
   },
+
 
   /**
    * 生命周期函数--监听页面加载
