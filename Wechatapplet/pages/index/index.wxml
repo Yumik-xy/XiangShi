@@ -35,4 +35,7 @@
     </navigator>
   </view>
   <!-- 分类导航 结束 -->
+  <!-- 资讯栏 开始 -->
+  <HomeContent></HomeContent>
+  <!-- 资讯栏 结束 -->
 </view>

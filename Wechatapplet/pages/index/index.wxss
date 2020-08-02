@@ -12,7 +12,7 @@ image {
 }
 .classfy navigator {
   flex: 1;
-  padding: 10px;
+  padding: 13px;
 }
 .classfy navigator image {
   width: 100%;

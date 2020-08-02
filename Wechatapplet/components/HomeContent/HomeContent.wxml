@@ -1,0 +1,6 @@
+<!-- components/HomeContent/HomeContent.wxml -->
+<scroll-view class="contents">
+  <view wx:for="{{contents}}" wx:key="id" bindtap="{{item.turn_address}}" class="content-view">
+    <text>{{item.content}}</text>
+  </view>
+</scroll-view>
