@@ -7,12 +7,16 @@
     "pages/wiki/wiki",
     "pages/inquiry/inquiry",
     "pages/mine/mine",
-    "pages/mine/patient/patient",
-    "pages/mine/history/history",
-    "pages/mine/setup/setup",
-    "pages/mine/disease/disease",
-    "pages/mine/coupon/coupon",
-    "pages/mine/prescription/prescription"
+      "pages/mine/patient/patient",
+      "pages/mine/history/history",
+      "pages/mine/disease/disease",
+      "pages/mine/coupon/coupon",
+      "pages/mine/prescription/prescription",
+      "pages/mine/setup/setup",
+        "pages/mine/setup/permission/permission",
+        "pages/mine/setup/privacy/privacy",
+        "pages/mine/setup/help/help"
+
   ],
   "window": {
     "backgroundTextStyle": "dark",
