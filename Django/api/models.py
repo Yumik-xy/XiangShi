@@ -16,3 +16,6 @@ class medicine(models.Model):
         verbose_name_plural = '药物说明书'
         verbose_name = '药品'
         db_table = 'medicine'
+#
+# class symptom(models.Model):
+#
