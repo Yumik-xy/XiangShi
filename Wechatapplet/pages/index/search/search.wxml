@@ -1,2 +1,12 @@
 <!-- pages/search/search.wxml -->
-<text>pages/search/search.wxml</text>
+<view class="search_input">
+  <view class="search">
+			<view class="search-left">
+				<image src="../../../icon/_search.png"></image>
+				<input autoFocus="true" bindconfirm="confirmSearch" bindinput="search" class="search-placeholder" confirmType="search" placeholder="搜索症状、药品…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value=""></input>
+			</view>
+			<view bindtap="search" class="search-right">
+				<image src="../../../icon/search_white.png"></image>
+		  </view>
+	</view>
+</view>
