@@ -32,3 +32,6 @@ class symptom(APIView):
 class patient(APIView):
     def get(self, request):
         return Response({'status': True})
+
+    def post(self, request):
+        return Response({'status': True})
