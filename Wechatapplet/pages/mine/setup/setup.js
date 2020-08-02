@@ -27,21 +27,6 @@ Page({
     ]
   },
 
-  turn_permission_settings: function () {
-    wx.navigateTo({
-      url: '../../mine/setup/permission/permission',
-    })
-  },
-  turn_privacy_policy: function () {
-    wx.navigateTo({
-      url: '../../mine/setup/privacy/privacy',
-    })
-  },
-  turn_help: function () {
-    wx.navigateTo({
-      url: '../../mine/setup/help/help',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
