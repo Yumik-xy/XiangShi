@@ -29,6 +29,6 @@ class symptom(APIView):
         return Response({'status': True})
 
 
-class inquiry(APIView):
+class patient(APIView):
     def get(self, request):
         return Response({'status': True})
