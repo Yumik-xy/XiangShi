@@ -50,8 +50,6 @@
 		</view>
 		<view class="item_right">
 			<view class="iconfont icon-youjian"></view>
-			<navigator class='btn' hover-class="none" target="miniProgram" open-type="exit">
-			</navigator>
 		</view>
 	</view>
 </view>
