@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    arry_data: []
   },
+
   turn_add: function () {
     wx.navigateTo({
       url: '../../../pages/mine/patient/add/add',
@@ -16,7 +17,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.login({
+      success: function (loginCode) {
+        wx.request({
+          url: 'http://127.0.0.1/api/patient/',
+          data: {
+            coder:loginCode.code
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              that.setData({
+                arry_data:res.data.data
+              })
+              wx.setStorageSync("patientInfo", that.data.arry_data)
+            }
+          }
+        })
+      }
+    })
   },
 
   /**
@@ -30,7 +57,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var exprs = wx.getStorageSync("patientInfo") || []
+    this.setData({
+      arry_data: exprs
+    })
   },
 
   /**

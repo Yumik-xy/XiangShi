@@ -49,7 +49,6 @@ Page({
     })
   },
 
-
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -77,7 +76,31 @@ Page({
         }
       })
     }
+
+    var that = this
+    wx.login({
+      success: function (loginCode) {
+        wx.request({
+          url: 'http://127.0.0.1/api/patient/',
+          data: {
+            coder:loginCode.code
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) { }
+          }
+        })
+      }
+    })
   },
+  
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
