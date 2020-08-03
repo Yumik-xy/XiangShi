@@ -1,2 +1,17 @@
-<!--pages/index/calendar/calendar.wxml-->
-<text>pages/index/calendar/calendar.wxml</text>
+<!-- pages/index/calendar/calendar.wxml -->
+<view>
+  <view class='box' style='width: {{ sysW * 7 }}px'>
+    <!-- 标题 -->
+    <view class='dateBox'>{{ year }} - {{ month}}</view>
+    <!-- 星期 -->
+    <block wx:for='{{ weekArr }}'>
+      <view style='width: {{ sysW }}px; height:auto;'>{{ item }}</view>
+    </block>
+    <!-- 日历 -->
+    <block wx:for='{{ arr }}'>
+      <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: auto; line-height: {{ sysW }}px;' class='{{ item ==  getDate ? "dateOn" : ""}}'>
+        {{ item }}
+      </view>
+    </block>
+  </view>
+</view>

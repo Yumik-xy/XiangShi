@@ -45,7 +45,7 @@ Page({
 
   turn_prescription: function () {
     wx.navigateTo({
-      url: '../../pages/mine/prescription/prescription',
+      url: '../../pages/mine/setup/setup',
     })
   },
 

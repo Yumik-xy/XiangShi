@@ -5,13 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    patient_data: []
-  },
 
-  turn_add: function () {
-    wx.navigateTo({
-      url: '../../../pages/mine/patient/add/add',
-    })
   },
 
   /**
