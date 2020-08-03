@@ -63,7 +63,7 @@ class patient(APIView):
         else:
             return Response({'status': True})
 
-    def update(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         # old data
         patientname = request.data.get('patientname')
         gender = request.data.get('gender')
