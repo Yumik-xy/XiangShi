@@ -103,7 +103,7 @@ class patient(APIView):
         telephone = request.data.get('telephone')
         pastmedicalhistory = request.data.get('pastmedicalhistory')
         allergy = request.data.get('allergy')
-        coder = request.data.get('coder')
+        coder = request.data.get("coder")
         openid = GetOpenid(coder)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
