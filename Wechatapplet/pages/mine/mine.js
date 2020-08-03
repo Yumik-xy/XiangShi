@@ -33,19 +33,19 @@ Page({
   
   turn_disease: function () {
     wx.navigateTo({
-      url: '../../pages/mine/patient/patient',
+      url: '../../pages/mine/disease/disease',
     })
   },
 
   turn_coupon: function () {
     wx.navigateTo({
-      url: '../../pages/mine/history/history',
+      url: '../../pages/mine/coupon/coupon',
     })
   },
 
   turn_prescription: function () {
     wx.navigateTo({
-      url: '../../pages/mine/setup/setup',
+      url: '../../pages/mine/prescription/prescription',
     })
   },
 
