@@ -1,27 +1,34 @@
 <!-- index.wxml -->
 <view>
-  <!-- 搜索框 开始 -->
+  <!-- 搜索框 -->
   <SearchInput></SearchInput>
-  <!-- 搜索框 结束 -->
-  <!-- 轮播框 开始 -->
-  <!-- 445*300
-    499*327
-    500*306 -->
-  <swiper class="swiper" autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="blue">
-    <swiper-item wx:for="{{swiper_imgs}}" wx:key="id">
-      <image mode="scaleToFill" src="{{item.item_img_url}}" />
-    </swiper-item>
-  </swiper>
-  <!-- 轮播框 结束 -->
-  <!-- 分类导航 开始 -->
+  <!-- 轮播框 -->
+  <view class="swiper_imgs">
+    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="blue">
+      <swiper-item wx:for="{{swiper_imgs}}" wx:key="id">
+        <image mode="scaleToFill" src="{{item.item_img_url}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 分类导航 -->
   <view class="classfy">
     <navigator wx:key="id" open-type="reLaunch" url="{{item.turn_url}}" wx:for="{{classfy}}">
       <image mode="widthFix" src="{{item.item_img_url}}" />
       {{item.item_name}}
     </navigator>
   </view>
-  <!-- 分类导航 结束 -->
-  <!-- 资讯栏 开始 -->
+  <!-- 公告栏 -->
+  <view class="swiper-notice">
+    <view>公告:</view>
+    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}">
+      <swiper-item wx:for="{{notice}}" wx:key="id">{{item.item_content}}</swiper-item>
+    </swiper>
+  </view>
+  <!-- 资讯栏 -->
+  <view class="contentHead">
+    <image mode="widthFix" src="../../icon/zixun.png" />
+    <text class="left_text">健康資訊</text>
+    <text class="right_text">更多</text>
+  </view>
   <HomeContent></HomeContent>
-  <!-- 资讯栏 结束 -->
 </view>
