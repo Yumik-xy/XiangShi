@@ -36,18 +36,25 @@ Page({
               wx.showToast({
                 title: '添加成功',
               })
-              var regInfo = {
-                name: e.detail.value.name,
-                phone: e.detail.value.telephone,
-                uid: res.data.uid
-              }
-              wx.setStorageSync('regInfo', regInfo)
+              
+              var patientInfo = wx.getStorageSync('PatientInfo')||[]
+              localStorage.unshift({
+                patientname: e.detail.value.patientname, 
+                gender: e.detail.value.gender,
+                age: e.detail.value.age,
+                telephone: e.detail.value.telephone,
+                pastmedicalhistory: e.detail.value.pastmedicalhistory,
+                telephone: e.detail.value.telephone,
+                allergy: e.detail.value.allergy
+              })
+              wx.setStorageSync('patientInfo', patientInfo)
 
             }
           }
         })
       }
     })
+
   },
 
   getName(res){
