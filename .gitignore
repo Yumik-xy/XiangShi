@@ -1,5 +1,5 @@
 Django/psd.txt
-.idea/*
+Django/.idea/*
 Wechatapplet/project.config.json
 *.py[cod]
 Django/.idea/workspace.xml
