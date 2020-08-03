@@ -1,1 +1,26 @@
 /* pages/index/calendar/calendar.wxss */
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.box .dateBox {
+  width: 100%;
+  height: auto;
+  line-height: 10px;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 50rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.box > view {
+  height: auto;
+  text-align: center;
+  font-size: 34rpx;
+}
+.dateOn {
+  border-radius: 50%;
+  background-color: var(--themeColor);
+  color: #fff;
+}

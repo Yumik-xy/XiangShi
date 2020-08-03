@@ -12,9 +12,8 @@ image {
 }
 .classfy navigator {
   flex: 1;
-  padding: 35rpx;
-}
-.classfy navigator text {
+  padding: 28rpx;
+  text-align: center;
   font-size: 30rpx;
 }
 .tips {

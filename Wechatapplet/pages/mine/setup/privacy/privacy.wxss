@@ -1,16 +1,13 @@
-<<<<<<< HEAD
-/* pages/mine/setup/privacy/privacy.wxss */
-=======
 /* pages/mine/setup/privacy/privacy.wxss */
 
-.DT_privacy{
+.DT_privacy {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.privacy{
+.privacy {
   padding: 50rpx 30rpx 50rpx;
   display: block;
   font-size: 28rpx;
@@ -18,20 +15,19 @@
   letter-spacing: 1rpx;
 }
 
-.title-main{
+.title-main {
   font-size: x-large;
   margin-bottom: 60rpx;
 }
 
-.title-l1{
+.title-l1 {
   margin-top: 40rpx;
   margin-bottom: 10rpx;
   padding-bottom: 10rpx;
-  border-bottom:1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
 }
 
-.title-l2{
+.title-l2 {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
->>>>>>> b85adff07b012c399bf3801d745230792dc7e46a
