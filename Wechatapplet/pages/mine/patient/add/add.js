@@ -8,29 +8,29 @@ Page({
 
   },
 
-  
-  getName(res){
-    var name=res.detail.value;
+
+  getName(res) {
+    var name = res.detail.value;
   },
 
-  getSex(res){
-    var sex=res.detail.value;
+  getSex(res) {
+    var sex = res.detail.value;
   },
 
-  getAge(res){
-    var age=res.detail.value;
+  getAge(res) {
+    var age = res.detail.value;
   },
 
-  getPhone(res){
-    var phone=res.detail.value;
+  getPhone(res) {
+    var phone = res.detail.value;
   },
 
-  getHistory(res){
-    var history=res.detail.value;
+  getHistory(res) {
+    var history = res.detail.value;
   },
 
-  getAllergy(res){
-    var allergy=res.detail.value;
+  getAllergy(res) {
+    var allergy = res.detail.value;
   },
   /**
    * 生命周期函数--监听页面加载

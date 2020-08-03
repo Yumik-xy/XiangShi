@@ -26,14 +26,17 @@ page {
 }
 
 .inputbar textarea {
-  padding-top: 30rpx;
+  padding-top: 25rpx;
+  padding-bottom: 5rpx;
   margin-right: 40rpx;
   border-bottom: 1rpx solid #bfbfbf;
 }
 
 .inputbar input {
-  padding-top: 30rpx;
+  padding-top: 25rpx;
+  padding-bottom: 5rpx;
   border-bottom: 1rpx solid #bfbfbf;
+  line-height: 50rpx;
 }
 
 .inputbar input:nth-last-child(1) {}
