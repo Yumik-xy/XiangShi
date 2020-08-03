@@ -22,7 +22,7 @@ class medicine(models.Model):
 class patient(models.Model):
     openid = models.CharField(max_length=60, verbose_name='openid')
     patientname = models.CharField(max_length=30, verbose_name='患者名称')
-    gender = models.CharField(max_length=1, verbose_name='性别[0]男,[1]女')
+    gender = models.CharField(max_length=2, verbose_name='性别')
     age = models.CharField(max_length=3, verbose_name='年龄')
     telephone = models.CharField(max_length=11, verbose_name='电话')
     pastmedicalhistory = models.CharField(max_length=120, verbose_name='既往病史')
