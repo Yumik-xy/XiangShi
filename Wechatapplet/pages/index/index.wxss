@@ -17,3 +17,7 @@ image {
 .classfy navigator text {
   font-size: 30rpx;
 }
+.tips {
+  border-style: solid;
+  border-width: medium;
+}
