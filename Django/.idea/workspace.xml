@@ -3,18 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c8dc7d28-a859-4c96-bcfc-ff4b4b830fcd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/method/method.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/method/method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/migrations/0002_patient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/migrations/0003_auto_20200802_2338.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Wechatapplet/components/HomeContent/HomeContent.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Wechatapplet/components/SearchInput/SearchInput.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Wechatapplet/pages/mine/mine.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/../Wechatapplet/pages/mine/mine.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Wechatapplet/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Wechatapplet/project.config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +73,7 @@
       <workItem from="1595477046884" duration="3989000" />
       <workItem from="1596363133936" duration="12684000" />
       <workItem from="1596419565119" duration="4181000" />
-      <workItem from="1596423875523" duration="1572000" />
+      <workItem from="1596423875523" duration="3450000" />
     </task>
     <servers />
   </component>
