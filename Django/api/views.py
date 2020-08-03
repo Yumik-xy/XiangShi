@@ -34,6 +34,7 @@ class symptom(APIView):
 class patient(APIView):
     def get(self, request, *args, **kwargs):
         coder = request.query_params.get('coder')
+        print(coder)
         openid = GetOpenid(coder)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
