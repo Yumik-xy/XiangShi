@@ -8,7 +8,48 @@ Page({
 
   },
 
-  
+  submit: function (e) {
+    var that = this
+    console.log(e.detail.value)
+    wx.login({
+      success: function (loginCode) {
+        wx.request({
+          url: 'http://127.0.0.1/api/patient/',
+          data: { patientname: e.detail.value.patientname, 
+                  gender: e.detail.value.gender,
+                  age: e.detail.value.age,
+                  telephone: e.detail.value.telephone,
+                  pastmedicalhistory: e.detail.value.pastmedicalhistory,
+                  telephone: e.detail.value.telephone,
+                  allergy: e.detail.value.allergy,
+                  code: loginCode.code },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              wx.showToast({
+                title: '添加成功',
+              })
+              var regInfo = {
+                name: e.detail.value.name,
+                phone: e.detail.value.telephone,
+                uid: res.data.uid
+              }
+              wx.setStorageSync('regInfo', regInfo)
+
+            }
+          }
+        })
+      }
+    })
+  },
+
   getName(res){
     var name=res.detail.value;
   },
