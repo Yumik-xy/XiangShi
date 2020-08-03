@@ -1,39 +1,52 @@
 /* pages/mine/patient/add/add.wxss */
-page {
-  background-color: #F0F0F0;
+.apply {
+  height: 100%;
+  width: 100%;
 }
 
-.inputbar {
+.con {
+  margin: 25rpx 30rpx 50rpx 30rpx;
+}
+
+.con view text {
+  font-size: 34rpx;
+  color: #666666;
+}
+
+.con-nr {
+  background-color: white;
   display: flex;
-  flex-direction: column;
-  margin-top: 50rpx;
-  margin-left: 40rpx;
-  margin-right: 40rpx;
-  padding-left: 60rpx;
-  padding-right: 60rpx;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-  background-color: #FFFFFF;
-  border-radius: 15px;
-  border-style: solid;
-  box-shadow: 0px 2px 4px 2px #DDDDDD;
-  border-width: 0rpx;
+  padding-left: 32rpx;
+  padding-top: 32rpx;
+  padding-bottom: 32rpx;
+  align-items:center;
+  border-bottom: 1px solid #f2f2f2;
 }
 
-.inputbar input {
-  padding-top: 30rpx;
-  border-bottom: 1rpx solid #bfbfbf;
+.con-nr text {
+  flex: 2;
 }
 
-.inputbar textarea {
-  padding-top: 30rpx;
-  margin-right: 40rpx;
-  border-bottom: 1rpx solid #bfbfbf;
+.con-nr input {
+  float: right;
+  font-size: 30rpx;
+  padding-right: 32rpx;
+  flex: 6;
 }
 
-.inputbar input {
-  padding-top: 30rpx;
-  border-bottom: 1rpx solid #bfbfbf;
+.con-nr textarea {
+  float: right;
+  font-size: 30rpx;
+  padding-right: 32rpx;
+  flex: 6;
 }
 
-.inputbar input:nth-last-child(1) {}
+.submit {
+  width: 500rpx;
+  line-height: 85rpx;
+  text-align: center;
+  margin: 50rpx auto;
+  background-color: var(--themeColor);
+  border-radius: 10rpx;
+  color: white;
+}

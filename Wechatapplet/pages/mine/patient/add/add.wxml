@@ -1,9 +1,35 @@
 <!--pages/mine/patient/add/add.wxml-->
-<view class="inputbar">
-  <input placeholder="姓名" bindinput="getName" type="text" maxlength="5"></input>
-  <input placeholder="性别" bindinput="getSex" type="text"></input>
-  <input placeholder="年龄" bindinput="getAge" type="number"></input>
-  <input placeholder="电话号码" bindinput="getPhone" type="number" maxlength="11"></input>
-  <textarea placeholder="既往病史" bindinput="getHistory" auto-height="true" style="width:100%"></textarea>
-  <textarea placeholder="过敏药物" binginput="getAllergy" auto-height="true" style="width:100%"></textarea>
+<view class="apply">
+	<form bindsubmit='submit'>
+		<view class="con">
+			<view class="con-nr">
+				<text>姓名</text>
+				<input placeholder="请填写真实姓名" name="patientname" type="text"></input>
+			</view>
+      <view class="con-nr">
+				<text>性别</text>
+				<input placeholder="性别" name="gender" type="text" maxlength="1"></input>
+			</view>
+      <view class="con-nr">
+				<text>年龄</text>
+				<input placeholder="年龄" name="age" type="number" maxlength="3"></input>
+			</view>
+			<view class="con-nr">
+				<text>电话</text>
+				<input placeholder="电话" name="telephone" type="number" maxlength="11"></input>
+			</view>
+			<view class="con-nr">
+				<text>既往病史</text>
+				<textarea placeholder="既往病史" name="pastmedicalhistory" auto-height="true"></textarea>
+			</view>
+			<view class="con-nr">
+				<text>过敏药物</text>
+				<textarea placeholder="过敏药物" name="allergy" value="" auto-height="true"></textarea>
+			</view>
+		</view>
+
+		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion"></region-picker>
+		<!-- 加一个禁止按钮 判断 {{encoder != 0}} -->
+		<button disabled="{{encoder==0}}" class="submit" form-type='submit'> 确定 </button>
+	</form>
 </view>

@@ -31,7 +31,7 @@ page{
   padding-bottom: 30rpx;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #bfbfbf ;
+  border-bottom: 1rpx solid #f2f2f2 ;
 }
 
 .title_item:nth-last-child(1){
@@ -119,7 +119,7 @@ page{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #bfbfbf ;
+  border-bottom: 1rpx solid #f2f2f2 ;
 }
 
 .kefu_item:nth-last-child(1){

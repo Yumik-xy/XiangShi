@@ -1,6 +1,10 @@
 /* pages/mine/patient/patient.wxss */
 @import "../../../styles/iconfont.wxss";
 
+page{
+  background-color: #F0F0F0;
+}
+
 .add{
   display: flex;
   background-color: #FFFFFF;
