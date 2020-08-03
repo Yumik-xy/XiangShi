@@ -11,6 +11,11 @@
     </swiper>
   </view>
   <!-- 分类导航 -->
+  <view class="classfyHead">
+    <image mode="widthFix" src="../../icon/fuwu.png" />
+    <text class="left_text">服务</text>
+    <text class="right_text">更多</text>
+  </view>
   <view class="classfy">
     <navigator wx:key="id" open-type="reLaunch" url="{{item.turn_url}}" wx:for="{{classfy}}">
       <image mode="widthFix" src="{{item.item_img_url}}" />
@@ -19,7 +24,7 @@
   </view>
   <!-- 公告栏 -->
   <view class="swiper-notice">
-    <view>公告:</view>
+    <image src="../../icon/gonggao.png" mode="widthFix" />
     <swiper autoplay="{{true}}" interval="3000" circular="{{true}}">
       <swiper-item wx:for="{{notice}}" wx:key="id">{{item.item_content}}</swiper-item>
     </swiper>
@@ -30,5 +35,9 @@
     <text class="left_text">健康資訊</text>
     <text class="right_text">更多</text>
   </view>
-  <HomeContent></HomeContent>
+  <view class="contents">
+    <view wx:for="{{contents}}" wx:key="id" bindtap="{{item.turn_address}}" class="content-view">
+      {{item.content}}
+    </view>
+  </view>
 </view>

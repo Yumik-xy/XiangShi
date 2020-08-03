@@ -46,17 +46,56 @@ Page({
 
     notice: [{
         id: 0,
-        item_content: "当前为公告为测试内容",
+        item_content: "湘识健康正在测试中，感谢您的使用！",
       },
       {
         id: 1,
-        item_content: "小程序将持续更新",
+        item_content: "小程序将会持续更新，尽情期待。",
       },
       {
         id: 2,
-        item_content: "尽请期待",
+        item_content: "使用过程中如有问题，请及时联系客服。",
       },
+    ],
+    contents: [{
+        id: 0,
+        turn_address: "turn_passage0",
+        content: "资讯一"
+      },
+      {
+        id: 1,
+        turn_address: "turn_passage1",
+        content: "资讯二"
+      },
+      {
+        id: 2,
+        turn_address: "turn_passage2",
+        content: "资讯三"
+      },
+      {
+        id: 3,
+        turn_address: "turn_passage3",
+        content: "资讯四"
+      }
     ]
   },
   //事件处理函数
+  turn_passage0: function () {
+    wx.navigateTo({
+      url: '../passages/passage0/passage0',
+    })
+  },
+
+  turn_passage1: function () {
+    wx.navigateTo({
+      url: '../passages/passage1/passage1',
+    })
+  },
+
+  turn_passage2: function () {
+    wx.navigateTo({
+      url: '../passages/passage2/passage2',
+    })
+  }
+
 })

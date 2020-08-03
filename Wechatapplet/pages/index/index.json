@@ -1,8 +1,6 @@
 {
   "usingComponents": {
-    "SearchInput": "../../components/SearchInput/SearchInput",
-    "HomeContent": "../../components/HomeContent/HomeContent",
-    "divLine": "../../components/divLine/divLine"
+    "SearchInput": "../../components/SearchInput/SearchInput"
   },
   "navigationBarTitleText": "湘识健康"
 }

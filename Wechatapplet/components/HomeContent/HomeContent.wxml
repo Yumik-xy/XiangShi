@@ -1,6 +1,0 @@
-<!-- components/HomeContent/HomeContent.wxml -->
-<view class="contents">
-  <view wx:for="{{contents}}" wx:key="id" bindtap="{{item.turn_address}}" class="content-view">
-    {{item.content}}
-  </view>
-</view>
