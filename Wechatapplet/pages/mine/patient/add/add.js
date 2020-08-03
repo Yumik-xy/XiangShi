@@ -1,11 +1,12 @@
 // pages/mine/patient/add/add.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    key: 'PatientInfo',
+    save_data: [],
+    arry_data: []
   },
 
   submit: function (e) {
@@ -13,7 +14,6 @@ Page({
     console.log(e.detail.value)
     wx.login({
       success: function (loginCode) {
-        console.log (loginCode)
         wx.request({
           url: 'http://127.0.0.1/api/patient/',
           data: { patientname: e.detail.value.patientname, 
@@ -25,7 +25,7 @@ Page({
                   allergy: e.detail.value.allergy,
                   coder: loginCode.code },
           header: { "content-type": "application/x-www-form-urlencoded" },
-          method: 'post',
+          method: 'POST',
           success: function (res) {
             console.log(res)
             if (res.data.status == false) {
@@ -37,50 +37,30 @@ Page({
               wx.showToast({
                 title: '添加成功',
               })
-              
-              var patientInfo = wx.getStorageSync('PatientInfo')||[]
-              localStorage.unshift({
-                patientname: e.detail.value.patientname, 
-                gender: e.detail.value.gender,
-                age: e.detail.value.age,
-                telephone: e.detail.value.telephone,
-                pastmedicalhistory: e.detail.value.pastmedicalhistory,
-                telephone: e.detail.value.telephone,
-                allergy: e.detail.value.allergy
-              })
-              wx.setStorageSync('patientInfo', patientInfo)
 
+              that.setData({
+                save_data:e.detail.value
+              })
+
+               //获取存储数据的数组
+              var exprs = wx.getStorageSync("patientInfo") || []
+              //向数组中添加新的元素
+              exprs.unshift(that.data.save_data)
+              //将添加的元素存储到本地
+              wx.setStorageSync("patientInfo", exprs)
+
+              //获取缓存数据
+              var exprs = wx.getStorageSync("save_array") || []
+              that.setData({
+                arry_data: exprs
+              })
             }
           }
         })
       }
     })
-
   },
 
-  getName(res){
-    var name=res.detail.value;
-  },
-
-  getSex(res){
-    var sex=res.detail.value;
-  },
-
-  getAge(res){
-    var age=res.detail.value;
-  },
-
-  getPhone(res){
-    var phone=res.detail.value;
-  },
-
-  getHistory(res){
-    var history=res.detail.value;
-  },
-
-  getAllergy(res){
-    var allergy=res.detail.value;
-  },
   /**
    * 生命周期函数--监听页面加载
    */
