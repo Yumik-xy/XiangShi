@@ -1,2 +1,10 @@
 <!--pages/mine/setup/privacy/privacy.wxml-->
+<<<<<<< HEAD
 <text>pages/mine/setup/privacy/privacy.wxml</text>
+=======
+<view class="DT_privacy">
+  <view class="privacy">
+    <rich-text nodes="{{privacytext}}"></rich-text>
+  </view>
+</view>
+>>>>>>> b85adff07b012c399bf3801d745230792dc7e46a
