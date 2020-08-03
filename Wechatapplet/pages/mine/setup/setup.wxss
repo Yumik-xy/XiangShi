@@ -1,5 +1,9 @@
 /* pages/mine/setup/setup.wxss */
 @import "../../../styles/iconfont.wxss";
+page{
+  background-color: #F0F0F0;
+}
+
 .setup{
   display: flex;
   background-color: #FFFFFF;
