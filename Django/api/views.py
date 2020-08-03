@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .method.method import *
-from .models import *
+from .models import medicine as medicine_model
+from .models import patient as patient_model
 
 
 # Create your views here.
@@ -17,7 +18,7 @@ class medicine(APIView):
     def get(self, request, *args, **kwargs):
         try:
             drumname = request.query_params.get('drumname')
-            drums = medicine.objects.filter(drumname__contain=drumname).values()[0:30]
+            drums = medicine_model.objects.filter(drumname__contain=drumname).values()[0:30]
             json_data = list(drums)
         except:
             return Response({'status': False})
@@ -37,7 +38,7 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patientinfo = patient.objects.filter(openid=openid).values()
+            patientinfo = patient_model.objects.filter(openid=openid).values()
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
@@ -53,11 +54,16 @@ class patient(APIView):
         allergy = request.data.get('allergy')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
+        print(allergy)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        db = patient_model.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
+                                          telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
+        db.save()
         try:
-            patient.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
-                                   telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
+            db = patient_model.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
+                                              telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
+            db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:
@@ -84,9 +90,9 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            models.UserInfo.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                           telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                           allergy=allergy).update(patientname=_patientname,
+            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
+                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                         allergy=allergy).update(patientname=_patientname,
                                                                    gender=_gender, age=_age,
                                                                    telephone=_telephone,
                                                                    pastmedicalhistory=_pastmedicalhistory,
@@ -108,9 +114,9 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            models.UserInfo.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                           telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                           allergy=allergy).delete()
+            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
+                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                         allergy=allergy).delete()
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
