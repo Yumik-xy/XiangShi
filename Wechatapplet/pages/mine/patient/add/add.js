@@ -13,6 +13,7 @@ Page({
     console.log(e.detail.value)
     wx.login({
       success: function (loginCode) {
+        console.log (loginCode)
         wx.request({
           url: 'http://127.0.0.1/api/patient/',
           data: { patientname: e.detail.value.patientname, 
@@ -22,9 +23,9 @@ Page({
                   pastmedicalhistory: e.detail.value.pastmedicalhistory,
                   telephone: e.detail.value.telephone,
                   allergy: e.detail.value.allergy,
-                  code: loginCode.code },
+                  coder: loginCode.code },
           header: { "content-type": "application/x-www-form-urlencoded" },
-          method: 'POST',
+          method: 'post',
           success: function (res) {
             console.log(res)
             if (res.data.status == false) {

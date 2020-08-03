@@ -3,9 +3,9 @@ import base64
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-APPID = ''
-SECRET = ''
-KEY = 'xiangshishixiangxiangshishixiang'
+APPID = 'wxc9bc178415433f14'
+SECRET = '43c875a17e0a54a2fa5346fc9dbba29f'
+# KEY = 'xiangshishixiangxiangshishixiang'
 
 
 # 获取openid的部分
