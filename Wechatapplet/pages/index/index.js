@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    currentData: 0,
     swiper_imgs: [{
         id: 0,
         item_img_url: "../../icon/swiper-Icon/swiper-img1.jpg",
@@ -59,24 +60,99 @@ Page({
     ],
     contents: [{
         id: 0,
-        turn_address: "turn_passage0",
-        content: "资讯一"
+        index: "0",
+        name: "推荐",
+        content: [{
+            id: 0,
+            img_url: "../../icon/swiper-Icon/swiper-img1.jpg",
+            text: "推荐资讯零"
+          },
+          {
+            id: 1,
+            img_url: "../../icon/swiper-Icon/swiper-img2.jpg",
+            text: "推荐资讯一"
+          },
+          {
+            id: 2,
+            img_url: "../../icon/swiper-Icon/swiper-img3.jpg",
+            text: "推荐资讯二"
+          },
+          {
+            id: 3,
+            img_url: "../../icon/swiper-Icon/swiper-img3.jpg",
+            text: "推荐资讯三"
+          },
+        ]
       },
       {
         id: 1,
-        turn_address: "turn_passage1",
-        content: "资讯二"
+        index: "1",
+        name: "百科",
+        content: [{
+            id: 0,
+            img_url: "",
+            text: "百科资讯零"
+          },
+          {
+            id: 1,
+            img_url: "",
+            text: "百科资讯一"
+          },
+          {
+            id: 2,
+            img_url: "",
+            text: "百科资讯二"
+          },
+        ]
       },
       {
         id: 2,
-        turn_address: "turn_passage2",
-        content: "资讯三"
+        index: "2",
+        name: "疫情",
+        content: [{
+            id: 0,
+            img_url: "",
+            text: "疫情资讯零"
+          },
+          {
+            id: 1,
+            img_url: "",
+            text: "疫情资讯一"
+          },
+          {
+            id: 2,
+            img_url: "",
+            text: "疫情资讯二"
+          },
+        ]
       },
       {
         id: 3,
-        turn_address: "turn_passage3",
-        content: "资讯四"
-      }
+        index: "3",
+        name: "药品",
+        content: [{
+            id: 0,
+            img_url: "",
+            text: "药品资讯零"
+          },
+          {
+            id: 1,
+            img_url: "",
+            text: "药品资讯一"
+          },
+          {
+            id: 2,
+            img_url: "",
+            text: "药品资讯二"
+          },
+        ]
+      },
+      {
+        id: 4,
+        index: "4",
+        name: "更多",
+        content: [{}]
+      },
     ]
   },
   //事件处理函数
@@ -96,6 +172,30 @@ Page({
     wx.navigateTo({
       url: '../passages/passage2/passage2',
     })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {},
+  //获取当前滑块的index
+  bindchange: function (e) {
+    const that = this;
+    that.setData({
+      currentData: e.detail.current
+    })
+  },
+  //点击切换，滑块index赋值
+  checkCurrent: function (e) {
+    const that = this;
+
+    if (that.data.currentData === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        currentData: e.target.dataset.current
+      })
+    }
   }
 
 })

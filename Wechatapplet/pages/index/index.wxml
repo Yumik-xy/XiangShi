@@ -30,14 +30,35 @@
     </swiper>
   </view>
   <!-- 资讯栏 -->
-  <view class="contentHead">
-    <image mode="widthFix" src="../../icon/zixun.png" />
-    <text class="left_text">健康資訊</text>
-    <text class="right_text">更多</text>
+  <view class="contentHead1">
+    <image src="../../icon/zixun.png" mode="widthFix" />
+    <text>健康资讯</text>
   </view>
-  <view class="contents">
-    <view wx:for="{{contents}}" wx:key="id" bindtap="{{item.turn_address}}" class="content-view">
-      {{item.content}}
+  <view class="contentHead2">
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
+      推荐
+    </view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>
+      百科
+    </view>
+    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>
+      疫情
+    </view>
+    <view class='tab  {{currentData == 3 ? "tabBorer" : ""}}' data-current="3" bindtap='checkCurrent'>
+      药品
+    </view>
+    <view class='tab  {{currentData == 4 ? "tabBorer" : ""}}' data-current="4" bindtap='checkCurrent'>
+      更多
     </view>
   </view>
+  <scroll-view class="contents" scroll-y="{{true}}">
+    <swiper current="{{currentData}}" bindchange="bindchange">
+      <swiper-item wx:for="{{contents}}" wx:for-item="item_contents" wx:key="id">
+        <view wx:for="{{item_contents.content}}" wx:key="id">
+          <image src="{{item.img_url}}" mode="scaleToFill" />
+          {{item.text}}
+        </view>
+      </swiper-item>
+    </swiper>
+  </scroll-view>
 </view>
