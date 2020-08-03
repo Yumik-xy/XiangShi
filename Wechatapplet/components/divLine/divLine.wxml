@@ -1,0 +1,5 @@
+<!-- components/divLine/divLine.wxml -->
+<view class="container">
+  <!-- 分割线 -->
+  <view class="divLine"></view>
+</view>

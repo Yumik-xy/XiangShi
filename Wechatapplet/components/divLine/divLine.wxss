@@ -1,0 +1,8 @@
+/* components/divLine/divLine.wxss */
+/*分割线样式*/
+.divLine {
+  background: #e0e3da;
+  width: auto;
+  height: 5rpx;
+  margin: 5px;
+}

@@ -42,9 +42,21 @@ Page({
         item_img_url: "../../icon/classfy-Icon/Img3.png",
         item_name: "健康日历",
       },
+    ],
+
+    notice: [{
+        id: 0,
+        item_content: "当前为公告为测试内容",
+      },
+      {
+        id: 1,
+        item_content: "小程序将持续更新",
+      },
+      {
+        id: 2,
+        item_content: "尽请期待",
+      },
     ]
-
-
   },
   //事件处理函数
 })

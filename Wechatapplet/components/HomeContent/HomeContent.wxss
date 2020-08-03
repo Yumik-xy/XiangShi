@@ -3,15 +3,17 @@
   background-color: #ffffff;
   margin-bottom: auto;
   margin-top: 15rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  border-radius: 10rpx;
-  border-style: solid;
-  border-width: 2px;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  margin-bottom: 15rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 3px black;
 }
 .contents view {
-  margin-left: 10rpx;
-  margin-right: 10rpx;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   border-bottom-style: dotted;
   border-bottom-color: var(--themeColor);
   font-family: "Comic Sans MS", cursive, sans-serif;
