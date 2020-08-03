@@ -23,7 +23,7 @@ class patient(models.Model):
     patientname = models.CharField(max_length=30, verbose_name='患者名称')
     gender = models.CharField(max_length=1, verbose_name='性别[0]男,[1]女')
     age = models.CharField(max_length=3, verbose_name='年龄')
-    telephone = models.IntegerField(max_length=11, verbose_name='电话')
+    telephone = models.CharField(max_length=11, verbose_name='电话')
     pastmedicalhistory = models.CharField(max_length=120, verbose_name='既往病史')
     allergy = models.CharField(max_length=60, verbose_name='过敏情况')
 
@@ -31,4 +31,4 @@ class patient(models.Model):
     class Meta:
         verbose_name_plural = '病人信息'
         verbose_name = '病人'
-        db_table = 'patientname'
+        db_table = 'patient'

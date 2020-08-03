@@ -8,8 +8,8 @@ page{
   padding-bottom: 50rpx;
   justify-content: center;
   background-color: #FFFFFF;
-  border-bottom-left-radius: 40rpx;
-  border-bottom-right-radius: 40rpx;
+  border-bottom-left-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
   border-style: solid;
   box-shadow:0px 2px 4px 2px #DDDDDD ;
   border-width: 0rpx;
