@@ -39,11 +39,15 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patientinfo = patient_model.objects.filter(openid=openid).values()
+            patientinfo = patient_model.objects.filter(openid=openid).values('patientname', 'gender', 'age',
+                                                                             'telephone', 'pastmedicalhistory',
+                                                                             'allergy')
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
+
             json_data = list(patientinfo)
+
             return Response({'status': True, 'data': json_data})
 
     def post(self, request, *args, **kwargs):
@@ -60,7 +64,8 @@ class patient(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             db = patient_model.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
-                                              telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
+                                              telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                              allergy=allergy)
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -91,10 +96,10 @@ class patient(APIView):
             patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
                                          telephone=telephone, pastmedicalhistory=pastmedicalhistory,
                                          allergy=allergy).update(patientname=_patientname,
-                                                                   gender=_gender, age=_age,
-                                                                   telephone=_telephone,
-                                                                   pastmedicalhistory=_pastmedicalhistory,
-                                                                   allergy=_allergy)
+                                                                 gender=_gender, age=_age,
+                                                                 telephone=_telephone,
+                                                                 pastmedicalhistory=_pastmedicalhistory,
+                                                                 allergy=_allergy)
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
