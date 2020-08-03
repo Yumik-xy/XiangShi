@@ -54,12 +54,9 @@ class patient(APIView):
         allergy = request.data.get('allergy')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
-        print(allergy)
+        print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
-        db = patient_model.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
-                                          telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
-        db.save()
         try:
             db = patient_model.objects.create(openid=openid, patientname=patientname, gender=gender, age=age,
                                               telephone=telephone, pastmedicalhistory=pastmedicalhistory, allergy=allergy)
