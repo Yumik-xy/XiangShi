@@ -49,3 +49,34 @@ page{
   align-items: center;
   color:var(--themeColor);
 }
+
+.info{
+  display: flex;
+  background-color: #FFFFFF;
+  height: 110rpx;
+  margin-top: 30rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  border-radius: 15px;
+  border-style: solid;
+  box-shadow:0px 2px 4px 2px #DDDDDD;
+  border-width: 0rpx;
+}
+
+.info_title{
+  display: flex;
+  width: 100%;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  flex-direction: column;
+}
+
+.info_item{
+  display: flex;
+  width: 100%;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
