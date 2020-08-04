@@ -5,7 +5,8 @@ Page({
    */
   data: {
     key: 'PatientInfo',
-    info:{}
+    is: 0,
+    info: {}
   },
 
   submit: function (e) {
@@ -15,14 +16,16 @@ Page({
       success: function (loginCode) {
         wx.request({
           url: 'http://127.0.0.1/api/patient/',
-          data: { patientname: e.detail.value.patientname, 
-                  gender: e.detail.value.gender,
-                  age: e.detail.value.age,
-                  telephone: e.detail.value.telephone,
-                  pastmedicalhistory: e.detail.value.pastmedicalhistory,
-                  telephone: e.detail.value.telephone,
-                  allergy: e.detail.value.allergy,
-                  coder: loginCode.code },
+          data: {
+            patientname: e.detail.value.patientname,
+            gender: e.detail.value.gender,
+            age: e.detail.value.age,
+            telephone: e.detail.value.telephone,
+            pastmedicalhistory: e.detail.value.pastmedicalhistory,
+            telephone: e.detail.value.telephone,
+            allergy: e.detail.value.allergy,
+            coder: loginCode.code
+          },
           header: { "content-type": "application/x-www-form-urlencoded" },
           method: 'POST',
           success: function (res) {
@@ -38,10 +41,10 @@ Page({
               })
 
               that.setData({
-                save_data:e.detail.value
+                save_data: e.detail.value
               })
 
-               //获取存储数据的数组
+              //获取存储数据的数组
               var exprs = wx.getStorageSync("patientInfo") || []
               //向数组中添加新的元素
               exprs.unshift(that.data.save_data)
@@ -64,8 +67,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ info: JSON.parse(options.info), });
-    console.log(this.data.info)
+    console.log(options)
+    if (options.is == '1') {
+      this.setData({ info: JSON.parse(options.info), is: 1 });
+      console.log(this.data.info)
+    }
   },
 
   /**

@@ -12,14 +12,13 @@ Page({
     var that = this
     var id = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: './add/add?info=' + JSON.stringify(that.data.arry_data[id]),
+      url: './add/add?is=' + '1' + '&info=' + JSON.stringify(that.data.arry_data[id]),
     })
   },
 
-
   turn_add: function () {
     wx.navigateTo({
-      url: '../../../pages/mine/patient/add/add',
+      url: './add/add?is=' + '0',
     })
   },
   /**
@@ -66,6 +65,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+
+
+
     var exprs = wx.getStorageSync("patientInfo") || []
     this.setData({
       arry_data: exprs

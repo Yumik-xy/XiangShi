@@ -30,7 +30,7 @@
 
 		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
 		</region-picker>
-		<view wx:if="{{save_data.length==0}}">
+		<view wx:if="{{is==0}}">
 			<button class="submit" form-type='submit'> 确定 </button>
 		</view>
 		<view wx:else>
