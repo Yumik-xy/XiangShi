@@ -1,4 +1,19 @@
 <!--pages/mine/patient/patient.wxml-->
+<wxs module='tools'>
+	var sub = function(val) {
+
+		if (val == undefined || val == '' || val == null) {
+			return;
+		}
+		if (val.length > 6) {
+			return val.substring(0, 6) + "...";
+		} else {
+			return val;
+		}
+	}
+	module.exports.sub = sub;
+</wxs>
+
 <view class="add">
 	<view class="add_title">
 		<view class="add_item" bindtap="turn_add">
@@ -12,9 +27,12 @@
 
 <block wx:for="{{arry_data}}" wx:key="key">
 	<view class="info" bindtap="infoHandler" data-id="{{index}}">
-		<view class="info_title">
-			<text>{{item.patientname}}</text>
-			<text>{{item.age}}</text>
+		<view class="first_line">
+		
+			<text class="patientname">{{tools.sub(item.patientname)}}</text>
+			<text class="gender">{{item.gender}}</text>
+			<text class="age">{{item.age}}</text>
+			<text class="phonenumber">{{item.telephone}}</text>
 		</view>
 	</view>
 </block>

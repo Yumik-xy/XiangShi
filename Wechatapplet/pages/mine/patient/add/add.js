@@ -139,15 +139,15 @@ Page({
                   icon: 'none',
                   duration: 1000,
                 })
+              } else if (res.data.status == true) {
+                wx.showToast({
+                  title: '修改成功',
+                })
                 setTimeout(function () {
                   wx.navigateBack({
                     delta: 1
                   })              
                 }, 1000)
-              } else if (res.data.status == true) {
-                wx.showToast({
-                  title: '修改成功',
-                })
                 that.setData({
                   save_data: e.detail.value
                 })
