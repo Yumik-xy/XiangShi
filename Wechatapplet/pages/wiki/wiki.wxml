@@ -11,7 +11,7 @@
       <block wx:for="{{cateItems[curIndex].children}}" wx:key="{{index}}">
         <view class="nav_right_items">
         <!--界面跳转 -->
-          <navigator url="../../detail/detail">
+          <navigator url="{{item.url}}">
             <image src="{{item.image}}"></image>
             <text>{{item.name}}</text>
           </navigator>
