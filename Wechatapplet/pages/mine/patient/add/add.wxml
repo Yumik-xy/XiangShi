@@ -1,16 +1,16 @@
 <!--pages/mine/patient/add/add.wxml-->
-<view class="apply">
+<view class="add">
 	<form bindsubmit='submit'>
 		<view class="con">
 			<view class="con-nr">
 				<text>姓名</text>
 				<input placeholder="请填写真实姓名" name="patientname" type="text"></input>
 			</view>
-      <view class="con-nr">
+			<view class="con-nr">
 				<text>性别</text>
 				<input placeholder="性别" name="gender" type="text" maxlength="1"></input>
 			</view>
-      <view class="con-nr">
+			<view class="con-nr">
 				<text>年龄</text>
 				<input placeholder="年龄" name="age" type="number" maxlength="3"></input>
 			</view>
@@ -28,8 +28,14 @@
 			</view>
 		</view>
 
-		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion"></region-picker>
-		<!-- 加一个禁止按钮 判断 {{encoder != 0}} -->
-		<button disabled="{{encoder==0}}" class="submit" form-type='submit'> 确定 </button>
+		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
+		</region-picker>
+		<view wx:if="{{save_data.length==0}}"> 
+			<button class="submit" form-type='submit'> "确定" </button>
+		</view>
+<!-- <view wx:else>
+	<button class="put" form-type='submit'> 修改 </button>
+</view> -->
+
 	</form>
 </view>

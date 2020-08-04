@@ -25,7 +25,7 @@
   <!-- 公告栏 -->
   <view class="swiper-notice">
     <image src="../../icon/gonggao.png" mode="widthFix" />
-    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}">
+    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" vertical="{{true}}">
       <swiper-item wx:for="{{notice}}" wx:key="id">{{item.item_content}}</swiper-item>
     </swiper>
   </view>
