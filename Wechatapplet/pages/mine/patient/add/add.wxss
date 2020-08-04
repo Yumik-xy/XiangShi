@@ -1,5 +1,5 @@
 /* pages/mine/patient/add/add.wxss */
-.apply {
+.add {
   height: 100%;
   width: 100%;
 }

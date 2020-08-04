@@ -10,13 +10,11 @@
 	</view>
 </view>
 
-<view class="info">
-	<view class="info_title">
-		<view wx:for="{{arry_data}}" 
-					wx:key="{{index}}" 
-					class="title_item" 
-					bindtap="{{item.turn_address}}">
+<block wx:for="{{arry_data}}" wx:key="key">
+	<view class="info" bindtap="infoHandler" data-id="{{index}}">
+		<view class="info_title">
 			<text>{{item.patientname}}</text>
+			<text>{{item.age}}</text>
 		</view>
 	</view>
-</view>
+</block>
