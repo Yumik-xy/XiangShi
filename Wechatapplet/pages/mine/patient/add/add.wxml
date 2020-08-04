@@ -1,6 +1,6 @@
 <!--pages/mine/patient/add/add.wxml-->
 <view class="add">
-	<form bindsubmit='submit'>
+	<form bindsubmit='submit' bind>
 		<view class="con">
 			<view class="con-nr">
 				<text>姓名</text>
@@ -30,12 +30,12 @@
 
 		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
 		</region-picker>
-		<view wx:if="{{save_data.length==0}}"> 
-			<button class="submit" form-type='submit'> "确定" </button>
+		<view wx:if="{{save_data.length==0}}">
+			<button class="submit" form-type='submit'> 确定 </button>
 		</view>
-<!-- <view wx:else>
-	<button class="put" form-type='submit'> 修改 </button>
-</view> -->
+		<view wx:else>
+			<button class="submit" form-type='submit'> 修改 </button>
+		</view>
 
 	</form>
 </view>

@@ -5,8 +5,7 @@ Page({
    */
   data: {
     key: 'PatientInfo',
-    save_data: [],
-    arry_data: []
+    info:{}
   },
 
   submit: function (e) {
@@ -65,7 +64,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({ info: JSON.parse(options.info), });
+    console.log(this.data.info)
   },
 
   /**

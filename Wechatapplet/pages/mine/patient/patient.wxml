@@ -10,11 +10,8 @@
 	</view>
 </view>
 
-<block wx:for="{{arry_data}}" 
-					wx:key="{{index}}" 
-					class="info_item" 
-					bindtap="{{item.turn_address}}">
-	<view class="info">
+<block wx:for="{{arry_data}}" wx:key="key">
+	<view class="info" bindtap="infoHandler" data-id="{{index}}">
 		<view class="info_title">
 			<text>{{item.patientname}}</text>
 			<text>{{item.age}}</text>

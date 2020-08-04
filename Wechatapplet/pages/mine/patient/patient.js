@@ -8,11 +8,20 @@ Page({
     arry_data: []
   },
 
+  infoHandler: function (event) {
+    var that = this
+    var id = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './add/add?info=' + JSON.stringify(that.data.arry_data[id]),
+    })
+  },
+
+
   turn_add: function () {
     wx.navigateTo({
       url: '../../../pages/mine/patient/add/add',
     })
-  },  
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,7 +32,7 @@ Page({
         wx.request({
           url: 'http://127.0.0.1/api/patient/',
           data: {
-            coder:loginCode.code
+            coder: loginCode.code
           },
           header: { "content-type": "application/x-www-form-urlencoded" },
           method: 'GET',
@@ -36,7 +45,7 @@ Page({
               })
             } else if (res.data.status == true) {
               that.setData({
-                arry_data:res.data.data
+                arry_data: res.data.data
               })
               wx.setStorageSync("patientInfo", that.data.arry_data)
             }
