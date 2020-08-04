@@ -65,22 +65,26 @@ Page({
         content: [{
             id: 0,
             img_url: "../../icon/swiper-Icon/swiper-img1.jpg",
-            text: "推荐资讯零"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 1,
             img_url: "../../icon/swiper-Icon/swiper-img2.jpg",
-            text: "推荐资讯一"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 2,
             img_url: "../../icon/swiper-Icon/swiper-img3.jpg",
-            text: "推荐资讯二"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 3,
             img_url: "../../icon/swiper-Icon/swiper-img3.jpg",
-            text: "推荐资讯三"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
         ]
       },
@@ -91,17 +95,20 @@ Page({
         content: [{
             id: 0,
             img_url: "",
-            text: "百科资讯零"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 1,
             img_url: "",
-            text: "百科资讯一"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 2,
             img_url: "",
-            text: "百科资讯二"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
         ]
       },
@@ -112,17 +119,20 @@ Page({
         content: [{
             id: 0,
             img_url: "",
-            text: "疫情资讯零"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 1,
             img_url: "",
-            text: "疫情资讯一"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 2,
             img_url: "",
-            text: "疫情资讯二"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
         ]
       },
@@ -133,17 +143,20 @@ Page({
         content: [{
             id: 0,
             img_url: "",
-            text: "药品资讯零"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 1,
             img_url: "",
-            text: "药品资讯一"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
           {
             id: 2,
             img_url: "",
-            text: "药品资讯二"
+            title: "防疫就是命令，防控就是责任",
+            text: "防疫就是命令，防控就是责任"
           },
         ]
       },

@@ -18,8 +18,8 @@
   flex-direction: row;
   width: 100%;
   margin-left: 20rpx;
-  margin-top: 25rpx;
-  margin-bottom: 25rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
 .classfyHead image {
   width: 8%;
@@ -45,8 +45,8 @@
 }
 .classfy {
   display: flex;
-  margin-top: 25rpx;
-  margin-bottom: 25rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
   border-radius: 30rpx;
@@ -69,8 +69,8 @@
   width: auto;
   margin-left: 20rpx;
   margin-right: 10rpx;
-  margin-top: 25rpx;
-  margin-bottom: 25rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
   padding-left: 1%;
   border-radius: 12rpx;
   box-shadow: 0 0 2px #000000;
@@ -98,7 +98,7 @@
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: large;
 }
 .contentHead1 image {
@@ -108,7 +108,7 @@
 .contentHead2 {
   display: flex;
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .contentHead2 .tab {
   display: flex;
@@ -136,8 +136,8 @@
   margin-bottom: auto;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-top: 25rpx;
-  margin-bottom: 25rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
   box-shadow: 0 0 2px black;
   height: 800rpx;
   width: auto;
@@ -148,7 +148,10 @@
 .contents swiper swiper-item {
   height: 100%;
 }
-.contents swiper swiper-item view {
+.contents swiper swiper-item scroll-view {
+  height: 100%;
+}
+.contents swiper swiper-item scroll-view view {
   display: flex;
   width: auto;
   height: 25%;
@@ -157,12 +160,25 @@
   padding-bottom: 10rpx;
   align-items: center;
 }
-.contents swiper swiper-item view image {
+.contents swiper swiper-item scroll-view view image {
   margin-left: 10rpx;
   margin-right: 10rpx;
   width: 30%;
   height: 100%;
   box-shadow: 0 0 2px #000000;
+}
+.contents swiper swiper-item scroll-view view .title_text {
+  height: 100%;
+  width: auto;
+  flex-direction: column;
+}
+.contents swiper swiper-item scroll-view view .title_text .title {
+  font-size: medium;
+  color: #000000;
+}
+.contents swiper swiper-item scroll-view view .title_text .txt {
+  font-size: small;
+  color: #bfbfbf;
 }
 .contents view:nth-last-child(1) {
   border-bottom: 0;
