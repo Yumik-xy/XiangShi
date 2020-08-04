@@ -71,6 +71,11 @@ page{
   align-items: center;
 }
 
+.right_line{
+  margin-right: 20rpx;
+}
+
+
 .inline{
   line-height: 34rpx;
   display: flex;
