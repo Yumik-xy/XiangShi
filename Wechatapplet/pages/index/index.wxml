@@ -51,14 +51,19 @@
       更多
     </view>
   </view>
-  <scroll-view class="contents" scroll-y="{{true}}">
+  <view class="contents">
     <swiper current="{{currentData}}" bindchange="bindchange">
       <swiper-item wx:for="{{contents}}" wx:for-item="item_contents" wx:key="id">
-        <view wx:for="{{item_contents.content}}" wx:key="id">
-          <image src="{{item.img_url}}" mode="scaleToFill" />
-          {{item.text}}
-        </view>
+        <scroll-view scroll-y="{{true}}">
+          <view wx:for="{{item_contents.content}}" wx:key="id">
+            <image src="{{item.img_url}}" mode="scaleToFill" />
+            <view class="title_text">
+              <text class="title">标题栏：{{item.title}}</text>
+              <text class="txt">内容简介栏：{{item.text}}</text>
+            </view>
+          </view>
+        </scroll-view>
       </swiper-item>
     </swiper>
-  </scroll-view>
+  </view>
 </view>
