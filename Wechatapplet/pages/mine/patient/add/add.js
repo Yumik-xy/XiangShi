@@ -9,12 +9,40 @@ Page({
     info: {}
   },
 
+  delete: function () {
+    wx.login({
+      success: function (loginCode) {
+        wx.request({
+          url: 'http://127.0.0.1/api/patient/',
+          data: {
+            coder: loginCode.code
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'DELETE',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              wx.showToast({
+                title: '已删除',
+              })
+            }
+          }
+        })
+      }
+    })
+  },
+
   submit: function (e) {
     var that = this
     console.log(e.detail.value)
     wx.login({
       success: function (loginCode) {
-        if(that.data.is == 0){ 
+        if (that.data.is == 0) {
           wx.request({
             url: 'http://127.0.0.1/api/patient/',
             data: {
@@ -61,7 +89,7 @@ Page({
             }
           })
         }
-        else{
+        else {
           wx.request({
             url: 'http://127.0.0.1/api/patient/',
             data: {
@@ -94,18 +122,18 @@ Page({
                 wx.showToast({
                   title: '修改成功',
                 })
-  
+
                 that.setData({
                   save_data: e.detail.value
                 })
-  
+
                 //获取存储数据的数组
                 var exprs = wx.getStorageSync("patientInfo") || []
                 //向数组中添加新的元素
                 exprs.unshift(that.data.save_data)
                 //将添加的元素存储到本地
                 wx.setStorageSync("patientInfo", exprs)
-  
+
                 //获取缓存数据
                 var exprs = wx.getStorageSync("save_array") || []
                 that.setData({
@@ -125,7 +153,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     if (options.is == '1') {
-      this.setData({ info: JSON.parse(options.info), is: 1});
+      this.setData({ info: JSON.parse(options.info), is: 1 });
       console.log(this.data.info)
     }
   },

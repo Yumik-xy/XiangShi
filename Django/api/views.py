@@ -120,7 +120,7 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            db = patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
+            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
                                               telephone=telephone, pastmedicalhistory=pastmedicalhistory,
                                               allergy=allergy).delete()
         except:

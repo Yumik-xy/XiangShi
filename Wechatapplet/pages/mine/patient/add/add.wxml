@@ -33,8 +33,9 @@
 		<view wx:if="{{is==0}}">
 			<button class="submit" form-type='submit'> 确定 </button>
 		</view>
-		<view wx:else>
+		<view class="change" wx:else>
 			<button class="submit" form-type='submit'> 修改 </button>
+			<button class="delete" bindtap="delete"> 删除 </button>
 		</view>
 
 	</form>

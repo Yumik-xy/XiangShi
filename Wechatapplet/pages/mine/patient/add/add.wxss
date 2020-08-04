@@ -50,3 +50,19 @@
   border-radius: 10rpx;
   color: white;
 }
+
+.change{
+  display: flex;
+  flex-direction: row;
+}
+
+.delete {
+  width: 500rpx;
+  line-height: 85rpx;
+  text-align: center;
+  margin: 50rpx auto;
+  opacity: 0.5;
+  background-color: var(--themeColor);
+  border-radius: 10rpx;
+  color: white;
+}
