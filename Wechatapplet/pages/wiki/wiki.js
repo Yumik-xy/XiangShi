@@ -5,7 +5,82 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cateItems:[
+      {
+        cate_id:1,
+        cate_name:'a',
+        children: [
+          { 
+            child_id: 1, 
+            name: 'a-a', 
+            image: "../../images/a.jpg" 
+          }, 
+          { 
+            child_id: 2, 
+            name: 'a-b', 
+            image: "../../images/b.jpg"  
+          }
+        ]
+      },
+      {
+        cate_id:2,
+        cate_name:'b'
+      },
+      {
+        cate_id:3,
+        cate_name:'c'
+      },
+      {
+        cate_id: 4,
+        cate_name: 'd'
+      },
+      {
+        cate_id: 5,
+        cate_name: 'e'
+      },
+      {
+        cate_id: 6,
+        cate_name: 'f'
+      },
+      {
+        cate_id: 7,
+        cate_name: 'g'
+      },
+      {
+        cate_id: 8,
+        cate_name: 'h'
+      },
+      {
+        cate_id: 9,
+        cate_name: 'i'
+      },
+      {
+        cate_id: 10,
+        cate_name: 'j'
+      },
+      {
+        cate_id: 11,
+        cate_name: 'k'
+      },
+      {
+        cate_id: 12,
+        cate_name: 'l'
+      },
+      {
+        cate_id: 13,
+        cate_name: 'm'
+      }
+    ],
+    curNav:1,
+    curIndex:0
+  },
+ 
+  switchRightTab:function(e){
+    let id = e.target.dataset.id,index=e.target.dataset.index;
+    this.setData({
+      curNav:id,
+      curIndex:index
+    })
   },
 
   /**
