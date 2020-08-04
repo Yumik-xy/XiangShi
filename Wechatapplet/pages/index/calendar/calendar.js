@@ -13,10 +13,21 @@ Component({
   data: {
     arr: [],
     sysW: null,
-    lastDay: null,
-    firstDay: null,
-    weekArr: ['日', '一', '二', '三', '四', '五', '六'],
-    year: null
+    lastDay: null, //最后一天几号
+    lastDayW: null, //最后一天星期几
+    endLet: null,
+    firstDayW: null, //第一天星期几
+    weekArr: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    year: null,
+    tips: [{
+        id: 0,
+        content: "最近为特殊时期，出门请带口罩"
+      },
+      {
+        id: 1,
+        content: "今日服药：****胶囊，一日三次，饭后即服"
+      }
+    ]
   },
   /**
    * 组件的方法列表
@@ -24,7 +35,7 @@ Component({
   methods: {
     //获取日历相关参数
     dataTime: function () {
-      var date = new Date();
+      let date = new Date();
       var year = date.getFullYear();
       var month = date.getMonth();
       var months = date.getMonth() + 1;
@@ -39,12 +50,17 @@ Component({
       this.data.getDate = date.getDate();
 
       //最后一天是几号
-      var d = new Date(year, months, 0);
+      var d = new Date(year, month, 0);
       this.data.lastDay = d.getDate();
 
+      //最后一天星期几
+      let lastDayW = new Date(year, month, this.data.lastDay);
+      this.data.lastDayW = lastDayW.getDay();
+      this.data.endLet = 6 - this.data.lastDayW;
+
       //第一天星期几
-      let firstDay = new Date(year, month, 1);
-      this.data.firstDay = firstDay.getDay();
+      let firstDayW = new Date(year, month, 1);
+      this.data.firstDayW = firstDayW.getDay();
     },
 
     onLoad: function (options) {
@@ -57,11 +73,14 @@ Component({
       var res = wx.getSystemInfoSync();
       this.setData({
         sysW: res.windowWidth / 8, //更具屏幕宽度变化自动设置宽度
-        marLet: this.data.firstDay,
+        marLet: this.data.firstDayW,
         arr: this.data.arr,
         year: this.data.year,
         getDate: this.data.getDate,
-        month: this.data.month
+        month: this.data.month,
+        lastDay: this.data.lastDay,
+        lastDayW: this.data.lastDayW,
+        endLet: this.data.endLet
       });
     }
   }

@@ -10,7 +10,7 @@
   line-height: 10px;
   text-align: center;
   margin-top: 40rpx;
-  margin-bottom: 50rpx;
+  margin-bottom: 20rpx;
   font-size: 40rpx;
   font-weight: bold;
 }
@@ -19,8 +19,68 @@
   text-align: center;
   font-size: 34rpx;
 }
+.week {
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  background-color: #eee1e1;
+  border-radius: 25rpx;
+  font-size: large;
+}
+.calendar {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 0 3px #000000;
+  margin-top: 10rpx;
+  border-radius: 10rpx;
+}
+.calendar view {
+  width: auto;
+}
 .dateOn {
   border-radius: 50%;
   background-color: var(--themeColor);
   color: #fff;
+}
+.tipsHead {
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 20rpx 0rpx 40rpx;
+  align-items: center;
+}
+.tipsHead image {
+  width: 10%;
+  margin-right: 10rpx;
+}
+.tips {
+  display: flex;
+  flex-direction: column;
+  margin: 0rpx 20rpx 25rpx 40rpx;
+  width: auto;
+  height: 100%;
+}
+.tips view {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 80rpx;
+}
+.tips view image {
+  width: 680rpx;
+  height: 80rpx;
+  position: absolute;
+  z-index: -1;
+}
+.tips view text {
+  display: flex;
+  align-items: center;
+  margin-left: 40rpx;
+  width: 100%;
+  height: 70rpx;
+  z-index: 1;
+  font-size: s;
 }
