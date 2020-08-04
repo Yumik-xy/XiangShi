@@ -51,9 +51,10 @@ page{
 }
 
 .info{
+  padding:20rpx 0rpx;
   display: flex;
   background-color: #FFFFFF;
-  height: 110rpx;
+  /* height: 110rpx; */
   margin-top: 30rpx;
   margin-left: 60rpx;
   margin-right: 60rpx;
@@ -63,26 +64,59 @@ page{
   border-width: 0rpx;
 }
 
-.first_line{
+.left_line{
   display: flex;
-  width: 100%;
   margin-left: 15rpx;
   margin-right: 15rpx;
+  align-items: center;
+}
+
+.inline{
+  line-height: 34rpx;
+  display: flex;
+  padding-top: 10rpx;
   flex-direction: row;
+  font-size: 28rpx;
+}
+
+.nameui{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  line-height: 28rpx;
+  font-size: 28rpx;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--themeColor);
+  color: white;
+  opacity: 0.8;
+  margin-right: 24rpx;
+  margin-left:20rpx;
 }
 
 .patientname{
-  width: 160rpx;
-  margin-left: 30rpx;
-
+  font-size: 32rpx;
+  line-height: 34rpx;
+  color: black;
 }
 
+.phonenumber{
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  line-height: 34rpx;
+  color: #535353;
+  padding-bottom: 5rpx;
+}
 
+.gender{
+  font-size: 26rpx;
+  line-height: 34rpx;
+  color: #535353;
+}
 
-.second_line{
-  display: flex;
-  width: 100%;
-  margin-left: 15rpx;
-  margin-right: 15rpx;
-  flex-direction: column;
+.age{
+  font-size: 26rpx;
+  line-height: 34rpx;
+  color: #535353;
 }

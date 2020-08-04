@@ -1,12 +1,12 @@
 <!--pages/mine/patient/patient.wxml-->
 <wxs module='tools'>
-	var sub = function(val) {
+	var sub = function (val, len, a) {
 
 		if (val == undefined || val == '' || val == null) {
 			return;
 		}
-		if (val.length > 6) {
-			return val.substring(0, 6) + "...";
+		if (val.length > len) {
+			return val.substring(0, len) + (a == 0 ? "..." : "");
 		} else {
 			return val;
 		}
@@ -18,7 +18,7 @@
 	<view class="add_title">
 		<view class="add_item" bindtap="turn_add">
 			<view class="item_left">
-				<text>添加患者信息</text>
+				<view>添加患者信息</view>
 			</view>
 			<image class="add_image" src="../../../icon/add.png"></image>
 		</view>
@@ -27,12 +27,22 @@
 
 <block wx:for="{{arry_data}}" wx:key="key">
 	<view class="info" bindtap="infoHandler" data-id="{{index}}">
-		<view class="first_line">
-		
-			<text class="patientname">{{tools.sub(item.patientname)}}</text>
-			<text class="gender">{{item.gender}}</text>
-			<text class="age">{{item.age}}</text>
-			<text class="phonenumber">{{item.telephone}}</text>
+		<view class="left_line">
+			<view class="nameui">{{tools.sub(item.patientname,2,1)}}</view>
+		</view>
+		<view class="right_line">
+			<view class="inline">
+				<view class="patientname">{{tools.sub(item.patientname,6,0)}}</view>
+				<view class="gender">[{{item.gender}}</view>
+				<view class="age">-{{item.age}}]</view>
+				<view class="phonenumber">TEL:{{item.telephone}}</view>
+			</view>
+			<view class="inline">
+				<view class="pastmedicalhistory">既往病史：{{item.pastmedicalhistory}}</view>
+			</view>
+			<view class="inline">
+				<view class="allergy">过敏药物：{{item.allergy}}</view>
+			</view>
 		</view>
 	</view>
 </block>
