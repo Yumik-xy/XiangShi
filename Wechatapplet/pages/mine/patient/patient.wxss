@@ -35,9 +35,9 @@ page{
   justify-content: center;
 }
 
-.item_left text{
+.item_left{
   padding-left: 30rpx;
-  line-height:42rpx;
+  line-height: 42rpx;
   font-size: 42rpx;
 }
 
@@ -74,7 +74,6 @@ page{
 .right_line{
   margin-right: 20rpx;
 }
-
 
 .inline{
   line-height: 34rpx;
@@ -124,4 +123,16 @@ page{
   font-size: 26rpx;
   line-height: 34rpx;
   color: #535353;
+}
+
+.pastmedicalhistory{
+  width: 145rpx;
+}
+
+.allergy{
+  width: 145rpx;
+}
+
+.content{
+  width:300rpx;
 }

@@ -17,9 +17,7 @@
 <view class="add">
 	<view class="add_title">
 		<view class="add_item" bindtap="turn_add">
-			<view class="item_left">
-				<view>添加患者信息</view>
-			</view>
+			<view class="item_left">添加患者信息</view>
 			<image class="add_image" src="../../../icon/add.png"></image>
 		</view>
 	</view>
@@ -38,10 +36,12 @@
 				<view class="phonenumber">TEL:{{item.telephone}}</view>
 			</view>
 			<view class="inline">
-				<view class="pastmedicalhistory">既往病史：{{item.pastmedicalhistory}}</view>
+				<view class="pastmedicalhistory">既往病史：</view>
+				<view class="content">{{item.pastmedicalhistory}}</view>
 			</view>
 			<view class="inline">
-				<view class="allergy">过敏药物：{{item.allergy}}</view>
+				<view class="allergy">过敏药物：</view>
+				<view class="content">{{item.allergy}}</view>
 			</view>
 		</view>
 	</view>
