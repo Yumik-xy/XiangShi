@@ -1,1 +1,44 @@
-/* pages/mine/setup/help/help.wxss */
+/* pages/user/setup/help/help.wxss */
+.listMain {
+  padding: 30rpx;
+}
+
+.list {
+  border-bottom: 1rpx solid #ddd;
+  padding: 20rpx 10rpx 20rpx 10rpx;
+  position: relative;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tit {
+  font-size: 34rpx;
+  color: #333;
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.desc {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.listBtn {
+  color: #999;
+  font-size: 30rpx;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

@@ -14,7 +14,6 @@
       "pages/mine/coupon/coupon",
       "pages/mine/prescription/prescription",
       "pages/mine/setup/setup",
-        "pages/mine/setup/permission/permission",
         "pages/mine/setup/privacy/privacy",
         "pages/mine/setup/help/help"
 

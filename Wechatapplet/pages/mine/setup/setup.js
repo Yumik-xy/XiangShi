@@ -28,8 +28,10 @@ Page({
   },
 
   turn_permission_settings: function () {
-    wx.navigateTo({
-      url: '../../mine/setup/permission/permission',
+    wx.openSetting({
+      success(res) {
+        console.log(res.authSetting)
+      }
     })
   },
   turn_privacy_policy: function () {
