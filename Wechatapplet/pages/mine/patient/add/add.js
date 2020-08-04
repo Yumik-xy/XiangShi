@@ -37,10 +37,13 @@ Page({
             } else if (res.data.status == true) {
               wx.showToast({
                 title: '已删除',
+                duration: 1000,
               })
-              wx.navigateBack({
-                delta: 1
-              })          
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })              
+              }, 1000)         
             }
           }
         })
@@ -78,10 +81,13 @@ Page({
               } else if (res.data.status == true) {
                 wx.showToast({
                   title: '添加成功',
+                  duration: 1000,
                 })
-                wx.navigateBack({
-                  delta: 1
-                }) 
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })              
+                }, 1000)
 
                 that.setData({
                   save_data: e.detail.value
@@ -130,16 +136,18 @@ Page({
               if (res.data.status == false) {
                 wx.showToast({
                   title: res.data.message,
-                  icon: 'none'
+                  icon: 'none',
+                  duration: 1000,
                 })
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })              
+                }, 1000)
               } else if (res.data.status == true) {
                 wx.showToast({
                   title: '修改成功',
                 })
-                wx.navigateBack({
-                  delta: 1
-                }) 
-
                 that.setData({
                   save_data: e.detail.value
                 })
