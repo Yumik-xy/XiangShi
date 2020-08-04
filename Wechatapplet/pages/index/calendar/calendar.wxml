@@ -4,14 +4,30 @@
     <!-- 标题 -->
     <view class='dateBox'>{{ year }} - {{ month}}</view>
     <!-- 星期 -->
-    <block wx:for='{{ weekArr }}'>
-      <view style='width: {{ sysW }}px; height:auto;'>{{ item }}</view>
-    </block>
-    <!-- 日历 -->
-    <block wx:for='{{ arr }}'>
-      <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: auto; line-height: {{ sysW }}px;' class='{{ item ==  getDate ? "dateOn" : ""}}'>
-        {{ item }}
+    <view class="week">
+      <view wx:for='{{ weekArr }}'>
+        <view style='width: {{ sysW }}px; height:auto;'>{{ item }}</view>
       </view>
-    </block>
+    </view>
+    <!-- 日历 -->
+    <view class="calendar">
+      <view wx:for='{{ arr }}'>
+        <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }};{{ index == lastDay-1 ?"margin-right:" + sysW * endLet + "px;" : ""  }};width: {{ sysW }}px; height: auto; line-height: {{ sysW }}px;' class='{{ item ==  getDate ? "dateOn" : ""}}'>
+          {{ item }}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="tipsHead">
+      <image src="../../../icon/tixing.png" mode="widthFix" />
+      今日事项
+    </view>
+    <view class="tips">
+      <view wx:for="{{tips}}" wx:key="id">
+        <image src="../../../icon/background/CBorder.png" mode="scaleToFill" />
+        <text>{{item.content}}</text>
+      </view>
+    </view>
   </view>
 </view>
