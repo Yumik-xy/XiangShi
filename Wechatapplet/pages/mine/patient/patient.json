@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "患者信息"
+  "navigationBarTitleText": "患者信息",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

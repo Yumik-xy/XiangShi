@@ -14,7 +14,7 @@ Page({
     console.log(e.detail.value)
     wx.login({
       success: function (loginCode) {
-        if(this.data.is == 1){ 
+        if(that.data.is == 0){ 
           wx.request({
             url: 'http://127.0.0.1/api/patient/',
             data: {
@@ -65,20 +65,20 @@ Page({
           wx.request({
             url: 'http://127.0.0.1/api/patient/',
             data: {
-              patientname: e.detail.value.patientname,
-              gender: e.detail.value.gender,
-              age: e.detail.value.age,
-              telephone: e.detail.value.telephone,
-              pastmedicalhistory: e.detail.value.pastmedicalhistory,
-              telephone: e.detail.value.telephone,
-              allergy: e.detail.value.allergy,
-              _patientname: info.patientname,
-              _gender: info.gender,
-              _age: info.age,
-              _telephone: info.telephone,
-              _pastmedicalhistory: info.pastmedicalhistory,
-              _telephone: info.telephone,
-              _allergy: info.allergy,
+              _patientname: e.detail.value.patientname,
+              _gender: e.detail.value.gender,
+              _age: e.detail.value.age,
+              _telephone: e.detail.value.telephone,
+              _pastmedicalhistory: e.detail.value.pastmedicalhistory,
+              _telephone: e.detail.value.telephone,
+              _allergy: e.detail.value.allergy,
+              patientname: that.data.info.patientname,
+              gender: that.data.info.gender,
+              age: that.data.info.age,
+              telephone: that.data.info.telephone,
+              pastmedicalhistory: that.data.info.pastmedicalhistory,
+              telephone: that.data.info.telephone,
+              allergy: that.data.info.allergy,
               coder: loginCode.code
             },
             header: { "content-type": "application/x-www-form-urlencoded" },

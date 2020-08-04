@@ -87,22 +87,25 @@ class patient(APIView):
         _telephone = request.data.get('_telephone')
         _pastmedicalhistory = request.data.get('_pastmedicalhistory')
         _allergy = request.data.get('_allergy')
-
+        print(request.data)
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                         allergy=allergy).update(patientname=_patientname,
-                                                                 gender=_gender, age=_age,
-                                                                 telephone=_telephone,
-                                                                 pastmedicalhistory=_pastmedicalhistory,
-                                                                 allergy=_allergy)
+            db = patient_model.objects.get(openid=openid, patientname=patientname, gender=gender, age=age,
+                                           telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                           allergy=allergy)
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
+            db.patientname = _patientname
+            db.gender = _gender
+            db.age = _age
+            db.telephone = _telephone
+            db.pastmedicalhistory = _pastmedicalhistory
+            db.allergy = _allergy
+            db.save()
             return Response({'status': True})
 
     def delete(self, request, *args, **kwargs):
@@ -117,9 +120,9 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                         allergy=allergy).delete()
+            db = patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
+                                              telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                              allergy=allergy).delete()
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
