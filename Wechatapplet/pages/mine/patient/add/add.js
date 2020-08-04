@@ -10,11 +10,19 @@ Page({
   },
 
   delete: function () {
+    var that = this
     wx.login({
       success: function (loginCode) {
         wx.request({
           url: 'http://127.0.0.1/api/patient/',
           data: {
+            patientname: that.data.info.patientname,
+            gender: that.data.info.gender,
+            age: that.data.info.age,
+            telephone: that.data.info.telephone,
+            pastmedicalhistory: that.data.info.pastmedicalhistory,
+            telephone: that.data.info.telephone,
+            allergy: that.data.info.allergy,
             coder: loginCode.code
           },
           header: { "content-type": "application/x-www-form-urlencoded" },
@@ -30,6 +38,9 @@ Page({
               wx.showToast({
                 title: '已删除',
               })
+              wx.navigateBack({
+                delta: 1
+              })          
             }
           }
         })
@@ -68,6 +79,9 @@ Page({
                 wx.showToast({
                   title: '添加成功',
                 })
+                wx.navigateBack({
+                  delta: 1
+                }) 
 
                 that.setData({
                   save_data: e.detail.value
@@ -122,6 +136,9 @@ Page({
                 wx.showToast({
                   title: '修改成功',
                 })
+                wx.navigateBack({
+                  delta: 1
+                }) 
 
                 that.setData({
                   save_data: e.detail.value
