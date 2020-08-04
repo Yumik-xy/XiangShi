@@ -4,27 +4,27 @@
 		<view class="con">
 			<view class="con-nr">
 				<text>姓名</text>
-				<input placeholder="请填写真实姓名" name="patientname" type="text"></input>
+				<input placeholder="请填写真实姓名" name="patientname" type="text" value="{{info.patientname}}"></input>
 			</view>
 			<view class="con-nr">
 				<text>性别</text>
-				<input placeholder="性别" name="gender" type="text" maxlength="1"></input>
+				<input placeholder="性别" name="gender" type="text" maxlength="1" value="{{info.gender}}"></input>
 			</view>
 			<view class="con-nr">
 				<text>年龄</text>
-				<input placeholder="年龄" name="age" type="number" maxlength="3"></input>
+				<input placeholder="年龄" name="age" type="number" maxlength="3" value="{{info.age}}"></input>
 			</view>
 			<view class="con-nr">
 				<text>电话</text>
-				<input placeholder="电话" name="telephone" type="number" maxlength="11"></input>
+				<input placeholder="电话" name="telephone" type="number" maxlength="11" value="{{info.telephone}}"></input>
 			</view>
 			<view class="con-nr">
 				<text>既往病史</text>
-				<textarea placeholder="既往病史" name="pastmedicalhistory" auto-height="true"></textarea>
+				<textarea placeholder="既往病史" name="pastmedicalhistory" auto-height="true" value="{{info.pastmedicalhistory}}"></textarea>
 			</view>
 			<view class="con-nr">
 				<text>过敏药物</text>
-				<textarea placeholder="过敏药物" name="allergy" value="" auto-height="true"></textarea>
+				<textarea placeholder="过敏药物" name="allergy" value="" auto-height="true" value="{{info.allergy}}"></textarea>
 			</view>
 		</view>
 
