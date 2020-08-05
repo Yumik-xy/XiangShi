@@ -1,21 +1,34 @@
-/* pages/wiki/detail/detail.wxss */
-.scroll {
-  width: 20%;
-  height: 1110rpx;
-  background: pink;
-  text-align: center;
+page{
+  width: 100%;
+  height: 100%;
 }
 
-.scroll view {
+.scr_left{
+  width: 20%;
+  height: 100vh;
+  text-align: center;
+  background-color:#F2F2F2;
+}
+
+.sc_left_item{
   height: 100rpx;
   line-height: 100rpx;
   border-bottom: 1px solid #ebebeb;
-  background: #fafafa;
+  background-color:#F2F2F2;
 }
 
-.content {
+.sc_right_item{
+  height: 200rpx;
+  line-height: 200rpx;
+  border: 1px solid #ebebeb;
+  border-radius: 20rpx;
+  margin-top: 8px;
+  background: yellow;
+}
+
+.scr_right{
   width: 75%;
-  height: 1110rpx;
+  height: 100vh;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -23,11 +36,28 @@
   box-sizing: border-box;
 }
 
-.content view {
-  height: 200rpx;
-  line-height: 200rpx;
-  border: 1px solid #ebebeb;
-  border-radius: 20rpx;
-  margin-top: 8px;
-  background: yellow;
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.scr_left .sc_left_item.active{
+  position:relative;
+  background:#FFF;
+  color:var(--themeColor);
+  /*
+    border-left: 6rpx solid var(--themeColor);
+  */
+}
+
+.scr_left .sc_left_item.active::before{
+  display: inline-block;
+  width:6rpx;
+  height:60rpx;
+  background:var(--themeColor);
+  content:'';
+  position:absolute;
+  top:20rpx;
+  left:0;
 }
