@@ -63,29 +63,53 @@
 }
 
 .tips {
-  display: flex;
   flex-direction: column;
-  margin: 0rpx 20rpx 25rpx 40rpx;
-  width: auto;
-  height: 100%;
-  view {
+  align-items: center;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  border-top-style: solid;
+  border-top-color: #bfbfbf;
+  border-top-width: 5rpx;
+  .Schedule {
+    display: flex;
+    flex-direction: row;
     margin-top: 10rpx;
-    width: 100%;
-    height: 80rpx;
-    image {
-      width: 680rpx;
-      height: 80rpx;
-      position: absolute;
-      z-index: -1;
-    }
-    text {
+    padding-bottom: 10rpx;
+    border-bottom-style: solid;
+    border-bottom-color: #dbd8d8;
+    border-bottom-width: 1rpx;
+
+    .time {
       display: flex;
       align-items: center;
-      margin-left: 40rpx;
+      flex-direction: column;
+      width: 100rpx;
+      height: auto;
+    }
+    .tip {
+      display: flex;
+      border-left-color: var(--themeColor);
+      border-left-width: 2px;
+      border-left-style: solid;
+      align-items: center;
+      font-size: 30rpx;
+    }
+  }
+
+  .newSchedule {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-color: #dbd8d8;
+    border-bottom-width: 1rpx;
+    text {
       width: 100%;
-      height: 70rpx;
-      z-index: 1;
-      font-size: s;
+      text-align: center;
+      font-size: 40rpx;
+      font-weight: bold;
+      color: var(--themeColor);
     }
   }
 }

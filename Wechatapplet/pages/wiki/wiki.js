@@ -84,7 +84,12 @@ Page({
     var index = e.currentTarget.dataset.cid
     var curindex = this.data.curIndex
     var data = this.data.cateItems[curindex].children[index].children
-    console.log(index,curindex,data)
+    if (data===undefined) {wx.showToast({
+      title: '暂无更多信息',
+      duration:2000,
+      icon:'none'
+    })
+      return}
     wx.navigateTo({
       url: './detail/detail?data='+encodeURIComponent(JSON.stringify(data)),
     })
