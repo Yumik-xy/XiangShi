@@ -5,6 +5,7 @@
     "pages/index/register/register",
     "pages/index/calendar/calendar",
     "pages/wiki/wiki",
+      "pages/wiki/detail/detail",
     "pages/inquiry/inquiry",
     "pages/mine/mine",
       "pages/mine/patient/patient",

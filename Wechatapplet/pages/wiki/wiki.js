@@ -13,7 +13,12 @@ Page({
           { 
             child_id: 1, 
             name: 'a-a', 
-            image: "../../images/a.jpg" 
+            image: "../../images/a.jpg" ,
+            children: [{
+              id: 1,
+              title:'123',
+              text:'1234',
+            }]
           }, 
           { 
             child_id: 2, 
@@ -75,8 +80,18 @@ Page({
     curIndex:0
   },
  
+  nav_click:function(e){
+    var index = e.currentTarget.dataset.cid
+    var curindex = this.data.curIndex
+    var data = this.data.cateItems[curindex].children[index].children
+    console.log(index,curindex,data)
+    wx.navigateTo({
+      url: './detail/detail?data='+encodeURIComponent(JSON.stringify(data)),
+    })
+  },
+
   switchRightTab:function(e){
-    let id = e.target.dataset.id,index=e.target.dataset.index;
+    var id = e.target.dataset.id,index=e.target.dataset.index;
     this.setData({
       curNav:id,
       curIndex:index
