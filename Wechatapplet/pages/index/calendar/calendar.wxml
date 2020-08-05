@@ -24,10 +24,19 @@
       今日事项
     </view>
     <view class="tips">
-      <view wx:for="{{tips}}" wx:key="id">
-        <image src="../../../icon/background/CBorder.png" mode="scaleToFill" />
-        <text>{{item.content}}</text>
+      <view wx:for="{{tips}}" wx:key="id" class="Schedule">
+        <view class="time">
+          <text style="font-size:16px;">{{item.timeStart}}</text>
+          <text style="font-size:12px;color:#brbrbr;">{{item.timeEnd}}</text>
+        </view>
+        <view class="tip">
+          <checkbox style="margin-left:10rpx;zoom:80%;" />
+          {{item.content}}
+        </view>
       </view>
+      <navigator class="newSchedule" url="./newSchedule/newSchedule">
+        <text>+ 新建</text>
+      </navigator>
     </view>
   </view>
 </view>

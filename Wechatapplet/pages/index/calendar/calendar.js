@@ -21,10 +21,14 @@ Component({
     year: null,
     tips: [{
         id: 0,
+        timeStart: "12:00",
+        timeEnd: "13:00",
         content: "最近为特殊时期，出门请带口罩"
       },
       {
         id: 1,
+        timeStart: "8:00",
+        timeEnd: "24:00",
         content: "今日服药：****胶囊，一日三次，饭后即服"
       }
     ]
