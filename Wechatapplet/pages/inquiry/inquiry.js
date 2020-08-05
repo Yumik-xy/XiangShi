@@ -5,7 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    item:[{
+      photo:'../../icon/add.png',
+      name:'中豪鱼',
+      classify:'睾丸',
+      content:'为什么两个不一样大？',
+      picture:'../../icon/background/CBorder.png',
+      time: '2020-8-5'
+    },{
+      photo:'../../icon/add.png',
+      name:'中豪鱼',
+      classify:'睾丸',
+      content:'为什么两个不一样大？',
+      picture:'../../icon/background/CBorder.png',
+      time: '2020-8-5'
+    },{
+      photo:'../../icon/add.png',
+      name:'中豪鱼',
+      classify:'睾丸',
+      content:'为什么两个不一样大？',
+      picture:'../../icon/background/CBorder.png',
+      time: '2020-8-5'
+    },{
+      photo:'../../icon/add.png',
+      name:'中豪鱼',
+      classify:'睾丸',
+      content:'为什么两个不一样大？',
+      picture:'../../icon/background/CBorder.png',
+      time: '2020-8-5'
+    },]
   },
 
   /**

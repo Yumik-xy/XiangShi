@@ -1,1 +1,71 @@
 /* pages/inquiry/inquiry.wxss */
+.inquiry{
+  /* display: flex; */
+  height: auto;
+  margin: 40rpx;
+  padding: 10rpx 20rpx;
+  border-style: solid;
+  box-shadow: 0rpx 2rpx 4rpx 2rpx #DDDDDD;
+  border-width: 0rpx;
+}
+
+.photo{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  border-style: solid;
+  box-shadow: 0rpx 2rpx 4rpx 2rpx #DDDDDD;
+  border-width: 0rpx;
+}
+
+.classify{
+  font-weight: 550;
+  font-size: 34rpx;
+}
+
+.message{
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #3d3d3d;
+}
+
+.message .picture{
+  padding-top: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.time{
+  padding-left: 20rpx;
+}
+
+.title-left{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.title-right{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+
+.title-right .NT{
+  display: flex;
+  flex-direction: row;
+  font-size: 26rpx;
+  color: #3d3d3d;
+}
+
+.other{
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.otimg{
+  width: 32rpx;
+  height: 32rpx;
+}
