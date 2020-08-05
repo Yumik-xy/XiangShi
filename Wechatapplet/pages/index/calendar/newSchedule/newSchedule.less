@@ -8,24 +8,25 @@
   color: var(--themeColor);
   border-radius: 20rpx;
 }
+
 .inputTitle {
   height: 140rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
-}
-.inputTitle input {
-  padding-left: 10rpx;
-  box-shadow: 0 0 2px #000000;
-  height: 80%;
-  font-weight: bold;
+  input {
+    padding-left: 10rpx;
+    box-shadow: 0 0 2px #000000;
+    height: 80%;
+    font-weight: bold;
+  }
 }
 .time {
   height: auto;
   box-shadow: 0 0 2px #000000;
   margin: 20rpx;
-}
-.time :last-child {
-  border-bottom-width: 0;
+  :last-child {
+    border-bottom-width: 0;
+  }
 }
 .inputTime {
   display: flex;
@@ -38,28 +39,29 @@
   border-bottom-style: solid;
   border-bottom-color: var(--themeColor);
   border-bottom-width: 2px;
+  .time-title {
+    padding-left: 10rpx;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  picker {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 20rpx;
+    padding-left: 50rpx;
+    width: 150rpx;
+    border-radius: 25rpx;
+    box-shadow: 0 0 2px #000000;
+  }
 }
-.inputTime .time-title {
-  padding-left: 10rpx;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-}
-.inputTime picker {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin-left: 20rpx;
-  padding-left: 50rpx;
-  width: 150rpx;
-  border-radius: 25rpx;
-  box-shadow: 0 0 2px #000000;
-}
+
 .content {
   height: auto;
   box-shadow: 0 0 2px #000000;
   margin: 20rpx;
-}
-.content textarea {
-  padding: 10rpx;
+  textarea {
+    padding: 10rpx;
+  }
 }
