@@ -1,2 +1,28 @@
 <!--pages/inquiry/inquiry.wxml-->
-<text>pages/inquiry/inquiry.wxml</text>
+<view class="inquirys">
+  <block wx:for="{{item}}" wx:key="index">
+    <view class="inquiry">
+      <view class="title-first">
+        <view class='title-left'>
+          <image class="photo" src="{{item.photo}}" mode="widthFix"></image>
+          <view class='title-right'>
+            <view class='classify'>{{item.classify}} ✈</view>
+            <view class="NT">
+              <view class='name'>{{item.name}}</view>
+              <view class='time'>{{item.time}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='message'>
+        <view class='content'>{{item.content}} </view>
+        <image class='picture' src="{{item.picture}}" mode="aspectFill"></image>
+      </view>
+      <view class='other'>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="awidthFix"></image>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}follow.png" mode="widthFix"></image>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}comment.png" mode="widthFix"></image>
+      </view>
+    </view>
+  </block>
+</view>

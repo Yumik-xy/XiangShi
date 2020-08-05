@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "健康日历",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }
