@@ -1,2 +1,8 @@
 <!--pages/wiki/detail/detail.wxml-->
-<text>pages/wiki/detail/detail.wxml</text>
+<scroll-view class="scroll" scroll-y>
+<view wx:for="{{ left }}" bindtap="scroll" data-id="{{index}}">{{index}}-{{ item }}</view>
+</scroll-view>
+
+<scroll-view class="content" scroll-y scroll-into-view="{{ intoindex }}" scroll-with-animation> 
+<view wx:for="{{ content }}" id="text{{index}}">{{index}}-{{ item }}</view>
+</scroll-view>

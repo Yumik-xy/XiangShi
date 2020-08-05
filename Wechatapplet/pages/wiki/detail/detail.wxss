@@ -1,1 +1,33 @@
 /* pages/wiki/detail/detail.wxss */
+.scroll {
+  width: 20%;
+  height: 1110rpx;
+  background: pink;
+  text-align: center;
+}
+
+.scroll view {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #ebebeb;
+  background: #fafafa;
+}
+
+.content {
+  width: 75%;
+  height: 1110rpx;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 0 20rpx 0 20rpx;
+  box-sizing: border-box;
+}
+
+.content view {
+  height: 200rpx;
+  line-height: 200rpx;
+  border: 1px solid #ebebeb;
+  border-radius: 20rpx;
+  margin-top: 8px;
+  background: yellow;
+}
