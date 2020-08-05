@@ -14,10 +14,23 @@
   margin-right: 20rpx;
 }
 .inputTitle input {
+  text-align: center;
   padding-left: 10rpx;
   box-shadow: 0 0 2px #000000;
   height: 80%;
   font-weight: bold;
+}
+.img {
+  display: flex;
+  align-items: center;
+  padding-left: 15rpx;
+  padding-top: 15rpx;
+  width: 100%;
+  height: auto;
+}
+.img image {
+  width: 8%;
+  height: auto;
 }
 .time {
   height: auto;

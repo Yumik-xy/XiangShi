@@ -3,6 +3,10 @@
   <view class="inputTitle">
     <input placeholder="输入日程标题" name="title"></input>
   </view>
+  <view class="img">
+    <image src="../../../../icon/clock.png" mode="widthFix" />
+    设置时间
+  </view>
   <view class="time">
     <view class="inputTime">
       <text class="time-title">开始时间:</text>
@@ -16,6 +20,10 @@
         <view class="picker">{{timeEnd}}</view>
       </picker>
     </view>
+  </view>
+  <view class="img">
+    <image src="../../../../icon/disease.png" mode="widthFix" />
+    备注
   </view>
   <view class="content">
     <textarea placeholder="输入备注" name="content"></textarea>
