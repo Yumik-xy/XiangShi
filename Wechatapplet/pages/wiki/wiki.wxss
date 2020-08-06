@@ -21,6 +21,8 @@
   font-size:28rpx;
 }
 .nav_left .nav_left_items.active{
+  font-size: 36rpx;
+  font-weight: 550;
   position:relative;
   background:#FFF;
   color:var(--themeColor);
@@ -40,7 +42,7 @@
   position:absolute;
   top:0;
   right:0;
-  width:74.73%;
+  width:74.53%;
   height:100%;
 }
 .nav_right .nav_right_items{
@@ -53,13 +55,17 @@
 
 .nav_right .nav_right_items .top_text{
   background-color: #FAFAFA;
+  padding: 10rpx 0 10rpx 25rpx;
   color: #9A9A9A;
   display: block;
-  padding-left: 30rpx;  
-  font-size: 34rpx;
+  /* padding-left: 30rpx;   */
+  font-size: 26rpx;
+  text-align: left;
   overflow: hidden;  
   white-space: nowrap;  
   text-overflow: ellipsis;  
+  border-top: 2rpx solid #f8f8f8;
+  border-bottom: 2rpx solid #f8f8f8;
 } 
 .nav_right .nav_right_items .bottom{
   display: flex;
