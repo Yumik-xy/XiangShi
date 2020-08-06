@@ -33,10 +33,11 @@
 
 .supplement .supplement_input{
   background-color: white;
-  height: 700rpx;
+  width: 626rpx;
+  height: 770rpx;
   display: flex;
   padding-top: 20rpx;
-  padding-bottom: 32rpx;
+
 }
 
 .submit {

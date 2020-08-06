@@ -7,7 +7,6 @@ Page({
    */
   data: {
     info: {},
-    height:"" 
   },
 
   /**
@@ -28,15 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    let id = "#textareawrap";
-    let query = wx.createSelectorQuery();//创建查询对象
-    query.select(id).boundingClientRect();//获取view的边界及位置信息
-    query.exec(function (res) {
-      that.setData({
-        height: res[0].height + "px"
-      });
-    });
+    
   },
 
   /**
