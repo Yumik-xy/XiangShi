@@ -1,4 +1,15 @@
 <!--pages/inquiry/inquiry.wxml-->
+<view class="search_input" wx:if="{{pulldown}}">
+  <view class="search">
+    <view class="search-left">
+      <image src="../../icon/_search.png"></image>
+      <navigator class="search-placeholder" url="../search/search" open-type="navigate">搜索病症、药品…</navigator>
+    </view>
+    <view bindtap="search" class="search-right">
+      <image src="../../icon/search_white.png"></image>
+    </view>
+  </view>
+</view>
 <view class="inquirys">
   <block wx:for="{{item}}" wx:key="index">
     <view class="inquiry">
@@ -25,4 +36,7 @@
       </view>
     </view>
   </block>
+</view>
+<view class="post">
+  <image class="postimg" src="../../icon/post.png" mode="widthFix"></image>
 </view>
