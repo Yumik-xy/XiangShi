@@ -6,6 +6,7 @@ Page({
    */
   data: {
     item: [{
+      id: 0,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
@@ -13,6 +14,7 @@ Page({
       picture: '../../icon/background/CBorder.png',
       time: '2020-8-5'
     }, {
+      id: 1,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
@@ -20,6 +22,7 @@ Page({
       picture: '../../icon/background/CBorder.png',
       time: '2020-8-5'
     }, {
+      id: 2,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
@@ -27,6 +30,7 @@ Page({
       picture: '../../icon/background/CBorder.png',
       time: '2020-8-5'
     }, {
+      id: 6,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
@@ -44,6 +48,15 @@ Page({
   turn_posting: function () {
     wx.navigateTo({
       url: '../../pages/inquiry/posting/posting',
+    })
+  },
+
+  detail:function(event){
+    console.log(event.currentTarget.dataset.id)
+    var that = this
+    var id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: './detail/detail?id='+that.data.item[id].id,
     })
   },
 
@@ -86,7 +99,7 @@ Page({
     let touches = e.touches[0]
     let clientX = touches.clientX
     let clientY = touches.clientY
-    
+
     // 边界判断
     if (clientX > windowWidth - 60) {
       clientX = windowWidth - 60
@@ -123,7 +136,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         console.log(res);
-        
+
         that.setData({
           SYSTEMINFO: res
         })

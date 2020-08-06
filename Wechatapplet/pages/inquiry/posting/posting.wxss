@@ -39,9 +39,6 @@
   padding-bottom: 32rpx;
 }
 
-
-
-
 .submit {
   width: 500rpx;
   line-height: 85rpx;

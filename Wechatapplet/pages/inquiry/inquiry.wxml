@@ -12,7 +12,7 @@
 </view>
 <view class="inquirys">
   <block wx:for="{{item}}" wx:key="index">
-    <view class="inquiry">
+    <view class="inquiry" bindtap="detail" data-id="{{index}}">
       <view class="title-first">
         <view class='title-left'>
           <image class="photo" src="{{item.photo}}" mode="widthFix"></image>

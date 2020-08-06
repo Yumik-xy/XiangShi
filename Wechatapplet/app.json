@@ -8,6 +8,7 @@
       "pages/wiki/detail/detail",
     "pages/inquiry/inquiry",
       "pages/inquiry/posting/posting",
+      "pages/inquiry/detail/detail",
     "pages/mine/mine",
       "pages/mine/patient/patient",
         "pages/mine/patient/add/add",
