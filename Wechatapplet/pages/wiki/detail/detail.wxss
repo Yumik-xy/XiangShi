@@ -61,22 +61,58 @@ page{
 /*文本*/
 
 .rich-p{
-  margin-top: 24rpx;
-  font-size: 34rpx;
-  line-height: 48rpx;
+  margin-top: 12rpx;
+  margin-bottom: 12rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #585858;
 }
 
 .rich-li{
+  /* margin-top: 12rpx;
+  margin-bottom: 12rpx; */
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #585858;
+}
+
+.rich-h1{
   margin-top: 24rpx;
+  margin-bottom: 10rpx;
   font-size: 34rpx;
   line-height: 48rpx;
 }
 
 .rich-h2{
   margin-bottom: 10rpx;
+  font-size: 30rpx;
+  line-height: 44rpx;
+}
+
+.rich-h3{
+  margin-top: 24rpx;
+  margin-top: 18rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
 }
 
 .rich-h4{
   margin-top: 24rpx;
   margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+
+.rich-h5{
+  margin-top: 24rpx;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+
+.rich-h6{
+  margin-top: 24rpx;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
 }

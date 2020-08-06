@@ -10,6 +10,7 @@
     returnText = returnText.replace(getRegExp('<h4.*?>', 'ig'), '<h4 class="rich-h4">');
     returnText = returnText.replace(getRegExp('<h5.*?>', 'ig'), '<h5 class="rich-h5">');
     returnText = returnText.replace(getRegExp('<h6.*?>', 'ig'), '<h6 class="rich-h6">');
+    returnText = returnText.replace(getRegExp('<li.*?>', 'ig'), '<li class="rich-li">');
     returnText =
       returnText.replace(getRegExp('<title.*?>', 'ig'), '<title class="rich-title">');
     console.log(returnText,'===')
