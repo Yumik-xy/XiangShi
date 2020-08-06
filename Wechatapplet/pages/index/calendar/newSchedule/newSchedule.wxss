@@ -27,6 +27,7 @@
   padding-top: 15rpx;
   width: 100%;
   height: auto;
+  font-size: 38rpx;
 }
 .img image {
   width: 8%;
@@ -50,7 +51,7 @@
   width: 92%;
   border-bottom-style: solid;
   border-bottom-color: var(--themeColor);
-  border-bottom-width: 4rpx;
+  border-bottom-width: 6rpx;
 }
 .inputTime .time-title {
   padding-left: 10rpx;
@@ -67,12 +68,15 @@
   width: 150rpx;
   border-radius: 25rpx;
   box-shadow: 0 0 4rpx #000000;
+  font-size: 28rpx;
 }
 .content {
-  height: auto;
+  height: 450rpx;
   box-shadow: 0 0 4rpx #000000;
   margin: 20rpx;
+  font-size: 28rpx;
 }
 .content textarea {
   padding: 10rpx;
+  font-size: 28rpx;
 }
