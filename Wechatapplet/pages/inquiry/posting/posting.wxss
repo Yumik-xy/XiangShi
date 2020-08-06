@@ -1,0 +1,53 @@
+/* pages/inquiry/posting/posting.wxss */
+.add {
+  height: 100%;
+  width: 100%;
+}
+
+.con {
+  margin: 25rpx 30rpx 50rpx 30rpx;
+}
+
+.title {
+  background-color: white;
+  padding: 32rpx;
+  align-items:center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.title .title_input {
+  background-color: white;
+  width: 100%;
+  align-items:center;
+}
+
+.supplement {
+  background-color: white;
+  height: 800rpx;
+  display: flex;
+  padding-left: 32rpx;
+  padding-top: 32rpx;
+  margin-bottom: 32rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.supplement .supplement_input{
+  background-color: white;
+  height: 700rpx;
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 32rpx;
+}
+
+
+
+
+.submit {
+  width: 500rpx;
+  line-height: 85rpx;
+  text-align: center;
+  margin: 50rpx auto;
+  background-color: var(--themeColor);
+  border-radius: 10rpx;
+  color: white;
+}

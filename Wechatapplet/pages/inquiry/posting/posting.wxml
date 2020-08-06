@@ -1,0 +1,17 @@
+<!--pages/inquiry/posting/posting.wxml-->
+<view class="add">
+	<form bindsubmit='submit' bind>
+		<view class="con">
+			<view class="title">
+				<input class="title_input" placeholder="请输入问题" name="patientname" type="text" value="{{info.title}}"></input>
+			</view>
+      <view class="supplement" style="height:{{height}}rpx">
+				<textarea class="supplement_input"placeholder="对问题进行补充说明，可以更快获得解答" name="patientname" type="text" value="{{info.supplement}}" maxlength="-1" ></textarea>
+			</view>
+		</view>
+
+    <view>
+			<button class="submit" form-type='submit'> 确定 </button>
+		</view>
+	</form>
+</view>

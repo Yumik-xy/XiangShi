@@ -116,10 +116,11 @@
 
 .post{
   position: fixed;
-  right: 40rpx;
-  bottom: 60rpx;
+  right: 30rpx;
+  bottom: 50rpx;
   width: 100rpx;
   height: 100rpx;
+  z-index: 200;
   border-radius: 50rpx;
   background-color: white;
   display: flex;
@@ -134,4 +135,14 @@
   width: 50rpx;
   height: 50rpx;
   transform: translate(-10%,5%);
+}
+
+.post .btn{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }

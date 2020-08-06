@@ -24,12 +24,10 @@
 			</view>
 			<view class="con-nr">
 				<text>过敏药物</text>
-				<textarea placeholder="过敏药物" name="allergy" value="" auto-height="true" value="{{info.allergy}}"></textarea>
+				<textarea placeholder="过敏药物" name="allergy" auto-height="true" value="{{info.allergy}}"></textarea>
 			</view>
 		</view>
 
-		<region-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
-		</region-picker>
 		<view wx:if="{{is==0}}">
 			<button class="submit" form-type='submit'> 确定 </button>
 		</view>

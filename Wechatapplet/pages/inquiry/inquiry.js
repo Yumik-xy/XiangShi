@@ -36,6 +36,15 @@ Page({
     },],
     scrollTop: 0,
     pulldown: true,
+
+    pos: {},
+    SYSTEMINFO: ''
+  },
+
+  turn_posting: function () {
+    wx.navigateTo({
+      url: '../../pages/inquiry/posting/posting',
+    })
   },
 
   onPageScroll: function (ev) {
@@ -62,6 +71,7 @@ Page({
         })
       }
     }
+
     setTimeout(function () {
       that.setData({
         scrollTop: ev.scrollTop
@@ -69,6 +79,35 @@ Page({
     }, 200)
   },
 
+  menuMainMove(e) {
+    // 如果已经弹出来了，需要先收回去，否则会受 top、left 会影响
+    let windowWidth = this.data.SYSTEMINFO.windowWidth
+    let windowHeight = this.data.SYSTEMINFO.windowHeight
+    let touches = e.touches[0]
+    let clientX = touches.clientX
+    let clientY = touches.clientY
+    
+    // 边界判断
+    if (clientX > windowWidth - 60) {
+      clientX = windowWidth - 60
+    }
+    if (clientX <= 10) {
+      clientX = 10
+    }
+    if (clientY > windowHeight - 60) {
+      clientY = windowHeight - 60
+    }
+    if (clientY <= 60) {
+      clientY = 60
+    }
+    let pos = {
+      left: clientX,
+      top: clientY,
+    }
+    this.setData({
+      pos,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -80,7 +119,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        
+        that.setData({
+          SYSTEMINFO: res
+        })
+      }
+    })
   },
 
   /**
