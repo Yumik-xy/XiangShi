@@ -1,16 +1,40 @@
-    <scroll-view scroll-y="true" class="scr_left" scroll-top="{{leftTop}}" scroll-with-animation="true">
-      <block wx:for="{{leftData}}" wx:for-item="lcai" wx:key="index">
-        <view class="sc_left_item {{cp_index==index? 'active':''}}"  data-id="c_{{lcai.id}}" data-index="{{index}}" bindtap="leftTap">
-        {{lcai.name}}
-        </view>
-      </block>
-    </scroll-view>
-   
+<wxs module='tools'>
+  var HtmlToText = function (inputText) {
+    var returnText = "" + inputText;
+    returnText = returnText.replace(getRegExp('<!.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<meta.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<p.*?>', 'ig'), '<p class="rich-p">');
+    returnText = returnText.replace(getRegExp('<h1.*?>', 'ig'), '<h1 class="rich-h1">');
+    returnText = returnText.replace(getRegExp('<h2.*?>', 'ig'), '<h2 class="rich-h2">');
+    returnText = returnText.replace(getRegExp('<h3.*?>', 'ig'), '<h3 class="rich-h3">');
+    returnText = returnText.replace(getRegExp('<h4.*?>', 'ig'), '<h4 class="rich-h4">');
+    returnText = returnText.replace(getRegExp('<h5.*?>', 'ig'), '<h5 class="rich-h5">');
+    returnText = returnText.replace(getRegExp('<h6.*?>', 'ig'), '<h6 class="rich-h6">');
+    returnText =
+      returnText.replace(getRegExp('<title.*?>', 'ig'), '<title class="rich-title">');
+    console.log(returnText,'===')
+    return returnText;
+  }
+  module.exports.HtmlToText = HtmlToText;
+</wxs>
 
-    <scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true" bindscroll="bindscroll">
-      <block wx:for="{{rightData}}" wx:for-item="rcai" wx:key="index">
-        <view class="sc_right_item" id="c_{{rcai.id}}"  data-id="c_{{rcai.id}}" data-index="{{index}}" bindtap="rightTap" >
-          <rich-text nodes="{{rcai.content}}"></rich-text>
-        </view>
-      </block>
-    </scroll-view>
+
+
+<scroll-view scroll-y="true" class="scr_left" scroll-top="{{leftTop}}" scroll-with-animation="true">
+  <block wx:for="{{leftData}}" wx:for-item="lcai" wx:key="index">
+    <view class="sc_left_item {{cp_index==index? 'active':''}}" data-id="c_{{lcai.id}}" data-index="{{index}}"
+      bindtap="leftTap">
+      {{lcai.name}}
+    </view>
+  </block>
+</scroll-view>
+
+
+<scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true"
+  bindscroll="bindscroll">
+  <block wx:for="{{rightData}}" wx:for-item="rcai" wx:key="index">
+    <view class="sc_right_item" id="c_{{rcai.id}}" data-id="c_{{rcai.id}}" data-index="{{index}}" bindtap="rightTap">
+      <rich-text nodes="{{tools.HtmlToText(rcai.content)}}"></rich-text>
+    </view>
+  </block>
+</scroll-view>

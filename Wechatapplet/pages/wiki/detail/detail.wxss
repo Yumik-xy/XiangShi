@@ -29,11 +29,11 @@ page{
   box-sizing: border-box;
 }
 
-.sc_right_item{
+/* .sc_right_item{
   line-height: 200rpx;
   font-size:34rpx;
   margin-top: 8rpx;
-}
+} */
 
 ::-webkit-scrollbar{
   width: 0;
@@ -61,3 +61,7 @@ page{
 }
 
 /*文本*/
+
+.rich-p{
+  font-size: 200rpx;
+}
