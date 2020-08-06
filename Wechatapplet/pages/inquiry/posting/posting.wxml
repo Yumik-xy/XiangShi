@@ -3,10 +3,10 @@
 	<form bindsubmit='submit' bind>
 		<view class="con">
 			<view class="title">
-				<input class="title_input" placeholder="请输入问题" name="patientname" type="text" value="{{info.title}}"></input>
+				<input class="title_input" placeholder="请输入问题" name="patientname" type="text"></input>
 			</view>
-      <view class="supplement" style="height:{{height}}rpx">
-				<textarea class="supplement_input"placeholder="对问题进行补充说明，可以更快获得解答" name="patientname" type="text" value="{{info.supplement}}" maxlength="-1" ></textarea>
+      <view class="supplement">
+				<textarea class="supplement_input" placeholder="对问题进行补充说明，可以更快获得解答" name="supplement" type="text" maxlength="-1" ></textarea>
 			</view>
 		</view>
 
