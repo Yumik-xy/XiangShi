@@ -25,15 +25,13 @@ page{
   position: absolute;
   right: 0px;
   top: 0px;
-  margin: 0 20rpx 0 20rpx;
+  margin: 0 10rpx 0 10rpx;
   box-sizing: border-box;
 }
 
-/* .sc_right_item{
-  line-height: 200rpx;
-  font-size:34rpx;
-  margin-top: 8rpx;
-} */
+.sc_right_item{
+  margin-bottom: 60rpx;
+} 
 
 ::-webkit-scrollbar{
   width: 0;
@@ -63,5 +61,22 @@ page{
 /*文本*/
 
 .rich-p{
-  font-size: 200rpx;
+  margin-top: 24rpx;
+  font-size: 34rpx;
+  line-height: 48rpx;
+}
+
+.rich-li{
+  margin-top: 24rpx;
+  font-size: 34rpx;
+  line-height: 48rpx;
+}
+
+.rich-h2{
+  margin-bottom: 10rpx;
+}
+
+.rich-h4{
+  margin-top: 24rpx;
+  margin-top: 18rpx;
 }

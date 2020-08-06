@@ -19,7 +19,6 @@
 </wxs>
 
 
-
 <scroll-view scroll-y="true" class="scr_left" scroll-top="{{leftTop}}" scroll-with-animation="true">
   <block wx:for="{{leftData}}" wx:for-item="lcai" wx:key="index">
     <view class="sc_left_item {{cp_index==index? 'active':''}}" data-id="c_{{lcai.id}}" data-index="{{index}}"
