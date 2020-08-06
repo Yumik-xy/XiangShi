@@ -47,24 +47,26 @@ Page({
       ev.scrollTop = wx.getSystemInfoSync().windowHeight;
     }
     //给scrollTop重新赋值
-    setTimeout(function () {
-      that.setData({
-        scrollTop: ev.scrollTop
-      })
-    }, 0)
     //判断浏览器滚动条上下滚动
     if (ev.scrollTop > this.data.scrollTop || ev.scrollTop == wx.getSystemInfoSync().windowHeight) {
       //向下滚动
-      if (ev.scrollTop > 65)
+      if (ev.scrollTop > 65 && ev.scrollTop - that.data.scrollTop > 50)
         that.setData({
           pulldown: false
         })
     } else {
       //向上滚动
-      that.setData({
-        pulldown: true
-      })
+      if (ev.scrollTop < 30 || ev.scrollTop - that.data.scrollTop < -50) {
+        that.setData({
+          pulldown: true
+        })
+      }
     }
+    setTimeout(function () {
+      that.setData({
+        scrollTop: ev.scrollTop
+      })
+    }, 200)
   },
 
   /**
