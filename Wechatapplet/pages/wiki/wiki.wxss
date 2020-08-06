@@ -1,6 +1,6 @@
 /* pages/wiki/wiki.wxss */
 .container{
-  position:fixed;
+  /*position:fixed;*/
   width:100%;
   height:100%;
   background-color:#FFF;
@@ -8,11 +8,12 @@
 .nav_left{
   width:25%;
   height:100%;
-  background:#F2F2F2;
+  background:#FAFAFA;
   text-align:center;
   position:absolute;
   top:0;
   left:0;
+  border-right:2rpx solid #F2F2F2;
 }
 .nav_left .nav_left_items{
   height:100rpx;
@@ -23,6 +24,7 @@
   position:relative;
   background:#FFF;
   color:var(--themeColor);
+  border-right:0rpx solid #F2F2F2;
 }
 .nav_left .nav_left_items.active::before{
   display: inline-block;
@@ -38,37 +40,48 @@
   position:absolute;
   top:0;
   right:0;
-  width:75%;
+  width:74.73%;
   height:100%;
 }
- 
 .nav_right .nav_right_items{
+  display: flex;
+  flex-direction: column;
   float: left;   
-  width: 33.33%; 
-  text-align: center;  
-  padding:30rpx 0;
+  width: 100%;   
+  padding-bottom: 80rpx;
 } 
-.nav_right .nav_right_items image{
-  width: 120rpx;  
-  height: 120rpx; 
-} 
-.nav_right .nav_right_items text{
-  display: block;  
-  margin-top: 20rpx;  
-  font-size: 28rpx;  
+
+.nav_right .nav_right_items .top_text{
+  background-color: #FAFAFA;
+  color: #9A9A9A;
+  display: block;
+  padding-left: 30rpx;  
+  font-size: 34rpx;
   overflow: hidden;  
   white-space: nowrap;  
   text-overflow: ellipsis;  
 } 
+.nav_right .nav_right_items .bottom{
+  display: flex;
+  flex-direction: row;
+}
+.nav_right .nav_right_items_child{
+  float: left;   
+  width: 33.33%; 
+  text-align: center;
+  padding:30rpx 0;
+}
+.nav_right .nav_right_items .nav_right_items_child .bottom_text{
+  display: block;  
+  margin-top: 20rpx;  
+  font-size: 26rpx; 
+}
+
 .nocate{
   padding:100rpx;
   text-align: center;  
 } 
- 
-.nocate image{
-  width:70rpx;
-  height:70rpx;
-}
+
 .nocate text{
   font-size:28rpx;
   display:block;
