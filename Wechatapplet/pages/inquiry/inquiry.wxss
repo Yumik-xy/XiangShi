@@ -63,7 +63,7 @@
 }
 
 .classify{
-  font-weight: 550;
+  font-weight: bold;
   font-size: 34rpx;
 }
 
