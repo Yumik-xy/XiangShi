@@ -2,12 +2,12 @@
 .box {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: auto;
 }
 .box .dateBox {
   width: 100%;
   height: auto;
-  line-height: 10px;
+  line-height: 20rpx;
   text-align: center;
   margin-top: 40rpx;
   margin-bottom: 20rpx;
@@ -19,7 +19,7 @@
   text-align: center;
   font-size: 34rpx;
 }
-.week {
+.box .week {
   width: 100%;
   height: auto;
   display: flex;
@@ -27,19 +27,19 @@
   padding-bottom: 10rpx;
   background-color: #eee1e1;
   border-radius: 25rpx;
-  font-size: large;
+  font-size: 36rpx;
 }
-.calendar {
+.box .calendar {
   width: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: 0 0 3px #000000;
+  box-shadow: 0 0 6rpx #000000;
   margin-top: 10rpx;
   border-radius: 10rpx;
 }
-.calendar view {
+.box .calendar view {
   width: auto;
 }
 .dateOn {
@@ -85,10 +85,15 @@
 .tips .Schedule .tip {
   display: flex;
   border-left-color: var(--themeColor);
-  border-left-width: 2px;
+  border-left-width: 4rpx;
   border-left-style: solid;
   align-items: center;
   font-size: 30rpx;
+}
+.tips .Schedule .tip checkbox {
+  display: flex;
+  align-items: center;
+  margin: 5rpx;
 }
 .tips .newSchedule {
   display: flex;
@@ -97,7 +102,7 @@
   text-align: center;
   border-bottom-style: solid;
   border-bottom-color: #dbd8d8;
-  border-bottom-width: 1rpx;
+  border-bottom-width: 2rpx;
 }
 .tips .newSchedule text {
   width: 100%;

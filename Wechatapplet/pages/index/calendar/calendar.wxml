@@ -30,7 +30,7 @@
           <text style="font-size:12px;color:#brbrbr;">{{item.timeEnd}}</text>
         </view>
         <view class="tip">
-          <checkbox style="margin-left:10rpx;zoom:80%;" />
+          <checkbox />
           {{item.content}}
         </view>
       </view>
