@@ -14,13 +14,13 @@ from .models import inquirypost as inquirypost_model
 # Create your views here.
 
 class login(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         return Response({'status': True})
 
 
 # 药物查询
 class medicine(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         try:
             drumname = request.query_params.get('drumname')
             drums = medicine_model.objects.filter(drumname__contain=drumname).values()[0:30]
@@ -33,20 +33,20 @@ class medicine(APIView):
 
 # 症状List查询
 class symptom_list(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         return Response({'status': True})
 
 
 # 症状查询
 class symptom(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         id = int(id)
         return Response({'status': True})
 
 
 # 病人查询
 class patient(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         coder = request.query_params.get('coder')
         print(coder)
         openid = GetOpenid(coder)
@@ -64,7 +64,7 @@ class patient(APIView):
 
             return Response({'status': True, 'data': json_data})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         patientname = request.data.get('patientname')
         gender = request.data.get('gender')
         age = request.data.get('age')
@@ -86,7 +86,7 @@ class patient(APIView):
         else:
             return Response({'status': True})
 
-    def put(self, request, *args, **kwargs):
+    def put(self, request):
         # old data
         patientname = request.data.get('patientname')
         gender = request.data.get('gender')
@@ -122,7 +122,7 @@ class patient(APIView):
             db.save()
             return Response({'status': True})
 
-    def delete(self, request, *args, **kwargs):
+    def delete(self, request):
         patientname = request.data.get('patientname')
         gender = request.data.get('gender')
         age = request.data.get('age')
@@ -143,14 +143,19 @@ class patient(APIView):
             return Response({'status': True})
 
 
+class inquirypost_list(APIView):
+    def get(self, request):
+        return Response({'status': True})
+
+
 class inquirypost(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, id):
         id = int(id)
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'picture1', 'picture2', 'picture3')
-            json_data = list(drums)
+            json_data = list(inquirypost)
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
-            return Response({'status': True})
+            return Response({'status': True, 'data': json_data})

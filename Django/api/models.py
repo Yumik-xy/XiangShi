@@ -43,7 +43,7 @@ class inquirypost(models.Model):
     name = models.CharField(max_length=30, verbose_name='用户名')
     title = models.CharField(max_length=60, verbose_name='标题')
     classify = models.CharField(max_length=30, verbose_name='分类')
-    content = models.CharField(verbose_name='正文')
+    content = models.TextField(verbose_name='正文')
     picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
     picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
     picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
