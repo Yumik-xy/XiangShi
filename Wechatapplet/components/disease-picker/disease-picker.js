@@ -11,7 +11,7 @@ Component({
         });
       },
     },
-    regionValue: {
+    classify: {
       type: Array,
       value: [],
       observer: function(newVal, oldVal) {
@@ -75,7 +75,7 @@ Component({
       });
       myEventDetail = {
         showRegion: this.data.dialog,
-        regionValue: this.data.region.tabs,
+        classify: this.data.region.tabs,
       };
       this.triggerEvent('myevent', myEventDetail, myEventOption);
     },

@@ -3,11 +3,10 @@
 	<view class="free-dialog__mask" bindtap="emitHideRegion"></view>
 	<view class="free-dialog__container">
 		<view class="free-dialog__container__header">
-			<text>选择所在地区</text>
+			<text>选择要咨询的疾病类型</text>
 			<view class="close" bindtap="emitHideRegion">
-				<image src="../../../images/close.png"></image>
+				<image src="../../icon/close.png"></image>
 			</view>
-			<!-- <image src="../../../images/close.png" class="close" bindtap="emitHideRegion"></image> -->
 		</view>
 		<view class="free-dialog__container__content">
 			<view class="free-content {{isIphoneX ? 'ipx' : ''}}">

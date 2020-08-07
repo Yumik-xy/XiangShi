@@ -39,6 +39,8 @@
 }
 .free-dialog__container__header text{
   flex: 9;
+  font-size: 34rpx;
+  line-height: 36rpx;
 }
 .close{
   flex: 2;
@@ -63,7 +65,7 @@
   border-bottom: 4rpx solid white;
 }
 .free-content__tabs__tab.select {
-  border-color: #3cb778;
+  border-color: var(--themeColor);
 }
 .free-content__scroll {
   padding: 0 40rpx;
