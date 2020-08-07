@@ -34,7 +34,7 @@
 .supplement .supplement_input{
   background-color: white;
   width: 626rpx;
-  height: 770rpx;
+  height: 95%;
   display: flex;
   padding-top: 20rpx;
 
@@ -48,4 +48,71 @@
   background-color: var(--themeColor);
   border-radius: 10rpx;
   color: white;
+}
+
+.pf-type {
+  color: #666666;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.q-image-wrap {
+  width: 690rpx;
+  height: 340.4rpx;
+  padding-bottom: 30rpx;
+  margin: 20rpx 30rpx 30rpx 30rpx;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: white;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.q-image-remover {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  background: var(--themeColor);
+  position: absolute;
+  top: -50rpx;
+  right: -50rpx;
+}
+
+.q-image-remover image {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 10rpx;
+  bottom: 10rpx;
+  color: #fff;
+}
+
+.uploadImgBtn {
+  margin: 20rpx 30rpx 30rpx 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  width: 690rpx;
+  height: 240.4rpx;
+  text-align: center;
+  border-bottom: 1px solid #f2f2f2;
+  float: left;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.uploadImgBtn image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.q-image {
+  width: 500rpx;
+  height: 340.4rpx;
+  justify-content: center;
 }
