@@ -12,29 +12,28 @@
 </view>
 <view class="inquirys">
   <block wx:for="{{item}}" wx:key="index">
-    <view class="inquiry" bindtap="detail" data-id="{{index}}">
-      <view class="title-first">
-        <view class='title-left'>
-          <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
-          <view class='title-right'>
-            <view class='title'>{{item.title}} ✈</view>
-            <view class="NT">
-              <view class='name'>{{item.name}}</view>
-              <view class='time'>{{item.time}}</view>
+    <view class="inquiry">
+      <view bindtap="detail" data-id="{{index}}">
+        <view class="title-first">
+          <view class='title-left'>
+            <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
+            <view class='title-right'>
+              <view class='title'>{{item.title}} ✈</view>
+              <view class="NT">
+                <view class='name'>{{item.name}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
             </view>
           </view>
         </view>
+        <view class='message'>
+          <rich-text nodes="<p class='content'><a class='classify'>{{item.classify}}</a>{{item.content}}</p>">
+          </rich-text>
+        </view>
       </view>
-      <view class='message'>
-        <rich-text nodes="<p class='content'><a class='classify'>{{item.classify}}</a>{{item.content}}</p>">
-        </rich-text>
-        <!-- <view class='classify'>{{item.classify}}</view>
-        <view class='content'>{{item.content}} </view> -->
-      </view>
-      <view class='picmessage'>
-        <block wx:for="{{item.picture}}" wx:key="index" wx:for-item="pic">
-          <image class='picture' src="{{pic}}" mode="widthFix" data-src="{{pic}}" bindtap="previewPic"></image>
-        </block>
+      <view class='picmessage' wx:if='{{item.picture}}'>
+        <image class='picture' src="{{pic}}" wx:for="{{item.picture}}" wx:key="key"  wx:for-item="pic" mode="widthFix"
+          data-src="{{pic}}" data-list="{{item.picture}}" bindtap="previewPic"></image>
       </view>
       <view class='other'>
         <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
