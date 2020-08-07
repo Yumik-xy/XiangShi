@@ -24,6 +24,17 @@
       <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
       <image class='otimg' src="../../../icon/{{love?'':'_'}}follow.png" mode="aspectFit"></image>
     </view>
+    <view class="comment">
+      <block wx:for="{{data.data.comment}}" wx:key="comi" wx:for-item="firstcom">
+        <view>{{firstcom.name}}:{{firstcom.content}}</view>
+        <block wx:for="{{firstcom.comment}}" wx:key="comj" wx:for-item="secondcom">
+          <view>{{secondcom.name}}:{{secondcom.content}}</view>
+        </block>
+      </block>
+
+    </view>
+
+
   </view>
 
 

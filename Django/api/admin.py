@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from api.models import medicine
 from api.models import patient
+from api.models import inquirypost
 
 
 class medicineAdmin(admin.ModelAdmin):
@@ -18,6 +19,12 @@ class patientAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(medicine, medicineAdmin)
+class inquirypostAdmin(admin.ModelAdmin):
+    search_fields = ('title', 'classify',)  # 根据属性搜索
+    list_display = ('title', 'classify',)  # 列表显示的属性
+    pass
 
+
+admin.site.register(medicine, medicineAdmin)
 admin.site.register(patient, patientAdmin)
+admin.site.register(inquirypost, inquirypostAdmin)

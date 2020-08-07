@@ -5,6 +5,10 @@ from rest_framework.response import Response
 from .method.method import *
 from .models import medicine as medicine_model
 from .models import patient as patient_model
+from .models import inquirypost as inquirypost_model
+
+
+# next code 10005
 
 
 # Create your views here.
@@ -14,6 +18,7 @@ class login(APIView):
         return Response({'status': True})
 
 
+# 药物查询
 class medicine(APIView):
     def get(self, request, *args, **kwargs):
         try:
@@ -26,11 +31,20 @@ class medicine(APIView):
             return Response({'status': True, 'data': json_data})
 
 
-class symptom(APIView):
+# 症状List查询
+class symptom_list(APIView):
     def get(self, request, *args, **kwargs):
         return Response({'status': True})
 
 
+# 症状查询
+class symptom(APIView):
+    def get(self, request, *args, **kwargs):
+        id = int(id)
+        return Response({'status': True})
+
+
+# 病人查询
 class patient(APIView):
     def get(self, request, *args, **kwargs):
         coder = request.query_params.get('coder')
@@ -121,9 +135,22 @@ class patient(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                              telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                              allergy=allergy).delete()
+                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+                                         allergy=allergy).delete()
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
+        else:
+            return Response({'status': True})
+
+
+class inquirypost(APIView):
+    def get(self, request, *args, **kwargs):
+        id = int(id)
+        try:
+            inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
+                                                                         'picture1', 'picture2', 'picture3')
+            json_data = list(drums)
+        except:
+            return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
             return Response({'status': True})
