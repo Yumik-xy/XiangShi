@@ -16,6 +16,7 @@
 .con-nr {
   background-color: white;
   display: flex;
+  height: 32rpx;
   padding-left: 32rpx;
   padding-top: 32rpx;
   padding-bottom: 32rpx;
@@ -30,6 +31,7 @@
 .con-nr input {
   float: right;
   font-size: 30rpx;
+  height: 32rpx;
   padding-right: 32rpx;
   flex: 6;
 }
@@ -46,6 +48,7 @@
   line-height: 85rpx;
   text-align: center;
   margin: 50rpx auto;
+  font-size: 35rpx;
   background-color: var(--themeColor);
   border-radius: 10rpx;
   color: white;
