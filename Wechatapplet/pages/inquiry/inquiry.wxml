@@ -15,9 +15,9 @@
     <view class="inquiry" bindtap="detail" data-id="{{index}}">
       <view class="title-first">
         <view class='title-left'>
-          <image class="photo" src="{{item.photo}}" mode="widthFix"></image>
+          <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
           <view class='title-right'>
-            <view class='classify'>{{item.classify}} ✈</view>
+            <view class='title'>{{item.title}} ✈</view>
             <view class="NT">
               <view class='name'>{{item.name}}</view>
               <view class='time'>{{item.time}}</view>
@@ -26,18 +26,26 @@
         </view>
       </view>
       <view class='message'>
-        <view class='content'>{{item.content}} </view>
-        <image class='picture' src="{{item.picture}}" mode="aspectFill"></image>
+        <rich-text nodes="<p class='content'><a class='classify'>{{item.classify}}</a>{{item.content}}</p>">
+        </rich-text>
+        <!-- <view class='classify'>{{item.classify}}</view>
+        <view class='content'>{{item.content}} </view> -->
+      </view>
+      <view class='picmessage'>
+        <block wx:for="{{item.picture}}" wx:key="index" wx:for-item="pic">
+          <image class='picture' src="{{pic}}" mode="widthFix"></image>
+        </block>
       </view>
       <view class='other'>
-        <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="awidthFix"></image>
-        <image class='otimg' src="../../icon/{{love?'':'_'}}follow.png" mode="widthFix"></image>
-        <image class='otimg' src="../../icon/{{love?'':'_'}}comment.png" mode="widthFix"></image>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}follow.png" mode="aspectFit"></image>
+        <image class='otimg' src="../../icon/{{love?'':'_'}}comment.png" mode="aspectFit"></image>
       </view>
     </view>
   </block>
 </view>
-<view class="post" animation="{{animationMain}}" catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'>
+<view class="post" animation="{{animationMain}}" catchtouchmove='menuMainMove'
+  style='top:{{pos.top}}px;left:{{pos.left}}px;'>
   <image class="postimg" src="../../icon/post.png" mode="widthFix"></image>
   <button class="btn" bindtap="turn_posting"></button>
 </view>

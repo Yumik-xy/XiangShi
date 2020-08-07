@@ -1,2 +1,2 @@
 <!--pages/inquiry/detail/detail.wxml-->
-<text>pages/inquiry/detail/detail.wxml</text>
+<text>{{id}}</text>

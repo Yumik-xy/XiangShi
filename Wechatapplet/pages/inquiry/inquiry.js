@@ -10,32 +10,36 @@ Page({
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
+      title: '高娃不一样大',
       content: '为什么两个不一样大？',
-      picture: '../../icon/background/CBorder.png',
+      picture: [],
       time: '2020-8-5'
     }, {
       id: 1,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
+      title: '高娃不一样大',
       content: '为什么两个不一样大？',
-      picture: '../../icon/background/CBorder.png',
+      picture: ['../../icon/background/CBorder.png'],
       time: '2020-8-5'
     }, {
       id: 2,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
-      content: '为什么两个不一样大？',
-      picture: '../../icon/background/CBorder.png',
+      title: '高娃不一样大',
+      content: '为什么两个不一样大？不会吧不会吧，还有人两个都是一样大的吗？？？为什么人要这么多个高娃哦？我有一个我自豪，单眼皮多漂亮，单蛋蛋多帅气！不会吧不会吧，你难道不同意吗？？？',
+      picture: ['../../icon/background/CBorder.png', '../../icon/background/CBorder.png', '../../icon/background/CBorder.png'],
       time: '2020-8-5'
     }, {
       id: 6,
       photo: '../../icon/add.png',
       name: '中豪鱼',
       classify: '睾丸',
+      title: '高娃不一样大',
       content: '为什么两个不一样大？',
-      picture: '../../icon/background/CBorder.png',
+      picture: ['../../icon/background/CBorder.png'],
       time: '2020-8-5'
     },],
     scrollTop: 0,
@@ -51,12 +55,12 @@ Page({
     })
   },
 
-  detail:function(event){
+  detail: function (event) {
     console.log(event.currentTarget.dataset.id)
     var that = this
     var id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: './detail/detail?id='+that.data.item[id].id,
+      url: './detail/detail?id=' + that.data.item[id].id,
     })
   },
 
