@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 # Create your models here.
@@ -43,7 +44,7 @@ class inquirypost(models.Model):
     name = models.CharField(max_length=30, verbose_name='用户名')
     title = models.CharField(max_length=60, verbose_name='标题')
     classify = models.CharField(max_length=30, verbose_name='分类')
-    content = models.TextField(verbose_name='正文')
+    content = RichTextField(verbose_name='正文')
     picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
     picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
     picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
@@ -53,3 +54,36 @@ class inquirypost(models.Model):
         verbose_name_plural = '问诊信息'
         verbose_name = '问诊'
         db_table = 'inquirypost'
+
+    def __str__(self):
+        return self.content[:120]
+
+
+class comment(MPTTModel):
+    openid = models.CharField(max_length=60, verbose_name='openid')
+    name = models.CharField(max_length=30, verbose_name='用户名')
+    postid = models.ForeignKey(inquirypost, on_delete=models.CASCADE, related_name='postid')
+
+    parent = TreeForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='children'
+    )
+
+    reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名')
+
+    body = RichTextField(verbose_name='评论内容')
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = '评论信息'
+        verbose_name = '评论'
+        db_table = 'comment'
+
+    class MPTTMeta:
+        order_insertion_by = ['created']
+
+    def __str__(self):
+        return self.body[:20]
