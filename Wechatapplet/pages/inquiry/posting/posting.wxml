@@ -5,36 +5,39 @@
 			<view class="title">
 				<input class="title_input" placeholder="请输入问题" name="patientname" type="text"></input>
 			</view>
-      <view class="supplement">
-				<textarea class="supplement_input" placeholder="对问题进行补充说明，可以更快获得解答" name="supplement" type="text" maxlength="-1" ></textarea>
-			</view>	
+			<view class="supplement">
+				<textarea class="supplement_input" placeholder="对问题进行补充说明，可以更快获得解答" name="supplement" type="text"
+					maxlength="-1"></textarea>
+			</view>
 			<view class="disease" bindtap="chooseRegion">
 				<text></text>
-				<input disabled placeholder="选择城市" name="address" value="{{regionValue[0].name}}{{regionValue[1].name}}{{regionValue[2].name}}">
+				<input disabled placeholder="选择城市" name="address"
+					value="{{regionValue[0].name}}{{regionValue[1].name}}{{regionValue[2].name}}">
 				</input>
 			</view>
-		</view>	
+		</view>
 
 		<view class="upLoad">
 			<text class='pf-type'>添加图片</text>
-				<view class="question-images clearFloat">
-					<block wx:for="{{images}}" wx:key="*this">
-						<view class="q-image-wrap"> 
-							<image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-							<view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">
-								<image src="../../../icon/cross.png"></image>
-							</view>
+			<view class="question-images clearFloat">
+				<block wx:for="{{images}}" wx:key="*this">
+					<view class="q-image-wrap">
+						<image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview">
+						</image>
+						<view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">
+							<image src="../../../icon/cross.png"></image>
 						</view>
-					</block>
-					<view class='uploadImgBtn' bindtap="chooseImage" wx:if="{{images.length < 3}}">
-						<image src="../../../icon/jiahao.png"></image>
 					</view>
-				</view>	
+				</block>
+				<view class='uploadImgBtn' bindtap="chooseImage" wx:if="{{images.length < 3}}">
+					<image src="../../../icon/jiahao.png"></image>
+				</view>
+			</view>
 		</view>
 
 		<disease-picker region-value="{{regionValue}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
 		</disease-picker>
-    <view>
+		<view>
 			<button style="width:100%" class="submit" form-type='submit'> 确定 </button>
 		</view>
 	</form>

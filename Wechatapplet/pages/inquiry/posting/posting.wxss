@@ -119,10 +119,13 @@
 }
 
 .submit {
+  margin-top: 20rpx;
   position: fixed;
   bottom: 0;
   font-size: 40rpx;
-  height: 70rpx;
+  /* line-height: 40rpx; */
+  text-align: center;
+  height: 85rpx;
   width: 100%;
   color: white;
   background-color:var(--themeColor);

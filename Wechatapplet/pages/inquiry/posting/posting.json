@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "disease_picker":"../../../components/disease_picker/disease_picker"
+    "disease-picker":"../../../components/disease-picker/disease-picker"
   }
 }

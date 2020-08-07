@@ -14,8 +14,7 @@
       </view>
     </view>
     <view class='message'>
-      <rich-text nodes="<p class='content'><a class='classify'>{{data.data.classify}}</a>{{data.data.content}}</p>">
-      </rich-text>
+      <view class="content">{{data.data.content}} </view>
     </view>
     <view class='picmessage' wx:if='{{data.data.picture}}'>
       <image class='picture' src="{{pic}}" wx:for="{{data.data.picture}}" wx:key="key" wx:for-item="pic" mode="widthFix"
