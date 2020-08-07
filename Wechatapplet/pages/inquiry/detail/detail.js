@@ -21,7 +21,7 @@ Page({
         comment: [{
           name: '荒信誉',
           content: '说得好！',
-          data: [{
+          comment: [{
             name: '真厉害',
             content: '好锤子？'
           }]
