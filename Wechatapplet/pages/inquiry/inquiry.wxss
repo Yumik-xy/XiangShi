@@ -113,7 +113,7 @@
 .picmessage .picture {
   padding-top: 20rpx;
   width: 32%;
-  /* height: 200rpx; */
+  height: 120rpx;
   margin-right: 1%;
 }
 

@@ -33,7 +33,7 @@
       </view>
       <view class='picmessage'>
         <block wx:for="{{item.picture}}" wx:key="index" wx:for-item="pic">
-          <image class='picture' src="{{pic}}" mode="widthFix"></image>
+          <image class='picture' src="{{pic}}" mode="widthFix" data-src="{{pic}}" bindtap="previewPic"></image>
         </block>
       </view>
       <view class='other'>
