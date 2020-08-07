@@ -1,4 +1,6 @@
 // pages/inquiry/posting/posting.js
+
+
 Page({
   /**
    * 页面的初始数据
@@ -6,8 +8,74 @@ Page({
   data: {
     info: {},
     images:[],
-    regionValue: [],
+    classify: [],
     showRegion: false,
+  },
+
+  submit: function (e) {
+    var that = this
+    console.log(e);
+    
+    console.log(e.detail.value)
+    wx.login({
+      success: function (loginCode) {
+        console.log(loginCode);
+        
+        if (that.data.is == 0) {
+          wx.request({
+            url: 'http://127.0.0.1/api/patient/',
+            data: {
+              openid: loginCode.code,
+              name: app.globalData.userInfo.nickname,
+              title: e.detail.value.title,
+              classify: this.data.classify[1],
+              content: e.detail.value.content,
+              picture1: this.data.images[0],
+              picture2: this.data.images[1],
+              picture3: this.data.images[2]
+            },
+            header: { "content-type": "application/x-www-form-urlencoded" },
+            method: 'POST',
+            success: function (res) {
+              console.log(res)
+              if (res.data.status == false) {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none'
+                })
+              } else if (res.data.status == true) {
+                wx.showToast({
+                  title: '添加成功',
+                  duration: 1000,
+                })
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })              
+                }, 1000)
+
+                that.setData({
+                  save_data: e.detail.value
+                })
+
+                //获取存储数据的数组
+                var exprs = wx.getStorageSync("patientInfo") || []
+                //向数组中添加新的元素
+                exprs.unshift(that.data.save_data)
+                //将添加的元素存储到本地
+                wx.setStorageSync("patientInfo", exprs)
+
+                //获取缓存数据
+                var exprs = wx.getStorageSync("save_array") || []
+                that.setData({
+                  arry_data: exprs
+                })
+              }
+            }
+          })
+        }
+      }
+    })
   },
 
   chooseRegion: function () {
@@ -20,7 +88,7 @@ Page({
     
     this.setData({
       showRegion: e.detail.showRegion,
-      regionValue: e.detail.regionValue,
+      classify: e.detail.classify,
     });
   },
   
