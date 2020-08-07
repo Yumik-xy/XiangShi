@@ -50,10 +50,14 @@ Page({
   },
 
   previewPic: function(e) {
+    console.log(e)
     var current = e.target.dataset.src;
+    var list = e.target.dataset.list;
+
+
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
-      urls: this.data.imglist // 需要预览的图片http链接列表  
+      urls: list // 需要预览的图片http链接列表  
     })
   },
 
