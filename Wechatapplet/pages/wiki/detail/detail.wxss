@@ -63,7 +63,7 @@ page{
 .rich-p{
   margin-top: 12rpx;
   margin-bottom: 12rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   line-height: 36rpx;
   color: #585858;
 }
