@@ -27,7 +27,7 @@ Page({
             coder: loginCode.code,
             name: that.data.userInfo.nickName,
             title: e.detail.value.title,
-            classify: that.data.classify[1],
+            classify: that.data.classify[1].name,
             content: e.detail.value.content,
             picture1: that.coding(that.data.images[0]||null),
             picture2: that.coding(that.data.images[1]||null),

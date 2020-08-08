@@ -13,6 +13,7 @@ urlpatterns = [
     path('inquirypost/list/', views.inquirypost_list.as_view()),
     path('inquirypost/', views.inquirypost.as_view()),
     path('patient/', views.patient.as_view()),
+    path('comment/', views.comment.as_view()),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
