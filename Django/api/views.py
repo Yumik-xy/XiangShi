@@ -197,23 +197,31 @@ class inquirypost(APIView):
         title = request.data.get('title')
         classify = request.data.get('classify')
         content = request.data.get('content')
-        picture1_base64 = request.data.get('picture1', 'null')
-        picture2_base64 = request.data.get('picture2', 'null')
-        picture3_base64 = request.data.get('picture3', 'null')
+        picture1_base64 = request.data.get('picture1')
+        picture2_base64 = request.data.get('picture2')
+        picture3_base64 = request.data.get('picture3')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
-
+        db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
+                                              content=content)
+        if not picture1_base64 == '':
+            db.picture1 = Savepic(picture1_base64)
+        if not picture2_base64 == '':
+            db.picture2 = Savepic(picture2_base64)
+        if not picture3_base64 == '':
+            db.picture3 = Savepic(picture3_base64)
+        db.save()
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
                                                   content=content)
-            if picture1_base64:
+            if not picture1_base64 == '':
                 db.picture1 = Savepic(picture1_base64)
-            if picture2_base64:
+            if not picture2_base64 == '':
                 db.picture2 = Savepic(picture2_base64)
-            if picture3_base64:
+            if not picture3_base64 == '':
                 db.picture3 = Savepic(picture3_base64)
             db.save()
         except:

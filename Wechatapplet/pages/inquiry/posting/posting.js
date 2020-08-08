@@ -1,5 +1,5 @@
 // pages/inquiry/posting/posting.js
-const app=getApp()
+const app = getApp()
 
 Page({
   /**
@@ -21,47 +21,48 @@ Page({
       success: function (loginCode) {
         console.log(loginCode)
 
-          wx.request({
-            url: 'http://127.0.0.1/api/inquirypost/',
-            data: {
-              coder: loginCode.code,
-              name: app.globalData.userInfo.nickname,
-              title: e.detail.value.title,
-              classify: that.data.classify[1],
-              content: e.detail.value.content,
-              picture1: that.coding(that.data.images[0]),
-              picture2: that.coding(that.data.images[1]),
-              picture3: that.coding(that.data.images[2]),
-            },
-            header: { "content-type": "application/x-www-form-urlencoded" },
-            method: 'POST',
-            success: function (res) {
-              console.log(res)
-              if (res.data.status == false) {
-                wx.showToast({
-                  title: res.data.message,
-                  icon: 'none'
+        wx.request({
+          url: 'http://127.0.0.1/api/inquirypost/',
+          data: {
+            coder: loginCode.code,
+            name: app.globalData.userInfo.nickname,
+            title: e.detail.value.title,
+            classify: that.data.classify[1],
+            content: e.detail.value.content,
+            picture1: that.coding(that.data.images[0]||null),
+            picture2: that.coding(that.data.images[1]||null),
+            picture3: that.coding(that.data.images[2]||null),
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              wx.showToast({
+                title: '发送成功',
+                duration: 1000,
+              })
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
                 })
-              } else if (res.data.status == true) {
-                wx.showToast({
-                  title: '发送成功',
-                  duration: 1000,
-                })
-                setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1000)
-              }
-            }, fail(res) { console.log(res) }
-          })
+              }, 1000)
+            }
+          }
+        })
       }
     })
   },
 
   coding: function (images) {
+    if (images === null) return ""
     const fileSystemManager = wx.getFileSystemManager()
-    const data = fileSystemManager.readFileSync(res.tempFilePath, 'base64')
+    const data = fileSystemManager.readFileSync(images, 'base64')
     return data
   },
 
