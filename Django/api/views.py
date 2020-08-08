@@ -241,6 +241,10 @@ class comment(APIView):
     def post(self, request):
         name = request.data.get('name')
         postid = request.data.get('postid')
+        # postid = inquirypost_model.objects.filter(id=postid).values()
+        # print(postid)
+        # if not postid:
+        #     return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         parentid = request.data.get('parentid')
         reply_to = request.data.get('reply_to')
         body = request.data.get('body')
@@ -255,7 +259,7 @@ class comment(APIView):
             parentid = parent.get_root().id
             reply_to = parent.user
         try:
-            db = comment_model.objects.create(openid=openid, name=name, postid=postid, parentid=parentid,
+            db = comment_model.objects.create(openid=openid, name=name, postid_id=postid, parent_id=parentid,
                                               reply_to=reply_to, body=body)
             db.save()
         except:
