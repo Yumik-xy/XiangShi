@@ -7,16 +7,24 @@ Page({
    */
   data: {
     info: {},
-    images:[],
-    imagesdata: [],
+    images: [],
+    tempFilePaths: [],
+    picture:[],
     classify: [],
     showRegion: false,
   },
 
   submit: function (e) {
     var that = this
-
-    let fileList = [data0, data1, data2]
+    for(let i = 0; i<that.data.images.length; i++)
+    {
+      
+      let item='tempFilePaths['+i+']';
+      
+      this.setData({
+        [item]:that.coding(images[i])
+      })
+    }
 
     console.log(e.detail.value)
     wx.login({
@@ -30,9 +38,9 @@ Page({
               title: e.detail.value.title,
               classify: this.data.classify[1],
               content: e.detail.value.content,
-              picture1: this.data.images[0],
-              picture2: this.data.images[1],
-              picture3: this.data.images[2]
+              picture1:this.data.classify[0].data,
+              picture2:this.data.classify[1].data,
+              picture3:this.data.classify[2].data,
             },
             header: { "content-type": "application/x-www-form-urlencoded" },
             method: 'POST',
@@ -53,14 +61,22 @@ Page({
                     delta: 1
                   })              
                 }, 1000)
-
-                that.setData({
-                  save_data: e.detail.value
-                })
               }
             }
           })
         }
+      }
+    })
+  },
+
+  coding:function(images){
+    const fileSystemManager = wx.getFileSystemManager()
+    fileSystemManager.readFile({
+      filePath: images, // 图片临时路径
+      encoding: 'base64',
+      success (res) {
+        let {data} = res
+        return data
       }
     })
   },
@@ -72,7 +88,6 @@ Page({
   },
   emitHideRegion: function (e) {
     console.log(e);
-    
     this.setData({
       showRegion: e.detail.showRegion,
       classify: e.detail.classify,
@@ -84,19 +99,7 @@ Page({
       sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
-        const images = this.data.images.concat(res.tempFilePaths)
-        console.log(images);
-        
-        const fileSystemManager = wx.getFileSystemManager()
-
-        fileSystemManager.readFile({
-          filePath: res.tempFilePaths, // 图片临时路径
-          encoding: 'base64',
-          success (res) {
-            let { data } = res // 编码后的数据
-          }
-        })
-
+        const images = this.data.images.concat(res.tempFilePaths) 
         // 限制最多只能留下3张照片
         const images1 = images.length <= 3 ? images : images.slice(0, 3)
         this.setData({
