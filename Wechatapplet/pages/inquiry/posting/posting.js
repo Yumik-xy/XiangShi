@@ -8,14 +8,16 @@ Page({
   data: {
     info: {},
     images:[],
+    imagesdata: [],
     classify: [],
     showRegion: false,
   },
 
   submit: function (e) {
     var that = this
-    console.log(e);
-    
+
+    let fileList = [data0, data1, data2]
+
     console.log(e.detail.value)
     wx.login({
       success: function (loginCode) {   
@@ -83,6 +85,18 @@ Page({
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
         const images = this.data.images.concat(res.tempFilePaths)
+        console.log(images);
+        
+        const fileSystemManager = wx.getFileSystemManager()
+
+        fileSystemManager.readFile({
+          filePath: res.tempFilePaths, // 图片临时路径
+          encoding: 'base64',
+          success (res) {
+            let { data } = res // 编码后的数据
+          }
+        })
+
         // 限制最多只能留下3张照片
         const images1 = images.length <= 3 ? images : images.slice(0, 3)
         this.setData({
@@ -91,6 +105,7 @@ Page({
       }
     })
   },
+
   removeImage(e) {
     var that = this;
     var images = that.data.images;
