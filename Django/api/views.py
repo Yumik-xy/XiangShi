@@ -246,15 +246,16 @@ class comment(APIView):
         body = request.data.get('body')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
+        openid = '123'
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         if parentid:
-            parent = patient_model.objects.filter(id=parentid)
+            parent = comment_model.objects.filter(id=parentid)
             parentid = parent.get_root().id
             reply_to = parent.user
         try:
-            db = patient_model.objects.create(openid=openid, name=name, postid=postid, parentid=parentid,
+            db = comment_model.objects.create(openid=openid, name=name, postid=postid, parentid=parentid,
                                               reply_to=reply_to, body=body)
             db.save()
         except:
