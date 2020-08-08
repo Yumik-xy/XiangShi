@@ -84,7 +84,6 @@ class comment(MPTTModel):
     openid = models.CharField(max_length=60, verbose_name='openid')
     name = models.CharField(max_length=30, verbose_name='用户名')
     postid = models.ForeignKey(inquirypost, on_delete=models.CASCADE, related_name='postid')
-
     parent = TreeForeignKey(
         'self',
         on_delete=models.CASCADE,
@@ -92,9 +91,7 @@ class comment(MPTTModel):
         blank=True,
         related_name='children'
     )
-
-    reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名',blank=True)
-
+    reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名', blank=True)
     body = RichTextField(verbose_name='评论内容')
     created = models.DateTimeField(auto_now_add=True)
 

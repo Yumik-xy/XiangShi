@@ -33,8 +33,7 @@ def GetOpenid(coder):
 def Savepic(img):
     if not img:
         return ""
-    path = '%spicture/%s/' % (
-        settings.MEDIA_ROOT, time.strftime("%Y%m%d", time.localtime()))
+    path = '%spicture/%s/' % (settings.MEDIA_ROOT, time.strftime("%Y%m%d", time.localtime()))
     mkdir(path)
     file_name = 'picture/%s/%s.jpg' % (time.strftime("%Y%m%d", time.localtime()), str(uuid.uuid4()))
     save_path = '%spicture/%s/%s.jpg' % (
@@ -43,7 +42,7 @@ def Savepic(img):
     with open(save_path, 'wb') as f:
         f.write(imgdata)
         f.close()
-    return save_path
+    return file_name
 
 
 def mkdir(path):
@@ -56,5 +55,3 @@ def mkdir(path):
         return True
     else:
         return False
-
-

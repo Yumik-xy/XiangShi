@@ -6,9 +6,10 @@ from .method.method import *
 from .models import medicine as medicine_model
 from .models import patient as patient_model
 from .models import inquirypost as inquirypost_model
+from .models import comment as comment_model
 
 
-# next code 10008
+# next code 10007
 
 
 # Create your views here.
@@ -217,5 +218,46 @@ class inquirypost(APIView):
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
+        else:
+            return Response({'status': True})
+
+
+# 评论查询
+class comment(APIView):
+    def get(self, request):
+        postid = request.query_params.get('postid')
+        try:
+            comment = comment_model.objects.filter(postid=postid).values('id', 'level', 'name', 'reply_to',
+                                                                         'parent', 'body', 'created')
+            json_data = list(comment)
+        except:
+            return Response({'status': False, 'message': '未知错误', 'code': 10000})
+        else:
+            if not json_data == []:
+                return Response({'status': True, 'data': json_data})
+            else:
+                return Response({'status': True, 'message': '暂无评论'})
+
+    def post(self, request):
+        name = request.data.get('name')
+        postid = request.data.get('postid')
+        parentid = request.data.get('parentid')
+        reply_to = request.data.get('reply_to')
+        body = request.data.get('body')
+        coder = request.data.get('coder')
+        openid = GetOpenid(coder)
+        print(request.data)
+        if openid == "":
+            return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        if parentid:
+            parent = patient_model.objects.filter(id=parentid)
+            parentid = parent.get_root().id
+            reply_to = parent.user
+        try:
+            db = patient_model.objects.create(openid=openid, name=name, postid=postid, parentid=parentid,
+                                              reply_to=reply_to, body=body)
+            db.save()
+        except:
+            return Response({'status': False, 'message': '发布评论错误', 'code': 10008})
         else:
             return Response({'status': True})
