@@ -9,6 +9,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     info: {},
+    content:'',
     images: [],
     classify: [],
     showRegion: false,
@@ -27,7 +28,8 @@ Page({
             name: that.data.userInfo.nickName,
             title: e.detail.value.title,
             classify: that.data.classify[1].name,
-            content: e.detail.value.content,
+            content: that.data.content,
+            // content: e.detail.value.content,
             picture1: that.coding(that.data.images[0]||null),
             picture2: that.coding(that.data.images[1]||null),
             picture3: that.coding(that.data.images[2]||null),
@@ -76,6 +78,12 @@ Page({
       showRegion: e.detail.showRegion,
       classify: e.detail.classify,
     });
+  },
+
+  htmlcontent : function(e){
+    this.setData({
+      content : e.detail.html
+    })
   },
 
   chooseImage(e) {

@@ -165,11 +165,12 @@ class patient(APIView):
 class inquirypost_list(APIView):
     def get(self, request):
         page = int(request.query_params.get('page'))
-        if page <= 0 or (page - 1) * 10 > inquirypost_model.objects.count():
+        times = 10
+        if page <= 0 or (page - 1) * times > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * 10:(page - 0) * 10].values('id', 'name', 'title', 'classify', 'content', 'picture1',
+                [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'content', 'picture1',
                                                          'picture2', 'picture3')
             json_data = list(inquirypost_list)
 

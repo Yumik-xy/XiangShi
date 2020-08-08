@@ -1,0 +1,39 @@
+@import "./iconfont.wxss";
+
+.container {
+  height:100%;
+  width: 100%;
+}
+
+.ql-container {
+  font-size: 34rpx;
+  line-height: 36rpx;
+  width: 626rpx;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  border: 1px solid #f2f2f2;
+}
+
+.ql-active {
+  color: var(--themeColor);
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  /* box-sizing: border-box; */
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+

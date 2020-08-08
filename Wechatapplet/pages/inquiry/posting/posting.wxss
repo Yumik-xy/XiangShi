@@ -1,4 +1,6 @@
 /* pages/inquiry/posting/posting.wxss */
+@import "./iconfont.wxss";
+
 .add {
   height: 100%;
   width: 100%;
@@ -30,7 +32,6 @@
 .supplement {
   background-color: white;
   height: 800rpx;
-  display: flex;
   padding-left: 16rpx;
   padding-right: 16rpx;
   margin: 0 16rpx 26rpx 16rpx;
@@ -42,7 +43,7 @@
   font-size: 34rpx;
   line-height: 36rpx;
   width: 626rpx;
-  height: 95%;
+  height: 800rpx;
   padding-top: 20rpx;
 }
 
