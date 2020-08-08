@@ -105,3 +105,26 @@ class comment(MPTTModel):
 
     def __str__(self):
         return self.name[:30]
+
+
+class medicinewiki(MPTTModel):
+    name = models.CharField(max_length=30, verbose_name='类名')
+    parent = TreeForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='children'
+    )
+    child = models.ForeignKey(medicine, on_delete=models.CASCADE, related_name='postid', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '药物wiki信息'
+        verbose_name = '药物wiki'
+        db_table = 'medicinewiki'
+
+    class MPTTMeta:
+        order_insertion_by = ['parent']
+
+    def __str__(self):
+        return self.name[:30]
