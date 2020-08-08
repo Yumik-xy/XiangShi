@@ -5,43 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item: [{
-      id: 0,
-      photo: '../../icon/add.png',
-      name: '中豪鱼',
-      classify: '睾丸',
-      title: '高娃不一样大',
-      content: '为什么两个不一样大？',
-      picture: [],
-      time: '2020-8-5'
-    }, {
-      id: 1,
-      photo: '../../icon/add.png',
-      name: '中豪鱼',
-      classify: '睾丸',
-      title: '高娃不一样大',
-      content: '为什么两个不一样大？',
-      picture: ['../../icon/background/CBorder.png'],
-      time: '2020-8-5'
-    }, {
-      id: 2,
-      photo: '../../icon/add.png',
-      name: '中豪鱼',
-      classify: '睾丸',
-      title: '高娃不一样大',
-      content: '为什么两个不一样大？不会吧不会吧，还有人两个都是一样大的吗？？？为什么人要这么多个高娃哦？我有一个我自豪，单眼皮多漂亮，单蛋蛋多帅气！不会吧不会吧，你难道不同意吗？？？',
-      picture: ['../../icon/background/CBorder.png', '../../icon/background/CBorder.png', '../../icon/background/CBorder.png'],
-      time: '2020-8-5'
-    }, {
-      id: 6,
-      photo: '../../icon/add.png',
-      name: '中豪鱼',
-      classify: '睾丸',
-      title: '高娃不一样大',
-      content: '为什么两个不一样大？',
-      picture: ['../../icon/background/CBorder.png'],
-      time: '2020-8-5'
-    },],
+    item: [],
     scrollTop: 0,
     pulldown: true,
 
@@ -49,7 +13,7 @@ Page({
     SYSTEMINFO: ''
   },
 
-  previewPic: function(e) {
+  previewPic: function (e) {
     console.log(e)
     var current = e.target.dataset.src;
     var list = e.target.dataset.list;
@@ -141,7 +105,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getinquirypost(true)
   },
 
   /**
@@ -185,15 +149,53 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getinquirypost(true)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getinquirypost(false)
   },
+
+
+  getinquirypost: function (newlist) {
+    var that = this
+    if (newlist)
+      this.setData({
+        nowpage: 1,
+        item: []
+      })
+    else this.setData({
+      nowpage: that.data.nowpage + 1
+    })
+    wx.request({
+      url: 'http://127.0.0.1/api/inquirypost/list/',
+      data: {
+        page: that.data.nowpage
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        if (res.data.status == false) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        } else if (res.data.status == true) {
+          that.setData({
+            item: that.data.item.concat(res.data.data)
+          })
+        }
+      }
+    })
+  },
+
+
 
   /**
    * 用户点击右上角分享
