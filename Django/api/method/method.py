@@ -28,7 +28,7 @@ def GetOpenid(coder):
 def Savepic(base64):
     if not base64:
         return ""
-    save_path = '%s/picture/%Y%m%d/%s' % (settings.MEDIA_ROOT, str(uuid.uuid4()))
+    save_path = '%s/picture/%Y%m%d/%s.jpg' % (settings.MEDIA_ROOT, str(uuid.uuid4()))
     imgdata = base64.b64decode(base64)
     with open(save_path, 'wb') as f:
         f.write(imgdata)

@@ -93,7 +93,7 @@ class comment(MPTTModel):
         related_name='children'
     )
 
-    reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名')
+    reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名',blank=True)
 
     body = RichTextField(verbose_name='评论内容')
     created = models.DateTimeField(auto_now_add=True)
