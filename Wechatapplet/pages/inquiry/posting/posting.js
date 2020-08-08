@@ -20,7 +20,6 @@ Page({
     wx.login({
       success: function (loginCode) {
         console.log(loginCode)
-
         wx.request({
           url: 'http://127.0.0.1/api/inquirypost/',
           data: {

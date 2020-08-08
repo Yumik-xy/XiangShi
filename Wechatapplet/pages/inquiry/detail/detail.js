@@ -6,27 +6,40 @@ Page({
    */
   data: {
     data: {
-      id: 2,
       photo: '../../../icon/add.png',
-      name: '中豪鱼',
-      classify: '睾丸',
-      title: '高娃不一样大',
-      content: '为什么两个不一样大？不会吧不会吧，还有人两个都是一样大的吗？？？为什么人要这么多个高娃哦？我有一个我自豪，单眼皮多漂亮，单蛋蛋多帅气！不会吧不会吧，你难道不同意吗？？？',
-      picture: ['../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png'],
-      time: '2020-8-5',
       follownum: 0,
       lovenum: 0,
-      comment: [{
-        name: '荒信誉',
-        content: '说得好！',
-        comment: [{
-          name: '真厉害',
-          content: '好锤子？'
-        }]
-      }]
-    }
+    },
+    list : [],
+  },
+  
+  arrayToTree: function (arr, parent) {
+    //  arr 是返回的数据  parendId 父id
+    var that = this;
+    let temp = [];
+    let treeArr = arr;
+    treeArr.forEach((item, index) => {
+      if (item.parent == parent) {
+        if (that.arrayToTree(treeArr, treeArr[index].id).length > 0) {
+          // 递归调用此函数
+          treeArr[index].children = that.arrayToTree(treeArr, treeArr[index].id);
+        }
+        temp.push(treeArr[index]);
+      }
+    });
+    return temp;
   },
 
+  previewPic: function(e) {
+    console.log(e)
+    var current = e.target.dataset.src;
+    var list = e.target.dataset.list;
+
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接  
+      urls: list // 需要预览的图片http链接列表  
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -38,6 +51,60 @@ Page({
     console.log(options.id)
     wx.request({
       url: 'url',
+    })
+    
+    wx.login({
+      success: function (loginCode) {
+        console.log(loginCode)
+        wx.request({
+          url: 'http://127.0.0.1/api/comment/',
+          data: {
+            postid :that.data.id
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              that.setData({
+                list: that.arrayToTree(res.data.data,null)
+              })
+            }
+          }
+        })
+      }
+    })
+
+    wx.login({
+      success: function (loginCode) {
+        console.log(loginCode)
+        wx.request({
+          url: 'http://127.0.0.1/api/inquirypost/',
+          data: {
+            id : that.data.id
+          },
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              that.setData({
+                data: res.data.data[0]
+              })
+            }
+          }
+        })
+      }
     })
   },
 

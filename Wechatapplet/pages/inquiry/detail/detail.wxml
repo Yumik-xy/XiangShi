@@ -24,17 +24,12 @@
       <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit"></image>
     </view>
     <view class="comment">
-      <block wx:for="{{data.comment}}" wx:key="comi" wx:for-item="firstcom">
-        <view>{{firstcom.name}}:{{firstcom.content}}</view>
-        <block wx:for="{{firstcom.comment}}" wx:key="comj" wx:for-item="secondcom">
-          <view>{{secondcom.name}}:{{secondcom.content}}</view>
+      <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
+        <view>{{firstcom.name}}:{{firstcom.body}}</view>
+        <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">
+          <view>{{secondcom.name}}:{{secondcom.body}}</view>
         </block>
       </block>
-
     </view>
-
-
   </view>
-
-
 </view>

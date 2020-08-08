@@ -162,9 +162,9 @@ class patient(APIView):
             return Response({'status': True})
 
 
-# 问诊list查询
 class inquirypost_list(APIView):
-    def get(self, request, page):
+    def get(self, request):
+        page = int(request.query_params.get('page'))
         if page <= 0 or (page - 1) * 10 > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
