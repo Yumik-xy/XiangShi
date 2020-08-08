@@ -16,31 +16,21 @@ Page({
 
   submit: function (e) {
     var that = this
-    for(let i = 0; i<that.data.images.length; i++)
-    {
-      
-      let item='tempFilePaths['+i+']';
-      
-      this.setData({
-        [item]:that.coding(images[i])
-      })
-    }
-
     console.log(e.detail.value)
     wx.login({
-      success: function (loginCode) {   
+      success: function (loginCode) {      
         if (that.data.is == 0) {
           wx.request({
             url: 'http://127.0.0.1/api/inquirypost',
             data: {
-              openid: loginCode.code,
+              coder: loginCode.code,
               name: app.globalData.userInfo.nickname,
               title: e.detail.value.title,
               classify: this.data.classify[1],
               content: e.detail.value.content,
-              picture1:this.data.classify[0].data,
-              picture2:this.data.classify[1].data,
-              picture3:this.data.classify[2].data,
+              picture1:that.coding(that.data.images[0]),
+              picture2:that.coding(that.data.images[1]),
+              picture3:that.coding(that.data.images[2]),
             },
             header: { "content-type": "application/x-www-form-urlencoded" },
             method: 'POST',
@@ -71,14 +61,8 @@ Page({
 
   coding:function(images){
     const fileSystemManager = wx.getFileSystemManager()
-    fileSystemManager.readFile({
-      filePath: images, // 图片临时路径
-      encoding: 'base64',
-      success (res) {
-        let {data} = res
-        return data
-      }
-    })
+    const data=fileSystemManager.readFileSync(res.tempFilePath, 'base64') 
+    return data
   },
 
   chooseRegion: function () {
@@ -99,12 +83,21 @@ Page({
       sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
-        const images = this.data.images.concat(res.tempFilePaths) 
-        // 限制最多只能留下3张照片
-        const images1 = images.length <= 3 ? images : images.slice(0, 3)
-        this.setData({
-          images: images1
-        })
+        var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
+        if(tempFilesSize <= 2000000){   //图片小于或者等于2M时 可以执行获取图片
+          const images = this.data.images.concat(res.tempFilePaths) 
+          // 限制最多只能留下3张照片
+          const images1 = images.length <= 3 ? images : images.slice(0, 3)
+          this.setData({
+            images: images1
+          })
+        }
+        else{
+          wx.showToast({
+            title:'上传图片不能大于2M!',  //标题
+            icon:'none' //图标 none不使用图标，详情看官方文档
+          })
+        }
       }
     })
   },
