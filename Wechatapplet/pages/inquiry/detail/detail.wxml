@@ -2,30 +2,29 @@
 <view class="page">
   <view class="inquiry">
     <view class="title-first">
+     <view class='title'>{{data.title}}</view>
       <view class='title-left'>
-        <image class="photo" src="{{data.data.photo}}" mode="aspectFit"></image>
+        <image class="photo" src="{{data.photo}}" mode="aspectFit"></image>
         <view class='title-right'>
-          <view class='title'>{{data.data.title}} ✈</view>
-          <view class="NT">
-            <view class='name'>{{data.data.name}}</view>
-            <view class='time'>{{data.data.time}}</view>
-          </view>
+          <view class='name'>{{data.name}}</view>
+          <view class='time'>{{data.time}}</view>
         </view>
       </view>
     </view>
     <view class='message'>
-      <view class="content">{{data.data.content}} </view>
+      <rich-text nodes="<p class='content'><a class='classify'>#{{data.classify}}#</a>{{data.content}}</p>">
+      </rich-text>
     </view>
-    <view class='picmessage' wx:if='{{data.data.picture}}'>
-      <image class='picture' src="{{pic}}" wx:for="{{data.data.picture}}" wx:key="key" wx:for-item="pic" mode="widthFix"
-        data-src="{{pic}}" data-list="{{data.data.picture}}" bindtap="previewPic"></image>
+    <view class='picmessage' wx:if='{{data.picture}}'>
+      <image class='picture' src="{{pic}}" wx:for="{{data.picture}}" wx:key="key" wx:for-item="pic" mode="widthFix"
+        data-src="{{pic}}" data-list="{{data.picture}}" bindtap="previewPic"></image>
     </view>
     <view class='other'>
       <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
-      <image class='otimg' src="../../../icon/{{love?'':'_'}}follow.png" mode="aspectFit"></image>
+      <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit"></image>
     </view>
     <view class="comment">
-      <block wx:for="{{data.data.comment}}" wx:key="comi" wx:for-item="firstcom">
+      <block wx:for="{{data.comment}}" wx:key="comi" wx:for-item="firstcom">
         <view>{{firstcom.name}}:{{firstcom.content}}</view>
         <block wx:for="{{firstcom.comment}}" wx:key="comj" wx:for-item="secondcom">
           <view>{{secondcom.name}}:{{secondcom.content}}</view>

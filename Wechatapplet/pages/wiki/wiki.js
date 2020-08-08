@@ -35,7 +35,7 @@ Page({
             {
               parent_id:1,
               id: 1,
-              title:'鼻窦炎'
+              title:'盲聋症'
             }]
           }, 
           { 

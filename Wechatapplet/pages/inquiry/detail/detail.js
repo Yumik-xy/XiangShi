@@ -6,35 +6,32 @@ Page({
    */
   data: {
     data: {
-      id: 0,
-      data: {
-        id: 2,
-        photo: '../../../icon/add.png',
-        name: '中豪鱼',
-        classify: '睾丸',
-        title: '高娃不一样大',
-        content: '为什么两个不一样大？不会吧不会吧，还有人两个都是一样大的吗？？？为什么人要这么多个高娃哦？我有一个我自豪，单眼皮多漂亮，单蛋蛋多帅气！不会吧不会吧，你难道不同意吗？？？',
-        picture: ['../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png'],
-        time: '2020-8-5',
-        follownum: 0,
-        lovenum: 0,
+      id: 2,
+      photo: '../../../icon/add.png',
+      name: '中豪鱼',
+      classify: '睾丸',
+      title: '高娃不一样大',
+      content: '为什么两个不一样大？不会吧不会吧，还有人两个都是一样大的吗？？？为什么人要这么多个高娃哦？我有一个我自豪，单眼皮多漂亮，单蛋蛋多帅气！不会吧不会吧，你难道不同意吗？？？',
+      picture: ['../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png', '../../../icon/background/CBorder.png'],
+      time: '2020-8-5',
+      follownum: 0,
+      lovenum: 0,
+      comment: [{
+        name: '荒信誉',
+        content: '说得好！',
         comment: [{
-          name: '荒信誉',
-          content: '说得好！',
-          comment: [{
-            name: '真厉害',
-            content: '好锤子？'
-          }]
+          name: '真厉害',
+          content: '好锤子？'
         }]
-      }
+      }]
     }
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     this.setData({
       id: options.id
     })
@@ -42,8 +39,8 @@ Page({
     wx.request({
       url: 'url',
     })
-
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -3,7 +3,7 @@
 .inquiry {
   /* display: flex; */
   height: auto;
-  margin: 40rpx;
+  margin: 30rpx;
   padding: 10rpx 20rpx;
   border-style: solid;
   /* box-shadow: 0rpx 2rpx 4rpx 2rpx #DDDDDD; */
@@ -18,44 +18,35 @@
 
 .title {
   font-weight: bold;
-  font-size: 34rpx;
+  font-size: 42rpx;
+  margin-bottom: 20rpx;
 }
 
 .message {
-  display: flex;
-  flex-direction: row;
   padding-top: 20rpx;
   /* text-align: center; */
 }
 
 .classify {
-  text-align: center;
-  font-size: 24rpx;
-  line-height: 36rpx;
-  background-color: var(--themeColor);
-  color: #ffffff;
-  padding: 0rpx 8rpx;
-  /* border-radius: 20rpx; */
-  margin-right: 5rpx;
+  font-size: 36rpx;
+  line-height: 44rpx;
+  color: var(--themeColor);
 }
 
 .content {
-
-  font-size: 28rpx;
-  line-height: 36rpx;
+  font-size: 36rpx;
+  line-height: 48rpx;
   color: #3d3d3d;
-
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   white-space: normal !important;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 
 .picmessage{
   display: flex;
+  flex-direction: column;
 }
 
 .picmessage .picture {
@@ -63,10 +54,6 @@
   width: 100%;
   height: 120rpx;
   margin-right: 1%;
-}
-
-.time {
-  padding-left: 20rpx;
 }
 
 .title-left {
@@ -78,14 +65,17 @@
 .title-right {
   display: flex;
   flex-direction: column;
-  padding-left: 20rpx;
+  align-content:center;
+  margin-left: 40rpx;
+  color: #3d3d3d;
 }
 
-.title-right .NT {
-  display: flex;
-  flex-direction: row;
-  font-size: 26rpx;
-  color: #3d3d3d;
+.title-right .name{
+  font-size: 34rpx;
+}
+
+.title-right .time{
+  font-size: 30rpx;
 }
 
 .other {
