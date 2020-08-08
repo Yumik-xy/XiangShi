@@ -8,7 +8,7 @@ from .models import patient as patient_model
 from .models import inquirypost as inquirypost_model
 
 
-# next code 10006
+# next code 10008
 
 
 # Create your views here.
@@ -18,15 +18,27 @@ class login(APIView):
         return Response({'status': True})
 
 
-# 药物查询
-class medicine(APIView):
+# 药物List查询
+class medicine_list(APIView):
     def get(self, request):
         try:
             drumname = request.query_params.get('drumname')
-            drums = medicine_model.objects.filter(drumname__contain=drumname).values()[0:30]
+            drums = medicine_model.objects.filter(drumname__contain=drumname).values('id', 'drumname')[0:10]
             json_data = list(drums)
         except:
-            return Response({'status': False})
+            return Response({'status': False, 'message': '未找到对应药物', 'code': 10007})
+        else:
+            return Response({'status': True, 'data': json_data})
+
+
+# 药物查询
+class medicine(APIView):
+    def get(self, request, id):
+        try:
+            drum = medicine_model.objects.filter(id=id).values()
+            json_data = list(drum)
+        except:
+            return Response({'status': False, 'message': '未找到对应药物', 'code': 10007})
         else:
             return Response({'status': True, 'data': json_data})
 
@@ -34,13 +46,19 @@ class medicine(APIView):
 # 症状List查询
 class symptom_list(APIView):
     def get(self, request):
-        return Response({'status': True})
+        try:
+            drumname = request.query_params.get('drumname')
+            drums = medicine_model.objects.filter(drumname__contain=drumname).values()[0:10]
+            json_data = list(drums)
+        except:
+            return Response({'status': False, 'message': '未找到对应症状', 'code': 10006})
+        else:
+            return Response({'status': True, 'data': json_data})
 
 
 # 症状查询
 class symptom(APIView):
-    def get(self, request):
-        id = int(id)
+    def get(self, request, id):
         return Response({'status': True})
 
 
@@ -59,9 +77,7 @@ class patient(APIView):
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
-
             json_data = list(patientinfo)
-
             return Response({'status': True, 'data': json_data})
 
     def post(self, request):
@@ -143,6 +159,7 @@ class patient(APIView):
             return Response({'status': True})
 
 
+# 问诊list查询
 class inquirypost_list(APIView):
     def get(self, request, page):
         if page <= 0 or (page - 1) * 10 > inquirypost_model.objects.count():
@@ -160,6 +177,7 @@ class inquirypost_list(APIView):
             return Response({'status': True, 'data': json_data})
 
 
+# 问诊查询
 class inquirypost(APIView):
     def get(self, request, id):
         # id = int(id)

@@ -14,6 +14,15 @@ class medicineAdmin(admin.ModelAdmin):
 admin.site.register(medicine, medicineAdmin)
 
 
+class symptomAdmin(admin.ModelAdmin):
+    search_fields = ('symptomname',)  # 根据属性搜索
+    list_display = ('symptomname',)  # 列表显示的属性
+    pass
+
+
+admin.site.register(symptom, symptomAdmin)
+
+
 class patientAdmin(admin.ModelAdmin):
     search_fields = ('patientname',)  # 根据属性搜索
     list_display = ('patientname',)  # 列表显示的属性

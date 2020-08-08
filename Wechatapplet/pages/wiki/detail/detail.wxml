@@ -33,7 +33,7 @@
 <scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true"
   bindscroll="bindscroll">
   <block wx:for="{{rightData}}" wx:for-item="rcai" wx:key="index">
-    <view class="sc_right_item" id="c_{{rcai.id}}" data-id="c_{{rcai.id}}" data-index="{{index}}" bindtap="rightTap">
+    <view class="sc_right_item" id="c_{{rcai.id}}" data-id="c_{{rcai.id}}" data-index="{{index}}">
       <rich-text nodes="{{tools.HtmlToText(rcai.content)}}"></rich-text>
     </view>
   </block>

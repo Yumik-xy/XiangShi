@@ -22,6 +22,27 @@ class medicine(models.Model):
             'drumname', 'description', 'indications', 'administration', 'note', 'sideeffects', 'contraindications')
 
 
+class symptom(models.Model):
+    symptomname = models.CharField(max_length=30, verbose_name='症状名称')
+    summary = models.CharField(max_length=120, verbose_name='概述')
+    pathogeny = models.CharField(max_length=120, verbose_name='病因')
+    diagnosis = models.CharField(max_length=120, verbose_name='诊断')
+    clinical = models.CharField(max_length=120, verbose_name='临床表现')
+    symptom = models.CharField(max_length=120, verbose_name='症状')
+    therapeutic = models.CharField(max_length=120, verbose_name='治疗方法')
+    prevention = models.CharField(max_length=120, verbose_name='预防')
+    highriskgroup = models.CharField(max_length=120, verbose_name='高危人群')
+    relateddiseases = models.CharField(max_length=120, verbose_name='相关疾病')
+
+    class Meta:
+        verbose_name_plural = '症状表现'
+        verbose_name = '症状'
+        db_table = 'symptom'
+        unique_together = (
+            'symptomname', 'summary', 'pathogeny', 'diagnosis', 'clinical', 'symptom', 'therapeutic', 'prevention',
+            'highriskgroup', 'relateddiseases')
+
+
 class patient(models.Model):
     openid = models.CharField(max_length=60, verbose_name='openid')
     patientname = models.CharField(max_length=30, verbose_name='患者名称')
