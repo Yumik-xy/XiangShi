@@ -1,7 +1,8 @@
-<view class="container" style="height:{{editorHeight}}px;">
-  <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindinput="getEditorValue" bindready="onEditorReady">
+<view class="container" style="height:{{editorHeight}}rpx;">
+  <editor id="editor" class="ql-container" placeholder="{{placeholder}}" placeholder-style="font-style:normal" bindstatuschange="onStatusChange" bindinput="getEditorValue" bindready="onEditorReady">
   </editor>
 </view>
+
 <!-- hidden="{{keyboardHeight > 0 ? false : true}}   style="bottom: {{isIOS ? keyboardHeight : 0}}px"" -->
 <view class="toolbar" catchtouchend="format">
   <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>

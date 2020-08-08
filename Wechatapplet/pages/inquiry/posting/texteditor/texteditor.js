@@ -3,7 +3,7 @@ Page({
     formats: {},
     readOnly: false,
     placeholder: '对问题进行补充说明，可以更快获得解答……',
-    editorHeight: 300,
+    editorHeight: 720,
     keyboardHeight: 0,
     htmlcontent: '',
     isIOS: false
