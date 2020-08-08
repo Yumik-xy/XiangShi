@@ -30,13 +30,29 @@ def GetOpenid(coder):
     return openid
 
 
-def Savepic(base):
-    if not base:
+def Savepic(img):
+    if not img:
         return ""
-    save_path = '%s/picture/%s/%s.jpg' % (
-    settings.MEDIA_ROOT, time.strftime("%Y-%m-%d", time.localtime()), str(uuid.uuid4()))
-    imgdata = base.b64decode(base64)
+    path = '%spicture/%s/' % (
+        settings.MEDIA_ROOT, time.strftime("%Y%m%d", time.localtime()))
+    mkdir(path)
+    file_name = 'picture/%s/%s.jpg' % (time.strftime("%Y%m%d", time.localtime()), str(uuid.uuid4()))
+    save_path = '%spicture/%s/%s.jpg' % (
+        settings.MEDIA_ROOT, time.strftime("%Y%m%d", time.localtime()), str(uuid.uuid4()))
+    imgdata = base64.b64decode(img)
     with open(save_path, 'wb') as f:
         f.write(imgdata)
         f.close()
     return save_path
+
+
+def mkdir(path):
+    import os
+    path = path.strip()
+    path = path.rstrip("\\")
+    isExists = os.path.exists(path)
+    if not isExists:
+        os.makedirs(path)
+        return True
+    else:
+        return False
