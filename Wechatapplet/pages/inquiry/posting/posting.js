@@ -1,5 +1,5 @@
 // pages/inquiry/posting/posting.js
-
+const app=getApp()
 
 Page({
   /**
@@ -9,7 +9,7 @@ Page({
     info: {},
     images: [],
     tempFilePaths: [],
-    picture:[],
+    picture: [],
     classify: [],
     showRegion: false,
   },
@@ -18,19 +18,20 @@ Page({
     var that = this
     console.log(e.detail.value)
     wx.login({
-      success: function (loginCode) {      
-        if (that.data.is == 0) {
+      success: function (loginCode) {
+        console.log(loginCode)
+
           wx.request({
-            url: 'http://127.0.0.1/api/inquirypost',
+            url: 'http://127.0.0.1/api/inquirypost/',
             data: {
               coder: loginCode.code,
               name: app.globalData.userInfo.nickname,
               title: e.detail.value.title,
-              classify: this.data.classify[1],
+              classify: that.data.classify[1],
               content: e.detail.value.content,
-              picture1:that.coding(that.data.images[0]),
-              picture2:that.coding(that.data.images[1]),
-              picture3:that.coding(that.data.images[2]),
+              picture1: that.coding(that.data.images[0]),
+              picture2: that.coding(that.data.images[1]),
+              picture3: that.coding(that.data.images[2]),
             },
             header: { "content-type": "application/x-www-form-urlencoded" },
             method: 'POST',
@@ -49,19 +50,18 @@ Page({
                 setTimeout(function () {
                   wx.navigateBack({
                     delta: 1
-                  })              
+                  })
                 }, 1000)
               }
-            }
+            }, fail(res) { console.log(res) }
           })
-        }
       }
     })
   },
 
-  coding:function(images){
+  coding: function (images) {
     const fileSystemManager = wx.getFileSystemManager()
-    const data=fileSystemManager.readFileSync(res.tempFilePath, 'base64') 
+    const data = fileSystemManager.readFileSync(res.tempFilePath, 'base64')
     return data
   },
 
@@ -77,25 +77,25 @@ Page({
       classify: e.detail.classify,
     });
   },
-  
+
   chooseImage(e) {
     wx.chooseImage({
       sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
         var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
-        if(tempFilesSize <= 2000000){   //图片小于或者等于2M时 可以执行获取图片
-          const images = this.data.images.concat(res.tempFilePaths) 
+        if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
+          const images = this.data.images.concat(res.tempFilePaths)
           // 限制最多只能留下3张照片
           const images1 = images.length <= 3 ? images : images.slice(0, 3)
           this.setData({
             images: images1
           })
         }
-        else{
+        else {
           wx.showToast({
-            title:'上传图片不能大于2M!',  //标题
-            icon:'none' //图标 none不使用图标，详情看官方文档
+            title: '上传图片不能大于2M!',  //标题
+            icon: 'none' //图标 none不使用图标，详情看官方文档
           })
         }
       }
@@ -108,12 +108,12 @@ Page({
     // 获取要删除的第几张图片的下标
     const idx = e.currentTarget.dataset.idx
     // splice  第一个参数是下表值  第二个参数是删除的数量
-    images.splice(idx,1)
+    images.splice(idx, 1)
     this.setData({
       images: images
     })
   },
- 
+
   handleImagePreview(e) {
     const idx = e.target.dataset.idx
     const images = this.data.images
@@ -140,7 +140,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

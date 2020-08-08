@@ -33,7 +33,8 @@ class medicine_list(APIView):
 
 # 药物查询
 class medicine(APIView):
-    def get(self, request, id):
+    def get(self, request):
+        id = request.query_params.get('id')
         try:
             drum = medicine_model.objects.filter(id=id).values()
             json_data = list(drum)
@@ -58,7 +59,8 @@ class symptom_list(APIView):
 
 # 症状查询
 class symptom(APIView):
-    def get(self, request, id):
+    def get(self, request):
+        id = request.query_params.get('id')
         return Response({'status': True})
 
 
@@ -179,8 +181,8 @@ class inquirypost_list(APIView):
 
 # 问诊查询
 class inquirypost(APIView):
-    def get(self, request, id):
-        # id = int(id)
+    def get(self, request):
+        id = request.query_params.get('id')
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'picture1', 'picture2', 'picture3')

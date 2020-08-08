@@ -7,11 +7,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('login/', views.login.as_view()),
     path('medicine/list/', views.medicine_list.as_view()),
-    path('medicine/<int:id>/', views.medicine.as_view()),
+    path('medicine/', views.medicine.as_view()),
     path('symptom/list/', views.symptom_list.as_view()),
-    path('symptom/<int:id>/', views.symptom.as_view()),
-    path('inquirypost/list/<int:page>', views.inquirypost_list.as_view()),
-    path('inquirypost/<int:id>/', views.inquirypost.as_view()),
+    path('symptom/', views.symptom.as_view()),
+    path('inquirypost/list/', views.inquirypost_list.as_view()),
+    path('inquirypost/', views.inquirypost.as_view()),
     path('patient/', views.patient.as_view()),
 ]
 
