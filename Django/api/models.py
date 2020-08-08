@@ -56,7 +56,7 @@ class inquirypost(models.Model):
         db_table = 'inquirypost'
 
     def __str__(self):
-        return self.content[:120]
+        return self.content[:30]
 
 
 class comment(MPTTModel):
@@ -86,4 +86,4 @@ class comment(MPTTModel):
         order_insertion_by = ['created']
 
     def __str__(self):
-        return self.body[:20]
+        return self.name[:30]

@@ -9,7 +9,7 @@ urlpatterns = [
     path('medicine/', views.medicine.as_view()),
     path('symptom/list/', views.symptom_list.as_view()),
     path('symptom/<int:id>/', views.symptom.as_view()),
-    path('inquirypost/list/<int:list>', views.inquirypost_list.as_view()),
+    path('inquirypost/list/<int:page>', views.inquirypost_list.as_view()),
     path('inquirypost/<int:id>/', views.inquirypost.as_view()),
     path('patient/', views.patient.as_view()),
 ]

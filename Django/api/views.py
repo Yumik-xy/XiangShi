@@ -8,7 +8,7 @@ from .models import patient as patient_model
 from .models import inquirypost as inquirypost_model
 
 
-# next code 10005
+# next code 10006
 
 
 # Create your views here.
@@ -144,8 +144,20 @@ class patient(APIView):
 
 
 class inquirypost_list(APIView):
-    def get(self, request):
-        return Response({'status': True})
+    def get(self, request, page):
+        if page <= 0 or (page - 1) * 10 > inquirypost_model.objects.count():
+            return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
+        try:
+            inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
+                [(page - 1) * 10:(page - 0) * 10].values('id', 'name', 'title', 'classify', 'content', 'picture1',
+                                                         'picture2', 'picture3')
+            json_data = list(inquirypost_list)
+
+        except:
+            return Response({'status': False, 'message': '未知错误', 'code': 10000})
+
+        else:
+            return Response({'status': True, 'data': json_data})
 
 
 class inquirypost(APIView):
@@ -161,32 +173,28 @@ class inquirypost(APIView):
             return Response({'status': True, 'data': json_data})
 
     def post(self, request):
-
-        # openid = models.CharField(max_length=60, verbose_name='openid')
-        # name = models.CharField(max_length=30, verbose_name='用户名')
-        # title = models.CharField(max_length=60, verbose_name='标题')
-        # classify = models.CharField(max_length=30, verbose_name='分类')
-        # content = models.TextField(verbose_name='正文')
-        # picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
-        # picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
-        # picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
-
         name = request.data.get('name')
         title = request.data.get('title')
         classify = request.data.get('classify')
         content = request.data.get('content')
-        picture1 = request.data.get('picture1', 'null')
-        picture2 = request.data.get('picture2', 'null')
-        picture3 = request.data.get('picture3', 'null')
+        picture1_base64 = request.data.get('picture1', 'null')
+        picture2_base64 = request.data.get('picture2', 'null')
+        picture3_base64 = request.data.get('picture3', 'null')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content, picture1=picture1, picture2=picture2,
-                                                  picture3=picture3)
+                                                  content=content)
+            if picture1_base64:
+                db.picture1 = Savepic(picture1_base64)
+            if picture2_base64:
+                db.picture2 = Savepic(picture2_base64)
+            if picture3_base64:
+                db.picture3 = Savepic(picture3_base64)
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})

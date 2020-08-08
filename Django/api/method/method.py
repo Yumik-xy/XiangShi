@@ -1,6 +1,9 @@
+import uuid
+
 import requests
 import base64
 
+from django.conf import settings
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 APPID = 'wxc9bc178415433f14'
@@ -21,3 +24,13 @@ def GetOpenid(coder):
         return ""
     print(openid)
     return openid
+
+def Savepic(base64):
+    if not base64:
+        return ""
+    save_path = '%s/picture/%Y%m%d/%s' % (settings.MEDIA_ROOT, str(uuid.uuid4()))
+    imgdata = base64.b64decode(base64)
+    with open(save_path, 'wb') as f:
+        f.write(imgdata)
+        f.close()
+    return save_path
