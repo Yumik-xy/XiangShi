@@ -205,27 +205,16 @@ class inquirypost(APIView):
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
-        db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                              content=content)
-        if not picture1_base64 == '':
-            db.picture1 = Savepic(picture1_base64)
-        if not picture2_base64 == '':
-            db.picture2 = Savepic(picture2_base64)
-        if not picture3_base64 == '':
-            db.picture3 = Savepic(picture3_base64)
-        db.save()
-        return Response({'status': True})
         try:
-            pass
-            # db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-            #                                       content=content)
-            # if not picture1_base64 == '':
-            #     db.picture1 = Savepic(picture1_base64)
-            # if not picture2_base64 == '':
-            #     db.picture2 = Savepic(picture2_base64)
-            # if not picture3_base64 == '':
-            #     db.picture3 = Savepic(picture3_base64)
-            # db.save()
+            db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
+                                                  content=content)
+            if not picture1_base64 == '':
+                db.picture1 = Savepic(picture1_base64)
+            if not picture2_base64 == '':
+                db.picture2 = Savepic(picture2_base64)
+            if not picture3_base64 == '':
+                db.picture3 = Savepic(picture3_base64)
+            db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:
