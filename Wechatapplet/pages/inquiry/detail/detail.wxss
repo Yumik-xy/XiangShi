@@ -94,7 +94,7 @@
 }
 
 .comment{
-  box-shadow: 0rpx 2rpx 4rpx 2rpx #DDDDDD;
+  border-top: 1px solid #f2f2f2;
   padding: 15rpx 20rpx;
   border-radius: 10rpx;
 }

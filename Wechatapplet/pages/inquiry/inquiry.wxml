@@ -21,6 +21,7 @@
               <view class='title'>{{item.title}}</view>
               <view class="NT">
                 <view class='name'>{{item.name}}</view>
+                <view class='date'>{{item.date}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
             </view>

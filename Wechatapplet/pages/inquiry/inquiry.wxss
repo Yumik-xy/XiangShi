@@ -93,11 +93,9 @@
 }
 
 .content {
-
   font-size: 26rpx;
   line-height: 36rpx;
   color: #3d3d3d;
-
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -107,7 +105,7 @@
   -webkit-box-orient: vertical;
 }
 
-.picmessage{
+.picmessage {
   display: flex;
 }
 
@@ -116,6 +114,11 @@
   width: 32%;
   height: 120rpx;
   margin-right: 1%;
+}
+
+
+.date{
+  padding-left: 20rpx;
 }
 
 .time {

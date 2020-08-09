@@ -97,7 +97,8 @@ Page({
         wx.request({
           url: 'http://127.0.0.1/api/inquirypost',
           data: {
-            id : that.data.id
+            id : that.data.id,
+            coder:loginCode.code
           },
           header: { "content-type": "application/x-www-form-urlencoded" },
           method: 'GET',
