@@ -22,7 +22,7 @@ Page({
       success: function (loginCode) {
         console.log(loginCode)
         wx.request({
-          url: 'http://127.0.0.1/api/inquirypost/',
+          url: 'http://127.0.0.1/api/inquirypost',
           data: {
             coder: loginCode.code,
             name: that.data.userInfo.nickName,

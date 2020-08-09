@@ -171,7 +171,7 @@ Page({
       nowpage: that.data.nowpage + 1
     })
     wx.request({
-      url: 'http://127.0.0.1/api/inquirypost/list/',
+      url: 'http://127.0.0.1/api/inquirypost/list',
       data: {
         page: that.data.nowpage
       },

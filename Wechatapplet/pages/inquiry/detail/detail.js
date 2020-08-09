@@ -49,15 +49,12 @@ Page({
       id: options.id
     })
     console.log(options.id)
-    wx.request({
-      url: 'url',
-    })
-    
+
     wx.login({
       success: function (loginCode) {
         console.log(loginCode)
         wx.request({
-          url: 'http://127.0.0.1/api/comment/',
+          url: 'http://127.0.0.1/api/comment',
           data: {
             postid :that.data.id
           },
@@ -84,7 +81,7 @@ Page({
       success: function (loginCode) {
         console.log(loginCode)
         wx.request({
-          url: 'http://127.0.0.1/api/inquirypost/',
+          url: 'http://127.0.0.1/api/inquirypost',
           data: {
             id : that.data.id
           },

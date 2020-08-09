@@ -43,7 +43,7 @@ Page({
     wx.login({
       success: function (loginCode) {
         wx.request({
-          url: 'http://127.0.0.1/api/patient/',
+          url: 'http://127.0.0.1/api/patient',
           data: {
             coder: loginCode.code
           },
