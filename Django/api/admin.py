@@ -50,10 +50,10 @@ class commentAdmin(admin.ModelAdmin):
 admin.site.register(comment, commentAdmin)
 
 
-class medicinewikiAdmin(admin.ModelAdmin):
+class symptomwikiAdmin(admin.ModelAdmin):
     search_fields = ('name', 'child',)  # 根据属性搜索
     list_display = ('id', 'name', 'child', 'level',)  # 列表显示的属性
     pass
 
 
-admin.site.register(medicinewiki, medicinewikiAdmin)
+admin.site.register(symptomwiki, symptomwikiAdmin)

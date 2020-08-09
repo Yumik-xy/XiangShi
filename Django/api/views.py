@@ -4,12 +4,14 @@ from rest_framework.response import Response
 
 from .method.method import *
 from .models import medicine as medicine_model
+from .models import symptom as symptom_model
+from .models import symptomwiki as symptomwiki_model
 from .models import patient as patient_model
 from .models import inquirypost as inquirypost_model
 from .models import comment as comment_model
 
 
-# next code 10007
+# next code 10008
 
 
 # Create your views here.
@@ -49,11 +51,10 @@ class medicine(APIView):
 class symptom_list(APIView):
     def get(self, request):
         try:
-            drumname = request.query_params.get('drumname')
-            drums = medicine_model.objects.filter(drumname__contain=drumname).values()[0:10]
-            json_data = list(drums)
+            symptom = symptomwiki_model.objects.all().values('id', 'name', 'parent', 'child')
+            json_data = list(symptom)
         except:
-            return Response({'status': False, 'message': '未找到对应症状', 'code': 10006})
+            return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:
             return Response({'status': True, 'data': json_data})
 
@@ -62,7 +63,13 @@ class symptom_list(APIView):
 class symptom(APIView):
     def get(self, request):
         id = request.query_params.get('id')
-        return Response({'status': True})
+        try:
+            symptom = symptom_model.objects.filter(id=id).values()
+            json_data = list(symptom)
+        except:
+            return Response({'status': False, 'message': '没有该的病症', 'code': 10007})
+        else:
+            return Response({'status': True, 'data': json_data})
 
 
 # 病人查询

@@ -108,7 +108,7 @@ class comment(MPTTModel):
         return self.name[:30]
 
 
-class medicinewiki(MPTTModel):
+class symptomwiki(MPTTModel):
     name = models.CharField(max_length=30, verbose_name='类名')
     parent = TreeForeignKey(
         'self',
@@ -120,9 +120,9 @@ class medicinewiki(MPTTModel):
     child = models.ForeignKey(medicine, on_delete=models.CASCADE, related_name='postid', blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = '药物wiki信息'
-        verbose_name = '药物wiki'
-        db_table = 'medicinewiki'
+        verbose_name_plural = '疾病wiki信息'
+        verbose_name = '疾病wiki'
+        db_table = 'symptomwiki'
 
     class MPTTMeta:
         order_insertion_by = ['parent']
