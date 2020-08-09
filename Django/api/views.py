@@ -200,7 +200,7 @@ class inquirypost_list(APIView):
 class inquirypost(APIView):
     def get(self, request):
         id = request.query_params.get('id')
-        coder = request.data.get('coder')
+        coder = request.query_params.get('coder')
         openid = GetOpenid(coder)
         print(request.data)
         if openid == "":
@@ -209,7 +209,7 @@ class inquirypost(APIView):
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'picture1', 'picture2', 'picture3', 'time')
             json_data = list(inquirypost)
-            possess = (True if inquirypost_model.objects.filter(id=id).values().openid == openid else False)
+            possess = (True if inquirypost_model.objects.get(id=id).openid == openid else False)
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:

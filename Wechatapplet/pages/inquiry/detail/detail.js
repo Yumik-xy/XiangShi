@@ -70,7 +70,7 @@ Page({
         wx.request({
           url: 'http://127.0.0.1/api/comment',
           data: {
-            postid :that.data.id
+            postid :that.data.id,
           },
           header: { "content-type": "application/x-www-form-urlencoded" },
           method: 'GET',
