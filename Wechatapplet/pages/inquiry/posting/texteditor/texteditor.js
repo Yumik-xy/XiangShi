@@ -6,7 +6,7 @@ Page({
     editorHeight: 720,
     keyboardHeight: 0,
     htmlcontent: '',
-    content:'',
+    content: '',
     isIOS: false
   },
   readOnlyChange() {
@@ -119,22 +119,43 @@ Page({
       text: formatDate
     })
   },
+  coding: function (images) {
+    if (images === null) return ""
+    const fileSystemManager = wx.getFileSystemManager()
+    const data = fileSystemManager.readFileSync(images, 'base64')
+    return data
+  },
   insertImage() {
     const that = this
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        that.editorCtx.insertImage({
-          src: res.tempFilePaths[0],
+        wx.request({
+          url: 'http://127.0.0.1/api/uploadimg',
           data: {
-            id: 'abcd',
-            role: 'god'
+            picture: that.coding(res.tempFilePaths[0])
           },
-          width: '80%',
-          success: function () {
-            console.log('insert image success')
+          header: { "content-type": "application/x-www-form-urlencoded" },
+          method: 'POST',
+          success: function (res) {
+            console.log(res.data)
+            that.editorCtx.insertImage({
+              src: 'http://127.0.0.1/media/' + res.data.url,
+              data: {
+                id: 'abcd',
+                role: 'god'
+              },
+              width: '40%',
+              success: function () {
+                console.log('insert image success')
+              }
+            })
           }
         })
+
+
+
+
       }
     })
   }

@@ -351,3 +351,11 @@ class comment(APIView):
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
             return Response({'status': True})
+
+
+class uploadimg(APIView):
+    def post(self, request):
+        picture_base64 = request.data.get('picture')
+        path = str(Savepic(picture_base64))
+        print(path)
+        return Response({'status': True, 'url': path})

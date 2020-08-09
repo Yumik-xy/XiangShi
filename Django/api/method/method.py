@@ -36,12 +36,9 @@ def Savepic(img):
     imgdata = base64.b64decode(img)
     imd5 = hashlib.md5(imgdata).hexdigest()
     db = imgmd5_model.objects.filter(md5=imd5).first()
-    print(db)
     if db:
-        print(1)
         return db.img
     else:
-        print(2)
         path = '%spicture/%s/' % (settings.MEDIA_ROOT, time.strftime("%Y%m%d", time.localtime()))
         mkdir(path)
         file_name = 'picture/%s/%s.jpg' % (time.strftime("%Y%m%d", time.localtime()), str(uuid.uuid4()))
@@ -49,7 +46,7 @@ def Savepic(img):
         with open(save_path, 'wb') as f:
             f.write(imgdata)
             f.close()
-        db = imgmd5_model.objects.create(img=save_path, md5=imd5)
+        db = imgmd5_model.objects.create(img=file_name, md5=imd5)
         return db.img
 
 
