@@ -58,6 +58,7 @@
   margin: 40rpx;
   padding: 10rpx 20rpx;
   border-style: solid;
+  border-radius: 15rpx;
   box-shadow: 0rpx 2rpx 4rpx 2rpx #DDDDDD;
   border-width: 0rpx;
 }
@@ -77,6 +78,7 @@
   display: flex;
   flex-direction: row;
   padding-top: 20rpx;
+  width: 90%;
   /* text-align: center; */
 }
 
@@ -84,8 +86,7 @@
   text-align: center;
   font-size: 24rpx;
   line-height: 36rpx;
-  background-color: var(--themeColor);
-  color: #ffffff;
+  color: var(--themeColor);
   padding: 0rpx 8rpx;
   /* border-radius: 20rpx; */
   margin-right: 5rpx;

@@ -18,7 +18,7 @@
           <view class='title-left'>
             <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
             <view class='title-right'>
-              <view class='title'>{{item.title}} ✈</view>
+              <view class='title'>{{item.title}}</view>
               <view class="NT">
                 <view class='name'>{{item.name}}</view>
                 <view class='time'>{{item.time}}</view>
@@ -27,13 +27,17 @@
           </view>
         </view>
         <view class='message'>
-          <rich-text nodes="<p class='content'><a class='classify'>{{item.classify}}</a>{{item.content}}</p>">
+          <rich-text nodes="<p class='content'><a class='classify'>#{{item.classify}}#</a>{{item.summary}}</p>">
           </rich-text>
         </view>
       </view>
-      <view class='picmessage' wx:if='{{item.picture}}'>
-        <image class='picture' src="{{pic}}" wx:for="{{item.picture}}" wx:key="key"  wx:for-item="pic" mode="widthFix"
-          data-src="{{pic}}" data-list="{{item.picture}}" bindtap="previewPic"></image>
+      <view class='picmessage'>
+        <image wx:if='{{item.picture1}}' class='picture' src="http://127.0.0.1/media/{{item.picture1}}" mode="aspectFit"
+        data-src="http://127.0.0.1/media/{{item.picture1}}"></image>
+      <image wx:if='{{item.picture2}}' class='picture' src="http://127.0.0.1/media/{{item.picture2}}" mode="aspectFit"
+        data-src="http://127.0.0.1/media/{{item.picture2}}"></image>
+      <image wx:if='{{item.picture3}}' class='picture' src="http://127.0.0.1/media/{{item.picture3}}" mode="aspectFit"
+        data-src="http://127.0.0.1/media/{{item.picture3}}"></image>
       </view>
       <view class='other'>
         <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>

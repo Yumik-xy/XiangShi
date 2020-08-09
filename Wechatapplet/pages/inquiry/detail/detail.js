@@ -1,6 +1,5 @@
 // pages/inquiry/detail/detail.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,6 +10,7 @@ Page({
       lovenum: 0,
     },
     list : [],
+    picturelist: []
   },
   
   arrayToTree: function (arr, parent) {
@@ -31,10 +31,24 @@ Page({
   },
 
   previewPic: function(e) {
-    console.log(e)
-    var current = e.target.dataset.src;
-    var list = e.target.dataset.list;
+    if (this.data.data.picture1.length > 0) {
+      this.setData({
+        'picturelist[0]':('http://127.0.0.1/media/'+this.data.data.picture1)
+      })
+    }
+    if (this.data.data.picture2.length > 0) {
+      this.setData({
+        'picturelist[1]':('http://127.0.0.1/media/'+this.data.data.picture2)
+      })
+    }
+    if (this.data.data.picture3.length > 0) {
+      this.setData({
+        'picturelist[2]':('http://127.0.0.1/media/'+this.data.data.picture3)
+      })
+    }
 
+    var current = e.target.dataset.src;
+    var list = this.data.picturelist;
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
       urls: list // 需要预览的图片http链接列表  
@@ -96,7 +110,7 @@ Page({
               })
             } else if (res.data.status == true) {
               that.setData({
-                data: res.data.data[0]
+                data: res.data.data[0],
               })
             }
           }

@@ -10,6 +10,7 @@ Page({
     hasUserInfo: false,
     info: {},
     content:'',
+    summary:'',
     images: [],
     classify: [],
     showRegion: false,
@@ -29,6 +30,7 @@ Page({
             title: e.detail.value.title,
             classify: that.data.classify[1].name,
             content: that.data.content,
+            summary: that.data.summary,
             // content: e.detail.value.content,
             picture1: that.coding(that.data.images[0]||null),
             picture2: that.coding(that.data.images[1]||null),
@@ -80,9 +82,10 @@ Page({
     });
   },
 
-  htmlcontent : function(e){
+  htmlcontent : function(e){  
     this.setData({
-      content : e.detail.html
+      content : e.detail.html,
+      summary : e.detail.text
     })
   },
 

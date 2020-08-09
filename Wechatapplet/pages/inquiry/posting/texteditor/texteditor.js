@@ -6,6 +6,7 @@ Page({
     editorHeight: 720,
     keyboardHeight: 0,
     htmlcontent: '',
+    content:'',
     isIOS: false
   },
   readOnlyChange() {
@@ -18,7 +19,7 @@ Page({
     console.log(e);
 
     this.setData({
-      htmlcontent: e.detail.html
+      htmlcontent: e.detail.html,
     })
     this.triggerEvent('htmlcontent', e.detail, {})
   },

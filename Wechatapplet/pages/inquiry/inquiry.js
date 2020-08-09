@@ -13,18 +13,6 @@ Page({
     SYSTEMINFO: ''
   },
 
-  previewPic: function (e) {
-    console.log(e)
-    var current = e.target.dataset.src;
-    var list = e.target.dataset.list;
-
-    wx.previewImage({
-      current: current, // 当前显示图片的http链接  
-      urls: list // 需要预览的图片http链接列表  
-    })
-  },
-
-
   turn_posting: function () {
     wx.navigateTo({
       url: '../../pages/inquiry/posting/posting',
@@ -116,7 +104,6 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         console.log(res);
-
         that.setData({
           SYSTEMINFO: res
         })
@@ -150,6 +137,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.getinquirypost(true)
+    wx.stopPullDownRefresh()
   },
 
   /**
@@ -187,15 +175,18 @@ Page({
             icon: 'none'
           })
         } else if (res.data.status == true) {
+          let dataList = that.data.item.concat(res.data.data); //获取到的数据
+          dataList.forEach((item) => {
+            item.time = item.time.substring(0, 8); //要截取字段的字符串
+          })
+          console.log(dataList);
           that.setData({
-            item: that.data.item.concat(res.data.data)
+            item: dataList //数据源
           })
         }
       }
     })
   },
-
-
 
   /**
    * 用户点击右上角分享

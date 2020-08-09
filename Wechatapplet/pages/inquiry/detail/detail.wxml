@@ -17,11 +17,11 @@
       </rich-text>
     </view>
     <view class='picmessage'>
-      <image wx:if='{{data.picture1}}' class='picture' src="http://127.0.0.1/media/{{data.picture1}}" mode="widthFix"
+      <image wx:if='{{data.picture1}}' class='picture' src="http://127.0.0.1/media/{{data.picture1}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture1}}" bindtap="previewPic"></image>
-      <image wx:if='{{data.picture2}}' class='picture' src="http://127.0.0.1/media/{{data.picture2}}" mode="widthFix"
+      <image wx:if='{{data.picture2}}' class='picture' src="http://127.0.0.1/media/{{data.picture2}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture2}}" bindtap="previewPic"></image>
-      <image wx:if='{{data.picture3}}' class='picture' src="http://127.0.0.1/media/{{data.picture3}}" mode="widthFix"
+      <image wx:if='{{data.picture3}}' class='picture' src="http://127.0.0.1/media/{{data.picture3}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture3}}" bindtap="previewPic"></image>
     </view>
     <view class='other'>
@@ -30,10 +30,14 @@
     </view>
     <view class="comment">
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
-        <view>{{firstcom.name}}:{{firstcom.body}}</view>
-        <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">
-          <view>{{secondcom.name}}:{{secondcom.body}}</view>
-        </block>
+        <view class="commentname">{{firstcom.name}}</view>
+        <view class="commentcontent">{{firstcom.body}}</view>
+        <view class="secondcom">
+          <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">
+            <view class="commentname">{{secondcom.name}} 回复 {{secondcom.reply_to}}</view>
+            <view class="commentcontent">{{secondcom.body}}</view>
+          </block>
+        </view>
       </block>
     </view>
   </view>
