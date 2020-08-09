@@ -1,6 +1,6 @@
 <!--pages/mine/patient/add/add.wxml-->
 <view class="add">
-	<form bindsubmit='submit' bind>
+	<form bindsubmit='submit'>
 		<view class="con">
 			<view class="con-nr">
 				<text>姓名</text>

@@ -66,6 +66,7 @@ class inquirypost(models.Model):
     title = models.CharField(max_length=60, verbose_name='标题')
     classify = models.CharField(max_length=30, verbose_name='分类')
     content = RichTextField(verbose_name='正文')
+    summary = models.CharField(max_length=120, verbose_name='概述')
     picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
     picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
     picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
@@ -92,7 +93,7 @@ class comment(MPTTModel):
         related_name='children'
     )
     reply_to = models.CharField(max_length=30, verbose_name='被回复者的用户名', blank=True)
-    body = RichTextField(verbose_name='评论内容')
+    body = models.TextField(verbose_name='评论内容')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -74,7 +74,7 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patientinfo = patient_model.objects.filter(openid=openid).values('patientname', 'gender', 'age',
+            patientinfo = patient_model.objects.filter(openid=openid).values('id', 'patientname', 'gender', 'age',
                                                                              'telephone', 'pastmedicalhistory',
                                                                              'allergy')
         except:
@@ -107,13 +107,14 @@ class patient(APIView):
 
     def put(self, request):
         # old data
-        patientname = request.data.get('patientname')
-        gender = request.data.get('gender')
-        age = request.data.get('age')
-        telephone = request.data.get('telephone')
-        pastmedicalhistory = request.data.get('pastmedicalhistory')
-        allergy = request.data.get('allergy')
+        # patientname = request.data.get('patientname')
+        # gender = request.data.get('gender')
+        # age = request.data.get('age')
+        # telephone = request.data.get('telephone')
+        # pastmedicalhistory = request.data.get('pastmedicalhistory')
+        # allergy = request.data.get('allergy')
         # new data
+        id = request.data.get('id')
         _patientname = request.data.get('_patientname')
         _gender = request.data.get('_gender')
         _age = request.data.get('_age')
@@ -126,9 +127,10 @@ class patient(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            db = patient_model.objects.get(openid=openid, patientname=patientname, gender=gender, age=age,
-                                           telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                           allergy=allergy)
+            db = patient_model.objects.get(openid=openid, id=id)
+            # db = patient_model.objects.get(openid=openid, patientname=patientname, gender=gender, age=age,
+            #                                telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+            #                                allergy=allergy)
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
@@ -142,20 +144,22 @@ class patient(APIView):
             return Response({'status': True})
 
     def delete(self, request):
-        patientname = request.data.get('patientname')
-        gender = request.data.get('gender')
-        age = request.data.get('age')
-        telephone = request.data.get('telephone')
-        pastmedicalhistory = request.data.get('pastmedicalhistory')
-        allergy = request.data.get('allergy')
+        # patientname = request.data.get('patientname')
+        # gender = request.data.get('gender')
+        # age = request.data.get('age')
+        # telephone = request.data.get('telephone')
+        # pastmedicalhistory = request.data.get('pastmedicalhistory')
+        # allergy = request.data.get('allergy')
+        id = request.data.get('id')
         coder = request.data.get("coder")
         openid = GetOpenid(coder)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
-            patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
-                                         telephone=telephone, pastmedicalhistory=pastmedicalhistory,
-                                         allergy=allergy).delete()
+            patient_model.objects.filter(openid=openid, id=id).delete()
+            # patient_model.objects.filter(openid=openid, patientname=patientname, gender=gender, age=age,
+            #                              telephone=telephone, pastmedicalhistory=pastmedicalhistory,
+            #                              allergy=allergy).delete()
         except:
             return Response({'status': False, 'message': '未找到用户', 'code': 10002})
         else:
@@ -170,10 +174,9 @@ class inquirypost_list(APIView):
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * 10:(page - 0) * 10].values('id', 'name', 'title', 'classify', 'content', 'picture1',
-                                                         'picture2', 'picture3')
+                [(page - 1) * 10:(page - 0) * 10].values('id', 'name', 'title', 'classify', 'summary', 'picture1',
+                                                         'picture2', 'picture3', 'time')
             json_data = list(inquirypost_list)
-
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
 
@@ -187,7 +190,7 @@ class inquirypost(APIView):
         id = request.query_params.get('id')
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
-                                                                         'picture1', 'picture2', 'picture3','time')
+                                                                         'picture1', 'picture2', 'picture3', 'time')
             json_data = list(inquirypost)
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
@@ -242,16 +245,15 @@ class comment(APIView):
     def post(self, request):
         name = request.data.get('name')
         postid = request.data.get('postid')
-        # postid = inquirypost_model.objects.filter(id=postid).values()
-        # print(postid)
-        # if not postid:
-        #     return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
+        postid = inquirypost_model.objects.filter(id=postid).values()
+        print(postid)
+        if not postid:
+            return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         parentid = request.data.get('parentid')
         reply_to = request.data.get('reply_to')
         body = request.data.get('body')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
-        openid = '123'
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
