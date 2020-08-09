@@ -18,7 +18,7 @@
 
 .title {
   font-weight: bold;
-  font-size: 42rpx;
+  font-size: 44rpx;
   margin-bottom: 20rpx;
 }
 
@@ -37,11 +37,7 @@
   font-size: 36rpx;
   line-height: 48rpx;
   color: #3d3d3d;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal !important;
+  
 }
 
 .picmessage{
@@ -58,8 +54,9 @@
 
 .title-left {
   display: flex;
-  /* justify-content: center; */
+  padding-bottom: 10rpx;
   align-items: center;
+  border-bottom: 1px solid #f2f2f2;
 }
 
 .title-right {
@@ -71,7 +68,10 @@
 }
 
 .title-right .name{
-  font-size: 34rpx;
+  height :36rpx;
+  font-size: 36rpx;
+  line-height: 38rpx;
+  font-weight: bold;
 }
 
 .title-right .time{
@@ -86,6 +86,6 @@
 }
 
 .otimg {
-  width: 32rpx;
-  height: 32rpx;
+  width: 50rpx;
+  height: 50rpx;
 }

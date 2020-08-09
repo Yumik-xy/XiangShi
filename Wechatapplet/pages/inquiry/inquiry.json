@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "问诊"
+  "navigationBarTitleText": "问诊",
+  "enablePullDownRefresh": true
 }

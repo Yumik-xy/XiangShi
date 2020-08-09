@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "disease-picker":"../../../components/disease-picker/disease-picker"
+    "disease-picker":"../../../components/disease-picker/disease-picker",
+    "texteditor":"./texteditor/texteditor"
   }
 }

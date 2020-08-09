@@ -1,11 +1,13 @@
 /* pages/inquiry/posting/posting.wxss */
+@import "./iconfont.wxss";
+
 .add {
   height: 100%;
   width: 100%;
 }
 
 .con {
-  margin: 25rpx 30rpx 50rpx 30rpx;
+  margin: 25rpx 30rpx 30rpx 30rpx;
 }
 
 .title {
@@ -30,7 +32,6 @@
 .supplement {
   background-color: white;
   height: 800rpx;
-  display: flex;
   padding-left: 16rpx;
   padding-right: 16rpx;
   margin: 0 16rpx 26rpx 16rpx;

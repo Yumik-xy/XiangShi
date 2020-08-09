@@ -6,8 +6,12 @@
 				<input class="title_input" placeholder="请输入问题" name="title" type="text"></input>
 			</view>
 			<view class="supplement">
-				<textarea class="supplement_input" placeholder="对问题进行补充说明，可以更快获得解答" name="content" type="text"
-					maxlength="-1"></textarea>
+				<texteditor class="supplement_input" bindhtmlcontent='htmlcontent'>
+
+				
+				</texteditor>
+				<!-- <textarea class="supplement_input" placeholder="对问题进行补充说明，可以更快获得解答" name="content" type="text"
+					maxlength="-1"></textarea> -->
 			</view>
 		</view>
 
