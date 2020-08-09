@@ -170,7 +170,7 @@
 }
 .contents swiper swiper-item scroll-view view .title_text {
   height: 100%;
-  width: auto;
+  width: 65%;
   flex-direction: column;
 }
 .contents swiper swiper-item scroll-view view .title_text .title {
@@ -178,6 +178,10 @@
   color: #000000;
 }
 .contents swiper swiper-item scroll-view view .title_text .txt {
+  height: auto;
+  width: auto;
+  display: flex;
+  overflow: hidden;
   font-size: 26rpx;
   color: #bfbfbf;
 }

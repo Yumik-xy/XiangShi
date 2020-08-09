@@ -58,8 +58,8 @@
           <view wx:for="{{item_contents.content}}" wx:key="id">
             <image src="{{item.img_url}}" mode="scaleToFill" />
             <view class="title_text">
-              <text class="title">标题栏：{{item.title}}</text>
-              <text class="txt">内容简介栏：{{item.text}}</text>
+              <text class="title">{{item.title}}</text>
+              <text class="txt">{{item.text}}</text>
             </view>
           </view>
         </scroll-view>
