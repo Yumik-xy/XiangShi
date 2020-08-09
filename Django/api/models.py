@@ -70,7 +70,7 @@ class inquirypost(models.Model):
     picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
     picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
     picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
-    time = models.TimeField(auto_now_add=True)
+    time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = '问诊信息'

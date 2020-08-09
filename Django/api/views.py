@@ -18,6 +18,10 @@ from .models import comment as comment_model
 
 class login(APIView):
     def get(self, request):
+        # dblist = ['骨髓', '关节', '脊髓', '脊柱', '肋骨', '颅骨', '号', '上肢骨', '下肢骨', '其他骨']
+        # patient_id = 12
+        # for each in dblist:
+        #     symptomwiki_model.objects.create(parent_id=patient_id, name=each)
         return Response({'status': True})
 
 
@@ -196,14 +200,20 @@ class inquirypost_list(APIView):
 class inquirypost(APIView):
     def get(self, request):
         id = request.query_params.get('id')
+        coder = request.data.get('coder')
+        openid = GetOpenid(coder)
+        print(request.data)
+        if openid == "":
+            return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'picture1', 'picture2', 'picture3', 'time')
             json_data = list(inquirypost)
+            possess = (True if inquirypost_model.objects.filter(id=id).values().openid == openid else False)
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
-            return Response({'status': True, 'data': json_data})
+            return Response({'status': True, 'data': json_data, 'possess': possess})
 
     def post(self, request):
         name = request.data.get('name')
