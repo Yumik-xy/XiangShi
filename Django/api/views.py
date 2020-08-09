@@ -169,13 +169,14 @@ class patient(APIView):
 # 问诊list查询
 class inquirypost_list(APIView):
     def get(self, request):
-        page = request.query_params.get('page')
-        if page <= 0 or (page - 1) * 10 > inquirypost_model.objects.count():
+        page = int(request.query_params.get('page'))
+        times = 5
+        if page <= 0 or (page - 1) * 5 > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * 10:(page - 0) * 10].values('id', 'name', 'title', 'classify', 'summary', 'picture1',
-                                                         'picture2', 'picture3', 'time')
+                [(page - 1) * 5:(page - 0) * 5].values('id', 'name', 'title', 'classify', 'summary', 'picture1',
+                                                       'picture2', 'picture3', 'time')
             json_data = list(inquirypost_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -202,6 +203,7 @@ class inquirypost(APIView):
         title = request.data.get('title')
         classify = request.data.get('classify')
         content = request.data.get('content')
+        summary = request.data.get('summary')[0:100]
         picture1_base64 = request.data.get('picture1')
         picture2_base64 = request.data.get('picture2')
         picture3_base64 = request.data.get('picture3')
@@ -212,7 +214,7 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content)
+                                                  content=content, summary=summary)
             if not picture1_base64 == '':
                 db.picture1 = Savepic(picture1_base64)
             if not picture2_base64 == '':
