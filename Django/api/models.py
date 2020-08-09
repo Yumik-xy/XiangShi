@@ -129,3 +129,8 @@ class symptomwiki(MPTTModel):
 
     def __str__(self):
         return self.name[:30]
+
+
+class imgmd5(models.Model):
+    img = models.ImageField(upload_to='picture/%Y%m%d/')
+    md5 = models.CharField(max_length=60)

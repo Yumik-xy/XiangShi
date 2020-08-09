@@ -22,6 +22,7 @@ class login(APIView):
         # patient_id = 12
         # for each in dblist:
         #     symptomwiki_model.objects.create(parent_id=patient_id, name=each)
+
         return Response({'status': True})
 
 
@@ -244,6 +245,55 @@ class inquirypost(APIView):
         else:
             return Response({'status': True})
 
+    def put(self, request):
+        id = request.data.get('id')
+        _name = request.data.get('name')
+        _title = request.data.get('title')
+        _classify = request.data.get('classify')
+        _content = request.data.get('content')
+        _summary = request.data.get('summary')[0:100]
+        _picture1_base64 = request.data.get('picture1')
+        _picture2_base64 = request.data.get('picture2')
+        _picture3_base64 = request.data.get('picture3')
+        coder = request.data.get('coder')
+        openid = GetOpenid(coder)
+        print(request.data)
+        coder = request.data.get('coder')
+        openid = GetOpenid(coder)
+        if openid == "":
+            return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        try:
+            db = inquirypost_model.objects.get(openid=openid, id=id)
+        except:
+            return Response({'status': False, 'message': '未找到用户', 'code': 10002})
+        else:
+            db.name = _name
+            db.title = _title
+            db.classify = _classify
+            db.content = _content
+            db.summary = _summary
+            if not _picture1_base64 == '':
+                db.picture1 = Savepic(_picture1_base64)
+            if not _picture2_base64 == '':
+                db.picture2 = Savepic(_picture2_base64)
+            if not _picture3_base64 == '':
+                db.picture3 = Savepic(_picture3_base64)
+            db.save()
+            return Response({'status': True})
+
+    def delete(self, request):
+        id = request.data.get('id')
+        coder = request.data.get("coder")
+        openid = GetOpenid(coder)
+        if openid == "":
+            return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        try:
+            inquirypost_model.objects.filter(openid=openid, id=id).delete()
+        except:
+            return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
+        else:
+            return Response({'status': True})
+
 
 # 评论查询
 class comment(APIView):
@@ -286,5 +336,18 @@ class comment(APIView):
             db.save()
         except:
             return Response({'status': False, 'message': '发布评论错误', 'code': 10008})
+        else:
+            return Response({'status': True})
+
+    def delete(self, request):
+        id = request.data.get('id')
+        coder = request.data.get("coder")
+        openid = GetOpenid(coder)
+        if openid == "":
+            return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        try:
+            comment_model.objects.filter(openid=openid, id=id).delete()
+        except:
+            return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
             return Response({'status': True})
