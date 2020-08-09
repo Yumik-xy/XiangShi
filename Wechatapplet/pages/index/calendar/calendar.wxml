@@ -26,15 +26,15 @@
     <view class="tips">
       <view wx:for="{{tips}}" wx:key="id" class="Schedule">
         <view class="time">
-          <text style="font-size:16px;">{{item.timeStart}}</text>
-          <text style="font-size:12px;color:#brbrbr;">{{item.timeEnd}}</text>
+          <text style="font-size:28rpx;">{{item.timeStart}}</text>
+          <text style="font-size:18rpx;color:#bfbfbf;">{{item.timeEnd}}</text>
         </view>
         <view class="tip">
           <checkbox />
           {{item.content}}
         </view>
       </view>
-      <navigator class="newSchedule" url="./newSchedule/newSchedule">
+      <navigator class="newSchedule" url="../newSchedule/newSchedule">
         <text>+ 新建</text>
       </navigator>
     </view>

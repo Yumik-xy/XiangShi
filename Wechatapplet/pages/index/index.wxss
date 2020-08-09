@@ -174,11 +174,11 @@
   flex-direction: column;
 }
 .contents swiper swiper-item scroll-view view .title_text .title {
-  font-size: 38rpx;
+  font-size: 34rpx;
   color: #000000;
 }
 .contents swiper swiper-item scroll-view view .title_text .txt {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #bfbfbf;
 }
 .contents view:nth-last-child(1) {

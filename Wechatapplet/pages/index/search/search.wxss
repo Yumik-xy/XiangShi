@@ -7,7 +7,6 @@
   display: flex;
   flex-direction: row;
 }
-
 .search-left {
   background-color: #ffffff;
   flex: 8;
@@ -15,31 +14,78 @@
   flex-direction: row;
   display: flex;
 }
-
 .search-left image {
   height: 35rpx;
   width: 35rpx;
   padding: 15rpx 15rpx 15rpx 20rpx;
 }
-
 .search-left input {
   height: 65rpx;
   font-size: 30rpx;
   text-align: left;
 }
-
 .search-right {
   flex: 1;
 }
-
 .search-right image {
   height: 45rpx;
   width: 45rpx;
   padding: 10rpx;
 }
-
 .search-placeholder {
   color: #000000;
   font-size: 26rpx;
   text-align: left;
+}
+.history {
+  margin: 20rpx 10rpx;
+}
+.history .history-head {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 35rpx;
+}
+.history .history-head image {
+  width: 40rpx;
+  margin: 0 15rpx;
+}
+.history .history-content {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.history .history-content .history-item {
+  margin: 10rpx 20rpx;
+  background-color: #eee5e5;
+  font-size: 28rpx;
+  padding: 15rpx 25rpx;
+  border-radius: 40rpx;
+}
+.hot {
+  margin-top: 40rpx;
+}
+.hot .hot-head {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 35rpx;
+}
+.hot .hot-head image {
+  width: 40rpx;
+  margin: 0 15rpx;
+}
+.hot .hot-content {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.hot .hot-content .hot-item {
+  margin: 10rpx 20rpx;
+  background-color: #eee5e5;
+  font-size: 28rpx;
+  padding: 15rpx 25rpx;
+  border-radius: 40rpx;
 }

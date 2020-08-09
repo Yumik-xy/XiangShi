@@ -4,7 +4,7 @@
     <input placeholder="输入日程标题" name="title"></input>
   </view>
   <view class="img">
-    <image src="../../../../icon/clock.png" mode="widthFix" />
+    <image src="../../../icon/clock.png" mode="widthFix" />
     设置时间
   </view>
   <view class="time">
@@ -22,13 +22,13 @@
     </view>
   </view>
   <view class="img">
-    <image src="../../../../icon/disease.png" mode="widthFix" />
+    <image src="../../../icon/disease.png" mode="widthFix" />
     备注
   </view>
   <view class="content">
     <textarea placeholder="输入备注" name="content"></textarea>
   </view>
   <view class="submit">
-    <button type="primary" form-type="submit">Submit</button>
+    <button form-type="submit">确定</button>
   </view>
 </form>

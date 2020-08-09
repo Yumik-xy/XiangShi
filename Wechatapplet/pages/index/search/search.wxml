@@ -1,12 +1,30 @@
 <!-- pages/search/search.wxml -->
 <view class="search_input">
-  <view class="search">
-			<view class="search-left">
-				<image src="../../../icon/_search.png"></image>
-				<input autoFocus="true" bindconfirm="confirmSearch" bindinput="search" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value=""></input>
-			</view>
-			<view bindtap="search" class="search-right">
-				<image src="../../../icon/search_white.png"></image>
-		  </view>
-	</view>
+		<view class="search">
+				<view class="search-left">
+						<image src="../../../icon/_search.png"></image>
+						<input autoFocus="true" bindconfirm="confirmSearch" bindinput="search" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value=""></input>
+				</view>
+				<view bindtap="search" class="search-right">
+						<image src="../../../icon/search_white.png"></image>
+				</view>
+		</view>
+</view>
+<view class="history">
+		<view class="history-head">
+				<image src="../../../icon/search.png" mode="widthFix" />
+				历史记录
+		</view>
+		<view class="history-content">
+				<view class="history-item" wx:for="{{history_contents}}">{{item}}</view>
+		</view>
+</view>
+<view class="hot">
+		<view class="hot-head">
+				<image src="../../../icon/hot.png" mode="widthFix" />
+				热门搜索
+		</view>
+		<view class="hot-content">
+				<view class="hot-item" wx:for="{{hot_contents}}">{{item}}</view>
+		</view>
 </view>

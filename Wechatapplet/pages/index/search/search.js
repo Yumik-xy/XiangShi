@@ -1,66 +1,65 @@
-// pages/search/search.js
-Page({
+// pages/index/search/你好.js
+Component({
 
   /**
-   * 页面的初始数据
+   * 组件的初始数据
    */
   data: {
-
+    history_contents: [],
+    hot_contents: ["大学生秃顶", "怎么找女朋友", "治疗脱发的100种方法", "久坐会得痔疮吗", "你是个好人"],
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 组件的方法列表
    */
-  onLoad: function (options) {
-
+  methods: {
+    //将搜索记录写到本地缓存
+    input_setStorage: function name(inputValue) {
+      //只缓存最近十个搜索记录
+      console.log("存储搜索记录：" + inputValue.value);
+      this.data.history_contents.push(inputValue.value);
+      if (this.data.history_contents.length > 10) {
+        this.data.history_contents.shift();
+      }
+      wx: wx.setStorage({
+        key: 'history_contents',
+        data: this.data.history_contents,
+        success: (result) => {
+          console.log("存储成功");
+        },
+        fail: () => {
+          console.log("存储失败");
+        },
+        complete: () => {}
+      });
+    },
+    //搜索确认
+    confirmSearch: function name(e) {
+      //将搜索记录写到本地缓存
+      this.input_setStorage(e.detail);
+      //跳转到搜索结果页面
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function () {
+      console.log("开始读取本地搜索记录");
+      wx.getStorage({
+        key: 'history_contents',
+        success: (result) => {
+          this.setData({
+            history_contents: result.data
+          })
+          for (let index = 0; index < this.data.history_contents.length; index++) {
+            console.log(this.data.history_contents[index]);
+          }
+          console.log("读取成功")
+        },
+        fail: () => {
+          console.log("读取失败");
+        },
+        complete: () => {}
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
