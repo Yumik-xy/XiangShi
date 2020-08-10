@@ -3,9 +3,9 @@
 		<view class="search">
 				<view class="search-left">
 						<image src="../../../icon/_search.png"></image>
-						<input autoFocus="true" bindconfirm="confirmSearch" bindinput="search" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value=""></input>
+						<input autoFocus="true" bindconfirm="confirmSearch" bindinput="inputTextChange" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value="" name="input"></input>
 				</view>
-				<view bindtap="search" class="search-right">
+				<view bindtap="confirmSearch" class="search-right">
 						<image src="../../../icon/search_white.png"></image>
 				</view>
 		</view>
@@ -16,7 +16,9 @@
 				历史记录
 		</view>
 		<view class="history-content">
-				<view class="history-item" wx:for="{{history_contents}}">{{item}}</view>
+				<view data-text="{{item}}" class="history-item" wx:for="{{history_contents}}" bindtap="click_record">
+						{{item}}
+				</view>
 		</view>
 </view>
 <view class="hot">
@@ -25,6 +27,8 @@
 				热门搜索
 		</view>
 		<view class="hot-content">
-				<view class="hot-item" wx:for="{{hot_contents}}">{{item}}</view>
+				<view data-text="{{item}}" class="hot-item" wx:for="{{hot_contents}}" bindtap="click_record">
+						{{item}}
+				</view>
 		</view>
 </view>
