@@ -325,15 +325,15 @@ class comment(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         if not parentid == 'null':
-            print(str(parentid))
-            par = comment_model.objects.filter(id=parentid)
-            print(par)
-            parentid = par.get_root().id
+            par = comment_model.objects.get(id=parentid)
+            if par.parent_id:
+                parentid = par.parent_id
         try:
             db = comment_model.objects.create(openid=openid, name=name, postid_id=postid,
                                               reply_to=reply_to, body=body)
             if not parentid == 'null':
-                db.parent_id = parentid
+                print(parentid)
+                db.parent_id = int(parentid)
             db.save()
         except:
             return Response({'status': False, 'message': '发布评论错误', 'code': 10008})
