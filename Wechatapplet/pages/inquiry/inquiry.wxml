@@ -12,33 +12,32 @@
 </view>
 <view class="inquirys">
   <block wx:for="{{item}}" wx:key="index">
-    <view class="inquiry">
-      <view bindtap="detail" data-id="{{index}}">
-        <view class="title-first">
-          <view class='title-left'>
-            <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
-            <view class='title-right'>
-              <view class='title'>{{item.title}}</view>
-              <view class="NT">
-                <view class='name'>{{item.name}}</view>
-                <view class='date'>{{item.date}}</view>
-                <view class='time'>{{item.time}}</view>
-              </view>
+    <view class="inquiry" bindtap="detail" data-id="{{index}}">
+
+      <view class="title-first">
+        <view class='title-left'>
+          <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
+          <view class='title-right'>
+            <view class='title'>{{item.title}}</view>
+            <view class="NT">
+              <view class='name'>{{item.name}}</view>
+              <view class='date'>{{item.date}}</view>
+              <view class='time'>{{item.time}}</view>
             </view>
           </view>
         </view>
-        <view class='message'>
-          <rich-text nodes="<p class='content'><a class='classify'>#{{item.classify}}#</a>{{item.summary}}</p>">
-          </rich-text>
-        </view>
+      </view>
+      <view class='message'>
+        <rich-text nodes="<p class='content'><a class='classify'>#{{item.classify}}#</a>{{item.summary}}</p>">
+        </rich-text>
       </view>
       <view class='picmessage'>
         <image wx:if='{{item.picture1}}' class='picture' src="http://127.0.0.1/media/{{item.picture1}}" mode="aspectFit"
-        data-src="http://127.0.0.1/media/{{item.picture1}}"></image>
-      <image wx:if='{{item.picture2}}' class='picture' src="http://127.0.0.1/media/{{item.picture2}}" mode="aspectFit"
-        data-src="http://127.0.0.1/media/{{item.picture2}}"></image>
-      <image wx:if='{{item.picture3}}' class='picture' src="http://127.0.0.1/media/{{item.picture3}}" mode="aspectFit"
-        data-src="http://127.0.0.1/media/{{item.picture3}}"></image>
+          data-src="http://127.0.0.1/media/{{item.picture1}}"></image>
+        <image wx:if='{{item.picture2}}' class='picture' src="http://127.0.0.1/media/{{item.picture2}}" mode="aspectFit"
+          data-src="http://127.0.0.1/media/{{item.picture2}}"></image>
+        <image wx:if='{{item.picture3}}' class='picture' src="http://127.0.0.1/media/{{item.picture3}}" mode="aspectFit"
+          data-src="http://127.0.0.1/media/{{item.picture3}}"></image>
       </view>
       <view class='other'>
         <image class='otimg' src="../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>

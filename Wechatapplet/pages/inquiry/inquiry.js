@@ -158,37 +158,36 @@ Page({
     else this.setData({
       nowpage: that.data.nowpage + 1
     })
-    wx.login({
-      success: function (loginCode) {
-        wx.request({
-          url: 'http://127.0.0.1/api/inquirypost/list',
-          data: {
-            page: that.data.nowpage,
-          },
-          header: {
-            "content-type": "application/x-www-form-urlencoded"
-          },
-          method: 'GET',
-          success: function (res) {
-            if (res.data.status == false) {
-              wx.showToast({
-                title: res.data.message,
-                icon: 'none'
-              })
-            } else if (res.data.status == true) {
-              let dataList = that.data.item.concat(res.data.data); //获取到的数据
-              dataList.forEach((item) => {
-                if (item.time != null) {
-                  item.date = item.time.substring(0, 10)
-                  item.time = item.time.substring(11, 19); //要截取字段的字符串
-                }
-              })
-              that.setData({
-                item: dataList //数据源
-              })
+    wx.request({
+      url: 'http://127.0.0.1/api/inquirypost/list',
+      data: {
+        page: that.data.nowpage,
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      method: 'GET',
+      success: function (res) {
+        if (res.data.status == false) {
+          that.setData({
+            nowpage: that.data.nowpage - 1
+          })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        } else if (res.data.status == true) {
+          let dataList = that.data.item.concat(res.data.data); //获取到的数据
+          dataList.forEach((item) => {
+            if (item.time != null) {
+              item.date = item.time.substring(0, 10)
+              item.time = item.time.substring(11, 19); //要截取字段的字符串
             }
-          }
-        })
+          })
+          that.setData({
+            item: dataList //数据源
+          })
+        }
       }
     })
   },
