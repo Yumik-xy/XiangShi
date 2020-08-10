@@ -21,7 +21,7 @@
 			</input>
 		</view>
 
-		<view class="upLoad">
+		<!-- <view class="upLoad">
 			<text class='pf-type'>添加图片</text>
 			<view class="question-images clearFloat">
 				<block wx:for="{{images}}" wx:key="*this">
@@ -37,7 +37,7 @@
 					<image src="../../../icon/jiahao.png"></image>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 		<disease-picker region-value="{{classify}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
 		</disease-picker>

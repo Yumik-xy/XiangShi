@@ -177,13 +177,14 @@ Page({
             icon: 'none'
           })
         } else if (res.data.status == true) {
-          let dataList = that.data.item.concat(res.data.data); //获取到的数据
-          dataList.forEach((item) => {
+          var tempList = res.data.data
+          tempList.forEach((item) => {
             if (item.time != null) {
               item.date = item.time.substring(0, 10)
               item.time = item.time.substring(11, 19); //要截取字段的字符串
             }
           })
+          let dataList = that.data.item.concat(tempList); //获取到的数据
           that.setData({
             item: dataList //数据源
           })
