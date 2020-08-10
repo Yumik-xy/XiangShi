@@ -125,18 +125,34 @@ Page({
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        console.log(res.data)
-        that.editorCtx.insertImage({
-          src: res.tempFilePaths[0],
-          data: {
-            id: 'abcd',
-            role: 'god'
-          },
-          width: '40%',
-          success: function () {
-            console.log('insert image success')
-          }
-        })
+        var tempFilesSize = res.tempFiles[0].size
+        if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
+          wx.getImageInfo({
+            src: res.tempFilePaths[0],
+            success(res){
+              var imageWidth = res.width
+              var imageHeight = res.height
+            }
+          })
+          that.editorCtx.insertImage({
+            src: res.tempFilePaths[0],
+            data: {
+              id: 'abcd',
+              role: 'god'
+            },
+            
+            width: '80%',
+            success: function () {
+              console.log('insert image success')
+            }
+          })
+        }
+        else {
+          wx.showToast({
+            title: '上传图片不能大于2M!',  //标题
+            icon: 'none' //图标 none不使用图标，详情看官方文档
+          })
+        } 
       }
     })
   }
