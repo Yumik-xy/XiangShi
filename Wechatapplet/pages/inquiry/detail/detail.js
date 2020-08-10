@@ -27,14 +27,14 @@ Page({
     color: "#8A8A8A",
   },
 
-  textinput:function(e){
+  textinput: function (e) {
     console.log(e.detail.value);
-    if(e.detail.value=="")
+    if (e.detail.value == "")
       this.setData({
         color: "#8A8A8A",
         isEmpty: true
       })
-    else{
+    else {
       this.setData({
         color: "#A52233",
         isEmpty: false,
@@ -88,9 +88,9 @@ Page({
   bindcomment: function (e) {
     let replyList = this.data.reply
     replyList.name = this.data.userInfo.nickName,
-    replyList.postid = this.data.data.id,
-    replyList.parentid = e.currentTarget.dataset.id,
-    replyList.reply_to = e.currentTarget.dataset.name,
+      replyList.postid = this.data.data.id,
+      replyList.parentid = e.currentTarget.dataset.id,
+      replyList.reply_to = e.currentTarget.dataset.name,
 
       console.log(replyList);
     this.setData({
