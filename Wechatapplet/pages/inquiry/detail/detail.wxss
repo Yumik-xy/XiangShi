@@ -24,7 +24,8 @@
 
 .message {
   padding-top: 20rpx;
-  /* text-align: center; */
+  padding-bottom: 30rpx;
+  /* border-bottom: 1px solid #f2f2f2; */
 }
 
 .classify {
@@ -80,12 +81,16 @@
 }
 
 .other {
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
   padding: 10rpx 0rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid #f2f2f2;  
+
 }
 
 .otimg {
@@ -96,12 +101,13 @@
 .comment{
   border-top: 1px solid #f2f2f2;
   padding: 15rpx 20rpx;
+  margin-top: 10rpx;
   border-radius: 10rpx;
 }
 
-.comment:nth-last-child(1){
+/* .comment:nth-last-child(1){
   border-bottom: 0;
-}
+} */
 
 .comment .commentname{
   font-weight: bold;
@@ -124,4 +130,36 @@
 
 .secondcom:nth-last-child(1){
   border-bottom: 0;
+}
+
+.textinput{
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.textinput input{
+  font-size: 30rpx;
+  line-height: 30rpx;
+  height: 32rpx;
+  width: 80%;
+  flex: 6;
+}
+
+.submit{
+  flex: 4;
+  float: right;
+  /* padding: 0;
+  margin: 0; */
+  width: 30rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+  background-color: var(--themeColor);
+  border-radius: 10rpx;
+  color: white;
 }
