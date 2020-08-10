@@ -135,31 +135,31 @@
 .textinput{
   background-color: #f2f2f2;
   display: flex;
-  flex-direction: row;
+  align-items:center;
+  padding: 20rpx 30rpx;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
-.textinput input{
-  font-size: 30rpx;
-  line-height: 30rpx;
-  height: 32rpx;
-  width: 80%;
-  flex: 6;
+.textinput textarea{
+  max-height: 186rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx 10rpx;
+  font-size: 40rpx;
+  line-height: 40rpx;
+  margin-right: 10rpx;
+  flex: 17;
 }
 
 .submit{
-  flex: 4;
-  float: right;
-  /* padding: 0;
-  margin: 0; */
+  flex: 3;
+  padding: 0; 
+  margin: 0;
   width: 30rpx;
-  line-height: 40rpx;
-  font-size: 30rpx;
+  font-size: 34rpx;
   text-align: center;
-  background-color: var(--themeColor);
   border-radius: 10rpx;
-  color: white;
 }

@@ -46,12 +46,13 @@
         </view>
       </block>
     </view>
-    <view class="textinput" hidden="{{textareaisShow === true ? false : true}}">
+    <view hidden="{{textareaisShow === true ? false : true}}">
       <form bindsubmit='submit'>
-        <button class="submit" form-type='submit'> 发送 </button>
-        <input placeholder="请发送友善的评论" name="content" auto-height="true">
-        </input>
-        
+        <view class="textinput">
+          <textarea placeholder="请发送友善的评论" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" bindinput="textinput" cursor-spacing="40rpx">
+          </textarea>
+          <button class="submit" form-type="submit" style="background-color: #f2f2f2;color:{{color}}" disabled="{{isEmpty === true ? true : false}}"> 发送 </button>
+        </view>
       </form>
     </view>
   </view>

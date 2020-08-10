@@ -22,7 +22,24 @@ Page({
       reply_to: ''
     },
     textareaisShow: false,
-    otherisShow: true
+    otherisShow: true,
+    isEmpty: true,
+    color: "#8A8A8A",
+  },
+
+  textinput:function(e){
+    console.log(e.detail.value);
+    if(e.detail.value=="")
+      this.setData({
+        color: "#8A8A8A",
+        isEmpty: true
+      })
+    else{
+      this.setData({
+        color: "#A52233",
+        isEmpty: false,
+      })
+    }
   },
 
   submit: function (e) {
