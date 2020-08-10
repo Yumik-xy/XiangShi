@@ -30,12 +30,12 @@
       <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit" bindtap="bindcomment" data-name="{{data.name}}" data-id="null"></image>
       <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit"></image>
     </view>
-    <view class="comment" >
+    <view wx:if="{{list}}" class="comment" >
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
         <view class="first" mut-bind:tap="bindcomment" data-name="{{firstcom.name}}" data-id="{{firstcom.id}}">
           <view class="commentname">{{firstcom.name}}</view>
           <view class="commentcontent">{{firstcom.body}}</view>
-          <view class="secondcom">
+          <view wx:if="{{firstcom.children}}" class="secondcom">
             <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">
               <view class="second" mut-bind:tap="bindcomment" data-name="{{secondcom.name}}" data-id="{{secondcom.id}}">
                 <view class="commentname">{{secondcom.name}} 回复 {{secondcom.reply_to}}</view>
@@ -49,11 +49,12 @@
     <view hidden="{{textareaisShow === true ? false : true}}">
       <form bindsubmit='submit'>
         <view class="textinput">
-          <textarea placeholder="请发送友善的评论" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" bindinput="textinput" cursor-spacing="40rpx">
+          <textarea bindinput="textinput" placeholder="请发送友善的评论" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" focus="true" adjust-position= "false" cursor-spacing="40rpx">
           </textarea>
           <button class="submit" form-type="submit" style="background-color: #f2f2f2;color:{{color}}" disabled="{{isEmpty === true ? true : false}}"> 发送 </button>
         </view>
       </form>
     </view>
   </view>
+  <view class="ending">没有更多评论了哦~</view>
 </view>
