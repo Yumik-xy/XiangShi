@@ -5,6 +5,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    search_content: '',
     history_contents: [],
     hot_contents: ["大学生秃顶", "怎么找女朋友", "治疗脱发的8种方法", "久坐会得痔疮吗", "大学生生活习惯"],
   },
@@ -13,11 +14,30 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //搜索函数
+    search: function () {
+      console.log("开始搜索 " + this.data.search_content);
+    },
+
+    //搜索记录和热门推荐点击
+    click_record: function (e) {
+      this.setData({
+        search_content: e.currentTarget.dataset.text
+      });
+      this.search();
+    },
+
+    //搜索确认
+    confirmSearch: function (e) {
+      this.input_setStorage();
+      this.search();
+    },
+
     //将搜索记录写到本地缓存
-    input_setStorage: function name(inputValue) {
+    input_setStorage: function name() {
       //只缓存最近十个搜索记录
-      console.log("存储搜索记录：" + inputValue.value);
-      this.data.history_contents.push(inputValue.value);
+      console.log("存储搜索记录：" + this.data.search_content);
+      this.data.history_contents.push(this.data.search_content);
       if (this.data.history_contents.length > 10) {
         this.data.history_contents.shift();
       }
@@ -33,11 +53,13 @@ Component({
         complete: () => {}
       });
     },
-    //搜索确认
-    confirmSearch: function name(e) {
-      //将搜索记录写到本地缓存
-      this.input_setStorage(e.detail);
-      //跳转到搜索结果页面
+
+    //input输入改变
+    inputTextChange: function (e) {
+      console.log(e.detail.value);
+      this.setData({
+        search_content: e.detail.value
+      })
     },
     /**
      * 生命周期函数--监听页面加载
