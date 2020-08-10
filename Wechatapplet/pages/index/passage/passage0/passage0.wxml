@@ -1,0 +1,29 @@
+<wxs module='tools'>
+  var HtmlToText = function (inputText) {
+    var returnText = "" + inputText;
+    returnText = returnText.replace(getRegExp('<!.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<meta.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<p.*?>', 'ig'), '<p class="rich-p">');
+    returnText = returnText.replace(getRegExp('<h1.*?>', 'ig'), '<h1 class="rich-h1">');
+    returnText = returnText.replace(getRegExp('<h2.*?>', 'ig'), '<h2 class="rich-h2">');
+    returnText = returnText.replace(getRegExp('<h3.*?>', 'ig'), '<h3 class="rich-h3">');
+    returnText = returnText.replace(getRegExp('<h4.*?>', 'ig'), '<h4 class="rich-h4">');
+    returnText = returnText.replace(getRegExp('<h5.*?>', 'ig'), '<h5 class="rich-h5">');
+    returnText = returnText.replace(getRegExp('<h6.*?>', 'ig'), '<h6 class="rich-h6">');
+    returnText = returnText.replace(getRegExp('<li.*?>', 'ig'), '<li class="rich-li">');
+    returnText =
+      returnText.replace(getRegExp('<title.*?>', 'ig'), '<title class="rich-title">');
+    console.log(returnText,'===')
+    return returnText;
+  }
+  module.exports.HtmlToText = HtmlToText;
+</wxs>
+<scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true" bindscroll="bindscroll">
+  <block wx:for="{{passages}}" wx:for-item="passage" wx:key="index">
+    <view class="passage" id="c_{{passage.id}}" data-id="c_{{passage.id}}" data-index="{{index}}">
+      <text>{{passage.title}}</text>
+      <image src="{{passage.image_url}}" mode="widthFix" />
+      <rich-text nodes="{{tools.HtmlToText(passage.content)}}"></rich-text>
+    </view>
+  </block>
+</scroll-view>
