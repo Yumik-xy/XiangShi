@@ -1,2 +1,2 @@
 <!-- pages/index/register/register.wxml -->
-<view>抱歉，当前无医院可以挂号</view>
+<view style="font-size:40rpx;">抱歉，当前无医院可以挂号</view>

@@ -16,7 +16,8 @@ Component({
   methods: {
     //搜索函数
     search: function () {
-      console.log("开始搜索 " + this.data.search_content);
+      console.log("向后端发送待搜索内容：" + this.data.search_content);
+
     },
 
     //搜索记录和热门推荐点击
@@ -65,7 +66,7 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
-      console.log("开始读取本地搜索记录");
+      console.log("读取本地缓存");
       wx.getStorage({
         key: 'history_contents',
         success: (result) => {
@@ -82,6 +83,8 @@ Component({
         },
         complete: () => {}
       });
+      //接收来自后端的热门搜索
+      console.log("接收来自后端的热门搜索信息");
     }
   },
 })

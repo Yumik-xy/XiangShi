@@ -30,7 +30,7 @@
           <text style="font-size:18rpx;color:#bfbfbf;">{{item.timeEnd}}</text>
         </view>
         <view class="tip">
-          <checkbox />
+          <checkbox checked="{{item.completed}}" />
           {{item.content}}
         </view>
       </view>

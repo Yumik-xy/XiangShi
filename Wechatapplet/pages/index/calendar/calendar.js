@@ -23,13 +23,15 @@ Component({
         id: 0,
         timeStart: "12:00",
         timeEnd: "13:00",
-        content: "最近为特殊时期，出门请带口罩"
+        content: "最近为特殊时期，出门请带口罩",
+        completed: true,
       },
       {
         id: 1,
         timeStart: "8:00",
         timeEnd: "24:00",
-        content: "今日服药：****胶囊，一日三次，饭后即服"
+        content: "今日服药：****胶囊，一日三次，饭后即服",
+        completed: false,
       }
     ]
   },
@@ -69,7 +71,6 @@ Component({
 
     onLoad: function (options) {
       this.dataTime();
-
       //根据得到今月的最后一天日期遍历 得到所有日期
       for (var i = 1; i < this.data.lastDay + 1; i++) {
         this.data.arr.push(i);
@@ -86,6 +87,7 @@ Component({
         lastDayW: this.data.lastDayW,
         endLet: this.data.endLet
       });
+      console.log("从后端读入该用户的日程信息，保存至tips数组");
     }
   }
 })

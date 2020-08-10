@@ -17,7 +17,7 @@
     <text class="right_text">更多</text>
   </view>
   <view class="classfy">
-    <navigator wx:key="id" open-type="reLaunch" url="{{item.turn_url}}" wx:for="{{classfy}}">
+    <navigator wx:key="id" url="{{item.turn_url}}" wx:for="{{classfy}}">
       <image mode="widthFix" src="{{item.item_img_url}}" />
       {{item.item_name}}
     </navigator>

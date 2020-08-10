@@ -30,10 +30,13 @@ Component({
         });
         return;
       }
-      title = e.detail.value.title;
-      timeBegin = e.detail.value.timeBegin;
-      timeEnd = e.detail.value.timeEnd;
-      content = e.detail.value.content;
+      this.setData({
+        title: e.detail.value.title,
+        timeBegin: e.detail.value.timeBegin,
+        timeEnd: e.detail.value.timeEnd,
+        content: e.detail.value.content,
+      })
+
     },
 
     timeBeginChange: function (e) {

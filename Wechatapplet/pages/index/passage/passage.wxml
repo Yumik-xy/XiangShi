@@ -1,3 +1,4 @@
+<!-- pages/index/passage/passage.wxml -->
 <wxs module='tools'>
   var HtmlToText = function (inputText) {
     var returnText = "" + inputText;
@@ -19,7 +20,7 @@
   module.exports.HtmlToText = HtmlToText;
 </wxs>
 <scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true" bindscroll="bindscroll">
-  <block wx:for="{{passages}}" wx:for-item="passage" wx:key="index">
+  <block>
     <view class="passage" id="c_{{passage.id}}" data-id="c_{{passage.id}}" data-index="{{index}}">
       <text>{{passage.title}}</text>
       <image src="{{passage.image_url}}" mode="widthFix" />

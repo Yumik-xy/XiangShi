@@ -21,13 +21,13 @@ Page({
 
     classfy: [{
         id: 0,
-        turn_url: "../wiki/wiki",
+        turn_url: "./search/search",
         item_img_url: "../../icon/classfy-Icon/Img0.png",
         item_name: "药物查询",
       },
       {
         id: 1,
-        turn_url: "../inquiry/inquiry",
+        turn_url: "../inquiry/posting/posting",
         item_img_url: "../../icon/classfy-Icon/Img1.png",
         item_name: "在线问诊",
       },
@@ -176,7 +176,7 @@ Page({
   //事件处理函数
   turn_passage0: function () {
     wx.navigateTo({
-      url: './passage/passage0/passage0',
+      url: './passage/passage',
     })
   },
   /**
@@ -202,6 +202,11 @@ Page({
         currentData: e.target.dataset.current
       })
     }
+  },
+  //onLoad函数
+  onLoad: function () {
+    console.log("接收来自后端的轮播图信息，存储到swiper_imgs数组中");
+    console.log("接收来自后端的咨询信息,存储到contents数组中");
   }
 
 })
