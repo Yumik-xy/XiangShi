@@ -18,6 +18,7 @@ Page({
     var that = this;
     let temp = [];
     let treeArr = arr;
+    if (!treeArr) return null
     treeArr.forEach((item, index) => {
       if (item.parent == parent) {
         if (that.arrayToTree(treeArr, treeArr[index].id).length > 0) {

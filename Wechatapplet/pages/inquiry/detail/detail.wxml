@@ -16,19 +16,19 @@
       <rich-text nodes="<p class='content'><a class='classify'>#{{data.classify}}#</a>{{data.content}}</p>">
       </rich-text>
     </view>
-    <view class='picmessage'>
+    <!-- <view class='picmessage'>
       <image wx:if='{{data.picture1}}' class='picture' src="http://127.0.0.1/media/{{data.picture1}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture1}}" bindtap="previewPic"></image>
       <image wx:if='{{data.picture2}}' class='picture' src="http://127.0.0.1/media/{{data.picture2}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture2}}" bindtap="previewPic"></image>
       <image wx:if='{{data.picture3}}' class='picture' src="http://127.0.0.1/media/{{data.picture3}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture3}}" bindtap="previewPic"></image>
-    </view>
+    </view> -->
     <view class='other'>
       <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
       <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit"></image>
     </view>
-    <view class="comment">
+    <view wx:if='{{list}}' class="comment">
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
         <view class="commentname">{{firstcom.name}}</view>
         <view class="commentcontent">{{firstcom.body}}</view>

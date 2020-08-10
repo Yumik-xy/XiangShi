@@ -9,16 +9,43 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     info: {},
-    content:'',
-    summary:'',
+    content: '',
+    summary: '',
     images: [],
     classify: [],
     showRegion: false,
+    imgs: [],
   },
 
   submit: function (e) {
     var that = this
     console.log(e.detail.value)
+    let contentimg = that.data.content.indexOf("src") >= 0
+    let imgs = []
+    if (contentimg) {
+      that.data.content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
+        console.log(capture)
+        imgs.push(capture)
+        that.setData({ imgs: imgs })
+        return ''
+      })
+    }
+    imgs.forEach(img => {
+      wx.request({
+        url: 'http://127.0.0.1/api/uploadimg',
+        data: {
+          picture: that.coding(img)
+        },
+        header: { "content-type": "application/x-www-form-urlencoded" },
+        method: 'POST',
+        success: function (res) {
+          console.log(res.data)
+          that.setData({
+            content: that.data.content.replace(img, 'http://127.0.0.1/media/' + res.data.url)
+          })
+        }
+      })
+    })
     wx.login({
       success: function (loginCode) {
         console.log(loginCode)
@@ -32,9 +59,9 @@ Page({
             content: that.data.content,
             summary: that.data.summary,
             // content: e.detail.value.content,
-            picture1: that.coding(that.data.images[0]||null),
-            picture2: that.coding(that.data.images[1]||null),
-            picture3: that.coding(that.data.images[2]||null),
+            // picture1: that.coding(that.data.images[0] || null),
+            // picture2: that.coding(that.data.images[1] || null),
+            // picture3: that.coding(that.data.images[2] || null),
           },
           header: { "content-type": "application/x-www-form-urlencoded" },
           method: 'POST',
@@ -82,10 +109,10 @@ Page({
     });
   },
 
-  htmlcontent : function(e){  
+  htmlcontent: function (e) {
     this.setData({
-      content : e.detail.html,
-      summary : e.detail.text
+      content: e.detail.html,
+      summary: e.detail.text
     })
   },
 
@@ -142,7 +169,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
