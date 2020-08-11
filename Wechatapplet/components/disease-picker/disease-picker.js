@@ -26,10 +26,10 @@ Component({
           // 除最低级别区（select = 2）以外，需要获取当前级别下一级的数据
           this.setData({
             ['region.tabs']: newVal,
-            ['region.select']: select < 2 ? select+1 : select,
+            ['region.select']: select < 1 ? select+1 : select,
           }, () => {
             this.setData({
-              area: this.getChildArea(select < 2 ? select+1 : select),
+              area: this.getChildArea(select < 1 ? select+1 : select),
             });
           });
         }
@@ -49,10 +49,6 @@ Component({
           name: '请选择',
           id: '',
         },
-        {
-          name: '请选择',
-          id: '',
-        },
       ],
       select: 0,
     },
@@ -60,9 +56,9 @@ Component({
   methods: {
     // 关闭 picker 触发的方法
     emitHideRegion: function() {
-      if (this.data.region.tabs[2].id === '') {
+      if (this.data.region.tabs[1].id === '') {
         wx.showToast({
-          title: '请选择所在地',
+          title: '请选择要咨询的疾病类型',
           icon: 'none',
           duration: 2000,
         });
@@ -88,7 +84,7 @@ Component({
         [name]: e.target.dataset.name,
       });
       // 除了三级以外的需要获取对应子选项
-      if (this.data.region.select < 2) {
+      if (this.data.region.select < 1) {
         this.setData({
           ['region.select']: ++this.data.region.select,
         }, () => {
@@ -124,7 +120,7 @@ Component({
       // 三级选项的tab点击无效果
       if (level === 2) return false;
       // 当前选中tab和级别小于当前选中tab的状态都置为初始化状态
-      for (let i = level; i < 3; i++) {
+      for (let i = level; i < 2; i++) {
         let string = 'region.tabs['+ i +']';
         this.setData({
           [string]: {

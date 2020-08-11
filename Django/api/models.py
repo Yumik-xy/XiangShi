@@ -63,7 +63,6 @@ class patient(models.Model):
 class inquirypost(models.Model):
     openid = models.CharField(max_length=60, verbose_name='openid')
     name = models.CharField(max_length=30, verbose_name='用户名')
-    photourl = models.CharField(max_length=120, verbose_name='photourl')
     title = models.CharField(max_length=60, verbose_name='标题')
     classify = models.CharField(max_length=30, verbose_name='分类')
     content = RichTextField(verbose_name='正文')
@@ -83,7 +82,6 @@ class comment(MPTTModel):
     openid = models.CharField(max_length=60, verbose_name='openid')
     name = models.CharField(max_length=30, verbose_name='用户名')
     postid = models.ForeignKey(inquirypost, on_delete=models.CASCADE, related_name='postid')
-    photourl = models.CharField(max_length=120, verbose_name='photourl')
     parent = TreeForeignKey(
         'self',
         on_delete=models.CASCADE,

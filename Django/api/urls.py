@@ -14,7 +14,7 @@ urlpatterns = [
     path('inquirypost', views.inquirypost.as_view()),
     path('patient', views.patient.as_view()),
     path('comment', views.comment.as_view()),
-    # path('uploadimg', views.uploadimg.as_view())
+    path('uploadimg', views.uploadimg.as_view())
 ]
 
 

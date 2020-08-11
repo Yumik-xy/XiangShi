@@ -17,7 +17,7 @@
 
 		<view class="disease" bindtap="chooseRegion">
 			<input class="choosedisease" disabled placeholder="选择病症部位" name="classify"
-				value="{{classify[0].name}}{{classify[1].name}}{{classify[2].name}}">
+				value="{{classify[1].name}}">
 			</input>
 		</view>
 
