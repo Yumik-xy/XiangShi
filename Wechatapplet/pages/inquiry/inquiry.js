@@ -69,20 +69,19 @@ Page({
     let touches = e.touches[0]
     let clientX = touches.clientX
     let clientY = touches.clientY
-    console.log(e)
 
     // 边界判断
     if (clientX > windowWidth - 60) {
       clientX = windowWidth - 60
     }
-    if (clientX <= 50) {
-      clientX = 50
+    if (clientX <= 10) {
+      clientX = 10
     }
     if (clientY > windowHeight - 60) {
       clientY = windowHeight - 60
     }
-    if (clientY <= 200) {
-      clientY = 200
+    if (clientY <= 60) {
+      clientY = 60
     }
     let pos = {
       left: clientX,
