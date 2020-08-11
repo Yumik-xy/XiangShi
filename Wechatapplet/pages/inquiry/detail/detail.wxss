@@ -113,8 +113,9 @@
 } 
 
 .comment .commentname{
-  font-weight: bold;
-  font-size: 34rpx;
+  /* font-weight: bold; */
+  color: #585858;
+  font-size: 26rpx;
 }
 
 .comment .commentcontent{

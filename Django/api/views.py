@@ -183,11 +183,11 @@ class inquirypost_list(APIView):
     def get(self, request):
         page = int(request.query_params.get('page'))
         times = 5
-        if page <= 0 or (page - 1) * 5 > inquirypost_model.objects.count():
+        if page <= 0 or (page - 1) * times > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * 5:(page - 0) * 5].values('id', 'name', 'title', 'classify', 'summary', 'time')
+                [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time','photourl')
             json_data = list(inquirypost_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -207,7 +207,7 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
-                                                                         'time')
+                                                                         'time','photourl')
             json_data = list(inquirypost)
             possess = (True if inquirypost_model.objects.get(id=id).openid == openid else False)
         except:
@@ -218,6 +218,7 @@ class inquirypost(APIView):
     def post(self, request):
         name = request.data.get('name')
         title = request.data.get('title')
+        photourl = request.data.get('photourl')
         classify = request.data.get('classify')
         content = request.data.get('content')
         summary = request.data.get('summary')[0:100]
@@ -228,7 +229,7 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content, summary=summary)
+                                                  content=content, summary=summary,photourl=photourl)
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -238,6 +239,7 @@ class inquirypost(APIView):
     def put(self, request):
         id = request.data.get('id')
         _name = request.data.get('name')
+        _photourl = request.data.get('photourl')
         _title = request.data.get('title')
         _classify = request.data.get('classify')
         _content = request.data.get('content')
@@ -256,6 +258,7 @@ class inquirypost(APIView):
         else:
             db.name = _name
             db.title = _title
+            db.photourl=_photourl
             db.classify = _classify
             db.content = _content
             db.summary = _summary
@@ -269,6 +272,7 @@ class inquirypost(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
+            comment_model.objects.filter(postid=id).delete()
             inquirypost_model.objects.filter(openid=openid, id=id).delete()
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
@@ -282,7 +286,7 @@ class comment(APIView):
         postid = request.query_params.get('postid')
         try:
             comment = comment_model.objects.filter(postid=postid).values('id', 'name', 'reply_to',
-                                                                         'parent', 'body', 'created')
+                                                                         'parent', 'body', 'created','photourl')
             json_data = list(comment)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -298,6 +302,7 @@ class comment(APIView):
         if not inquirypost_model.objects.filter(id=postid):
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         parentid = request.data.get('parentid')
+        photourl = request.data.get('photourl')
         reply_to = request.data.get('reply_to')
         body = request.data.get('body')
         coder = request.data.get('coder')
@@ -328,6 +333,7 @@ class comment(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
+            comment_model.objects.filter(parent_id=id).delete()
             comment_model.objects.filter(openid=openid, id=id).delete()
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
