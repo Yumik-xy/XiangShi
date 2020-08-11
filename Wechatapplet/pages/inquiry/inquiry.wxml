@@ -16,7 +16,7 @@
 
       <view class="title-first">
         <view class='title-left'>
-          <image class="photo" src="{{item.photo}}" mode="aspectFit"></image>
+          <image class="photo" src="{{item.photourl}}" mode="aspectFit"></image>
           <view class='title-right'>
             <view class='title'>{{item.title}}</view>
             <view class="NT">
