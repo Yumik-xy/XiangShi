@@ -43,7 +43,7 @@
   line-height: 36rpx;
 }
 .close{
-  flex: 2;
+  flex: 1;
 }
 .close image{
   width:36rpx;
@@ -56,10 +56,13 @@
 .free-content.ipx {
   border-bottom: 72rpx solid white;
 }
+.free-content__tabs{
+  display: flex;
+}
 .free-content__tabs__tab {
   display: inline-block;
   padding: 12rpx 60rpx;
-  margin-left: 20rpx;
+  margin-left: 120rpx;
   font-size: 32rpx;
   color: #333;
   border-bottom: 4rpx solid white;
