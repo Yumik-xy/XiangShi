@@ -55,8 +55,12 @@ class medicine(APIView):
 # 症状List查询
 class symptom_list(APIView):
     def get(self, request):
+        lt = request.query_params.get('lt')
         try:
-            symptom = symptomwiki_model.objects.all().values('id', 'name', 'parent', 'child')
+            if lt:
+                symptom = symptomwiki_model.objects.filter(level__lte=int(lt)).values('id', 'name', 'parent', 'child')
+            else:
+                symptom = symptomwiki_model.objects.all().values('id', 'name', 'parent', 'child')
             json_data = list(symptom)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
