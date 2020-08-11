@@ -26,7 +26,9 @@ Page({
       that.data.content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
         console.log(capture)
         imgs.push(capture)
-        that.setData({ imgs: imgs })
+        that.setData({
+          imgs: imgs
+        })
         return ''
       })
     }
@@ -36,7 +38,9 @@ Page({
         data: {
           picture: that.coding(img)
         },
-        header: { "content-type": "application/x-www-form-urlencoded" },
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
         method: 'POST',
         success: function (res) {
           console.log(res.data)
@@ -63,7 +67,9 @@ Page({
             // picture2: that.coding(that.data.images[1] || null),
             // picture3: that.coding(that.data.images[2] || null),
           },
-          header: { "content-type": "application/x-www-form-urlencoded" },
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
           method: 'POST',
           success: function (res) {
             console.log(res)
@@ -118,21 +124,20 @@ Page({
 
   chooseImage(e) {
     wx.chooseImage({
-      sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
+      sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
-        var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
-        if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
+        var tempFilesSize = res.tempFiles[0].size; //获取图片的大小，单位B
+        if (tempFilesSize <= 2000000) { //图片小于或者等于2M时 可以执行获取图片
           const images = this.data.images.concat(res.tempFilePaths)
           // 限制最多只能留下3张照片
           const images1 = images.length <= 3 ? images : images.slice(0, 3)
           this.setData({
             images: images1
           })
-        }
-        else {
+        } else {
           wx.showToast({
-            title: '上传图片不能大于2M!',  //标题
+            title: '上传图片不能大于2M!', //标题
             icon: 'none' //图标 none不使用图标，详情看官方文档
           })
         }
@@ -156,8 +161,8 @@ Page({
     const idx = e.target.dataset.idx
     const images = this.data.images
     wx.previewImage({
-      current: images[idx],  //当前预览的图片
-      urls: images,  //所有要预览的图片
+      current: images[idx], //当前预览的图片
+      urls: images, //所有要预览的图片
     })
   },
   /**

@@ -90,7 +90,7 @@ Page({
 
   inputbindblur: function (e) {
     this.setData({
-      reply:{},
+      reply: {},
       textareaisShow: false
     })
   },
