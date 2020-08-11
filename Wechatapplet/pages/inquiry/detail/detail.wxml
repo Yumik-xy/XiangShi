@@ -26,7 +26,7 @@
     <view class="title-first">
       <view class='title'>{{data.title}}</view>
       <view class='title-left'>
-        <image class="photo" src="{{data.photo}}" mode="aspectFit"></image>
+        <image class="photo" src="{{data.photourl}}" mode="aspectFit"></image>
         <view class='title-right'>
           <view class='name'>{{data.name}}</view>
           <view class='time'>{{data.date}}  {{data.time}}</view>

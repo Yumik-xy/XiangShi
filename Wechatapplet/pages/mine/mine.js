@@ -81,7 +81,7 @@ Page({
     wx.login({
       success: function (loginCode) {
         wx.request({
-          url: app.globalData.serverUrl + 'api/patient/',
+          url: app.globalData.serverUrl + 'api/patient',
           data: {
             coder:loginCode.code
           },
