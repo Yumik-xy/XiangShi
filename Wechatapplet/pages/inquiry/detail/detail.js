@@ -8,10 +8,14 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
+    inputplaceholder: '请发送友善的评论qwq',
     data: {
-      photo: '../../../icon/add.png',
-      follownum: 0,
-      lovenum: 0,
+      name: '帅气的钟钟',
+      title: '这波我直接起飞',
+      classify: '鼻子',
+      content: '<p>真的是顶不住，一天到晚都在流鼻血，你看着图片就是这个样子 diu！</p><p>上传图片1<img src=\"http://127.0.0.1/media/picture/20200810/92725ca6-68ad-4432-8488-765f9d5cb60b.jpg\" width=\"40%\" data-custom=\"id=abcd&amp;role=god\"></p>',
+      time: '12:12:12',
+      date: '2000-02-01'
     },
     list: [],
     picturelist: [],
@@ -22,7 +26,6 @@ Page({
       reply_to: ''
     },
     textareaisShow: false,
-    otherisShow: true,
     isEmpty: true,
     color: "#8A8A8A",
   },
@@ -48,7 +51,7 @@ Page({
     wx.login({
       success: function (loginCode) {
         wx.request({
-          url: 'http://127.0.0.1/api/comment',
+          url: app.globalData.serverUrl + 'api/comment',
           data: {
             name: that.data.reply.name,
             postid: that.data.reply.postid,
@@ -82,6 +85,13 @@ Page({
           }
         })
       }
+    })
+  },
+
+  inputbindblur: function (e) {
+    this.setData({
+      reply:{},
+      textareaisShow: false
     })
   },
 
@@ -121,17 +131,17 @@ Page({
   previewPic: function (e) {
     if (this.data.data.picture1.length > 0) {
       this.setData({
-        'picturelist[0]': ('http://127.0.0.1/media/' + this.data.data.picture1)
+        'picturelist[0]': (app.globalData.serverUrl + 'media/' + this.data.data.picture1)
       })
     }
     if (this.data.data.picture2.length > 0) {
       this.setData({
-        'picturelist[1]': ('http://127.0.0.1/media/' + this.data.data.picture2)
+        'picturelist[1]': (app.globalData.serverUrl + 'media/' + this.data.data.picture2)
       })
     }
     if (this.data.data.picture3.length > 0) {
       this.setData({
-        'picturelist[2]': ('http://127.0.0.1/media/' + this.data.data.picture3)
+        'picturelist[2]': (app.globalData.serverUrl + 'media/' + this.data.data.picture3)
       })
     }
 
@@ -180,7 +190,7 @@ Page({
     console.log(options.id)
 
     wx.request({
-      url: 'http://127.0.0.1/api/comment',
+      url: app.globalData.serverUrl + 'api/comment',
       data: {
         postid: that.data.id,
       },
@@ -207,7 +217,7 @@ Page({
       success: function (loginCode) {
         console.log(loginCode)
         wx.request({
-          url: 'http://127.0.0.1/api/inquirypost',
+          url: app.globalData.serverUrl + 'api/inquirypost',
           data: {
             id: that.data.id,
             coder: loginCode.code

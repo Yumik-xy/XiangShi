@@ -1,4 +1,6 @@
 // pages/inquiry/inquiry.js
+const app = getApp()
+
 Page({
 
   /**
@@ -159,7 +161,7 @@ Page({
       nowpage: that.data.nowpage + 1
     })
     wx.request({
-      url: 'http://127.0.0.1/api/inquirypost/list',
+      url: app.globalData.serverUrl + 'api/inquirypost/list',
       data: {
         page: that.data.nowpage,
       },

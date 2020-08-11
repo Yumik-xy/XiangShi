@@ -152,12 +152,10 @@
 }
 
 .textinput textarea{
-  max-height: 186rpx;
+  max-height: 160rpx;
   background-color: white;
   border-radius: 10rpx;
-  padding: 20rpx 10rpx;
-  font-size: 36rpx;
-  line-height: 36rpx;
+  padding: 20rpx 3rpx;
   margin-right: 10rpx;
   flex: 17;
 }
@@ -175,10 +173,10 @@
 .ending{
   display: flex;
   justify-content: center;
-  color: var(--themeColor);
+  color: #7c7c7c;
   margin-top: 100rpx;
   margin-bottom: 100rpx;
-  font-size: 34rpx;
+  font-size: 22rpx;
   line-height: 34rpx;
   height: 34rpx;
 }

@@ -1,4 +1,6 @@
 // pages/mine/patient/add/add.js
+const app = getApp()
+
 Page({
   /**
    * 页面的初始数据
@@ -14,7 +16,7 @@ Page({
     wx.login({
       success: function (loginCode) {
         wx.request({
-          url: 'http://127.0.0.1/api/patient',
+          url: app.globalData.serverUrl + 'api/patient',
           data: {
             // patientname: that.data.info.patientname,
             // gender: that.data.info.gender,
@@ -59,7 +61,7 @@ Page({
       success: function (loginCode) {
         if (that.data.is == 0) {
           wx.request({
-            url: 'http://127.0.0.1/api/patient',
+            url: app.globalData.serverUrl + 'api/patient',
             data: {
               patientname: e.detail.value.patientname,
               gender: e.detail.value.gender,
@@ -112,7 +114,7 @@ Page({
         }
         else {
           wx.request({
-            url: 'http://127.0.0.1/api/patient',
+            url: app.globalData.serverUrl + 'api/patient',
             data: {
               _patientname: e.detail.value.patientname,
               _gender: e.detail.value.gender,

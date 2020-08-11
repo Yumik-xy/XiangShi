@@ -1,4 +1,5 @@
 // pages/mine/patient/patient.js
+const app = getApp()
 Page({
 
   /**
@@ -43,7 +44,7 @@ Page({
     wx.login({
       success: function (loginCode) {
         wx.request({
-          url: 'http://127.0.0.1/api/patient',
+          url: app.globalData.serverUrl + 'api/patient',
           data: {
             coder: loginCode.code
           },

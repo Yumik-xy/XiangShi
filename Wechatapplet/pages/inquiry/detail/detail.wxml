@@ -45,11 +45,11 @@
       <image wx:if='{{data.picture3}}' class='picture' src="http://127.0.0.1/media/{{data.picture3}}" mode="aspectFit"
         data-src="http://127.0.0.1/media/{{data.picture3}}" bindtap="previewPic"></image>
     </view> -->
-    <view class='other' hidden="{{otherisShow === true ? false : true}}">
+    <view class='other' hidden="{{textareaisShow}}">
       <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" 
-      mode="aspectFit"></image>
-      <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit" bindtap="bindcomment" data-name="{{data.name}}" data-id="null"></image>
-      <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit"></image>
+      mode="aspectFit">点赞</image>
+      <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit" bindtap="bindcomment" data-name="{{data.name}}" data-id="null">评论</image>
+      <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit">收藏</image>
     </view>
     <view wx:if="{{list}}" class="comment" >
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
@@ -67,10 +67,10 @@
         </view>
       </block>
     </view>
-    <view hidden="{{textareaisShow === true ? false : true}}">
+    <view hidden="{{!textareaisShow}}">
       <form bindsubmit='submit'>
         <view class="textinput">
-          <textarea bindinput="textinput" placeholder="请发送友善的评论" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" focus="true" adjust-position= "false" cursor-spacing="40rpx">
+          <textarea bindblur="inputbindblur" bindinput="textinput" placeholder-style="font-size:26rpx;" style="font-size:26rpx;" placeholder="{{reply.parentid=='null'?inputplaceholder:('回复给@'+reply.reply_to)}}" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" focus="true" adjust-position= "false" cursor-spacing="40rpx" focus="{{textareaisShow}}">
           </textarea>
           <button class="submit" form-type="submit" style="background-color: #f2f2f2;color:{{color}}" disabled="{{isEmpty === true ? true : false}}"> 发送 </button>
         </view>

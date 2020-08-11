@@ -32,7 +32,7 @@ Page({
     }
     imgs.forEach(img => {
       wx.request({
-        url: 'http://127.0.0.1/api/uploadimg',
+        url: app.globalData.serverUrl + 'api/uploadimg',
         data: {
           picture: that.coding(img)
         },
@@ -41,7 +41,7 @@ Page({
         success: function (res) {
           console.log(res.data)
           that.setData({
-            content: that.data.content.replace(img, 'http://127.0.0.1/media/' + res.data.url)
+            content: that.data.content.replace(img, app.globalData.serverUrl + 'media/' + res.data.url)
           })
         }
       })
@@ -50,7 +50,7 @@ Page({
       success: function (loginCode) {
         console.log(loginCode)
         wx.request({
-          url: 'http://127.0.0.1/api/inquirypost',
+          url: app.globalData.serverUrl + 'api/inquirypost',
           data: {
             coder: loginCode.code,
             name: that.data.userInfo.nickName,

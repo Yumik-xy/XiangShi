@@ -1,4 +1,6 @@
 // pages/wiki/wiki.js
+const app = getApp()
+
 Page({
 
   /**

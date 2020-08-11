@@ -24,15 +24,15 @@ class medicine(models.Model):
 
 class symptom(models.Model):
     symptomname = models.TextField(verbose_name='症状名称')
-    summary = models.TextField(verbose_name='概述')
-    pathogeny = models.TextField(verbose_name='病因')
-    diagnosis = models.TextField(verbose_name='诊断')
-    clinical = models.TextField(verbose_name='临床表现')
-    symptom = models.TextField(verbose_name='症状')
-    therapeutic = models.TextField(verbose_name='治疗方法')
-    prevention = models.TextField(verbose_name='预防')
-    highriskgroup = models.TextField(verbose_name='高危人群')
-    relateddiseases = models.TextField(verbose_name='相关疾病')
+    summary = RichTextField(verbose_name='概述')
+    pathogeny = RichTextField(verbose_name='病因')
+    diagnosis = RichTextField(verbose_name='诊断')
+    clinical = RichTextField(verbose_name='临床表现')
+    symptom = RichTextField(verbose_name='症状')
+    therapeutic = RichTextField(verbose_name='治疗方法')
+    prevention = RichTextField(verbose_name='预防')
+    highriskgroup = RichTextField(verbose_name='高危人群')
+    relateddiseases = RichTextField(verbose_name='相关疾病')
 
     class Meta:
         verbose_name_plural = '症状表现'
