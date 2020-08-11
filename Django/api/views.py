@@ -187,8 +187,7 @@ class inquirypost_list(APIView):
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * 5:(page - 0) * 5].values('id', 'name', 'title', 'classify', 'summary', 'picture1',
-                                                       'picture2', 'picture3', 'time')
+                [(page - 1) * 5:(page - 0) * 5].values('id', 'name', 'title', 'classify', 'summary', 'time')
             json_data = list(inquirypost_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -208,7 +207,7 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
-                                                                         'picture1', 'picture2', 'picture3', 'time')
+                                                                         'time')
             json_data = list(inquirypost)
             possess = (True if inquirypost_model.objects.get(id=id).openid == openid else False)
         except:
@@ -222,9 +221,6 @@ class inquirypost(APIView):
         classify = request.data.get('classify')
         content = request.data.get('content')
         summary = request.data.get('summary')[0:100]
-        picture1_base64 = request.data.get('picture1')
-        picture2_base64 = request.data.get('picture2')
-        picture3_base64 = request.data.get('picture3')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         print(request.data)
@@ -233,12 +229,6 @@ class inquirypost(APIView):
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
                                                   content=content, summary=summary)
-            if not picture1_base64 == '':
-                db.picture1 = Savepic(picture1_base64)
-            if not picture2_base64 == '':
-                db.picture2 = Savepic(picture2_base64)
-            if not picture3_base64 == '':
-                db.picture3 = Savepic(picture3_base64)
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -252,9 +242,6 @@ class inquirypost(APIView):
         _classify = request.data.get('classify')
         _content = request.data.get('content')
         _summary = request.data.get('summary')[0:100]
-        _picture1_base64 = request.data.get('picture1')
-        _picture2_base64 = request.data.get('picture2')
-        _picture3_base64 = request.data.get('picture3')
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         print(request.data)
@@ -272,12 +259,6 @@ class inquirypost(APIView):
             db.classify = _classify
             db.content = _content
             db.summary = _summary
-            if not _picture1_base64 == '':
-                db.picture1 = Savepic(_picture1_base64)
-            if not _picture2_base64 == '':
-                db.picture2 = Savepic(_picture2_base64)
-            if not _picture3_base64 == '':
-                db.picture3 = Savepic(_picture3_base64)
             db.save()
             return Response({'status': True})
 

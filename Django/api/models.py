@@ -6,13 +6,13 @@ from mptt.models import MPTTModel, TreeForeignKey
 # Create your models here.
 
 class medicine(models.Model):
-    drumname = models.CharField(max_length=30, verbose_name='药物名称')
-    description = models.CharField(max_length=120, verbose_name='药物性状')
-    indications = models.CharField(max_length=120, verbose_name='药物的适用症')
-    administration = models.CharField(max_length=120, verbose_name='剂量与用法')
-    note = models.CharField(max_length=120, verbose_name='注意事项')
-    sideeffects = models.CharField(max_length=120, verbose_name='副作用')
-    contraindications = models.CharField(max_length=120, verbose_name='禁忌症')
+    drumname = models.TextField(verbose_name='药物名称')
+    description = models.TextField(verbose_name='药物性状')
+    indications = models.TextField(verbose_name='药物的适用症')
+    administration = models.TextField(verbose_name='剂量与用法')
+    note = models.TextField(verbose_name='注意事项')
+    sideeffects = models.TextField(verbose_name='副作用')
+    contraindications = models.TextField(verbose_name='禁忌症')
 
     class Meta:
         verbose_name_plural = '药物说明书'
@@ -23,16 +23,16 @@ class medicine(models.Model):
 
 
 class symptom(models.Model):
-    symptomname = models.CharField(max_length=30, verbose_name='症状名称')
-    summary = models.CharField(max_length=120, verbose_name='概述')
-    pathogeny = models.CharField(max_length=120, verbose_name='病因')
-    diagnosis = models.CharField(max_length=120, verbose_name='诊断')
-    clinical = models.CharField(max_length=120, verbose_name='临床表现')
-    symptom = models.CharField(max_length=120, verbose_name='症状')
-    therapeutic = models.CharField(max_length=120, verbose_name='治疗方法')
-    prevention = models.CharField(max_length=120, verbose_name='预防')
-    highriskgroup = models.CharField(max_length=120, verbose_name='高危人群')
-    relateddiseases = models.CharField(max_length=120, verbose_name='相关疾病')
+    symptomname = models.TextField(verbose_name='症状名称')
+    summary = models.TextField(verbose_name='概述')
+    pathogeny = models.TextField(verbose_name='病因')
+    diagnosis = models.TextField(verbose_name='诊断')
+    clinical = models.TextField(verbose_name='临床表现')
+    symptom = models.TextField(verbose_name='症状')
+    therapeutic = models.TextField(verbose_name='治疗方法')
+    prevention = models.TextField(verbose_name='预防')
+    highriskgroup = models.TextField(verbose_name='高危人群')
+    relateddiseases = models.TextField(verbose_name='相关疾病')
 
     class Meta:
         verbose_name_plural = '症状表现'
@@ -67,9 +67,6 @@ class inquirypost(models.Model):
     classify = models.CharField(max_length=30, verbose_name='分类')
     content = RichTextField(verbose_name='正文')
     summary = models.CharField(max_length=120, verbose_name='概述')
-    picture1 = models.ImageField(verbose_name='图片1', upload_to='picture/%Y%m%d/', blank=True)
-    picture2 = models.ImageField(verbose_name='图片2', upload_to='picture/%Y%m%d/', blank=True)
-    picture3 = models.ImageField(verbose_name='图片3', upload_to='picture/%Y%m%d/', blank=True)
     time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -117,7 +114,7 @@ class symptomwiki(MPTTModel):
         blank=True,
         related_name='children'
     )
-    child = models.ForeignKey(medicine, on_delete=models.CASCADE, related_name='postid', blank=True, null=True)
+    child = models.ForeignKey(symptom, on_delete=models.CASCADE, related_name='postid', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = '疾病wiki信息'
