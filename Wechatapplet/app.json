@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/search/search",
-    "pages/index/register/register",
-    "pages/index/calendar/calendar",
+      "pages/index/search/search",
+      "pages/index/register/register",
+      "pages/index/calendar/calendar",
     "pages/wiki/wiki",
       "pages/wiki/detail/detail",
     "pages/inquiry/inquiry",
@@ -19,7 +19,6 @@
       "pages/mine/setup/setup",
         "pages/mine/setup/privacy/privacy",
         "pages/mine/setup/help/help"
-
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -39,12 +38,6 @@
         "text": "首页",
         "iconPath": "icon/_index.png",
         "selectedIconPath": "icon/index.png"
-      },
-      {
-        "pagePath": "pages/wiki/wiki",
-        "text": "健康百科",
-        "iconPath": "icon/_wiki.png",
-        "selectedIconPath": "icon/wiki.png"
       },
       {
         "pagePath": "pages/inquiry/inquiry",

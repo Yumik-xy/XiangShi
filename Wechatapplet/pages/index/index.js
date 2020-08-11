@@ -27,9 +27,9 @@ Page({
       },
       {
         id: 1,
-        turn_url: "../inquiry/posting/posting",
+        turn_url: "../wiki/wiki",
         item_img_url: "../../icon/classfy-Icon/Img1.png",
-        item_name: "在线问诊",
+        item_name: "疾病百科",
       },
       {
         id: 2,
