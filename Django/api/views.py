@@ -269,6 +269,7 @@ class inquirypost(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
+            comment_model.objects.filter(postid=id).delete()
             inquirypost_model.objects.filter(openid=openid, id=id).delete()
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
@@ -328,6 +329,7 @@ class comment(APIView):
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
+            comment_model.objects.filter(parent_id=id).delete()
             comment_model.objects.filter(openid=openid, id=id).delete()
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
