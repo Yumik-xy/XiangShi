@@ -4,7 +4,7 @@ page {
   height: 100%;
 }
 .passage {
-  margin: 25rpx 20rpx;
+  margin: 35rpx 25rpx 0 30rpx;
 }
 .passage image {
   margin: 20rpx;
@@ -15,52 +15,71 @@ page {
   font-weight: bold;
 }
 /*文本*/
-.rich-p {
-  margin-top: 12rpx;
-  margin-bottom: 12rpx;
-  font-size: 28rpx;
-  line-height: 36rpx;
-  color: #585858;
-}
-.rich-li {
-  /* margin-top: 12rpx;
-  margin-bottom: 12rpx; */
-  font-size: 26rpx;
-  line-height: 36rpx;
-  color: #585858;
-}
-.rich-h1 {
-  margin-top: 24rpx;
-  margin-bottom: 10rpx;
-  font-size: 36rpx;
-  line-height: 48rpx;
-}
-.rich-h2 {
-  margin-bottom: 10rpx;
-  font-size: 32rpx;
+
+.rich-p{
+  margin-top: 14rpx;
+  margin-bottom: 14rpx;
+  font-size: 34rpx;
   line-height: 44rpx;
+  color: #585858;
 }
-.rich-h3 {
-  margin-top: 24rpx;
-  margin-top: 18rpx;
+
+.rich-p:nth-last-child(1){
+  margin-bottom: 80rpx;
+}
+
+.rich-li{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx; 
   font-size: 30rpx;
   line-height: 42rpx;
+  color: #585858;
 }
-.rich-h4 {
+
+.rich-h1{
   margin-top: 24rpx;
+  margin-bottom: 14rpx;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  color: black;
+}
+
+.rich-h2{
   margin-top: 18rpx;
+  margin-bottom: 10rpx;
+  font-size: 36rpx;
+  line-height: 46rpx;
+  color: black;
+}
+
+.rich-h3{
+  margin-top: 14rpx;
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  line-height: 42rpx;
+  color: black;
+}
+
+.rich-h4{
+  margin-top: 12rpx;
+  margin-bottom: 10rpx;
   font-size: 28rpx;
   line-height: 40rpx;
+  color: black;
 }
-.rich-h5 {
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 26rpx;
+
+.rich-h5{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
   line-height: 40rpx;
+  color: black;
 }
-.rich-h6 {
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 26rpx;
+
+.rich-h6{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
   line-height: 40rpx;
+  color: black;
 }

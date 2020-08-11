@@ -14,7 +14,7 @@ page{
 .sc_left_item{
   height: 100rpx;
   line-height: 100rpx;
-  font-size:28rpx;
+  font-size:30rpx;
   border-bottom: 2rpx solid #ebebeb;
   background-color:#FAFAFA;
 }
@@ -63,56 +63,63 @@ page{
 .rich-p{
   margin-top: 12rpx;
   margin-bottom: 12rpx;
-  font-size: 26rpx;
-  line-height: 36rpx;
+  font-size: 38rpx;
+  line-height: 48rpx;
   color: #585858;
 }
 
 .rich-li{
-  /* margin-top: 12rpx;
-  margin-bottom: 12rpx; */
-  font-size: 24rpx;
-  line-height: 36rpx;
+  margin-top: 12rpx;
+  margin-bottom: 12rpx; 
+  font-size: 34rpx;
+  line-height: 42rpx;
   color: #585858;
 }
 
 .rich-h1{
   margin-top: 24rpx;
-  margin-bottom: 10rpx;
-  font-size: 34rpx;
-  line-height: 48rpx;
+  margin-bottom: 14rpx;
+  font-size: 42rpx;
+  line-height: 52rpx;
+  color: black;
 }
 
 .rich-h2{
-  margin-bottom: 10rpx;
-  font-size: 30rpx;
-  line-height: 44rpx;
+  margin-top: 20rpx;
+  margin-bottom: 12rpx;
+  font-size: 38rpx;
+  line-height: 48rpx;
+  color: black;
 }
 
 .rich-h3{
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 28rpx;
-  line-height: 42rpx;
+  margin-top: 16rpx;
+  margin-bottom: 10rpx;
+  font-size: 34rpx;
+  line-height: 44rpx;
+  color: black;
 }
 
 .rich-h4{
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 26rpx;
-  line-height: 40rpx;
+  margin-top: 12rpx;
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: black;
 }
 
 .rich-h5{
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 26rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
   line-height: 40rpx;
+  color: black;
 }
 
 .rich-h6{
-  margin-top: 24rpx;
-  margin-top: 18rpx;
-  font-size: 26rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
   line-height: 40rpx;
+  color: black;
 }
