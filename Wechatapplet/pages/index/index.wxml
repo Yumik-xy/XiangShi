@@ -34,37 +34,7 @@
     <image src="../../icon/zixun.png" mode="widthFix" />
     <text>健康资讯</text>
   </view>
-  <!-- <view class="contentHead2">
-    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
-      推荐
-    </view>
-    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>
-      百科
-    </view>
-    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>
-      疫情
-    </view>
-    <view class='tab  {{currentData == 3 ? "tabBorer" : ""}}' data-current="3" bindtap='checkCurrent'>
-      药品
-    </view>
-    <view class='tab  {{currentData == 4 ? "tabBorer" : ""}}' data-current="4" bindtap='checkCurrent'>
-      更多
-    </view>
-  </view> -->
-  <!-- <view class="contents">
-    <swiper current="{{currentData}}" bindchange="bindchange">
-      <swiper-item wx:for="{{contents}}" wx:for-item="item_contents" wx:key="id">
-        <view wx:for="{{item_contents.content}}" wx:key="id" bindtap="{{item.turn_address}}">
-          <image src="{{item.img_url}}" mode="scaleToFill" />
-          <view class="title_text">
-            <text class="title">{{item.title}}</text>
-            <text class="txt">{{item.text}}</text>
-          </view>
-        </view>
-      </swiper-item>
-    </swiper>
-  </view> -->
-
+  
   <view class="tabs">
     <view class="tabs_title">
       <view 
@@ -78,10 +48,20 @@
       </view>
     </view>
     <view class="tabs_content">
-      <block wx:if="{{contents[0].isActive}}">0 </block>
+      <block wx:for="{{contents}}" wx:key="id" wx:for-item="contents" wx:if="{{contents.isActive}}">
+        <view class="listitem" wx:if="{{contents.content}}">
+          <block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
+            <view class="content" bindtap="turn_passage">        
+              <view class="title">{{content.title}}</view>
+              <view class="text">{{content.text}}</view>
+            </view>
+          </block>
+        </view>
+      </block>
+      <!-- <block wx:if="{{contents[0].isActive}}">0 </block>
       <block wx:elif="{{contents[1].isActive}}">1 </block>
       <block wx:elif="{{contents[2].isActive}}">2 </block>
-      <block wx:elif="{{contents[3].isActive}}">3 </block>   
+      <block wx:elif="{{contents[3].isActive}}">3 </block>    -->
     </view>
   </view>
 </view>

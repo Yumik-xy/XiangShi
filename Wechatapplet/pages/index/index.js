@@ -174,7 +174,7 @@ Page({
     ]
   },
   //事件处理函数
-  turn_passage0: function () {
+  turn_passage: function () {
     wx.navigateTo({
       url: './passage/passage',
     })
