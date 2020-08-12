@@ -16,7 +16,7 @@
 				历史记录
 		</view>
 		<view class="history-content">
-				<view data-text="{{item}}" class="history-item" wx:for="{{history_contents}}" bindtap="click_record">
+				<view class="history-item" wx:for="{{history_contents}}" data-text="{{item}}" bindtap="click_record">
 						{{item}}
 				</view>
 		</view>
