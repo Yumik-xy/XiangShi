@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    isShowAll:false,
     currentData: 0,
     swiper_imgs: [{
       id: 0,
@@ -197,4 +198,10 @@ Page({
     console.log("接收来自后端的咨询信息,存储到contents数组中");
 
   },
+  showAll:function(){
+    this.setData({
+      isShowAll:!this.data.isShowAll
+    })
+  }
+
 })

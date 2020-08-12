@@ -147,4 +147,43 @@
   border-bottom: 5rpx solid currentColor;
 }
 
-.tabs_content{}
+.tabs_content{
+
+  margin: 20rpx;
+  border: 1rpx solid #bfbfbf;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx #bfbfbf;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+.tabs_content .part{
+  margin: 10rpx;
+  border: 1rpx solid #bfbfbf;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx #bfbfbf;
+  padding: 20rpx;
+}
+.tabs_content .image{
+  display: flex;
+  float: right;
+  margin: 5rpx;
+  width: 250rpx;
+  height: 250rpx;
+}
+.tabs_content .title{
+  font-size:40rpx;
+  font-weight: 700;
+}
+.tabs_content .text{
+  font-size: 30rpx;
+  color: #494444;
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.all {
+}
+.breif {
+  -webkit-line-clamp: 4; 
+}
