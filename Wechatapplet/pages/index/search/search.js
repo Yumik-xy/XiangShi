@@ -43,9 +43,16 @@ Page({
     console.log(event.currentTarget.dataset.id)
     var that = this
     var id = event.currentTarget.dataset.id
+    //写入本地缓存
+    console.log(that.data.item[id].drumname);
+    this.setData({
+      search_content: that.data.item[id].drumname
+    });
+    this.input_setStorage();
+    //页面跳转
     wx.navigateTo({
       url: './detail/detail?id=' + that.data.item[id].id,
-    })
+    });
   },
 
   //点击历史搜索记录
