@@ -130,6 +130,12 @@
   color: #000000;
   font-size: 40rpx;
 }
+
+.tabs{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
 .tabs_title{
   display: flex;
   padding: 10rpx;
