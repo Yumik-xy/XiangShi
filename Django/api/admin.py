@@ -57,12 +57,3 @@ class symptomwikiAdmin(admin.ModelAdmin):
 
 
 admin.site.register(symptomwiki, symptomwikiAdmin)
-
-
-class notifyAdmin(admin.ModelAdmin):
-    search_fields = ('title', 'postwiki',)  # 根据属性搜索
-    list_display = ('id', 'title', 'postwiki',)  # 列表显示的属性
-    pass
-
-
-admin.site.register(notify, notifyAdmin)
