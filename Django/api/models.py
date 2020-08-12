@@ -133,25 +133,3 @@ class symptomwiki(MPTTModel):
 class imgmd5(models.Model):
     img = models.ImageField(upload_to='picture/%Y%m%d/')
     md5 = models.CharField(max_length=60)
-
-
-class notify(models.Model):
-    title = models.CharField(max_length=60, verbose_name='标题')
-    img_url = models.CharField(max_length=120, verbose_name='预览图url')
-    text = RichTextField(verbose_name='正文内容', help_text='图片请使用sm.ms图床上传！！！')
-    readnum = models.PositiveIntegerField(blank=True, default=0)
-    POSTWIKIS = (
-        (1, u'百科'),
-        (2, u'疫情'),
-        (3, u'药品'),
-    )
-    postwiki = models.ImageField(choices=POSTWIKIS, verbose_name='分类')
-    created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name_plural = '资讯信息'
-        verbose_name = '资讯'
-        db_table = 'notify'
-
-    def __str__(self):
-        return self.title[:30]
