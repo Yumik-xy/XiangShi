@@ -77,11 +77,29 @@ Page({
                 title: '发送成功',
                 duration: 1000,
               })
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 1000)
+              wx.request({
+                url: app.globalData.serverUrl + 'api/comment',
+                data: {
+                  postid: that.data.id,
+                },
+                header: {
+                  "content-type": "application/x-www-form-urlencoded"
+                },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res)
+                  if (res.data.status == false) {
+                    wx.showToast({
+                      title: res.data.message,
+                      icon: 'none'
+                    })
+                  } else if (res.data.status == true) {
+                    that.setData({
+                      list: that.arrayToTree(res.data.data, null)
+                    })
+                  }
+                }
+              })
             }
           }
         })
