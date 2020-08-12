@@ -71,6 +71,8 @@
 }
 .hot {
   margin-top: 40rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }
 .hot .hot-head {
   display: flex;
