@@ -14,14 +14,14 @@
     returnText = returnText.replace(getRegExp('<li.*?>', 'ig'), '<li class="rich-li">');
     returnText =
       returnText.replace(getRegExp('<title.*?>', 'ig'), '<title class="rich-title">');
-    console.log(returnText,'===')
+    console.log(returnText, '===')
     return returnText;
   }
   module.exports.HtmlToText = HtmlToText;
 </wxs>
 
 
-<view class="page">
+<view class="page" wx:if="{{data}}">
   <view class="inquiry">
     <view class="title-first">
       <view class='title'>{{data.title}}</view>
@@ -29,12 +29,13 @@
         <image class="photo" src="{{data.photourl}}" mode="aspectFit"></image>
         <view class='title-right'>
           <view class='name'>{{data.name}}</view>
-          <view class='time'>{{data.date}}  {{data.time}}</view>
+          <view class='time'>{{data.date}} {{data.time}}</view>
         </view>
       </view>
     </view>
     <view class='message'>
-      <rich-text nodes="<p class='content'><a class='classify'>#{{data.classify}}#</a>{{tools.HtmlToText(data.content)}}</p>">
+      <rich-text
+        nodes="<p class='content'><a class='classify'>#{{data.classify}}#</a>{{tools.HtmlToText(data.content)}}</p>">
       </rich-text>
     </view>
     <!-- <view class='picmessage'>
@@ -46,12 +47,12 @@
         data-src="http://127.0.0.1/media/{{data.picture3}}" bindtap="previewPic"></image>
     </view> -->
     <view class='other' hidden="{{textareaisShow}}">
-      <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" 
-      mode="aspectFit">点赞</image>
-      <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit" bindtap="bindcomment" data-name="{{data.name}}" data-id="null">评论</image>
+      <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" mode="aspectFit">点赞</image>
+      <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit" bindtap="bindcomment"
+        data-name="{{data.name}}" data-id="null">评论</image>
       <image class='otimg' src="../../../icon/{{follow?'':'_'}}follow.png" mode="aspectFit">收藏</image>
     </view>
-    <view wx:if="{{list}}" class="comment" >
+    <view wx:if="{{list}}" class="comment">
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
         <view class="first" mut-bind:tap="bindcomment" data-name="{{firstcom.name}}" data-id="{{firstcom.id}}">
           <view class="commentname">{{firstcom.name}}</view>
@@ -70,9 +71,13 @@
     <view hidden="{{!textareaisShow}}">
       <form bindsubmit='submit'>
         <view class="textinput">
-          <textarea bindblur="inputbindblur" bindinput="textinput" placeholder-style="font-size:26rpx;" style="font-size:26rpx;" placeholder="{{reply.parentid=='null'?inputplaceholder:('回复给@'+reply.reply_to)}}" name="content" auto-height="true" show-confirm-bar="" maxlength="-1" focus="true" adjust-position= "false" cursor-spacing="40rpx" focus="{{textareaisShow}}">
+          <textarea bindblur="inputbindblur" bindinput="textinput" placeholder-style="font-size:26rpx;"
+            style="font-size:26rpx;" placeholder="{{reply.parentid=='null'?inputplaceholder:('回复给@'+reply.reply_to)}}"
+            name="content" auto-height="true" show-confirm-bar="" maxlength="-1" focus="true" adjust-position="false"
+            cursor-spacing="40rpx" focus="{{textareaisShow}}">
           </textarea>
-          <button class="submit" form-type="submit" style="background-color: #f2f2f2;color:{{color}}" disabled="{{isEmpty === true ? true : false}}"> 发送 </button>
+          <button class="submit" form-type="submit" style="background-color: #f2f2f2;color:{{color}}"
+            disabled="{{isEmpty === true ? true : false}}"> 发送 </button>
         </view>
       </form>
     </view>

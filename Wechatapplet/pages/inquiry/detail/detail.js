@@ -9,14 +9,14 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     inputplaceholder: '请发送友善的评论qwq',
-    data: {
-      name: '帅气的钟钟',
-      title: '这波我直接起飞',
-      classify: '鼻子',
-      content: '<p>真的是顶不住，一天到晚都在流鼻血，你看着图片就是这个样子 diu！</p><p>上传图片1<img src=\"http://127.0.0.1/media/picture/20200810/92725ca6-68ad-4432-8488-765f9d5cb60b.jpg\" width=\"40%\" data-custom=\"id=abcd&amp;role=god\"></p>',
-      time: '12:12:12',
-      date: '2000-02-01'
-    },
+    // data: {
+    //   // name: '帅气的钟钟',
+    //   // title: '这波我直接起飞',
+    //   // classify: '鼻子',
+    //   // content: '<p>真的是顶不住，一天到晚都在流鼻血，你看着图片就是这个样子 diu！</p><p>上传图片1<img src=\"http://127.0.0.1/media/picture/20200810/92725ca6-68ad-4432-8488-765f9d5cb60b.jpg\" width=\"40%\" data-custom=\"id=abcd&amp;role=god\"></p>',
+    //   // time: '12:12:12',
+    //   // date: '2000-02-01'
+    // },
     list: [],
     picturelist: [],
     reply: {
@@ -128,30 +128,30 @@ Page({
     return temp;
   },
 
-  previewPic: function (e) {
-    if (this.data.data.picture1.length > 0) {
-      this.setData({
-        'picturelist[0]': (app.globalData.serverUrl + 'media/' + this.data.data.picture1)
-      })
-    }
-    if (this.data.data.picture2.length > 0) {
-      this.setData({
-        'picturelist[1]': (app.globalData.serverUrl + 'media/' + this.data.data.picture2)
-      })
-    }
-    if (this.data.data.picture3.length > 0) {
-      this.setData({
-        'picturelist[2]': (app.globalData.serverUrl + 'media/' + this.data.data.picture3)
-      })
-    }
+  // previewPic: function (e) {
+  //   if (this.data.data.picture1.length > 0) {
+  //     this.setData({
+  //       'picturelist[0]': (app.globalData.serverUrl + 'media/' + this.data.data.picture1)
+  //     })
+  //   }
+  //   if (this.data.data.picture2.length > 0) {
+  //     this.setData({
+  //       'picturelist[1]': (app.globalData.serverUrl + 'media/' + this.data.data.picture2)
+  //     })
+  //   }
+  //   if (this.data.data.picture3.length > 0) {
+  //     this.setData({
+  //       'picturelist[2]': (app.globalData.serverUrl + 'media/' + this.data.data.picture3)
+  //     })
+  //   }
 
-    var current = e.target.dataset.src;
-    var list = this.data.picturelist;
-    wx.previewImage({
-      current: current, // 当前显示图片的http链接  
-      urls: list // 需要预览的图片http链接列表  
-    })
-  },
+  //   var current = e.target.dataset.src;
+  //   var list = this.data.picturelist;
+  //   wx.previewImage({
+  //     current: current, // 当前显示图片的http链接  
+  //     urls: list // 需要预览的图片http链接列表  
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -188,31 +188,6 @@ Page({
       id: options.id
     })
     console.log(options.id)
-
-    wx.request({
-      url: app.globalData.serverUrl + 'api/comment',
-      data: {
-        postid: that.data.id,
-      },
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log(res)
-        if (res.data.status == false) {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none'
-          })
-        } else if (res.data.status == true) {
-          that.setData({
-            list: that.arrayToTree(res.data.data, null)
-          })
-        }
-      }
-    })
-
     wx.login({
       success: function (loginCode) {
         console.log(loginCode)
@@ -247,6 +222,31 @@ Page({
         })
       }
     })
+    wx.request({
+      url: app.globalData.serverUrl + 'api/comment',
+      data: {
+        postid: that.data.id,
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        if (res.data.status == false) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        } else if (res.data.status == true) {
+          that.setData({
+            list: that.arrayToTree(res.data.data, null)
+          })
+        }
+      }
+    })
+
+
   },
 
 
