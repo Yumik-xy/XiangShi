@@ -60,8 +60,8 @@ Page({
     ],
     contents: [{
         id: 0,
-        index: "0",
         name: "推荐",
+        isActive: true,
         content: [{
             id: 0,
             img_url: "../../icon/info/Img0.png",
@@ -95,8 +95,8 @@ Page({
       },
       {
         id: 1,
-        index: "1",
         name: "百科",
+        isActive: false,
         content: [{
             id: 0,
             img_url: "",
@@ -119,8 +119,8 @@ Page({
       },
       {
         id: 2,
-        index: "2",
         name: "疫情",
+        isActive: false,
         content: [{
             id: 0,
             img_url: "",
@@ -143,8 +143,8 @@ Page({
       },
       {
         id: 3,
-        index: "3",
         name: "药品",
+        isActive: false,
         content: [{
             id: 0,
             img_url: "",
@@ -165,12 +165,12 @@ Page({
           },
         ]
       },
-      {
-        id: 4,
-        index: "4",
-        name: "更多",
-        content: [{}]
-      },
+      // {
+      //   id: 4,
+      //   index: "4",
+      //   name: "更多",
+      //   content: [{}]
+      // },
     ]
   },
   //事件处理函数
@@ -179,34 +179,22 @@ Page({
       url: './passage/passage',
     })
   },
+
+  handleItemChange(e){
+    const {index}=e.currentTarget.dataset;  
+    let content=this.data.contents;
+    content.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false)
+    this.setData({
+      content
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
-  //获取当前滑块的index
-  bindchange: function (e) {
-    const that = this;
-    that.setData({
-      currentData: e.detail.current
-    })
-  },
-  //点击切换，滑块index赋值
-  checkCurrent: function (e) {
-    const that = this;
-
-    if (that.data.currentData === e.target.dataset.current) {
-      return false;
-    } else {
-
-      that.setData({
-        currentData: e.target.dataset.current
-      })
-    }
-  },
-  //onLoad函数
-  onLoad: function () {
+  onLoad: function (options) {
     console.log("接收来自后端的轮播图信息，存储到swiper_imgs数组中");
     console.log("接收来自后端的咨询信息,存储到contents数组中");
-  }
 
+  },
 })

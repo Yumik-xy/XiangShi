@@ -34,7 +34,7 @@
     <image src="../../icon/zixun.png" mode="widthFix" />
     <text>健康资讯</text>
   </view>
-  <view class="contentHead2">
+  <!-- <view class="contentHead2">
     <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
       推荐
     </view>
@@ -50,8 +50,8 @@
     <view class='tab  {{currentData == 4 ? "tabBorer" : ""}}' data-current="4" bindtap='checkCurrent'>
       更多
     </view>
-  </view>
-  <view class="contents">
+  </view> -->
+  <!-- <view class="contents">
     <swiper current="{{currentData}}" bindchange="bindchange">
       <swiper-item wx:for="{{contents}}" wx:for-item="item_contents" wx:key="id">
         <view wx:for="{{item_contents.content}}" wx:key="id" bindtap="{{item.turn_address}}">
@@ -63,5 +63,25 @@
         </view>
       </swiper-item>
     </swiper>
+  </view> -->
+
+  <view class="tabs">
+    <view class="tabs_title">
+      <view 
+        wx:for="{{contents}}"
+        wx:key="id"
+        class="title_item {{item.isActive?'active':''}}" 
+        bindtap="handleItemChange"
+        data-index="{{index}}"
+        >
+        {{item.name}}
+      </view>
+    </view>
+    <view class="tabs_content">
+      <block wx:if="{{contents[0].isActive}}">0 </block>
+      <block wx:elif="{{contents[1].isActive}}">1 </block>
+      <block wx:elif="{{contents[2].isActive}}">2 </block>
+      <block wx:elif="{{contents[3].isActive}}">3 </block>   
+    </view>
   </view>
 </view>
