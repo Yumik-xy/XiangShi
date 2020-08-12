@@ -53,11 +53,12 @@ Page({
         wx.request({
           url: app.globalData.serverUrl + 'api/comment',
           data: {
-            name: that.data.reply.name,
-            postid: that.data.reply.postid,
-            parentid: that.data.reply.parentid,
-            reply_to: that.data.reply.reply_to,
+            name: that.data.replypost.name,
+            postid: that.data.replypost.postid,
+            parentid: that.data.replypost.parentid,
+            reply_to: that.data.replypost.reply_to,
             body: e.detail.value.content,
+            photourl: that.data.userInfo.avatarUrl,
             coder: loginCode.code
           },
           header: {
@@ -105,6 +106,7 @@ Page({
       console.log(replyList);
     this.setData({
       reply: replyList,
+      replypost: replyList,
       textareaisShow: true,
       otherisShow: false
     })
