@@ -1,4 +1,5 @@
 // pages/index/search/你好.js
+const app = getApp()
 Component({
 
   /**
@@ -16,8 +17,33 @@ Component({
   methods: {
     //搜索函数
     search: function () {
-      console.log("向后端发送待搜索内容：" + this.data.search_content);
-
+      var that = this
+      wx.request({
+        url: app.globalData.serverUrl + 'api/medicine/list',
+        data: {
+          drumname:this.data.search_content
+        },
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        method: 'GET',
+        success: function (res) {
+          if (res.data.status == false) {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none'
+            })
+          } else if (res.data.status == true) {
+            console.log(res);
+            
+            // var tempList = res.data.data
+            // let dataList = that.data.item.concat(tempList); //获取到的数据
+            // that.setData({
+            //   item: dataList //数据源
+            // })
+          }
+        }
+      })
     },
 
     //搜索记录和热门推荐点击
@@ -38,7 +64,7 @@ Component({
     input_setStorage: function name() {
       //只缓存最近十个搜索记录
       console.log("存储搜索记录：" + this.data.search_content);
-      this.data.history_contents.push(this.data.search_content);
+      this.data.history_contents.unshift(this.data.search_content);
       if (this.data.history_contents.length > 10) {
         this.data.history_contents.shift();
       }
