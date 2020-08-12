@@ -21,6 +21,7 @@
 }
 .search-left input {
   height: 65rpx;
+  width: 100%;
   font-size: 30rpx;
   text-align: left;
 }

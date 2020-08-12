@@ -1,7 +1,19 @@
 <!-- index.wxml -->
 <view>
   <!-- 搜索框 -->
-  <SearchInput></SearchInput>
+<!-- <view class="search_input">
+  <view class="search">
+			<view class="search-left">
+				<image src="../../icon/_search.png"></image>
+        <navigator class="search-placeholder" url="/pages/index/search/search" open-type="navigate">
+          搜索病症、药品…
+        </navigator>
+			</view>
+			<view bindtap="search" class="search-right">
+				<image src="../../icon/search_white.png"></image>
+		  </view>
+	</view>
+</view> -->
   <!-- 轮播框 -->
   <view class="swiper_imgs">
     <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="rgba(165, 34, 51)">

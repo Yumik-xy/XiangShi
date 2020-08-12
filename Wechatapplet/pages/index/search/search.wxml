@@ -2,8 +2,8 @@
 <view class="search_input">
 		<view class="search">
 				<view class="search-left">
-						<image src="../../../icon/_search.png"></image>
-						<input autoFocus="true" bindconfirm="confirmSearch" bindinput="inputTextChange" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value="" name="input"></input>
+						<image src="../../../icon/_search.png" mode="aspectFit"></image>
+						<input autoFocus="true" bindconfirm="confirmSearch" bindinput="inputTextChange" class="search-placeholder" confirmType="search" placeholder="搜索症状…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value="{{search_content}}"></input>
 				</view>
 				<view bindtap="confirmSearch" class="search-right">
 						<image src="../../../icon/search_white.png"></image>
