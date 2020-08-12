@@ -366,10 +366,10 @@ class notify_list(APIView):
         try:
             if postwiki == 0:
                 notify_list = notify_model.objects.all().order_by("-readnum") \
-                    [0, times].values('id', 'name', 'title', 'img_url', 'text', 'readnum', 'postwiki','created')
+                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki','created')
             else:
                 notify_list = notify_model.objects.filter(postwiki=postwiki).order_by("-created") \
-                    [0, times].values('id', 'name', 'title', 'img_url', 'text', 'readnum', 'created')
+                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'created')
             json_data = list(notify_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -384,7 +384,7 @@ class notify(APIView):
             db = notify_model.objects.get(id=id)
             db.readnum = db.readnum + 1
             db.save()
-            notify = notify_model.objects.filter(id=id).values('id', 'name', 'title', 'img_url', 'text', 'readnum', 'created')
+            notify = notify_model.objects.filter(id=id).values('id', 'title', 'img_url', 'text', 'readnum', 'created')
             json_data = list(notify)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
