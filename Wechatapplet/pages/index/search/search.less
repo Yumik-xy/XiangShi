@@ -41,62 +41,78 @@
   text-align: left;
 }
 
-.history {
-  margin: 20rpx 10rpx;
-  .history-head {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    font-size: 35rpx;
-    image {
-      width: 40rpx;
-      margin: 0 15rpx;
+.basic-view {
+  .history {
+    margin: 20rpx 10rpx;
+    .history-head {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      font-size: 35rpx;
+      image {
+        width: 40rpx;
+        margin: 0 15rpx;
+      }
+      .clear-history {
+        text-align: right;
+        margin-left: 350rpx;
+        color: #bfbfbf;
+        font-size: 26rpx;
+      }
     }
-    .clear-history {
-      text-align: right;
-      margin-left: 350rpx;
-      color: #bfbfbf;
-      font-size: 26rpx;
+    .history-content {
+      margin-top: 20rpx;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .history-item {
+        margin: 10rpx 20rpx;
+        background-color: #eee5e5;
+        font-size: 28rpx;
+        padding: 15rpx 25rpx;
+        border-radius: 40rpx;
+      }
     }
   }
-  .history-content {
-    margin-top: 20rpx;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .history-item {
-      margin: 10rpx 20rpx;
-      background-color: #eee5e5;
-      font-size: 28rpx;
-      padding: 15rpx 25rpx;
-      border-radius: 40rpx;
+
+  .hot {
+    margin-top: 40rpx;
+    .hot-head {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      font-size: 35rpx;
+      image {
+        width: 40rpx;
+        margin: 0 15rpx;
+      }
+    }
+    .hot-content {
+      margin-top: 20rpx;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .hot-item {
+        margin: 10rpx 20rpx;
+        background-color: #eee5e5;
+        font-size: 28rpx;
+        padding: 15rpx 25rpx;
+        border-radius: 40rpx;
+      }
     }
   }
 }
 
-.hot {
-  margin-top: 40rpx;
-  .hot-head {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    font-size: 35rpx;
-    image {
-      width: 40rpx;
-      margin: 0 15rpx;
-    }
-  }
-  .hot-content {
-    margin-top: 20rpx;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .hot-item {
-      margin: 10rpx 20rpx;
-      background-color: #eee5e5;
-      font-size: 28rpx;
-      padding: 15rpx 25rpx;
-      border-radius: 40rpx;
-    }
+.search-result {
+  margin: 20rpx;
+  view {
+    background-color: #fff;
+    font-size: 30rpx;
+    padding: 15rpx 10rpx;
+    border-bottom: 1rpx solid var(--themeColor);
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
