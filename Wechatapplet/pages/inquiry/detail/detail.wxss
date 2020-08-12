@@ -1,5 +1,4 @@
 /* pages/inquiry/detail/detail.wxss */
-
 .inquiry {
   /* display: flex; */
   height: auto;
