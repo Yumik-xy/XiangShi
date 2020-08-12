@@ -191,7 +191,8 @@ class inquirypost_list(APIView):
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time','photourl')
+                [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
+                                                               'photourl')
             json_data = list(inquirypost_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -211,9 +212,12 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
-                                                                         'time','photourl')
+                                                                         'time', 'photourl')
             json_data = list(inquirypost)
-            possess = (True if inquirypost_model.objects.get(id=id).openid == openid else False)
+            if inquirypost_model.objects.get(id=id).openid == openid:
+                possess = True
+            else:
+                possess = False
         except:
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         else:
@@ -233,7 +237,7 @@ class inquirypost(APIView):
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
         try:
             db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content, summary=summary,photourl=photourl)
+                                                  content=content, summary=summary, photourl=photourl)
             db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -262,7 +266,7 @@ class inquirypost(APIView):
         else:
             db.name = _name
             db.title = _title
-            db.photourl=_photourl
+            db.photourl = _photourl
             db.classify = _classify
             db.content = _content
             db.summary = _summary
@@ -290,7 +294,7 @@ class comment(APIView):
         postid = request.query_params.get('postid')
         try:
             comment = comment_model.objects.filter(postid=postid).values('id', 'name', 'reply_to',
-                                                                         'parent', 'body', 'created','photourl')
+                                                                         'parent', 'body', 'created', 'photourl')
             json_data = list(comment)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
