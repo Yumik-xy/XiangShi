@@ -12,7 +12,7 @@
 </view>
 <view class="history">
 		<view class="history-head">
-				<image src="../../../icon/search.png" mode="widthFix" />
+				<image src="../../../icon/searchhistory.png" mode="widthFix" />
 				历史记录
 		</view>
 		<view class="history-content">
