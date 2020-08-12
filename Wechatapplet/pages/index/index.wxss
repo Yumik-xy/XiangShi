@@ -45,6 +45,7 @@
 }
 .classfy {
   display: flex;
+  justify-content: center;
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   margin-left: 20rpx;
@@ -53,16 +54,17 @@
   box-shadow: 0 0 8rpx #000000;
 }
 .classfy navigator {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 26rpx;
-  text-align: center;
   font-size: 30rpx;
   border-radius: 30rpx;
 }
 .classfy navigator image {
-  padding-left: 15rpx;
-  padding-right: 15rpx;
-  width: 70%;
+  margin-bottom: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .swiper-notice {
   display: flex;
@@ -124,7 +126,7 @@
   color: #bfbfbf;
 }
 .contentHead2 .tabBorer {
-  border-bottom: 8rpx solid #f00;
+  border-bottom: 8rpx solid var(--themeColor);
   color: #000000;
   font-size: 40rpx;
 }
@@ -136,7 +138,7 @@
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   box-shadow: 0 0 6rpx black;
-  height: 800rpx;
+  height: auto;
   width: auto;
 }
 .contents swiper {
@@ -145,10 +147,8 @@
 .contents swiper swiper-item {
   height: 100%;
 }
-.contents swiper swiper-item scroll-view {
-  height: 100%;
-}
-.contents swiper swiper-item scroll-view view {
+
+.contents swiper swiper-item view {
   display: flex;
   width: auto;
   height: 25%;
@@ -161,23 +161,23 @@
   padding-bottom: 10rpx;
   align-items: center;
 }
-.contents swiper swiper-item scroll-view view image {
+.contents swiper swiper-item view image {
   margin-left: 10rpx;
   margin-right: 10rpx;
   width: 30%;
   height: 100%;
   box-shadow: 0 0 6rpx #000000;
 }
-.contents swiper swiper-item scroll-view view .title_text {
+.contents swiper swiper-item view .title_text {
   height: 100%;
   width: 65%;
   flex-direction: column;
 }
-.contents swiper swiper-item scroll-view view .title_text .title {
+.contents swiper swiper-item view .title_text .title {
   font-size: 34rpx;
   color: #000000;
 }
-.contents swiper swiper-item scroll-view view .title_text .txt {
+.contents swiper swiper-item view .title_text .txt {
   height: auto;
   width: auto;
   display: flex;

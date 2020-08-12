@@ -54,15 +54,13 @@
   <view class="contents">
     <swiper current="{{currentData}}" bindchange="bindchange">
       <swiper-item wx:for="{{contents}}" wx:for-item="item_contents" wx:key="id">
-        <scroll-view scroll-y="{{true}}">
-          <view wx:for="{{item_contents.content}}" wx:key="id" bindtap="{{item.turn_address}}">
-            <image src="{{item.img_url}}" mode="scaleToFill" />
-            <view class="title_text">
-              <text class="title">{{item.title}}</text>
-              <text class="txt">{{item.text}}</text>
-            </view>
+        <view wx:for="{{item_contents.content}}" wx:key="id" bindtap="{{item.turn_address}}">
+          <image src="{{item.img_url}}" mode="scaleToFill" />
+          <view class="title_text">
+            <text class="title">{{item.title}}</text>
+            <text class="txt">{{item.text}}</text>
           </view>
-        </scroll-view>
+        </view>
       </swiper-item>
     </swiper>
   </view>

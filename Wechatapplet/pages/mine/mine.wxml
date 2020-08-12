@@ -16,9 +16,9 @@
         class="title_item" 
         bindtap="{{item.turn_address}}">
 		<image class="item_top" src="{{item.item_image_uri}}"></image>
-    <text class="item_bottom">
+    <view class="item_bottom">
        {{item.item_name}}
-    </text>
+    </view>
   </view>
 </view>
 

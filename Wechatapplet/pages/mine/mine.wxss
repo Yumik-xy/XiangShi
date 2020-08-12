@@ -62,13 +62,14 @@ page{
 }
 
 .item_top{
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .item_bottom{
   font-size: 32rpx;
-  line-height: 26rpx;
+  line-height: 32rpx;
+  margin-top: 20rpx;
 }
 
 
