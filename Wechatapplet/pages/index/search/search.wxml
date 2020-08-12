@@ -14,9 +14,10 @@
 		<view class="history-head">
 				<image src="../../../icon/searchhistory.png" mode="widthFix" />
 				历史记录
+				<view class="clear-history" bindtap="clear_history">清除历史记录</view>
 		</view>
 		<view class="history-content">
-				<view class="history-item" wx:for="{{history_contents}}" data-text="{{item}}" bindtap="click_record">
+				<view class="history-item" wx:for="{{history_contents}}" data-text="{{item}}" bindtap="click_history_record">
 						{{item}}
 				</view>
 		</view>
@@ -27,7 +28,7 @@
 				热门搜索
 		</view>
 		<view class="hot-content">
-				<view data-text="{{item}}" class="hot-item" wx:for="{{hot_contents}}" bindtap="click_record">
+				<view data-text="{{item}}" class="hot-item" wx:for="{{hot_contents}}" bindtap="click_hot_record">
 						{{item}}
 				</view>
 		</view>

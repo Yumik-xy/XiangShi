@@ -21,7 +21,7 @@ Component({
       wx.request({
         url: app.globalData.serverUrl + 'api/medicine/list',
         data: {
-          drumname:this.data.search_content
+          drumname: this.data.search_content
         },
         header: {
           "content-type": "application/x-www-form-urlencoded"
@@ -35,7 +35,7 @@ Component({
             })
           } else if (res.data.status == true) {
             console.log(res);
-            
+
             // var tempList = res.data.data
             // let dataList = that.data.item.concat(tempList); //获取到的数据
             // that.setData({
@@ -47,10 +47,18 @@ Component({
     },
 
     //搜索记录和热门推荐点击
-    click_record: function (e) {
+    click_history_record: function (e) {
       this.setData({
         search_content: e.currentTarget.dataset.text
       });
+      this.search();
+    },
+
+    click_hot_record: function (e) {
+      this.setData({
+        search_content: e.currentTarget.dataset.text
+      })
+      this.input_setStorage();
       this.search();
     },
 
@@ -63,11 +71,22 @@ Component({
     //将搜索记录写到本地缓存
     input_setStorage: function name() {
       //只缓存最近十个搜索记录
+
       console.log("存储搜索记录：" + this.data.search_content);
+
+      for (let i = 0; i < this.data.history_contents.length; i++) {
+        if (this.data.search_content == this.data.history_contents[i]) {
+          return;
+        }
+      }
       this.data.history_contents.unshift(this.data.search_content);
       if (this.data.history_contents.length > 10) {
-        this.data.history_contents.shift();
+        this.data.history_contents.pop();
       }
+      let contents = this.data.history_contents;
+      this.setData({
+        history_contents: contents
+      });
       wx: wx.setStorage({
         key: 'history_contents',
         data: this.data.history_contents,
@@ -88,6 +107,17 @@ Component({
         search_content: e.detail.value
       })
     },
+
+    clear_history: function (params) {
+      //清除缓存
+      console.log("清除历史记录");
+      wx.removeStorageSync('history_contents');
+      //刷新页面
+      this.setData({
+        history_contents: []
+      });
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -111,6 +141,9 @@ Component({
       });
       //接收来自后端的热门搜索
       console.log("接收来自后端的热门搜索信息");
+    },
+    onReady: function () {
+      console.log("this.onReady");
     }
   },
 })
