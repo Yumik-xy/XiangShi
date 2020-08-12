@@ -235,10 +235,11 @@ class inquirypost(APIView):
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
+                                              content=content, summary=summary, photourl=photourl)
+        db.save()
         try:
-            db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content, summary=summary, photourl=photourl)
-            db.save()
+            pass
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:
@@ -306,7 +307,7 @@ class comment(APIView):
 
     def post(self, request):
         name = request.data.get('name')
-        postid = int(request.data.get('postid'))
+        postid = request.data.get('postid')
         if not inquirypost_model.objects.filter(id=postid):
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         parentid = request.data.get('parentid')
@@ -324,7 +325,7 @@ class comment(APIView):
                 parentid = par.parent_id
         try:
             db = comment_model.objects.create(openid=openid, name=name, postid_id=postid,
-                                              reply_to=reply_to, body=body)
+                                              reply_to=reply_to, body=body, photourl=photourl)
             if not parentid == 'null':
                 print(parentid)
                 db.parent_id = int(parentid)
