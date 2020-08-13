@@ -145,7 +145,7 @@ class notify(models.Model):
         (2, u'疫情'),
         (3, u'药品'),
     )
-    postwiki = models.ImageField(choices=POSTWIKIS, verbose_name='分类')
+    postwiki = models.IntegerField(choices=POSTWIKIS, verbose_name='分类')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
