@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <view>
-  <!-- 搜索框 -->
-<!-- <view class="search_input">
+	<!-- 搜索框 -->
+	<!-- <view class="search_input">
   <view class="search">
 			<view class="search-left">
 				<image src="../../icon/_search.png"></image>
@@ -14,77 +14,71 @@
 		  </view>
 	</view>
 </view> -->
-  <!-- 轮播框 -->
-  <view class="swiper_imgs">
-    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="rgba(165, 34, 51)">
-      <swiper-item wx:for="{{swiper_imgs}}" wx:key="id">
-        <image mode="scaleToFill" src="{{item.item_img_url}}" />
-      </swiper-item>
-    </swiper>
-  </view>
-  <!-- 分类导航 -->
-  <view class="classfyHead">
-    <image mode="widthFix" src="../../icon/fuwu.png" />
-    <text class="left_text">服务</text>
-    <text class="right_text">更多</text>
-  </view>
-  <view class="classfy">
-    <navigator wx:key="id" url="{{item.turn_url}}" wx:for="{{classfy}}">
-      <image mode="widthFix" src="{{item.item_img_url}}" />
-      {{item.item_name}}
-    </navigator>
-  </view>
-  <!-- 公告栏 -->
-  <view class="swiper-notice">
-    <image src="../../icon/gonggao.png" mode="widthFix" />
-    <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" vertical="{{true}}">
-      <swiper-item wx:for="{{notice}}" wx:key="id">{{item.item_content}}</swiper-item>
-    </swiper>
-  </view>
-  <!-- 资讯栏 -->
-  <view class="contentHead1">
-    <image src="../../icon/zixun.png" mode="widthFix" />
-    <text>健康资讯</text>
-  </view>
-  
-  <view class="tabs">
-    <view class="tabs_title">
-      <view 
-        wx:for="{{contents}}"
-        wx:key="id"
-        class="title_item {{item.isActive?'active':''}}" 
-        bindtap="handleItemChange"
-        data-index="{{index}}"
-        >
-        {{item.name}}
-      </view>
-    </view>
-    <view class="tabs_content">
-      <block wx:for="{{contents}}" wx:key="id" wx:for-item="contents" wx:if="{{contents.isActive}}">
-        <view class="listitem" wx:if="{{contents.content}}">
-          <block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
-            <view class="content" bindtap="turn_passage">  
-              <view class = "part" wx:if="{{content.parent==0}}">
-                <view>
-                  <image class="image" src="../../icon/_comment.png">
-                  </image>     
-                    <view class="title">{{content.title}}</view>
-                </view>
-              <view>
-                <text class = "data">
-                阅读数：{{content.readnum}} 分类：{{content.postwiki}} 
-                时间：{{content.created}}
-                </text>
-              </view>
-            </view>
-            <view wx:if="{{content.parent!=0}}">
-              <view class="title">{{content.title}}</view>
-              <view class='text'>{{content.text}}</view>
-            </view>
-            </view>
-          </block>
-        </view>
-      </block>
-    </view>
-  </view>
+	<!-- 轮播框 -->
+	<view class="swiper_imgs">
+		<swiper autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="rgba(165, 34, 51)">
+			<swiper-item wx:for="{{swiper_imgs}}" wx:key="id">
+				<image mode="scaleToFill" src="{{item.item_img_url}}" />
+			</swiper-item>
+		</swiper>
+	</view>
+	<!-- 分类导航 -->
+	<view class="classfyHead">
+		<image mode="widthFix" src="../../icon/fuwu.png" />
+		<text class="left_text">服务</text>
+		<text class="right_text">更多</text>
+	</view>
+	<view class="classfy">
+		<navigator wx:key="id" url="{{item.turn_url}}" wx:for="{{classfy}}">
+			<image mode="widthFix" src="{{item.item_img_url}}" />
+			{{item.item_name}}
+		</navigator>
+	</view>
+	<!-- 公告栏 -->
+	<view class="swiper-notice">
+		<image src="../../icon/gonggao.png" mode="widthFix" />
+		<swiper autoplay="{{true}}" interval="3000" circular="{{true}}" vertical="{{true}}">
+			<swiper-item wx:for="{{notice}}" wx:key="id">{{item.item_content}}</swiper-item>
+		</swiper>
+	</view>
+	<!-- 资讯栏 -->
+	<view class="contentHead1">
+		<image src="../../icon/zixun.png" mode="widthFix" />
+		<text>健康资讯</text>
+	</view>
+
+	<view class="tabs">
+		<view class="tabs_title">
+			<view wx:for="{{contents}}" wx:key="id" class="title_item {{item.isActive?'active':''}}" bindtap="handleItemChange" data-index="{{index}}">
+				{{item.name}}
+			</view>
+		</view>
+		<view class="tabs_content">
+			<block wx:for="{{contents}}" wx:key="id" wx:for-item="contents" wx:if="{{contents.isActive}}">
+				<view class="listitem" wx:if="{{contents.content}}">
+					<block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
+						<view class="content" bindtap="turn_passage">
+							<view class="part">
+               <!-- wx:if="{{content.parent==0}}" -->
+								<view>
+									<image class="image" src="../../icon/_comment.png">
+									</image>
+									<view class="title">{{content.title}}</view>
+								</view>
+								<view>
+									<text class = "data">
+                  阅读数：{{content.readnum}} 分类：{{content.postwiki}} 
+                  时间：{{content.created}}
+                  </text>
+								</view>
+							</view>
+							<!-- <view wx:if="{{content.parent!=0}}">
+								<view class="title">{{content.title}}</view>
+							</view> -->
+						</view>
+					</block>
+				</view>
+			</block>
+		</view>
+	</view>
 </view>

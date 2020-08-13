@@ -8,7 +8,6 @@ Page({
     item: []
   },
 
-
   //搜索函数
   search: function () {
     var that = this
@@ -44,7 +43,6 @@ Page({
     var that = this
     var id = event.currentTarget.dataset.id
     //写入本地缓存
-    console.log(that.data.item[id].drumname);
     this.setData({
       search_content: that.data.item[id].drumname
     });
