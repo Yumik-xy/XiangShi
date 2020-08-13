@@ -53,11 +53,12 @@ Page({
         wx.request({
           url: app.globalData.serverUrl + 'api/comment',
           data: {
-            name: that.data.reply.name,
-            postid: that.data.reply.postid,
-            parentid: that.data.reply.parentid,
-            reply_to: that.data.reply.reply_to,
+            name: that.data.replypost.name,
+            postid: that.data.replypost.postid,
+            parentid: that.data.replypost.parentid,
+            reply_to: that.data.replypost.reply_to,
             body: e.detail.value.content,
+            photourl: that.data.userInfo.avatarUrl,
             coder: loginCode.code
           },
           header: {
@@ -76,11 +77,29 @@ Page({
                 title: '发送成功',
                 duration: 1000,
               })
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 1000)
+              wx.request({
+                url: app.globalData.serverUrl + 'api/comment',
+                data: {
+                  postid: that.data.id,
+                },
+                header: {
+                  "content-type": "application/x-www-form-urlencoded"
+                },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res)
+                  if (res.data.status == false) {
+                    wx.showToast({
+                      title: res.data.message,
+                      icon: 'none'
+                    })
+                  } else if (res.data.status == true) {
+                    that.setData({
+                      list: that.arrayToTree(res.data.data, null)
+                    })
+                  }
+                }
+              })
             }
           }
         })
@@ -105,6 +124,7 @@ Page({
       console.log(replyList);
     this.setData({
       reply: replyList,
+      replypost: replyList,
       textareaisShow: true,
       otherisShow: false
     })

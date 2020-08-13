@@ -9,6 +9,7 @@ from .models import symptomwiki as symptomwiki_model
 from .models import patient as patient_model
 from .models import inquirypost as inquirypost_model
 from .models import comment as comment_model
+from .models import notify as notify_model
 
 
 # next code 10008
@@ -31,7 +32,7 @@ class medicine_list(APIView):
     def get(self, request):
         try:
             drumname = request.query_params.get('drumname')
-            drums = medicine_model.objects.filter(drumname__contain=drumname).values('id', 'drumname')[0:10]
+            drums = medicine_model.objects.filter(drumname__contains=drumname).values('id', 'drumname')[0:10]
             json_data = list(drums)
         except:
             return Response({'status': False, 'message': '未找到对应药物', 'code': 10007})
@@ -235,10 +236,11 @@ class inquirypost(APIView):
         print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
+        db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
+                                              content=content, summary=summary, photourl=photourl)
+        db.save()
         try:
-            db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                                  content=content, summary=summary, photourl=photourl)
-            db.save()
+            pass
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:
@@ -306,7 +308,7 @@ class comment(APIView):
 
     def post(self, request):
         name = request.data.get('name')
-        postid = int(request.data.get('postid'))
+        postid = request.data.get('postid')
         if not inquirypost_model.objects.filter(id=postid):
             return Response({'status': False, 'message': '未找到帖子', 'code': 10004})
         parentid = request.data.get('parentid')
@@ -324,7 +326,7 @@ class comment(APIView):
                 parentid = par.parent_id
         try:
             db = comment_model.objects.create(openid=openid, name=name, postid_id=postid,
-                                              reply_to=reply_to, body=body)
+                                              reply_to=reply_to, body=body, photourl=photourl)
             if not parentid == 'null':
                 print(parentid)
                 db.parent_id = int(parentid)
@@ -355,3 +357,36 @@ class uploadimg(APIView):
         path = str(Savepic(picture_base64))
         print(path)
         return Response({'status': True, 'url': path})
+
+
+class notify_list(APIView):
+    def get(self, request):
+        postwiki = int(request.query_params.get('postwiki'))
+        times = 5
+        try:
+            if postwiki == 0:
+                notify_list = notify_model.objects.all().order_by("-readnum") \
+                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki','created')
+            else:
+                notify_list = notify_model.objects.filter(postwiki=postwiki).order_by("-created") \
+                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'created')
+            json_data = list(notify_list)
+        except:
+            return Response({'status': False, 'message': '未知错误', 'code': 10000})
+        else:
+            return Response({'status': True, 'data': json_data})
+
+
+class notify(APIView):
+    def get(self, request):
+        id = request.query_params.get('id')
+        try:
+            db = notify_model.objects.get(id=id)
+            db.readnum = db.readnum + 1
+            db.save()
+            notify = notify_model.objects.filter(id=id).values('id', 'title', 'img_url', 'text', 'readnum', 'created')
+            json_data = list(notify)
+        except:
+            return Response({'status': False, 'message': '未知错误', 'code': 10000})
+        else:
+            return Response({'status': True, 'data': json_data})

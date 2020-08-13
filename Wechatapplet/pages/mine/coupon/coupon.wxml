@@ -1,2 +1,5 @@
 <!--pages/mine/coupon/coupon.wxml-->
-<text>pages/mine/coupon/coupon.wxml</text>
+<view class="future">
+  <view>更多功能</view>
+  <view>敬请期待</view>
+</view>

@@ -1,7 +1,19 @@
 <!-- index.wxml -->
 <view>
   <!-- 搜索框 -->
-  <SearchInput></SearchInput>
+<!-- <view class="search_input">
+  <view class="search">
+			<view class="search-left">
+				<image src="../../icon/_search.png"></image>
+        <navigator class="search-placeholder" url="/pages/index/search/search" open-type="navigate">
+          搜索病症、药品…
+        </navigator>
+			</view>
+			<view bindtap="search" class="search-right">
+				<image src="../../icon/search_white.png"></image>
+		  </view>
+	</view>
+</view> -->
   <!-- 轮播框 -->
   <view class="swiper_imgs">
     <swiper autoplay="{{true}}" interval="3000" circular="{{true}}" indicator-dots="{{true}}" indicator-active-color="rgba(165, 34, 51)">
@@ -52,20 +64,27 @@
         <view class="listitem" wx:if="{{contents.content}}">
           <block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
             <view class="content" bindtap="turn_passage">  
-            <view class = "part">
-              <image class="image" 
-              src="../../icon/_comment.png"></image>     
+              <view class = "part" wx:if="{{content.parent==0}}">
+                <view>
+                  <image class="image" src="../../icon/_comment.png">
+                  </image>     
+                    <view class="title">{{content.title}}</view>
+                </view>
+              <view>
+                <text class = "data">
+                阅读数：{{content.readnum}} 分类：{{content.postwiki}} 
+                时间：{{content.created}}
+                </text>
+              </view>
+            </view>
+            <view wx:if="{{content.parent!=0}}">
               <view class="title">{{content.title}}</view>
-              <view class='text {{isShowAll?"all":"breif" }}'>{{content.text}}</view>
+              <view class='text'>{{content.text}}</view>
             </view>
             </view>
           </block>
         </view>
       </block>
-      <!-- <block wx:if="{{contents[0].isActive}}">0 </block>
-      <block wx:elif="{{contents[1].isActive}}">1 </block>
-      <block wx:elif="{{contents[2].isActive}}">2 </block>
-      <block wx:elif="{{contents[3].isActive}}">3 </block>    -->
     </view>
   </view>
 </view>

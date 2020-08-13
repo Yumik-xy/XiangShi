@@ -1,5 +1,4 @@
-//index.js
-//获取应用实例
+
 const app = getApp()
 
 Page({
@@ -155,7 +154,6 @@ Page({
           }
         }  else  if  (scrollTop >= (scrollArr[i - 1]) && scrollTop < scrollArr[i]) {
           if (i != zindex){
-            console.log('==============bbb' + i + scrollTop + "==" + scrollArr[i]);
             this.setData({
               oneShow: true,
               zindex:i,

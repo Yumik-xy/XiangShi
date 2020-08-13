@@ -1,1 +1,11 @@
 /* pages/mine/disease/disease.wxss */
+.future{
+  margin-top: 70rpx;
+  font-size: 44rpx;
+  font-weight: bold;
+  color: var(--themeColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

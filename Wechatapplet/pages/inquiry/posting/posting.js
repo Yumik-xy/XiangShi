@@ -58,6 +58,7 @@ Page({
           data: {
             coder: loginCode.code,
             name: that.data.userInfo.nickName,
+            photourl : that.data.userInfo.avatarUrl,
             title: e.detail.value.title,
             classify: that.data.classify[1].name,
             content: that.data.content,

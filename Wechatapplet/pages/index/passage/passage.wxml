@@ -19,12 +19,9 @@
   }
   module.exports.HtmlToText = HtmlToText;
 </wxs>
-<scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true" bindscroll="bindscroll">
-  <block>
-    <view class="passage" id="c_{{passage.id}}" data-id="c_{{passage.id}}" data-index="{{index}}">
-      <text>{{passage.title}}</text>
-      <image src="{{passage.image_url}}" mode="widthFix" />
-      <rich-text nodes="{{tools.HtmlToText(passage.content)}}"></rich-text>
-    </view>
-  </block>
-</scroll-view>
+
+<view class="passage" data-index="{{index}}">
+  <text>{{title}}</text>
+  <image src="{{image_url}}" mode="widthFix" />
+  <rich-text nodes="{{tools.HtmlToText(content)}}"></rich-text>
+</view>

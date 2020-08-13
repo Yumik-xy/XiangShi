@@ -1,0 +1,61 @@
+<wxs module='tools'>
+  var HtmlToText = function (inputText) {
+    var returnText = "" + inputText;
+    returnText = returnText.replace(getRegExp('<!.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<meta.*?>', 'ig'), '');
+    returnText = returnText.replace(getRegExp('<p.*?>', 'ig'), '<p class="rich-p">');
+    returnText = returnText.replace(getRegExp('<h1.*?>', 'ig'), '<h1 class="rich-h1">');
+    returnText = returnText.replace(getRegExp('<h2.*?>', 'ig'), '<h2 class="rich-h2">');
+    returnText = returnText.replace(getRegExp('<h3.*?>', 'ig'), '<h3 class="rich-h3">');
+    returnText = returnText.replace(getRegExp('<h4.*?>', 'ig'), '<h4 class="rich-h4">');
+    returnText = returnText.replace(getRegExp('<h5.*?>', 'ig'), '<h5 class="rich-h5">');
+    returnText = returnText.replace(getRegExp('<h6.*?>', 'ig'), '<h6 class="rich-h6">');
+    returnText = returnText.replace(getRegExp('<li.*?>', 'ig'), '<li class="rich-li">');
+    returnText =
+      returnText.replace(getRegExp('<title.*?>', 'ig'), '<title class="rich-title">');
+    console.log(returnText,'===')
+    return returnText;
+  }
+  module.exports.HtmlToText = HtmlToText;
+</wxs>
+
+
+<scroll-view scroll-y="true" class="scr_left" scroll-top="{{leftTop}}" scroll-with-animation="true">
+  <block wx:for="{{leftData}}" wx:for-item="lcai" wx:key="index">
+    <view class="sc_left_item {{cp_index==index? 'active':''}}" data-id="c_{{lcai.id}}" data-index="{{index}}"
+      bindtap="leftTap">
+      {{lcai.name}}
+    </view>
+  </block>
+</scroll-view>
+
+
+<scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true"
+  bindscroll="bindscroll">
+
+  <view class="title">{{rightData.drumname}}</view>
+  <view class="sc_right_item" data-id="0" data-index="0">
+    <rich-text nodes="{{tools.HtmlToText(rightData.description)}}"></rich-text>
+  </view>
+  <view class="sc_right_item" data-id="1" data-index="1"> 
+    <rich-text nodes="{{tools.HtmlToText(rightData.indications)}}"></rich-text>
+  </view>
+  <view class="sc_right_item" data-id="2" data-index="2">
+    <rich-text nodes="{{tools.HtmlToText(rightData.administration)}}"></rich-text>
+  </view>
+  <view class="sc_right_item" data-id="3" data-index="3">
+    <rich-text nodes="{{tools.HtmlToText(rightData.note)}}"></rich-text>
+  </view>
+  <view class="sc_right_item" data-id="4" data-index="4">
+    <rich-text nodes="{{tools.HtmlToText(rightData.sideeffects)}}"></rich-text>
+  </view>
+  <view class="sc_right_item" data-id="5" data-index="5">
+    <rich-text nodes="{{tools.HtmlToText(rightData.contraindications)}}"></rich-text>
+  </view>
+</scroll-view>
+<!-- description 药物性状
+indications 适用症状
+administration 剂量与用法
+note 注意事项
+sideeffects 副作用
+contraindications 禁忌症 -->
