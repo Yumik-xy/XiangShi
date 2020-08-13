@@ -218,6 +218,8 @@ class inquirypost(APIView):
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'time', 'photourl')
+            for item in inquirypost_list:
+                item['time'] = int(time.mktime(item['time'].timetuple()))
             json_data = list(inquirypost)
             if inquirypost_model.objects.get(id=id).openid == openid:
                 possess = True
