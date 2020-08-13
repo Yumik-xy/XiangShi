@@ -11,6 +11,8 @@ from .models import inquirypost as inquirypost_model
 from .models import comment as comment_model
 from .models import notify as notify_model
 
+import time
+
 
 # next code 10008
 
@@ -194,6 +196,8 @@ class inquirypost_list(APIView):
             inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
                 [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                'photourl')
+            for item in inquirypost_list:
+                item['time'] = int(time.mktime(item['time'].timetuple()))
             json_data = list(inquirypost_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -214,6 +218,8 @@ class inquirypost(APIView):
         try:
             inquirypost = inquirypost_model.objects.filter(id=id).values('id', 'name', 'title', 'classify', 'content',
                                                                          'time', 'photourl')
+            for item in inquirypost:
+                item['time'] = int(time.mktime(item['time'].timetuple()))
             json_data = list(inquirypost)
             if inquirypost_model.objects.get(id=id).openid == openid:
                 possess = True
@@ -297,6 +303,8 @@ class comment(APIView):
         try:
             comment = comment_model.objects.filter(postid=postid).values('id', 'name', 'reply_to',
                                                                          'parent', 'body', 'created', 'photourl')
+            for item in comment:
+                item['created'] = int(time.mktime(item['created'].timetuple()))
             json_data = list(comment)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -366,10 +374,12 @@ class notify_list(APIView):
         try:
             if postwiki == 0:
                 notify_list = notify_model.objects.all().order_by("-readnum") \
-                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki','created')
+                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki', 'created')
             else:
                 notify_list = notify_model.objects.filter(postwiki=postwiki).order_by("-created") \
                     [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'created')
+            for item in comment:
+                item['created'] = int(time.mktime(item['created'].timetuple()))
             json_data = list(notify_list)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
@@ -385,6 +395,8 @@ class notify(APIView):
             db.readnum = db.readnum + 1
             db.save()
             notify = notify_model.objects.filter(id=id).values('id', 'title', 'img_url', 'text', 'readnum', 'created')
+            for item in comment:
+                item['created'] = int(time.mktime(item['created'].timetuple()))
             json_data = list(notify)
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
