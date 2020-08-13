@@ -6,13 +6,13 @@ from mptt.models import MPTTModel, TreeForeignKey
 # Create your models here.
 
 class medicine(models.Model):
-    drumname = models.TextField(verbose_name='药物名称')
-    description = models.TextField(verbose_name='药物性状')
-    indications = models.TextField(verbose_name='药物的适用症')
-    administration = models.TextField(verbose_name='剂量与用法')
-    note = models.TextField(verbose_name='注意事项')
-    sideeffects = models.TextField(verbose_name='副作用')
-    contraindications = models.TextField(verbose_name='禁忌症')
+    drumname = RichTextField(verbose_name='药物名称')
+    description = RichTextField(verbose_name='药物性状')
+    indications = RichTextField(verbose_name='药物的适用症')
+    administration = RichTextField(verbose_name='剂量与用法')
+    note = RichTextField(verbose_name='注意事项')
+    sideeffects = RichTextField(verbose_name='副作用')
+    contraindications = RichTextField(verbose_name='禁忌症')
 
     class Meta:
         verbose_name_plural = '药物说明书'
