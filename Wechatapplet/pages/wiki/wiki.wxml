@@ -2,20 +2,20 @@
 <SearchInput></SearchInput>
 <view class="container">
   <scroll-view class='nav_left' scroll-y='true'>
-    <block wx:for="{{cateItems}}" wx:key="index">
-      <view class="nav_left_items {{curNav==item.cate_id?'active':''}}" bindtap="switchRightTab" data-index='{{index}}' data-id="{{item.cate_id}}">{{item.cate_name}}</view>
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="nav_left_items {{curNav==item.id?'active':''}}" bindtap="switchRightTab" data-index='{{index}}' data-id="{{item.id}}">{{item.name}}</view>
     </block>
   </scroll-view>
   <scroll-view class="nav_right" scroll-y="true">
     <!--如果有数据，才遍历项-->
-    <view wx:if="{{cateItems[curIndex].children.length>0}}">
-      <block wx:for="{{cateItems[curIndex].children}}" wx:key="child_id">
+    <view wx:if="{{list[curIndex].children.length>0}}">
+      <block wx:for="{{list[curIndex].children}}" wx:key="child_id">
         <view class="nav_right_items">
           <text class="top_text">{{item.name}}</text>
           <view class="bottom">
             <block wx:for="{{item.children}}" wx:key="index">
-              <view class="nav_right_items_child" bindtap="nav_click" data-fcid="{{item.parent_id}}" data-cid="{{index}}">
-                <text class="bottom_text">{{item.title}}</text>
+              <view class="nav_right_items_child" bindtap="nav_click" data-fcid="{{item.parent}}" data-cid="{{item.child}}">
+                <text class="bottom_text">{{item.name}}</text>
               </view>
             </block>
           </view>
