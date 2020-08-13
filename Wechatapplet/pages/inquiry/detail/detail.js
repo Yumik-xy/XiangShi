@@ -234,10 +234,7 @@ Page({
               })
             } else if (res.data.status == true) {
               var tempList = res.data.data[0]
-              if (tempList.time != null) {
-                tempList.date = tempList.time.substring(0, 10)
-                tempList.time = tempList.time.substring(11, 19); //要截取字段的字符串
-              }
+              tempList.time = that.getDateDiff(tempList.time)
               that.setData({
                 data: tempList
               })
