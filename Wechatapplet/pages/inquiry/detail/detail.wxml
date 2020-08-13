@@ -20,7 +20,6 @@
   module.exports.HtmlToText = HtmlToText;
 </wxs>
 
-
 <view class="page" wx:if="{{data}}">
   <view class="inquiry">
     <view class="title-first">
@@ -54,8 +53,14 @@
     </view>
     <view wx:if="{{list}}" class="comment">
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
+        
         <view class="first" mut-bind:tap="bindcomment" data-name="{{firstcom.name}}" data-id="{{firstcom.id}}">
-          <view class="commentname">{{firstcom.name}}</view>
+          <image class = "avatar" src="{{firstcom.photourl}}"></image>
+          <view class ="info">
+          <text class="commentname1">{{firstcom.name}}\n</text>
+          <text class="commentname1">{{firstcom.created}}</text>
+          </view>
+          
           <view class="commentcontent">{{firstcom.body}}</view>
           <view wx:if="{{firstcom.children}}" class="secondcom">
             <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">

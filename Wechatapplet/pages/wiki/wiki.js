@@ -903,26 +903,24 @@ Page({
         ]
       }
     ],
-    curNav:0,
-    curIndex:0
+    curNav:1,
+    curIndex:0,
+    list: []
   },
  
   nav_click:function(e){
-    var index = e.currentTarget.dataset.fcid
-    var childindex = e.currentTarget.dataset.cid
-    var curindex = this.data.curIndex
-    var data = this.data.cateItems[curindex].children[index].children
-    console.log(index);
+    var childindex = e.currentTarget.dataset.cid//postid
     console.log(childindex);
     
-    if (data===undefined) {wx.showToast({
-      title: '暂无更多信息',
-      duration:2000,
-      icon:'none'
-    })
-      return}
+    // var data = this.data.list[curindex].children[index].children 
+    // if (data===undefined) {wx.showToast({
+    //   title: '暂无更多信息',
+    //   duration:2000,
+    //   icon:'none'
+    // })
+    //   return}
     wx.navigateTo({
-      url: './detail/detail?data='+encodeURIComponent(JSON.stringify(data)),
+      url: './detail/detail?id='+childindex,
     })
   },
 
@@ -933,11 +931,53 @@ Page({
       curIndex:index
     })
   },
-
+  
+  arrayToTree: function (arr, parent) {
+    //  arr 是返回的数据  parendId 父id
+    var that = this;
+    let temp = [];
+    let treeArr = arr;
+    if (!treeArr) return null
+    treeArr.forEach((item, index) => {
+      if (item.parent == parent) {
+        if (that.arrayToTree(treeArr, treeArr[index].id).length > 0) {
+          // 递归调用此函数
+          treeArr[index].children = that.arrayToTree(treeArr, treeArr[index].id);
+        }
+        temp.push(treeArr[index]);
+      }
+    });
+    return temp;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.request({
+      url: app.globalData.serverUrl + 'api/symptom/list',
+      data: {
+        page: that.data.nowpage,
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      method: 'GET',
+      success: function (res) {
+        if (res.data.status == false) {
+
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        } else if (res.data.status == true) {
+          that.setData({
+            list: that.arrayToTree(res.data.data, null)
+          })
+          
+        }
+      }
+    })
 
   },
 

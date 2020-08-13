@@ -59,6 +59,13 @@ page{
 }
 
 /*文本*/
+.title{
+  margin-top: 24rpx;
+  margin-bottom: 14rpx;
+  font-size: 46rpx;
+  line-height: 56rpx;
+  color: black;
+}
 
 .rich-p{
   margin-top: 12rpx;
