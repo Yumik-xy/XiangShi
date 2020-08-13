@@ -56,7 +56,8 @@
   background-color: #FAFAFA;
   color: #9A9A9A;
   display: block;
-  padding-left: 30rpx;  
+  padding-left: 30rpx;
+  margin-top: 20rpx;
   font-size: 34rpx;
   overflow: hidden;  
   white-space: nowrap;  
