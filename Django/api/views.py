@@ -395,7 +395,7 @@ class notify(APIView):
             db.readnum = db.readnum + 1
             db.save()
             notify = notify_model.objects.filter(id=id).values('id', 'title', 'img_url', 'text', 'readnum', 'created')
-            for item in comment:
+            for item in notify:
                 item['created'] = int(time.mktime(item['created'].timetuple()))
             json_data = list(notify)
         except:
