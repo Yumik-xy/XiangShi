@@ -373,12 +373,12 @@ class notify_list(APIView):
         times = 5
         try:
             if postwiki == 0:
-                notify_list = notify_model.objects.all().order_by("-readnum") \
-                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki', 'created')
+                notify_list = notify_model.objects.all().order_by('-readnum') \
+                    [0: times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki', 'created')
             else:
                 notify_list = notify_model.objects.filter(postwiki=postwiki).order_by("-created") \
-                    [0, times].values('id', 'title', 'img_url', 'text', 'readnum', 'created')
-            for item in comment:
+                    [0: times].values('id', 'title', 'img_url', 'text', 'readnum', 'created')
+            for item in notify_list:
                 item['created'] = int(time.mktime(item['created'].timetuple()))
             json_data = list(notify_list)
         except:
