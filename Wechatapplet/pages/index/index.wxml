@@ -57,7 +57,7 @@
 			<block wx:for="{{contents}}" wx:key="id" wx:for-item="contents" wx:if="{{contents.isActive}}">
 				<view class="listitem" wx:if="{{contents.content}}">
 					<block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
-						<view class="content" bindtap="turn_passage">
+						<view class="content" bindtap="turn_passage" data-first="{{content.parent}}" data-second="{{index}}">
 							<view class="part">
                <!-- wx:if="{{content.parent==0}}" -->
 								<view>
