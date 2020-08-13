@@ -14,7 +14,6 @@ Page({
     heightArr: 0,
     zindex: 0,
     oneShow: true,
-
     leftData: [{
         name: '药物性状',
         id: 'cp1'
@@ -41,7 +40,34 @@ Page({
         id: 'cp6'
       }
     ],
-    rightData: {}
+    rightData: [
+      {
+        content:'',
+        id: 'cp1',
+      },
+      {
+        content: '',
+        id: 'cp2',
+      },
+      {
+        content:'',
+        id: 'cp3',
+      },
+      {
+        content:'',
+        id: 'cp4',
+      },
+
+      {
+        content:'',
+        id: 'cp5',
+      },
+      {
+        content:'',
+        id: 'cp6',
+      },
+    ],
+    drumname: ''
     //description 药物性状
     //indications 适用症状
     //administration 剂量与用法
@@ -53,6 +79,9 @@ Page({
   leftTap: function (e) {
     var index = e.currentTarget.dataset.index;
     var id = e.currentTarget.dataset.id;
+
+    
+    
     this.setData({
       cp_index: index,
       currentScrollId: id
@@ -113,9 +142,14 @@ Page({
             icon: 'none'
           })
         } else if (res.data.status == true) {
-          var medicineList = res.data.data[0]
           that.setData({
-            rightData: medicineList
+            'rightData[0].content':res.data.data[0].description,
+            'rightData[1].content':res.data.data[0].indications,
+            'rightData[2].content':res.data.data[0].administration,
+            'rightData[3].content':res.data.data[0].note,
+            'rightData[4].content':res.data.data[0].sideeffects,
+            'rightData[5].content':res.data.data[0].contraindications,
+            drumname :res.data.data[0].drumname
           })
         }
       }

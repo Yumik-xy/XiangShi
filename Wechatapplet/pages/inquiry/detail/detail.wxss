@@ -116,12 +116,28 @@
   color: #585858;
   font-size: 26rpx;
 }
+.comment .commentname1{
+  /* font-weight: bold; */
+  color: #585858;
+  font-size: 26rpx;
+  margin-left: 15rpx;
+}
+.avatar{
+  margin-top: 20rpx;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
 
 .comment .commentcontent{
   font-size: 30rpx;
   margin-left: 20rpx;
+  margin-top: 20rpx;
 }
-
+.info{
+  margin-left: 80rpx;
+  margin-top:-80rpx;
+}
 .secondcom{
   background-color: #f2f2f2;
   border-radius: 10rpx;

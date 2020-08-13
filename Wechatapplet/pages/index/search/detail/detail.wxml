@@ -32,26 +32,12 @@
 
 <scroll-view scroll-y="true" class="scr_right" scroll-into-view="{{currentScrollId}}" scroll-with-animation="true"
   bindscroll="bindscroll">
-
-  <view class="title">{{rightData.drumname}}</view>
-  <view class="sc_right_item" data-id="0" data-index="0">
-    <rich-text nodes="{{tools.HtmlToText(rightData.description)}}"></rich-text>
-  </view>
-  <view class="sc_right_item" data-id="1" data-index="1"> 
-    <rich-text nodes="{{tools.HtmlToText(rightData.indications)}}"></rich-text>
-  </view>
-  <view class="sc_right_item" data-id="2" data-index="2">
-    <rich-text nodes="{{tools.HtmlToText(rightData.administration)}}"></rich-text>
-  </view>
-  <view class="sc_right_item" data-id="3" data-index="3">
-    <rich-text nodes="{{tools.HtmlToText(rightData.note)}}"></rich-text>
-  </view>
-  <view class="sc_right_item" data-id="4" data-index="4">
-    <rich-text nodes="{{tools.HtmlToText(rightData.sideeffects)}}"></rich-text>
-  </view>
-  <view class="sc_right_item" data-id="5" data-index="5">
-    <rich-text nodes="{{tools.HtmlToText(rightData.contraindications)}}"></rich-text>
-  </view>
+  <view class="title">{{drumname}}</view>
+  <block wx:for="{{rightData}}" wx:for-item="rcai" wx:key="index">
+    <view class="sc_right_item" id="c_{{rcai.id}}" data-id="c_{{rcai.id}}" data-index="{{index}}">
+      <rich-text nodes="{{tools.HtmlToText(rcai.content)}}"></rich-text>
+    </view>
+  </block>
 </scroll-view>
 <!-- description 药物性状
 indications 适用症状
