@@ -61,7 +61,7 @@
 							<view class="part">
                <!-- wx:if="{{content.parent==0}}" -->
 								<view>
-									<image class="image" src="../../icon/_comment.png">
+									<image class="image" src="{{content.img_url}}">
 									</image>
 									<view class="title">{{content.title}}</view>
 								</view>
