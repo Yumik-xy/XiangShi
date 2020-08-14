@@ -16,12 +16,24 @@
     </view>
     <view class="inputTime">
       <text class="time-title">结束时间:</text>
-      <picker mode="time" value="{{end}}" start="{{timeCurrent}}" end="24:00" bindchange="timeEndChange" name="timeEnd">
+      <picker mode="time" value="{{end}}" start="{{timeCurrent}}" end="24:00" name="timeEnd">
         <view class="picker">{{end}}</view>
       </picker>
     </view>
   </view>
-  <view class="submit">
+  <view class="img">
+    <image src="/icon/color.png" mode="widthFix" />
+    提示颜色
+  </view>
+  <radio-group class="colorSelect" name="color">
+    <radio value='black' checked>
+      <view style="width:60rpx;height:60rpx;border-radius:50%;background-color:black;" />
+    </radio>
+    <radio wx:for="{{color}}" value='{{item}}'>
+      <view style="width:60rpx;height:60rpx;border-radius:50%;background-color:{{item}};" />
+    </radio>
+  </radio-group>
+  <view class="submit" style="position: fixed;bottom: 30rpx;left:185rpx;">
     <button form-type="submit">确定</button>
   </view>
 </form>

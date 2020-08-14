@@ -12,6 +12,7 @@
 </view>
 <view class="tips">
   <view wx:for="{{todoList}}" wx:key="id" class="schedule">
+    <view style="width:20rpx;height:20rpx;border-radius:100%;background-color:{{item.color}};margin:10rpx;"></view>
     <view class="time">
       <text style="font-size:30rpx;">{{item.begin}}</text>
       <text style="font-size:24rpx;color:#bfbfbf;">{{item.end}}</text>

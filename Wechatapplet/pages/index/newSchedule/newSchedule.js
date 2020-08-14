@@ -13,11 +13,7 @@ Component({
     begin: "12:00",
     end: "12:30",
     todoText: "",
-    datepicker: {
-      onShow: function () {
-        initDatepicker(); // 使用默认配置初始化日历选择器
-      }
-    }
+    color: ["blue", "red", "orange", "green"]
   },
 
   /**
@@ -33,31 +29,20 @@ Component({
       });
     },
     formSubmit: function (e) {
-      console.log("form发生了submit事件，携带数据为：", e.detail.value);
       if (e.detail.value.title == "") {
-        wx: wx.showToast({
+        wx.showToast({
           title: "标题为空",
           icon: "loading",
         });
         return;
       }
-      this.setData({
-        begin: e.detail.value.timeBegin,
-        end: e.detail.value.timeEnd,
-        todoText: e.detail.value.todoText,
-      });
-
       //获取页面栈
       var pages = getCurrentPages();
       if (pages.length > 1) {
         //上一个页面实例对象
         var prePage = pages[pages.length - 2];
         //关键在这里
-        prePage.addSchedule({
-          begin: this.data.begin,
-          end: this.data.end,
-          todoText: this.data.todoText
-        });
+        prePage.addSchedule(e.detail.value);
       }
       wx.navigateBack({
         delta: 1
@@ -69,11 +54,6 @@ Component({
       this.setData({
         begin: e.detail.value,
         end: e.detail.value
-      });
-    },
-    timeEndChange: function (e) {
-      this.setData({
-        end: e.detail.value,
       });
     },
   },

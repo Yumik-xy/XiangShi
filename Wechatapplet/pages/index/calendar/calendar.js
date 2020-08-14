@@ -47,8 +47,6 @@ const conf = {
   },
 
   afterTapDay(e) {
-    console.log('afterTapDay', e.detail);
-    console.log("点击日期后更新todoList");
     var _schedule = this.data.schedule;
     var _selectedDay = {
       year: e.detail.year,
@@ -116,27 +114,6 @@ const conf = {
         });
         break;
       }
-      case 'deleteTodoLabels': {
-        const todos = [...calendar.getTodoLabels()];
-        if (todos && todos.length) {
-          todos.length = 1;
-          calendar[action](todos);
-          const _todos = [...calendar.getTodoLabels()];
-          setTimeout(() => {
-            const rst = _todos.map(item => JSON.stringify(item));
-            this.setData({
-                rst
-              },
-              () => {
-                console.log('set todo labels: ', todos);
-              }
-            );
-          });
-        } else {
-          this.showToast('没有待办事项');
-        }
-        break;
-      }
       case 'clearTodoLabels':
         if (this.data.todoList.length == 0) {
           this.showToast("当日无待办内容");
@@ -165,23 +142,23 @@ const conf = {
     var key = selectedDay.year.toString() + selectedDay.month.toString() + selectedDay.day.toString();
     if (key in _schedule) {
       _schedule[key].push({
-        begin: e.begin,
-        end: e.end,
-        todoText: e.todoText
+        begin: e.timeBegin,
+        end: e.timeEnd,
+        todoText: e.todoText,
+        color: e.color
       })
     } else {
       _schedule[key] = [{
-        begin: e.begin,
-        end: e.end,
-        todoText: e.todoText
+        begin: e.timeBegin,
+        end: e.timeEnd,
+        todoText: e.todoText,
+        color: e.color
       }];
     }
     this.setData({
       schedule: _schedule,
       todoList: _schedule[key]
     });
-    //更新calendar
-    console.log("留待用于更新calendar");
     //更新缓存
     this.updateStorage();
   },
