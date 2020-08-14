@@ -1,42 +1,25 @@
-<!-- pages/index/calendar/calendar.wxml -->
-<view>
-  <view class='box' style='width: {{ sysW * 7 }}px'>
-    <!-- 标题 -->
-    <view class='dateBox'>{{ year }} - {{ month}}</view>
-    <!-- 星期 -->
-    <view class="week">
-      <view wx:for='{{ weekArr }}'>
-        <view style='width: {{ sysW }}px; height:auto;'>{{ item }}</view>
-      </view>
-    </view>
-    <!-- 日历 -->
-    <view class="calendar">
-      <view wx:for='{{ arr }}'>
-        <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }};{{ index == lastDay-1 ?"margin-right:" + sysW * endLet + "px;" : ""  }};width: {{ sysW }}px; height: auto; line-height: {{ sysW }}px;' class='{{ item ==  getDate ? "dateOn" : ""}}'>
-          {{ item }}
-        </view>
-      </view>
-    </view>
+<!-- 日历组件 -->
+<view style="width: 90%;height:640rpx;overflow:hidden;margin: 0 auto 40rpx;">
+  <calendar id="calendar" calendarConfig="{{calendarConfig}}" bind:onSwipe="onSwipe" bind:onTapDay="onTapDay" bind:afterTapDay="afterTapDay" bind:whenChangeWeek="whenChangeWeek" bind:whenChangeMonth="whenChangeMonth" bind:afterCalendarRender="afterCalendarRender"></calendar>
+</view>
+<!-- 显示今日日程 -->
+<view class="tipsHead">
+  <view class="tipsHead-left">
+    <image src="/icon/schedule.png" mode="widthFix" />
+    今日事项
   </view>
-  <view>
-    <view class="tipsHead">
-      <image src="../../../icon/tixing.png" mode="widthFix" />
-      今日事项
+  <view class="tipsHead-right" data-action="clearTodoLabels" bindtap="handleAction">清除所有日程</view>
+</view>
+<view class="tips">
+  <view wx:for="{{todoList}}" wx:key="id" class="schedule">
+    <view class="time">
+      <text style="font-size:30rpx;">{{item.begin}}</text>
+      <text style="font-size:24rpx;color:#bfbfbf;">{{item.end}}</text>
     </view>
-    <view class="tips">
-      <view wx:for="{{tips}}" wx:key="id" class="Schedule">
-        <view class="time">
-          <text style="font-size:28rpx;">{{item.timeStart}}</text>
-          <text style="font-size:18rpx;color:#bfbfbf;">{{item.timeEnd}}</text>
-        </view>
-        <view class="tip">
-          <checkbox checked="{{item.completed}}" />
-          {{item.content}}
-        </view>
-      </view>
-      <navigator class="newSchedule" url="../newSchedule/newSchedule">
-        <text>+ 新建</text>
-      </navigator>
-    </view>
+    <view class="content">{{item.todoText}}</view>
   </view>
+</view>
+<!-- 添加新日程 -->
+<view class="addSchedule" data-action="setTodoLabels" bindtap="handleAction">
+  <image src="/icon/add_schedule.png" mode="widthFix" />
 </view>

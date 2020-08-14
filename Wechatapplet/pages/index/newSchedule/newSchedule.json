@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "新增日程",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark"
+  "component": true,
+  "usingComponents": {}
 }

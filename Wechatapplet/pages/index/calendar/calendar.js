@@ -1,93 +1,203 @@
-// pages/index/calendar/calendar.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
-   * 组件的初始数据
-   */
+const conf = {
   data: {
-    arr: [],
-    sysW: null,
-    lastDay: null, //最后一天几号
-    lastDayW: null, //最后一天星期几
-    endLet: null,
-    firstDayW: null, //第一天星期几
-    weekArr: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-    year: null,
-    tips: [{
-        id: 0,
-        timeStart: "12:00",
-        timeEnd: "13:00",
-        content: "最近为特殊时期，出门请带口罩",
-        completed: true,
-      },
-      {
-        id: 1,
-        timeStart: "8:00",
-        timeEnd: "24:00",
-        content: "今日服药：****胶囊，一日三次，饭后即服",
-        completed: false,
-      }
-    ]
-  },
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-    //获取日历相关参数
-    dataTime: function () {
-      let date = new Date();
-      var year = date.getFullYear();
-      var month = date.getMonth();
-      var months = date.getMonth() + 1;
-
-      //获取现今年份
-      this.data.year = year;
-
-      //获取现今月份
-      this.data.month = months;
-
-      //获取今日日期
-      this.data.getDate = date.getDate();
-
-      //最后一天是几号
-      var d = new Date(year, month, 0);
-      this.data.lastDay = d.getDate();
-
-      //最后一天星期几
-      let lastDayW = new Date(year, month, this.data.lastDay);
-      this.data.lastDayW = lastDayW.getDay();
-      this.data.endLet = 6 - this.data.lastDayW;
-
-      //第一天星期几
-      let firstDayW = new Date(year, month, 1);
-      this.data.firstDayW = firstDayW.getDay();
+    calendarConfig: {
+      showLunar: true, //显示农历
+      theme: 'elegant'
     },
-
-    onLoad: function (options) {
-      this.dataTime();
-      //根据得到今月的最后一天日期遍历 得到所有日期
-      for (var i = 1; i < this.data.lastDay + 1; i++) {
-        this.data.arr.push(i);
-      }
-      var res = wx.getSystemInfoSync();
-      this.setData({
-        sysW: res.windowWidth / 8, //更具屏幕宽度变化自动设置宽度
-        marLet: this.data.firstDayW,
-        arr: this.data.arr,
-        year: this.data.year,
-        getDate: this.data.getDate,
-        month: this.data.month,
-        lastDay: this.data.lastDay,
-        lastDayW: this.data.lastDayW,
-        endLet: this.data.endLet
-      });
-      console.log("从后端读入该用户的日程信息，保存至tips数组");
+    today: {
+      year: null,
+      month: null,
+      day: null
+    },
+    selectedDay: null,
+    todoList: [],
+    schedule: {},
+    editBool: false
+  },
+  //获取今日年、月、日
+  getToday: function () {
+    //获取今日事件
+    let now = new Date();
+    let _today = {
+      year: now.getFullYear(),
+      month: now.getMonth() + 1,
+      day: now.getDate()
     }
+    return _today;
+  },
+  onLoad: function () {
+    var _today = this.getToday();
+    var _todoList = [];
+    var days = [];
+    var _schedule = wx.getStorageSync("Schedule");
+    if (_schedule == "") {
+      _schedule = {};
+    }
+    //数组处理
+    var key = _today.year.toString() + _today.month.toString() + _today.day.toString();
+    if (key in _schedule) {
+      _todoList = _schedule[key];
+    }
+    this.setData({
+      today: _today,
+      selectedDay: _today,
+      todoList: _todoList,
+      schedule: _schedule,
+    })
+  },
+
+  afterTapDay(e) {
+    console.log('afterTapDay', e.detail);
+    console.log("点击日期后更新todoList");
+    var _schedule = this.data.schedule;
+    var _selectedDay = {
+      year: e.detail.year,
+      month: e.detail.month,
+      day: e.detail.day
+    }
+    var _todoList = [];
+    var key = _selectedDay.year.toString() + _selectedDay.month.toString() + _selectedDay.day.toString();
+    if (key in _schedule) {
+      _todoList = _schedule[key];
+    }
+    this.setData({
+      selectedDay: _selectedDay,
+      todoList: _todoList
+    })
+  },
+  whenChangeMonth(e) {
+    console.log('whenChangeMonth', e.detail);
+  },
+  whenChangeWeek(e) {
+    console.log('whenChangeWeek', e.detail);
+  },
+  onTapDay(e) {
+    console.log('onTapDay', e.detail);
+  },
+  afterCalendarRender(e) {
+    console.log('afterCalendarRender', e);
+    // this.calendar.switchView('week').then(() => {
+    //   this.calendar.jump(2020, 3, 1).then(date => {}); // 跳转至某日
+    // });
+  },
+  onSwipe(e) {
+    console.log('onSwipe', e);
+  },
+  showToast(msg) {
+    if (!msg || typeof msg !== 'string') return;
+    wx.showToast({
+      title: msg,
+      icon: 'none',
+      duration: 1500
+    });
+  },
+  handleAction: function (e) {
+    const {
+      action,
+      disable
+    } = e.currentTarget.dataset;
+    if (disable) {
+      this.showToast('抱歉，还不支持～😂');
+    }
+    this.setData({
+      rst: []
+    });
+    const calendar = this.calendar;
+    const {
+      year,
+      month
+    } = calendar.getCurrentYM();
+    switch (action) {
+      case 'setTodoLabels': {
+        //转到新增日程页面
+        var selectedDay = JSON.stringify(this.data.selectedDay);
+        wx: wx.navigateTo({
+          url: '../newSchedule/newSchedule?date=' + selectedDay
+        });
+        break;
+      }
+      case 'deleteTodoLabels': {
+        const todos = [...calendar.getTodoLabels()];
+        if (todos && todos.length) {
+          todos.length = 1;
+          calendar[action](todos);
+          const _todos = [...calendar.getTodoLabels()];
+          setTimeout(() => {
+            const rst = _todos.map(item => JSON.stringify(item));
+            this.setData({
+                rst
+              },
+              () => {
+                console.log('set todo labels: ', todos);
+              }
+            );
+          });
+        } else {
+          this.showToast('没有待办事项');
+        }
+        break;
+      }
+      case 'clearTodoLabels':
+        if (this.data.todoList.length == 0) {
+          this.showToast("当日无待办内容");
+          return;
+        }
+        var _schedule = this.data.schedule;
+        var selectedDay = this.data.selectedDay;
+        var key = selectedDay.year.toString() + selectedDay.month.toString() + selectedDay.day.toString();
+        if (key in _schedule) {
+          delete _schedule[key];
+        }
+        this.setData({
+          todoList: [],
+          schedule: _schedule
+        })
+        this.updateStorage();
+        break;
+      default:
+        break;
+    }
+  },
+
+  addSchedule: function (e) {
+    var selectedDay = this.data.selectedDay;
+    var _schedule = this.data.schedule;
+    var key = selectedDay.year.toString() + selectedDay.month.toString() + selectedDay.day.toString();
+    if (key in _schedule) {
+      _schedule[key].push({
+        begin: e.begin,
+        end: e.end,
+        todoText: e.todoText
+      })
+    } else {
+      _schedule[key] = [{
+        begin: e.begin,
+        end: e.end,
+        todoText: e.todoText
+      }];
+    }
+    this.setData({
+      schedule: _schedule,
+      todoList: _schedule[key]
+    });
+    //更新calendar
+    console.log("留待用于更新calendar");
+    //更新缓存
+    this.updateStorage();
+  },
+  updateStorage() {
+    wx.setStorage({
+      key: 'Schedule',
+      data: this.data.schedule,
+      success: (result) => {
+        console.log("更新缓存成功");
+      },
+      fail: () => {
+        console.log("更新缓存失败");
+      },
+      complete: () => {}
+    });
   }
-})
+};
+
+Page(conf);

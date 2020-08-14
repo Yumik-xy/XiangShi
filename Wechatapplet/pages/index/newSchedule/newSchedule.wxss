@@ -71,16 +71,6 @@
   box-shadow: 0 0 4rpx #000000;
   font-size: 28rpx;
 }
-.content {
-  height: 450rpx;
-  box-shadow: 0 0 4rpx #000000;
-  margin: 20rpx;
-  font-size: 28rpx;
-}
-.content textarea {
-  padding: 10rpx;
-  font-size: 28rpx;
-}
 .submit {
   width: auto;
   height: auto;

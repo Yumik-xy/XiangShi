@@ -1,7 +1,7 @@
 <!-- pages/index/calendar/newSchedule/newSchedule.wxml -->
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="inputTitle">
-    <input placeholder="输入日程标题" name="title"></input>
+    <input placeholder="输入日程标题" name="todoText"></input>
   </view>
   <view class="img">
     <image src="../../../icon/clock.png" mode="widthFix" />
@@ -10,23 +10,16 @@
   <view class="time">
     <view class="inputTime">
       <text class="time-title">开始时间:</text>
-      <picker mode="time" value="{{timeBegin}}" start='{{timecurrent}}' end="24:00" bindchange="timeBeginChange" name="timeBegin">
-        <view class="picker">{{timeBegin}}</view>
+      <picker mode="time" value="{{begin}}" start='{{timeCurrent}}' end="24:00" bindchange="timeBeginChange" name="timeBegin">
+        <view class="picker">{{begin}}</view>
       </picker>
     </view>
     <view class="inputTime">
       <text class="time-title">结束时间:</text>
-      <picker mode="time" value="{{timeEnd}}" start="{{timeBegin}}" end="24:00" bindchange="timeEndChange" name="timeEnd">
-        <view class="picker">{{timeEnd}}</view>
+      <picker mode="time" value="{{end}}" start="{{timeCurrent}}" end="24:00" bindchange="timeEndChange" name="timeEnd">
+        <view class="picker">{{end}}</view>
       </picker>
     </view>
-  </view>
-  <view class="img">
-    <image src="../../../icon/disease.png" mode="widthFix" />
-    备注
-  </view>
-  <view class="content">
-    <textarea placeholder="输入备注" name="content"></textarea>
   </view>
   <view class="submit">
     <button form-type="submit">确定</button>
