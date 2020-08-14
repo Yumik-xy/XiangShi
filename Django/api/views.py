@@ -1,3 +1,6 @@
+import datetime
+
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -21,25 +24,32 @@ import time
 
 class login(APIView):
     def get(self, request):
-        # dblist = ['骨髓', '关节', '脊髓', '脊柱', '肋骨', '颅骨', '号', '上肢骨', '下肢骨', '其他骨']
-        # patient_id = 12
-        # for each in dblist:
-        #     symptomwiki_model.objects.create(parent_id=patient_id, name=each)
-
         return Response({'status': True})
 
 
 # 药物List查询
 class medicine_list(APIView):
     def get(self, request):
+        datas = []
+        drumname = request.query_params.get('drumname')
+        drumname = drumname.split(' ')
+        print(drumname)
         try:
-            drumname = request.query_params.get('drumname')
-            drums = medicine_model.objects.filter(drumname__contains=drumname).values('id', 'drumname')[0:10]
-            json_data = list(drums)
+            for item in drumname:
+                if not item == '':
+                    drums = medicine_model.objects.filter(drumname__contains=item).values('id', 'drumname')
+                    datas.extend(list(drums))
+            json_data = []
+            for data in datas:
+                if data not in json_data:
+                    json_data.append(data)
         except:
             return Response({'status': False, 'message': '未找到对应药物', 'code': 10007})
         else:
             return Response({'status': True, 'data': json_data})
+
+
+
 
 
 # 药物查询
@@ -189,13 +199,30 @@ class patient(APIView):
 class inquirypost_list(APIView):
     def get(self, request):
         page = int(request.query_params.get('page'))
+        ser_title = request.query_params.get('ser_title')
+        ser_classify = request.query_params.get('ser_title')
         times = 5
         if page <= 0 or (page - 1) * times > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
-            inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
-                [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
+            if not (ser_title and ser_classify):
+                inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
+                    [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                'photourl')
+            elif ser_title and not ser_classify:
+                inquirypost_list = inquirypost_model.objects.filter(title_contains=ser_title).order_by("-id") \
+                    [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
+                                                                   'photourl')
+            elif not ser_title and ser_classify:
+                inquirypost_list = inquirypost_model.objects.filter(classify_contains=ser_classify).order_by("-id") \
+                    [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
+                                                                   'photourl')
+            else:
+                inquirypost_list = inquirypost_model.objects.filter(Q(title_contains=ser_title),
+                                                                    Q(classify_contains=ser_classify)).order_by("-id") \
+                    [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
+                                                                   'photourl')
+
             for item in inquirypost_list:
                 item['time'] = int(time.mktime(item['time'].timetuple()))
             json_data = list(inquirypost_list)
@@ -260,9 +287,6 @@ class inquirypost(APIView):
         _classify = request.data.get('classify')
         _content = request.data.get('content')
         _summary = request.data.get('summary')[0:100]
-        coder = request.data.get('coder')
-        openid = GetOpenid(coder)
-        print(request.data)
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
         if openid == "":
@@ -373,7 +397,9 @@ class notify_list(APIView):
         times = 5
         try:
             if postwiki == 0:
-                notify_list = notify_model.objects.all().order_by('-readnum') \
+                now = datetime.datetime.now()
+                start = now - datetime.timedelta(days=7)
+                notify_list = notify_model.objects.filter(created__gte=start).order_by('-readnum') \
                     [0: times].values('id', 'title', 'img_url', 'text', 'readnum', 'postwiki', 'created')
             else:
                 notify_list = notify_model.objects.filter(postwiki=postwiki).order_by("-created") \
