@@ -4,7 +4,7 @@ Page({
   data: {
     search_content: '',
     history_contents: [],
-    hot_contents: ["大学生秃顶", "怎么找女朋友", "治疗脱发的8种方法", "久坐会得痔疮吗", "阿莫西林"],
+    hot_contents: ["布洛芬缓释片", "板蓝根冲剂", "阿司匹林", "美多芭"],
     item: []
   },
 
