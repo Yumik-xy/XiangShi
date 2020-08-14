@@ -223,6 +223,7 @@
 .tabs_title{
   display: flex;
   padding: 10rpx;
+
 }
 
 .title_item{
@@ -230,15 +231,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 32rpx;
 }
 
 .active{
   color: var(--themeColor);
   border-bottom: 5rpx solid currentColor;
+  font-size: 38rpx;
+  font-weight: bold;
 }
 
 .tabs_content{
-
   margin: 20rpx;
   border: 1rpx solid #bfbfbf;
   box-shadow: 1rpx 1rpx 1rpx 1rpx #bfbfbf;

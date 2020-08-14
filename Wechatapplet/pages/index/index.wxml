@@ -58,8 +58,7 @@
 				<view class="listitem" wx:if="{{contents.content}}">
 					<block wx:for="{{contents.content}}" wx:key="id" wx:for-item="content">
 						<view class="content" bindtap="turn_passage" data-first="{{content.parent}}" data-second="{{index}}">
-							<view class="part">
-               <!-- wx:if="{{content.parent==0}}" -->
+							<view class="part" wx:if="{{content.parent==0}}">
 								<view>
 									<image class="image" src="{{content.img_url}}">
 									</image>
@@ -72,9 +71,19 @@
                   </text>
 								</view>
 							</view>
-							<!-- <view wx:if="{{content.parent!=0}}">
-								<view class="title">{{content.title}}</view>
-							</view> -->
+							<view class="part" wx:if="{{content.parent!=0}}">
+								<view>
+									<image class="image" src="{{content.img_url}}">
+									</image>
+									<view class="title">{{content.title}}</view>
+								</view>
+								<view>
+									<text class = "data">
+                  阅读数：{{content.readnum}} 
+                  时间：{{content.created}}
+                  </text>
+								</view>
+							</view>
 						</view>
 					</block>
 				</view>

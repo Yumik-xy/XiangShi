@@ -22,6 +22,6 @@
 
 <view class="passage" data-index="{{index}}">
   <text>{{title}}</text>
-  <image src="{{image_url}}" mode="widthFix" />
+  <image wx:if="{{image_irl}}" src="{{image_url}}" mode="widthFix" />
   <rich-text nodes="{{tools.HtmlToText(content)}}"></rich-text>
 </view>
