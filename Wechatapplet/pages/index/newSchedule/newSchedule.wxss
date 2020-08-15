@@ -37,9 +37,8 @@
 }
 .time {
   height: auto;
-  box-shadow: 0 0 6rpx #888585;
+  box-shadow: 0 0 6rpx #bfbfbf;
   margin: 0 15rpx;
-  border-radius: 10rpx;
 }
 .time :last-child {
   border-bottom-width: 0;
@@ -65,30 +64,34 @@
 .inputTime picker {
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   margin-left: 20rpx;
-  padding-left: 50rpx;
   width: 150rpx;
   border-radius: 25rpx;
   box-shadow: 0 0 4rpx #000000;
   font-size: 28rpx;
 }
 .submit {
-  width: auto;
+  display: flex;
+  width: 100%;
   height: auto;
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
+  position: fixed;
+  bottom: 30rpx;
+  justify-content: center;
 }
 .submit button {
+  width: 50rpx;
   background-color: var(--themeColor);
   color: white;
 }
 .colorSelect {
   display: flex;
   flex-direction: row;
-  margin: 20rpx 5rpx;
+  margin: 0 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 0 6rpx #bfbfbf;
 }
 .colorSelect radio {
   flex: 1;
-  margin-left: 15rpx;
+  margin-left: 40rpx;
 }

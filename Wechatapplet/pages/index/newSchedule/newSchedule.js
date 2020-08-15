@@ -13,7 +13,7 @@ Component({
     begin: "12:00",
     end: "12:30",
     todoText: "",
-    color: ["blue", "red", "orange", "green"]
+    color: ["blue", "red", "green"]
   },
 
   /**

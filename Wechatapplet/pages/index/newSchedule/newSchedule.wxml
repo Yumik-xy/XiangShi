@@ -33,7 +33,7 @@
       <view style="width:60rpx;height:60rpx;border-radius:50%;background-color:{{item}};" />
     </radio>
   </radio-group>
-  <view class="submit" style="position: fixed;bottom: 30rpx;left:185rpx;">
+  <view class="submit">
     <button form-type="submit">确定</button>
   </view>
 </form>
