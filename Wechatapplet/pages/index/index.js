@@ -214,7 +214,16 @@ Page({
           var tempList = res.data.data
           tempList.forEach((item) => {
             item.created = time.formatTime(new Date(item.created*1000),'Y-M-D');
-            item.parent = index
+            item.parent = index;
+            if(item.postwiki == 1){
+              item.postwiki = "百科"
+            }
+            if(item.postwiki == 2){
+              item.postwiki = "疫情"
+            }
+            if(item.postwiki == 3){
+              item.postwiki = "药品"
+            }
           })
           let item='contents['+index+'].content';
           that.setData({
