@@ -214,9 +214,8 @@ Page({
           var tempList = res.data.data
           tempList.forEach((item) => {
             item.created = time.formatTime(new Date(item.created*1000),'Y-M-D');
-            item.parent = 0
+            item.parent = index
           })
-
           let item='contents['+index+'].content';
           that.setData({
             [item]: tempList //数据源
@@ -250,6 +249,15 @@ Page({
           console.log(res);
           var tempList = res.data.data
           tempList.forEach((item) => {
+            if(item.postwiki == 1){
+              item.postwiki = "百科"
+            }
+            if(item.postwiki == 2){
+              item.postwiki = "疫情"
+            }
+            if(item.postwiki == 3){
+              item.postwiki = "药品"
+            }
             item.created = time.formatTime(new Date(item.created*1000),'Y-M-D');
             item.parent = 0
           })
