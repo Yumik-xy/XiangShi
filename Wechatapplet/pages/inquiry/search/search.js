@@ -3,12 +3,7 @@ const app = getApp()
 Page({
   data: {
     search_content: '',
-    classify: [{
-      name:''
-    },
-    {
-      name:''
-    }],
+
     content: [],
     inquiry_history: [],
     item: [],
