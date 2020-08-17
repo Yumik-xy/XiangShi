@@ -205,15 +205,15 @@ class inquirypost_list(APIView):
         if page <= 0 or (page - 1) * times > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
         try:
-            if not (ser_title and ser_classify):
+            if ser_title is None and ser_classify is None:
                 inquirypost_list = inquirypost_model.objects.all().order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                'photourl')
-            elif ser_title and not ser_classify:
+            elif ser_title and ser_classify is None:
                 inquirypost_list = inquirypost_model.objects.filter(title__contains=ser_title).order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                    'photourl')
-            elif not ser_title and ser_classify:
+            elif ser_title is None and ser_classify:
                 inquirypost_list = inquirypost_model.objects.filter(classify__contains=ser_classify).order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                    'photourl')
