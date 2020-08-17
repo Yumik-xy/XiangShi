@@ -1,12 +1,62 @@
 <!-- pages/search/search.wxml -->
 <view class="search_input">
-  <view class="search">
-			<view class="search-left">
-				<image src="../../../icon/_search.png"></image>
-				<input autoFocus="true" bindconfirm="confirmSearch" bindinput="search" class="search-placeholder" confirmType="search" placeholder="搜索帖子、类型…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" type="text" value=""></input>
-			</view>
-			<view bindtap="search" class="search-right">
-				<image src="../../../icon/search_white.png"></image>
-		  </view>
+	<view class="search">
+		<view class="search-left">
+			<input class="choosedisease" disabled placeholder="选择病症部位" name="classify" bindtap="chooseRegion" placeholder-style="color: #bfbfbf" value="{{classify[1].name}}">
+			</input>
+			<disease-picker region-value="{{classify}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
+			</disease-picker>
+			<input class="search-placeholder" autoFocus="true" bindconfirm="confirmSearch" bindinput="inputTextChange" confirmType="search" placeholder="输入帖子名…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" value="{{search_content}}"></input>
+		</view>
+		<view bindtap="confirmSearch" class="search-right">
+			<image src="../../../icon/search_white.png"></image>
+		</view>
 	</view>
+</view>
+
+<view class="basic-view" hidden="{{item!=''}}">
+	<view class="history">
+		<view class="history-head">
+			<image src="../../../icon/searchhistory.png" mode="widthFix" />
+			历史记录
+			<view class="clear-history" bindtap="clear_history">清除历史记录</view>
+		</view>
+		<view class="history-content">
+			<view class="history-item" wx:for="{{inquiry_history}}" data-text="{{item}}" bindtap="click_history_record">
+				{{item}}
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="search-result" hidden="{{item==''}}">
+	<view wx:if="{{item.length==0}}">无记录</view>
+	<view class="inquirys">
+  <block wx:for="{{item}}" wx:key="index">
+    <view class="inquiry" bindtap="detail" data-id="{{index}}">
+      <view class="title-first">
+        <view class='title-left'>
+          <image class="photo" src="{{item.photourl}}" mode="aspectFit"></image>
+          <view class='title-right'>
+            <view class='title'>{{item.title}}</view>
+            <view class="NT">
+              <view class='name'>{{item.name}}</view>
+              <view class='date'>{{item.date}}</view>
+              <view class='time'>{{item.time}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='message'>
+        <rich-text nodes="<p class='content'><a class='classify'>#{{item.classify}}#</a>{{item.summary}}</p>">
+        </rich-text>
+      </view>
+      <view class='other'>
+        <image class='otimg' src="../../../icon/{{love?'':'_'}}love.png" mode="aspectFit"></image>
+        <image class='otimg' src="../../../icon/{{love?'':'_'}}follow.png" mode="aspectFit"></image>
+        <image class='otimg' src="../../../icon/{{love?'':'_'}}comment.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </block>
+</view>
 </view>

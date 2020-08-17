@@ -200,7 +200,7 @@ class inquirypost_list(APIView):
     def get(self, request):
         page = int(request.query_params.get('page'))
         ser_title = request.query_params.get('ser_title')
-        ser_classify = request.query_params.get('ser_title')
+        ser_classify = request.query_params.get('ser_classify')
         times = 5
         if page <= 0 or (page - 1) * times > inquirypost_model.objects.count():
             return Response({'status': False, 'message': '没有更多的帖子了', 'code': 10005})
@@ -210,22 +210,23 @@ class inquirypost_list(APIView):
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                'photourl')
             elif ser_title and not ser_classify:
-                inquirypost_list = inquirypost_model.objects.filter(title_contains=ser_title).order_by("-id") \
+                inquirypost_list = inquirypost_model.objects.filter(title__contains=ser_title).order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                    'photourl')
             elif not ser_title and ser_classify:
-                inquirypost_list = inquirypost_model.objects.filter(classify_contains=ser_classify).order_by("-id") \
+                inquirypost_list = inquirypost_model.objects.filter(classify__contains=ser_classify).order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                    'photourl')
             else:
-                inquirypost_list = inquirypost_model.objects.filter(Q(title_contains=ser_title),
-                                                                    Q(classify_contains=ser_classify)).order_by("-id") \
+                inquirypost_list = inquirypost_model.objects.filter(Q(title__contains=ser_title),
+                                                                    Q(classify__contains=ser_classify)).order_by("-id") \
                     [(page - 1) * times:(page - 0) * times].values('id', 'name', 'title', 'classify', 'summary', 'time',
                                                                    'photourl')
 
             for item in inquirypost_list:
                 item['time'] = int(time.mktime(item['time'].timetuple()))
             json_data = list(inquirypost_list)
+
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
 
@@ -266,14 +267,13 @@ class inquirypost(APIView):
         summary = request.data.get('summary')[0:100]
         coder = request.data.get('coder')
         openid = GetOpenid(coder)
-        print(request.data)
         if openid == "":
             return Response({'status': False, 'message': '获取openid失败', 'code': 10001})
-        db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
-                                              content=content, summary=summary, photourl=photourl)
-        db.save()
+
         try:
-            pass
+            db = inquirypost_model.objects.create(openid=openid, name=name, title=title, classify=classify,
+                                                  content=content, summary=summary, photourl=photourl)
+            db.save()
         except:
             return Response({'status': False, 'message': '未知错误', 'code': 10000})
         else:

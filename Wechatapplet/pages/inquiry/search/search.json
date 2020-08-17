@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "disease-picker":"../../../components/disease-picker/disease-picker"
+  }
 }

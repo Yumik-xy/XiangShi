@@ -72,8 +72,16 @@ Page({
 
   //搜索确认
   confirmSearch: function (e) {
-    this.input_setStorage();
-    this.search();
+    if(this.data.search_content){
+      this.input_setStorage();
+      this.search();
+    }
+    else{
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none'
+      })
+    }
   },
 
   //将搜索记录写到本地缓存
