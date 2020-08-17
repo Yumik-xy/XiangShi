@@ -23,7 +23,7 @@
 		</view>
 		<view class="history-content">
 			<view class="history-item" wx:for="{{inquiry_history}}" data-id="{{index}}" bindtap="click_history_record">
-				{{item[0]}}({{item[1]}})
+				{{item[0]}}({{item[2].name}})
 			</view>
 		</view>
 	</view>

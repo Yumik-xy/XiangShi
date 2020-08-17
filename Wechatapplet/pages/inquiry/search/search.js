@@ -3,7 +3,6 @@ const app = getApp()
 Page({
   data: {
     search_content: '',
-
     content: [],
     inquiry_history: [],
     item: [],
@@ -127,8 +126,8 @@ Page({
     var index = e.currentTarget.dataset.id
     this.setData({
       search_content: this.data.inquiry_history[index][0],
-      'classify[1].name': this.data.inquiry_history[index][1],
-      'classify[0].name': this.data.inquiry_history[index][2]
+      'classify[0]': this.data.inquiry_history[index][1],
+      'classify[1]': this.data.inquiry_history[index][2]
     });
     this.search(true);
   },
@@ -154,15 +153,13 @@ Page({
       content : this.data.content.concat(this.data.search_content)
     })
     this.setData({
-      content : this.data.content.concat(this.data.classify[1].name)
+      content : this.data.content.concat(this.data.classify)
     })
-    this.setData({
-      content : this.data.content.concat(this.data.classify[0].name)
-    })
+    
     
     console.log("存储搜索记录：" + this.data.content);
     for (let i = 0; i < this.data.inquiry_history.length; i++) {
-      if ((this.data.content[0] == this.data.inquiry_history[i][0])&&(this.data.content[1] == this.data.inquiry_history[i][1])) {
+      if ((this.data.content[0] == this.data.inquiry_history[i][0])&&(this.data.content[2].name == this.data.inquiry_history[i][2].name)) {
         return;
       }
     }

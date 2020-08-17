@@ -35,6 +35,15 @@ Component({
         }
       },
     },
+    select:{
+      type: Number,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          ['region.select']: newVal,
+          area: this.getChildArea(newVal)
+        });
+      }
+    }
   },
   data: {
     dialog: false,
@@ -42,11 +51,11 @@ Component({
     region: {
       tabs: [
         {
-          name: '请选择',
+          name: '',
           id: '',
         },
         {
-          name: '请选择',
+          name: '',
           id: '',
         },
       ],
@@ -56,14 +65,14 @@ Component({
   methods: {
     // 关闭 picker 触发的方法
     emitHideRegion: function() {
-      if (this.data.region.tabs[1].id === '') {
-        wx.showToast({
-          title: '请选择要咨询的疾病类型',
-          icon: 'none',
-          duration: 2000,
-        });
-        return false;
-      }
+      // if (this.data.region.tabs[1].id === '') {
+      //   wx.showToast({
+      //     title: '请选择要咨询的疾病类型',
+      //     icon: 'none',
+      //     duration: 2000,
+      //   });
+      //   return false;
+      // }
       let myEventDetail = {}; // detail对象，提供给事件监听函数
       let myEventOption = {}; // 触发事件的选项
       this.setData({
@@ -125,7 +134,7 @@ Component({
         let string = 'region.tabs['+ i +']';
         this.setData({
           [string]: {
-            name: '请选择',
+            name: '',
             id: '',
           },
         });
