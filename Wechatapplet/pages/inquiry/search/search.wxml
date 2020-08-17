@@ -4,7 +4,7 @@
 		<view class="search-left">
 			<input class="choosedisease" disabled placeholder="部位" name="classify" bindtap="chooseRegion" placeholder-style="color: #bfbfbf " value="{{classify[1].name}}">
 			</input>
-			<disease-picker region-value="{{classify}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
+			<disease-picker classify="{{classify}}" region-value="{{classify}}" show-region="{{showRegion}}" bind:myevent="emitHideRegion">
 			</disease-picker>
 			<input class="search-placeholder" autoFocus="true" bindconfirm="confirmSearch" bindinput="inputTextChange" confirmType="search" placeholder="输入帖子名…" placeholderClass="placeholderStyle" placeholder-style="color: #bfbfbf" value="{{search_content}}"></input>
 		</view>
