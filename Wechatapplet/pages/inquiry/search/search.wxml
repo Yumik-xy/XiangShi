@@ -22,15 +22,14 @@
 			<view class="clear-history" bindtap="clear_history">清除历史记录</view>
 		</view>
 		<view class="history-content">
-			<view class="history-item" wx:for="{{inquiry_history}}" data-text="{{item}}" bindtap="click_history_record">
-				{{item}}
+			<view class="history-item" wx:for="{{inquiry_history}}" data-id="{{index}}" bindtap="click_history_record">
+				{{item[0]}}({{item[1]}})
 			</view>
 		</view>
 	</view>
 </view>
 
 <view class="search-result" hidden="{{item==''}}">
-	<view wx:if="{{item.length==0}}">无记录</view>
 	<view class="inquirys">
   <block wx:for="{{item}}" wx:key="index">
     <view class="inquiry" bindtap="detail" data-id="{{index}}">

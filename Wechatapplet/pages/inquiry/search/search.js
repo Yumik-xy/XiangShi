@@ -3,15 +3,15 @@ const app = getApp()
 Page({
   data: {
     search_content: '',
-    inquiry_history: [],
-    item: [],
     classify: [{
       name:''
     },
     {
       name:''
-    }
-  ],
+    }],
+    content: [],
+    inquiry_history: [],
+    item: [],
     showRegion: false,
   },
 
@@ -129,10 +129,13 @@ Page({
 
   //点击历史搜索记录
   click_history_record: function (e) {
+    var index = e.currentTarget.dataset.id
     this.setData({
-      search_content: e.currentTarget.dataset.text
+      search_content: this.data.inquiry_history[index][0],
+      'classify[1].name': this.data.inquiry_history[index][1],
+      'classify[0].name': this.data.inquiry_history[index][2]
     });
-    // this.search(true);
+    this.search(true);
   },
 
   //搜索确认
@@ -152,13 +155,23 @@ Page({
   //将搜索记录写到本地缓存
   input_setStorage: function name() {
     //只缓存最近十个搜索记录
-    console.log("存储搜索记录：" + this.data.search_content);
+    this.setData({
+      content : this.data.content.concat(this.data.search_content)
+    })
+    this.setData({
+      content : this.data.content.concat(this.data.classify[1].name)
+    })
+    this.setData({
+      content : this.data.content.concat(this.data.classify[0].name)
+    })
+    
+    console.log("存储搜索记录：" + this.data.content);
     for (let i = 0; i < this.data.inquiry_history.length; i++) {
-      if (this.data.search_content == this.data.inquiry_history[i]) {
+      if ((this.data.content[0] == this.data.inquiry_history[i][0])&&(this.data.content[1] == this.data.inquiry_history[i][1])) {
         return;
       }
     }
-    this.data.inquiry_history.unshift(this.data.search_content);
+    this.data.inquiry_history.unshift(this.data.content);
     if (this.data.inquiry_history.length > 10) {
       this.data.inquiry_history.pop();
     }
@@ -174,9 +187,11 @@ Page({
       },
       fail: () => {
         console.log("存储失败");
-      },
-      complete: () => {}
+      }
     });
+    this.setData({
+      content : []
+    })
   },
 
   //input输入改变
@@ -193,7 +208,8 @@ Page({
     wx.removeStorageSync('inquiry_history');
     //刷新页面
     this.setData({
-      inquiry_history: []
+      inquiry_history: [],
+      content : []
     });
   },
 
