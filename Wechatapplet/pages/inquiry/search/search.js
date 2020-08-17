@@ -5,7 +5,13 @@ Page({
     search_content: '',
     inquiry_history: [],
     item: [],
-    classify: [],
+    classify: [{
+      name:''
+    },
+    {
+      name:''
+    }
+  ],
     showRegion: false,
   },
 
@@ -131,7 +137,7 @@ Page({
 
   //搜索确认
   confirmSearch: function (e) {
-    if((this.data.search_content)&&(this.data.classify.length !== 0)){
+    if((this.data.search_content)||(this.data.classify.length !== 0)){
       this.input_setStorage();
       this.search(true);
     }
