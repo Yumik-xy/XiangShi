@@ -15,10 +15,70 @@
   border-radius: 45rpx;
 }
 
+.title-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .title {
   font-weight: bold;
   font-size: 44rpx;
-  margin-bottom: 20rpx;
+}
+
+.listBtn{
+  margin-right: 30rpx;
+}
+
+.arrow{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.desc{
+  margin-top: 5rpx;
+  color: #585858;
+  position: absolute;
+  right: 25rpx;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hide {
+  display: none;
+}
+
+.triangle{
+  width: 0;
+  height: 0;
+  border-left: 20rpx solid transparent;
+  border-right: 20rpx solid transparent;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+
+.listitem{
+  font-size: 28rpx;
+  line-height: 36rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  width: 140rpx;
+  background-color: #f2f2f2;
+}
+
+.listitem:nth-child(1){
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.listitem:nth-last-child(1){
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
 }
 
 .message {
@@ -54,6 +114,7 @@
 
 .title-left {
   display: flex;
+  margin-top: 20rpx;
   padding-bottom: 10rpx;
   align-items: center;
   border-bottom: 1px solid #f2f2f2;
@@ -193,7 +254,7 @@
   color: #7c7c7c;
   margin-top: 100rpx;
   margin-bottom: 100rpx;
-  font-size: 22rpx;
+  font-size: 26rpx;
   line-height: 34rpx;
   height: 34rpx;
 }
@@ -203,8 +264,8 @@
 .rich-p{
   margin-top: 12rpx;
   margin-bottom: 12rpx;
-  font-size: 26rpx;
-  line-height: 36rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
   color: #585858;
 }
 

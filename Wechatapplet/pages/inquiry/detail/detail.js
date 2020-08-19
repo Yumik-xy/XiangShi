@@ -9,14 +9,6 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     inputplaceholder: '请发送友善的评论qwq',
-    // data: {
-    //   // name: '帅气的钟钟',
-    //   // title: '这波我直接起飞',
-    //   // classify: '鼻子',
-    //   // content: '<p>真的是顶不住，一天到晚都在流鼻血，你看着图片就是这个样子 diu！</p><p>上传图片1<img src=\"http://127.0.0.1/media/picture/20200810/92725ca6-68ad-4432-8488-765f9d5cb60b.jpg\" width=\"40%\" data-custom=\"id=abcd&amp;role=god\"></p>',
-    //   // time: '12:12:12',
-    //   // date: '2000-02-01'
-    // },
     list: [],
     picturelist: [],
     reply: {
@@ -27,7 +19,20 @@ Page({
     },
     textareaisShow: false,
     isEmpty: true,
+    isShow: false,
     color: "#8A8A8A",
+  },
+
+  listBtn(e) {
+    if (this.data.isShow === true) {
+      this.setData({
+        isShow: false
+      })
+    } else {
+      this.setData({
+        isShow: true
+      })
+    }
   },
 
   textinput: function (e) {

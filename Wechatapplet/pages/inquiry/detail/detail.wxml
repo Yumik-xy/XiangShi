@@ -23,7 +23,19 @@
 <view class="page" wx:if="{{data}}">
   <view class="inquiry">
     <view class="title-first">
-      <view class='title'>{{data.title}}</view>
+      <view class='title-top'>
+        <view class='title'>{{data.title}}</view>
+        <view class="listBtn" bindtap="listBtn" wx:if="{{!isShow}}">
+          <image class="arrow" src="../../../icon/arrow-bottom.png"></image>
+        </view>
+		  	<view class="listBtn" bindtap="listBtn" wx:if="{{isShow}}">
+          <image class="arrow" src="../../../icon/arrow-top.png"></image>
+        </view>
+      </view>
+      <view class="desc {{isShow ? 'show' : 'hide'}}">
+        <view class="triangle"></view>
+			  <view class="listitem">删除</view>
+		  </view>
       <view class='title-left'>
         <image class="photo" src="{{data.photourl}}" mode="aspectFit"></image>
         <view class='title-right'>
