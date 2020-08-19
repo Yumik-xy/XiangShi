@@ -34,7 +34,10 @@
       </view>
       <view class="desc {{isShow ? 'show' : 'hide'}}">
         <view class="triangle"></view>
-			  <view class="listitem">删除</view>
+        <view class="list">
+          <view class="listitem" bindtap="deleteinquiry" hidden="{{possess === false}}">删除</view>
+          <view class="listitem">举报</view>
+        </view>
 		  </view>
       <view class='title-left'>
         <image class="photo" src="{{data.photourl}}" mode="aspectFit"></image>

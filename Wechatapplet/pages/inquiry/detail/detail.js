@@ -23,6 +23,47 @@ Page({
     color: "#8A8A8A",
   },
 
+  deleteinquiry:function(e){
+    var that = this;
+    wx.login({
+      success: function (loginCode) {
+        console.log(loginCode)
+        wx.request({
+          url: app.globalData.serverUrl + 'api/inquirypost',
+          data: {
+            id: that.data.id,
+            coder: loginCode.code
+          },
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          method: 'DELETE',
+          success: function (res) {
+            console.log(res)
+            if (res.data.status == false) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == true) {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                duration: 1000,
+              })
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000)
+            }
+          }
+        })
+      }
+    })
+
+  },
+
   listBtn(e) {
     if (this.data.isShow === true) {
       this.setData({
@@ -126,11 +167,10 @@ Page({
   bindcomment: function (e) {
     let replyList = this.data.reply
     replyList.name = this.data.userInfo.nickName,
-      replyList.postid = this.data.data.id,
-      replyList.parentid = e.currentTarget.dataset.id,
-      replyList.reply_to = e.currentTarget.dataset.name,
+    replyList.postid = this.data.data.id,
+    replyList.parentid = e.currentTarget.dataset.id,
+    replyList.reply_to = e.currentTarget.dataset.name,
 
-      console.log(replyList);
     this.setData({
       reply: replyList,
       replypost: replyList,
@@ -241,7 +281,8 @@ Page({
               var tempList = res.data.data[0]
               tempList.time = that.getDateDiff(tempList.time)
               that.setData({
-                data: tempList
+                data: tempList,
+                possess:res.data.possess
               })
             }
           }
@@ -266,9 +307,11 @@ Page({
           })
         } else if (res.data.status == true) {
           var tempList = res.data.data
-          tempList.forEach((data) => {
-            data.created = that.getDateDiff(data.created)
-          })
+          if(tempList){
+            tempList.forEach((data) => {
+              data.created = that.getDateDiff(data.created)
+            })
+          }
           that.setData({
             list: that.arrayToTree(res.data.data, null)
           })
