@@ -17,7 +17,7 @@
 
 .title-top{
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 }
 
@@ -27,6 +27,7 @@
 }
 
 .listBtn{
+  margin-top: 10rpx;
   margin-right: 40rpx;
 }
 
@@ -73,6 +74,7 @@
   line-height: 36rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #d3d3d3;
   width: 140rpx;
   background-color: #f2f2f2;
 }

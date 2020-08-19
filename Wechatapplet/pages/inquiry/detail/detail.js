@@ -65,6 +65,7 @@ Page({
   },
 
   listBtn(e) {
+    var that =this
     if (this.data.isShow === true) {
       this.setData({
         isShow: false
@@ -73,6 +74,11 @@ Page({
       this.setData({
         isShow: true
       })
+      setTimeout(function () {
+        that.setData({
+          isShow: false
+        })
+       }, 2000)
     }
   },
 

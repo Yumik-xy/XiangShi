@@ -25,20 +25,21 @@
     <view class="title-first">
       <view class='title-top'>
         <view class='title'>{{data.title}}</view>
+
         <view class="listBtn" bindtap="listBtn" wx:if="{{!isShow}}">
           <image class="arrow" src="../../../icon/arrow-bottom.png"></image>
         </view>
-		  	<view class="listBtn" bindtap="listBtn" wx:if="{{isShow}}">
+        <view class="listBtn" bindtap="listBtn" wx:if="{{isShow}}">
           <image class="arrow" src="../../../icon/arrow-top.png"></image>
+          <view class="desc {{isShow ? 'show' : 'hide'}}">
+            <view class="triangle"></view>
+            <view class="list">
+              <view class="listitem" bindtap="deleteinquiry" hidden="{{possess === false}}">删除</view>
+              <view class="listitem">举报</view>
+            </view>
+          </view>
         </view>
       </view>
-      <view class="desc {{isShow ? 'show' : 'hide'}}">
-        <view class="triangle"></view>
-        <view class="list">
-          <view class="listitem" bindtap="deleteinquiry" hidden="{{possess === false}}">删除</view>
-          <view class="listitem">举报</view>
-        </view>
-		  </view>
       <view class='title-left'>
         <image class="photo" src="{{data.photourl}}" mode="aspectFit"></image>
         <view class='title-right'>
@@ -68,14 +69,14 @@
     </view>
     <view wx:if="{{list}}" class="comment">
       <block wx:for="{{list}}" wx:key="comi" wx:for-item="firstcom">
-        
+
         <view class="first" mut-bind:tap="bindcomment" data-name="{{firstcom.name}}" data-id="{{firstcom.id}}">
-          <image class = "avatar" src="{{firstcom.photourl}}"></image>
-          <view class ="info">
-          <text class="commentname1">{{firstcom.name}}\n</text>
-          <text class="commentname1">{{firstcom.created}}</text>
+          <image class="avatar" src="{{firstcom.photourl}}"></image>
+          <view class="info">
+            <text class="commentname1">{{firstcom.name}}\n</text>
+            <text class="commentname1">{{firstcom.created}}</text>
           </view>
-          
+
           <view class="commentcontent">{{firstcom.body}}</view>
           <view wx:if="{{firstcom.children}}" class="secondcom">
             <block wx:for="{{firstcom.children}}" wx:key="comj" wx:for-item="secondcom">
